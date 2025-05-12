@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Al2Cu2O4
+_chemical_formula_sum              "Al2 Cu2 O4"
+_cell_length_a       5.674965232610977
+_cell_length_b       5.317354901610106
+_cell_length_c       5.00128594931031
+_cell_angle_alpha    69.261227438412
+_cell_angle_beta     58.526061873497724
+_cell_angle_gamma    52.65177664399531
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Al  Al1       1.0  0.8006158163767443  0.027630444253314273  0.35308773004117294  1.0000
+  Al  Al2       1.0  0.04352737595025521  0.2808210143923377  0.6069163881428468  1.0000
+  Cu  Cu1       1.0  0.6514873737063924  0.8642670220879296  0.0030898273790575443  1.0000
+  Cu  Cu2       1.0  0.37178533850846424  0.6290002388643794  0.7690823091494716  1.0000
+  O   O1        1.0  0.4531838769027959  0.11692022537811046  0.330512606617315  1.0000
+  O   O2        1.0  0.7681115841639017  0.29980226933666826  0.5146715097407756  1.0000
+  O   O3        1.0  0.06970732427083978  0.02616193609183054  0.9531741954062225  1.0000
+  O   O4        1.0  0.9108787459872361  0.6796645871998711  0.6103404007947622  1.0000
