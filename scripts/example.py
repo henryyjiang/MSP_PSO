@@ -1,3 +1,5 @@
+print("running!")
+
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname("../.."))))
@@ -18,7 +20,7 @@ from pymatgen.analysis.structure_matcher import StructureMatcher
 from pymatgen.io.ase import AseAtomsAdaptor
 
 import matplotlib.pyplot  as plt
-
+print("still running!")
 #download dataset from Materials Project
 #return dataset class or dict
 my_dataset = download_dataset(repo="MP", save=True)

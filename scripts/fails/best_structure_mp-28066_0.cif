@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Th2Br2N2
+_chemical_formula_sum              "Th2 Br2 N2"
+_cell_length_a       4.07401477
+_cell_length_b       4.07401477
+_cell_length_c       8.12696051
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Th  Th1       1.0  0.8942925354490923  0.20644545096771028  0.31838126875479617  1.0000
+  Th  Th2       1.0  0.049855123987873506  0.07409800754461715  0.30122080362444686  1.0000
+  Br  Br1       1.0  0.47130366691306513  0.2856679069610908  0.1438000020477932  1.0000
+  Br  Br2       1.0  0.5268533378618747  0.09201905042153435  0.693099763135697  1.0000
+  N   N1        1.0  0.33799825223245183  0.5048506990188717  0.4604805298820014  1.0000
+  N   N2        1.0  0.8934970172785817  0.026679762265400378  0.7632480955268188  1.0000

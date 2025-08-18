@@ -15,11 +15,11 @@ with MPRester(API_KEY) as mpr:
         energy_above_hull=(0.0, 0.0),
         num_chunks=None,
     )
-    random_sample = random.sample(docs, 100)
+    random_sample = random.sample(docs, 50)
 
-    print(f"Found {len(docs)} stable materials. Downloading CIFs...")
+    print(f"Found {len(random_sample)} stable materials. Downloading CIFs...")
 
-    for idx, doc in enumerate(docs, start=1):
+    for idx, doc in enumerate(random_sample, start=1):
         try:
             structure = mpr.get_structure_by_material_id(doc.material_id)
             cif_path = os.path.join(SAVE_DIR, f"{doc.material_id}.cif")

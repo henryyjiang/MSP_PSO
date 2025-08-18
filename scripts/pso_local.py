@@ -42,8 +42,7 @@ class PSO():
         self.cif_name = cif_name
         self.cell_perturb = cell_perturb
         self.composition = composition
-        if cell is not None:
-            self.cell = cell
+        self.cell = cell
 
         self.options = options
         self.particles = particles
@@ -378,15 +377,18 @@ if __name__ == "__main__":
         cif_name = os.path.splitext(filename)[0]
 
         composition = extract_composition(cif)
-        #cell = extract_cell(cif)
+        cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
         particles = 10  # number of particles in system
         iters = 50
         local_steps = 100
 
-        cell_perturb = True
-        pso = PSO(cif_name, model, composition, None, options, particles, iters, local_steps, cell_perturb)
+        cell_perturb = False
+        if cell_perturb:
+                pso = PSO(cif_name, model, composition, None, options, particles, iters, local_steps, cell_perturb)
+        else:
+                pso = PSO(cif_name, model, composition, cell, options, particles, iters, local_steps,cell_perturb)
         matches = pso.run()
         all_matches.extend(matches)
         print(f"{cif_name} match: {matches}")

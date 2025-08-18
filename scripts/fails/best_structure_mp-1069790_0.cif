@@ -1,0 +1,30 @@
+data_image0
+_chemical_formula_structural       U2RhC2
+_chemical_formula_sum              "U2 Rh1 C2"
+_cell_length_a       5.285185464846611
+_cell_length_b       5.016540262964379
+_cell_length_c       5.583986061223895
+_cell_angle_alpha    70.83471388021353
+_cell_angle_beta     36.33426284614674
+_cell_angle_gamma    93.5457184639841
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  U   U1        1.0  0.5771805272776322  0.7700751819657174  0.12315074993766384  1.0000
+  U   U2        1.0  0.16583235235241678  0.9408258411765449  0.9748067099653216  1.0000
+  Rh  Rh1       1.0  0.37177874578672476  0.35569595347689353  0.048654441011976246  1.0000
+  C   C1        1.0  0.03556580047576552  0.4684777417209598  0.9871903284447554  1.0000
+  C   C2        1.0  0.7069936638650964  0.2423143533297016  0.11117962764261347  1.0000
