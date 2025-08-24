@@ -1,5 +1,4 @@
 from ase import Atoms
-from ase.constraints import ExpCellFilter
 import ase
 import numpy as np
 import pyswarms as ps
@@ -289,8 +288,6 @@ class PSO():
                 new_atoms = [self.dimensions_to_atoms(positions[i]) for i in range(len(positions))]
 
                 def localopt(atoms, steps=1):
-                    atoms = ExpCellFilter(atoms)
-
                     optimizer = BFGS(atoms, logfile=None)
                     optimizer.run(fmax=0.01, steps=steps)
                     return atoms
