@@ -296,7 +296,7 @@ class PSO():
                     return atoms
 
                 optimized_atoms = [localopt(atoms, steps=steps) for atoms in new_atoms]
-                self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
+                self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy(force_consistent=False) for atoms in optimized_atoms])
                 self.optimizer.swarm.position = np.array([self.atoms_to_dimensions(optimized_atoms[i]) for i in range(len(optimized_atoms))])
 
 
@@ -387,7 +387,7 @@ if __name__ == "__main__":
         iters = 50
         local_steps = 100
 
-        cell_perturb = False
+        cell_perturb = True
         if cell_perturb:
                 pso = PSO(cif_name, model, composition, None, options, particles, iters, local_steps, cell_perturb)
         else:

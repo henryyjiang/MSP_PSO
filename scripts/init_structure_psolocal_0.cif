@@ -1,12 +1,12 @@
 data_image0
-_chemical_formula_structural       LiMg2Pt
-_chemical_formula_sum              "Li1 Mg2 Pt1"
-_cell_length_a       4.51097234
-_cell_length_b       4.51074329
-_cell_length_c       4.51064179
-_cell_angle_alpha    59.87489715
-_cell_angle_beta     59.90055128000001
-_cell_angle_gamma    59.89702855000001
+_chemical_formula_structural       Pr2Ga4Ni2
+_chemical_formula_sum              "Pr2 Ga4 Ni2"
+_cell_length_a       4.18308333
+_cell_length_b       4.195102059999999
+_cell_length_c       8.97169882
+_cell_angle_alpha    103.52068296
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
 
 _space_group_name_H-M_alt    "P 1"
 _space_group_IT_number       1
@@ -23,7 +23,11 @@ loop_
   _atom_site_fract_y
   _atom_site_fract_z
   _atom_site_occupancy
-  Li  Li1       1.0  0.3145421058027748  0.5168957358671475  0.16758924934280997  1.0000
-  Mg  Mg1       1.0  0.0  0.0  0.5847749360256512  1.0000
-  Mg  Mg2       1.0  0.0  0.0  0.0  1.0000
-  Pt  Pt1       1.0  0.3145421058027748  0.5168957358671475  0.5828143133171587  1.0000
+  Pr  Pr1       1.0  0.9999999999999999  0.6325993981271235  0.39519257711533917  1.0000
+  Pr  Pr2       1.0  0.6247078623023843  2.2606794267096077e-17  0.4948359138237602  1.0000
+  Ga  Ga1       1.0  0.9999999999999999  0.6325993981271235  0.06915671653128243  1.0000
+  Ga  Ga2       1.0  0.6247078623023843  2.2606794267096077e-17  0.1688000532397034  1.0000
+  Ga  Ga3       1.0  0.0  0.0  0.0  1.0000
+  Ga  Ga4       1.0  0.6247078623023842  0.6325993981271235  0.23795676977098587  1.0000
+  Ni  Ni1       1.0  0.0  0.0  0.32603586058405676  1.0000
+  Ni  Ni2       1.0  0.6247078623023842  0.6325993981271235  0.5639926303550427  1.0000
