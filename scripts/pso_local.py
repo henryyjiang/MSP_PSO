@@ -1,5 +1,5 @@
 from ase import Atoms
-from ase.filters import ExpCellFilter, UnitCellFilter
+from ase.filters import ExpCellFilter, UnitCellFilter, FrechetCellFilter
 from ase.geometry import cell_to_cellpar
 import ase
 import numpy as np
@@ -292,9 +292,21 @@ class PSO():
 
                 def localopt(atoms, steps=1):
                     with torch.no_grad():
-                        ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
-                        optimizer = BFGS(ucf, logfile=None)
-                        optimizer.run(fmax=0.01, steps=steps)
+                        cell = atoms.cell.array
+                        cell[np.abs(cell) < 1e-8] = 1e-8
+                        atoms.set_cell(cell)
+                        atoms.wrap()
+
+                        ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
+                        # ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
+                        #ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
+
+                        try:
+                            optimizer = BFGS(ucf, logfile=None, maxstep=0.05)
+                            optimizer.run(fmax=0.01, steps=steps)
+                        except ValueError as e:
+                            print("Optimization failed due to invalid deformation:", e)
+                            pass
                     return atoms
 
                 # optimized_atoms = [localopt(atoms, steps=steps) for atoms in new_atoms]
@@ -391,9 +403,9 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
-        particles = 3  # number of particles in system
-        iters = 5
-        local_steps = 5
+        particles = 10  # number of particles in system
+        iters = 20
+        local_steps = 50
 
         cell_perturb = True
         if cell_perturb:
