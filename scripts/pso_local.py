@@ -1,5 +1,6 @@
 from ase import Atoms
-from ase.constraints import ExpCellFilter
+from ase.filters import ExpCellFilter, UnitCellFilter
+from ase.geometry import cell_to_cellpar
 import ase
 import numpy as np
 import pyswarms as ps
@@ -290,8 +291,10 @@ class PSO():
                 new_atoms = [self.dimensions_to_atoms(positions[i]) for i in range(len(positions))]
 
                 def localopt(atoms, steps=1):
-                    atoms = ExpCellFilter(atoms)
+                    #atoms.cell[abs(atoms.cell) < 1e-8] = 1e-8
+                    #atoms.wrap()
 
+                    atoms = UnitCellFilter(atoms, scalar_pressure=0.0)
                     optimizer = BFGS(atoms, logfile=None)
                     optimizer.run(fmax=0.01, steps=steps)
                     return atoms
@@ -304,7 +307,6 @@ class PSO():
                     if hasattr(opt, "atoms"):
                         opt = opt.atoms
                     optimized_atoms.append(opt)
-                    print(optimized_atoms)
                     torch.cuda.empty_cache()
 
                 self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
@@ -394,9 +396,9 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
-        particles = 3  # number of particles in system
-        iters = 5
-        local_steps = 5
+        particles = 10  # number of particles in system
+        iters = 50
+        local_steps = 100
 
         cell_perturb = True
         if cell_perturb:

@@ -21488,3 +21488,865 @@ Detected KeyboardInterrupt, attempting graceful shutdown ...
 2025-08-29 09:51:27,953 - root - INFO - Dataset length: ('train', 22209)
 2025-08-29 09:51:27,953 - root - INFO - Dataset length: ('val', 1233)
 2025-08-29 09:51:27,953 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 09:54:00,391 - nshconfig._src.config - INFO - Default hash function set for class: Invalid
+2025-08-29 09:54:00,476 - nshconfig._src.config - INFO - Default hash function set for class: RootConfig
+2025-08-29 09:54:09,126 - nshconfig._src.config - INFO - Default hash function set for class: MAELossConfig
+2025-08-29 09:54:09,128 - nshconfig._src.config - INFO - Default hash function set for class: MSELossConfig
+2025-08-29 09:54:09,131 - nshconfig._src.config - INFO - Default hash function set for class: HuberLossConfig
+2025-08-29 09:54:09,133 - nshconfig._src.config - INFO - Default hash function set for class: L2MAELossConfig
+2025-08-29 09:54:09,137 - nshconfig._src.config - INFO - Default hash function set for class: PropertyConfigBase
+2025-08-29 09:54:09,140 - nshconfig._src.config - INFO - Default hash function set for class: GraphPropertyConfig
+2025-08-29 09:54:09,143 - nshconfig._src.config - INFO - Default hash function set for class: EnergyPropertyConfig
+2025-08-29 09:54:09,146 - nshconfig._src.config - INFO - Default hash function set for class: ForcesPropertyConfig
+2025-08-29 09:54:09,148 - nshconfig._src.config - INFO - Default hash function set for class: StressesPropertyConfig
+2025-08-29 09:54:09,151 - nshconfig._src.config - INFO - Default hash function set for class: NormalizerConfigBase
+2025-08-29 09:54:09,153 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomNormalizerConfig
+2025-08-29 09:54:09,155 - nshconfig._src.config - INFO - Default hash function set for class: MeanStdNormalizerConfig
+2025-08-29 09:54:09,157 - nshconfig._src.config - INFO - Default hash function set for class: RMSNormalizerConfig
+2025-08-29 09:54:09,163 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomReferencingNormalizerConfig
+2025-08-29 09:54:09,171 - nshconfig._src.config - INFO - Default hash function set for class: StepLRConfig
+2025-08-29 09:54:09,173 - nshconfig._src.config - INFO - Default hash function set for class: MultiStepLRConfig
+2025-08-29 09:54:09,175 - nshconfig._src.config - INFO - Default hash function set for class: ExponentialConfig
+2025-08-29 09:54:09,177 - nshconfig._src.config - INFO - Default hash function set for class: ReduceOnPlateauConfig
+2025-08-29 09:54:09,179 - nshconfig._src.config - INFO - Default hash function set for class: CosineAnnealingLRConfig
+2025-08-29 09:54:09,181 - nshconfig._src.config - INFO - Default hash function set for class: ConstantLRConfig
+2025-08-29 09:54:09,183 - nshconfig._src.config - INFO - Default hash function set for class: LinearLRConfig
+2025-08-29 09:54:09,190 - nshconfig._src.config - INFO - Default hash function set for class: OptimizerConfigBase
+2025-08-29 09:54:09,194 - nshconfig._src.config - INFO - Default hash function set for class: AdamConfig
+2025-08-29 09:54:09,198 - nshconfig._src.config - INFO - Default hash function set for class: AdamWConfig
+2025-08-29 09:54:09,201 - nshconfig._src.config - INFO - Default hash function set for class: SGDConfig
+2025-08-29 09:54:09,206 - nshconfig._src.config - INFO - Default hash function set for class: FinetuneModuleBaseConfig
+2025-08-29 09:54:09,244 - nshconfig._src.config - INFO - Default hash function set for class: BaseFileConfig
+2025-08-29 09:54:10,125 - nshconfig._src.config - INFO - Default hash function set for class: CachedPathConfig
+2025-08-29 09:54:10,135 - nshconfig._src.config - INFO - Default hash function set for class: SSHConfig
+2025-08-29 09:54:10,140 - nshconfig._src.config - INFO - Default hash function set for class: RemoteSSHFileConfig
+2025-08-29 09:54:10,144 - nshconfig._src.config - INFO - Default hash function set for class: FAIRChemAtomsToGraphSystemConfig
+2025-08-29 09:54:10,148 - nshconfig._src.config - INFO - Default hash function set for class: EqV2BackboneConfig
+2025-08-29 09:54:10,149 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 09:54:10,157 - nshconfig._src.config - INFO - Default hash function set for class: CutoffsConfig
+2025-08-29 09:54:10,160 - nshconfig._src.config - INFO - Default hash function set for class: MaxNeighborsConfig
+2025-08-29 09:54:10,162 - nshconfig._src.config - INFO - Default hash function set for class: JMPGraphComputerConfig
+2025-08-29 09:54:10,167 - nshconfig._src.config - INFO - Default hash function set for class: JMPBackboneConfig
+2025-08-29 09:54:10,167 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 09:54:10,174 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetGraphComputerConfig
+2025-08-29 09:54:10,179 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetBackboneConfig
+2025-08-29 09:54:10,179 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 09:54:10,186 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimGraphConvertorConfig
+2025-08-29 09:54:10,190 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimBackboneConfig
+2025-08-29 09:54:10,191 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 09:54:10,198 - nshconfig._src.config - INFO - Default hash function set for class: ORBSystemConfig
+2025-08-29 09:54:10,202 - nshconfig._src.config - INFO - Default hash function set for class: ORBBackboneConfig
+2025-08-29 09:54:10,203 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 09:54:10,210 - nshconfig._src.config - INFO - Default hash function set for class: EarlyStoppingConfig
+2025-08-29 09:54:10,214 - nshconfig._src.config - INFO - Default hash function set for class: EMAConfig
+2025-08-29 09:54:10,220 - nshconfig._src.config - INFO - Default hash function set for class: ModelCheckpointConfig
+2025-08-29 09:54:10,226 - nshconfig._src.config - INFO - Default hash function set for class: DatasetConfigBase
+2025-08-29 09:54:10,233 - nshconfig._src.config - INFO - Default hash function set for class: JSONDatasetConfig
+2025-08-29 09:54:10,233 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 09:54:10,238 - nshconfig._src.config - INFO - Default hash function set for class: MatbenchDatasetConfig
+2025-08-29 09:54:10,238 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 09:54:10,243 - nshconfig._src.config - INFO - Default hash function set for class: MPDatasetConfig
+2025-08-29 09:54:10,243 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 09:54:10,247 - nshconfig._src.config - INFO - Default hash function set for class: OMAT24DatasetConfig
+2025-08-29 09:54:10,248 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 09:54:10,351 - nshconfig._src.config - INFO - Default hash function set for class: XYZDatasetConfig
+2025-08-29 09:54:10,351 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 09:54:10,358 - nshconfig._src.config - INFO - Default hash function set for class: DataModuleBaseConfig
+2025-08-29 09:54:10,361 - nshconfig._src.config - INFO - Default hash function set for class: ManualSplitDataModuleConfig
+2025-08-29 09:54:10,362 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:54:10,366 - nshconfig._src.config - INFO - Default hash function set for class: AutoSplitDataModuleConfig
+2025-08-29 09:54:10,368 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:54:10,373 - nshconfig._src.config - INFO - Default hash function set for class: CSVLoggerConfig
+2025-08-29 09:54:10,376 - nshconfig._src.config - INFO - Default hash function set for class: WandbLoggerConfig
+2025-08-29 09:54:10,380 - nshconfig._src.config - INFO - Default hash function set for class: TensorBoardLoggerConfig
+2025-08-29 09:54:10,385 - nshconfig._src.config - INFO - Default hash function set for class: RecipeConfigBase
+2025-08-29 09:54:10,390 - nshconfig._src.config - INFO - Default hash function set for class: EMARecipeConfig
+2025-08-29 09:54:10,391 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.ema.EMARecipeConfig'> with tag 'ema'.
+2025-08-29 09:54:10,395 - nshconfig._src.config - INFO - Default hash function set for class: PeftConfig
+2025-08-29 09:54:10,400 - nshconfig._src.config - INFO - Default hash function set for class: LoraConfig
+2025-08-29 09:54:10,402 - nshconfig._src.config - INFO - Default hash function set for class: LoRARecipeConfig
+2025-08-29 09:54:10,402 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.lora.LoRARecipeConfig'> with tag 'lora'.
+2025-08-29 09:54:10,406 - nshconfig._src.config - INFO - Default hash function set for class: NoOpRecipeConfig
+2025-08-29 09:54:10,406 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.noop.NoOpRecipeConfig'> with tag 'no-op'.
+2025-08-29 09:54:10,413 - nshconfig._src.config - INFO - Default hash function set for class: TrainerConfig
+2025-08-29 09:54:10,418 - nshconfig._src.config - INFO - Default hash function set for class: MatterTunerConfig
+2025-08-29 09:54:10,421 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:54:10,424 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:54:10,431 - nshconfig._src.config - INFO - Default hash function set for class: AtomsListDatasetConfig
+2025-08-29 09:54:10,431 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.atoms_list.AtomsListDatasetConfig'> with tag 'atoms_list'.
+2025-08-29 09:54:10,432 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:54:10,434 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:54:10,437 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:54:10,490 - nshconfig._src.config - INFO - Default hash function set for class: DBDatasetConfig
+2025-08-29 09:54:10,491 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 09:54:10,492 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:54:10,494 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:54:10,497 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:54:10,502 - nshconfig._src.config - INFO - Default hash function set for class: MPTrajDatasetConfig
+2025-08-29 09:54:10,503 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 09:54:10,504 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:54:10,506 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:54:10,509 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:54:35,645 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 09:54:35,646 - root - INFO - GPU is available: True, Quantity: None
+2025-08-29 09:54:35,646 - root - INFO - Dataset(s) used:
+2025-08-29 09:54:35,647 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 09:54:35,647 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 09:54:35,648 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 09:54:35,648 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 09:55:33,502 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 09:55:33,503 - root - INFO - GPU is available: True, Quantity: None
+2025-08-29 09:55:33,503 - root - INFO - Dataset(s) used:
+2025-08-29 09:55:33,503 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 09:55:33,504 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 09:55:33,504 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 09:55:33,505 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 10:02:53,079 - nshconfig._src.config - INFO - Default hash function set for class: Invalid
+2025-08-29 10:02:53,164 - nshconfig._src.config - INFO - Default hash function set for class: RootConfig
+2025-08-29 10:03:01,634 - nshconfig._src.config - INFO - Default hash function set for class: MAELossConfig
+2025-08-29 10:03:01,636 - nshconfig._src.config - INFO - Default hash function set for class: MSELossConfig
+2025-08-29 10:03:01,639 - nshconfig._src.config - INFO - Default hash function set for class: HuberLossConfig
+2025-08-29 10:03:01,641 - nshconfig._src.config - INFO - Default hash function set for class: L2MAELossConfig
+2025-08-29 10:03:01,652 - nshconfig._src.config - INFO - Default hash function set for class: PropertyConfigBase
+2025-08-29 10:03:01,655 - nshconfig._src.config - INFO - Default hash function set for class: GraphPropertyConfig
+2025-08-29 10:03:01,657 - nshconfig._src.config - INFO - Default hash function set for class: EnergyPropertyConfig
+2025-08-29 10:03:01,660 - nshconfig._src.config - INFO - Default hash function set for class: ForcesPropertyConfig
+2025-08-29 10:03:01,663 - nshconfig._src.config - INFO - Default hash function set for class: StressesPropertyConfig
+2025-08-29 10:03:01,683 - nshconfig._src.config - INFO - Default hash function set for class: NormalizerConfigBase
+2025-08-29 10:03:01,685 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomNormalizerConfig
+2025-08-29 10:03:01,686 - nshconfig._src.config - INFO - Default hash function set for class: MeanStdNormalizerConfig
+2025-08-29 10:03:01,688 - nshconfig._src.config - INFO - Default hash function set for class: RMSNormalizerConfig
+2025-08-29 10:03:01,693 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomReferencingNormalizerConfig
+2025-08-29 10:03:01,801 - nshconfig._src.config - INFO - Default hash function set for class: StepLRConfig
+2025-08-29 10:03:01,803 - nshconfig._src.config - INFO - Default hash function set for class: MultiStepLRConfig
+2025-08-29 10:03:01,804 - nshconfig._src.config - INFO - Default hash function set for class: ExponentialConfig
+2025-08-29 10:03:01,807 - nshconfig._src.config - INFO - Default hash function set for class: ReduceOnPlateauConfig
+2025-08-29 10:03:01,808 - nshconfig._src.config - INFO - Default hash function set for class: CosineAnnealingLRConfig
+2025-08-29 10:03:01,810 - nshconfig._src.config - INFO - Default hash function set for class: ConstantLRConfig
+2025-08-29 10:03:01,812 - nshconfig._src.config - INFO - Default hash function set for class: LinearLRConfig
+2025-08-29 10:03:01,819 - nshconfig._src.config - INFO - Default hash function set for class: OptimizerConfigBase
+2025-08-29 10:03:01,823 - nshconfig._src.config - INFO - Default hash function set for class: AdamConfig
+2025-08-29 10:03:01,827 - nshconfig._src.config - INFO - Default hash function set for class: AdamWConfig
+2025-08-29 10:03:01,830 - nshconfig._src.config - INFO - Default hash function set for class: SGDConfig
+2025-08-29 10:03:01,835 - nshconfig._src.config - INFO - Default hash function set for class: FinetuneModuleBaseConfig
+2025-08-29 10:03:01,944 - nshconfig._src.config - INFO - Default hash function set for class: BaseFileConfig
+2025-08-29 10:03:02,793 - nshconfig._src.config - INFO - Default hash function set for class: CachedPathConfig
+2025-08-29 10:03:02,803 - nshconfig._src.config - INFO - Default hash function set for class: SSHConfig
+2025-08-29 10:03:02,808 - nshconfig._src.config - INFO - Default hash function set for class: RemoteSSHFileConfig
+2025-08-29 10:03:02,994 - nshconfig._src.config - INFO - Default hash function set for class: FAIRChemAtomsToGraphSystemConfig
+2025-08-29 10:03:02,999 - nshconfig._src.config - INFO - Default hash function set for class: EqV2BackboneConfig
+2025-08-29 10:03:02,999 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 10:03:03,195 - nshconfig._src.config - INFO - Default hash function set for class: CutoffsConfig
+2025-08-29 10:03:03,197 - nshconfig._src.config - INFO - Default hash function set for class: MaxNeighborsConfig
+2025-08-29 10:03:03,199 - nshconfig._src.config - INFO - Default hash function set for class: JMPGraphComputerConfig
+2025-08-29 10:03:03,204 - nshconfig._src.config - INFO - Default hash function set for class: JMPBackboneConfig
+2025-08-29 10:03:03,204 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 10:03:03,251 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetGraphComputerConfig
+2025-08-29 10:03:03,255 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetBackboneConfig
+2025-08-29 10:03:03,256 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 10:03:03,544 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimGraphConvertorConfig
+2025-08-29 10:03:03,549 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimBackboneConfig
+2025-08-29 10:03:03,549 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 10:03:03,640 - nshconfig._src.config - INFO - Default hash function set for class: ORBSystemConfig
+2025-08-29 10:03:03,644 - nshconfig._src.config - INFO - Default hash function set for class: ORBBackboneConfig
+2025-08-29 10:03:03,645 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 10:03:03,684 - nshconfig._src.config - INFO - Default hash function set for class: EarlyStoppingConfig
+2025-08-29 10:03:03,731 - nshconfig._src.config - INFO - Default hash function set for class: EMAConfig
+2025-08-29 10:03:03,768 - nshconfig._src.config - INFO - Default hash function set for class: ModelCheckpointConfig
+2025-08-29 10:03:03,774 - nshconfig._src.config - INFO - Default hash function set for class: DatasetConfigBase
+2025-08-29 10:03:03,798 - nshconfig._src.config - INFO - Default hash function set for class: JSONDatasetConfig
+2025-08-29 10:03:03,798 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 10:03:03,825 - nshconfig._src.config - INFO - Default hash function set for class: MatbenchDatasetConfig
+2025-08-29 10:03:03,826 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 10:03:03,846 - nshconfig._src.config - INFO - Default hash function set for class: MPDatasetConfig
+2025-08-29 10:03:03,846 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 10:03:03,972 - nshconfig._src.config - INFO - Default hash function set for class: OMAT24DatasetConfig
+2025-08-29 10:03:03,972 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 10:03:04,153 - nshconfig._src.config - INFO - Default hash function set for class: XYZDatasetConfig
+2025-08-29 10:03:04,154 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 10:03:04,194 - nshconfig._src.config - INFO - Default hash function set for class: DataModuleBaseConfig
+2025-08-29 10:03:04,197 - nshconfig._src.config - INFO - Default hash function set for class: ManualSplitDataModuleConfig
+2025-08-29 10:03:04,199 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:03:04,203 - nshconfig._src.config - INFO - Default hash function set for class: AutoSplitDataModuleConfig
+2025-08-29 10:03:04,204 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:03:04,318 - nshconfig._src.config - INFO - Default hash function set for class: CSVLoggerConfig
+2025-08-29 10:03:04,322 - nshconfig._src.config - INFO - Default hash function set for class: WandbLoggerConfig
+2025-08-29 10:03:04,325 - nshconfig._src.config - INFO - Default hash function set for class: TensorBoardLoggerConfig
+2025-08-29 10:03:04,480 - nshconfig._src.config - INFO - Default hash function set for class: RecipeConfigBase
+2025-08-29 10:03:04,514 - nshconfig._src.config - INFO - Default hash function set for class: EMARecipeConfig
+2025-08-29 10:03:04,515 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.ema.EMARecipeConfig'> with tag 'ema'.
+2025-08-29 10:03:04,614 - nshconfig._src.config - INFO - Default hash function set for class: PeftConfig
+2025-08-29 10:03:04,618 - nshconfig._src.config - INFO - Default hash function set for class: LoraConfig
+2025-08-29 10:03:04,620 - nshconfig._src.config - INFO - Default hash function set for class: LoRARecipeConfig
+2025-08-29 10:03:04,621 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.lora.LoRARecipeConfig'> with tag 'lora'.
+2025-08-29 10:03:04,798 - nshconfig._src.config - INFO - Default hash function set for class: NoOpRecipeConfig
+2025-08-29 10:03:04,799 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.noop.NoOpRecipeConfig'> with tag 'no-op'.
+2025-08-29 10:03:04,990 - nshconfig._src.config - INFO - Default hash function set for class: TrainerConfig
+2025-08-29 10:03:04,994 - nshconfig._src.config - INFO - Default hash function set for class: MatterTunerConfig
+2025-08-29 10:03:04,997 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:03:05,001 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:03:05,223 - nshconfig._src.config - INFO - Default hash function set for class: AtomsListDatasetConfig
+2025-08-29 10:03:05,223 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.atoms_list.AtomsListDatasetConfig'> with tag 'atoms_list'.
+2025-08-29 10:03:05,225 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:03:05,226 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:03:05,229 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:03:05,308 - nshconfig._src.config - INFO - Default hash function set for class: DBDatasetConfig
+2025-08-29 10:03:05,308 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 10:03:05,310 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:03:05,311 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:03:05,315 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:03:05,431 - nshconfig._src.config - INFO - Default hash function set for class: MPTrajDatasetConfig
+2025-08-29 10:03:05,432 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 10:03:05,433 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:03:05,435 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:03:05,438 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:03:51,275 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 10:03:51,275 - root - INFO - GPU is available: True, Quantity: None
+2025-08-29 10:03:51,276 - root - INFO - Dataset(s) used:
+2025-08-29 10:03:51,276 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 10:03:51,277 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 10:03:51,277 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 10:03:51,277 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 10:05:18,639 - nshconfig._src.config - INFO - Default hash function set for class: Invalid
+2025-08-29 10:05:18,670 - nshconfig._src.config - INFO - Default hash function set for class: RootConfig
+2025-08-29 10:05:21,593 - nshconfig._src.config - INFO - Default hash function set for class: MAELossConfig
+2025-08-29 10:05:21,594 - nshconfig._src.config - INFO - Default hash function set for class: MSELossConfig
+2025-08-29 10:05:21,596 - nshconfig._src.config - INFO - Default hash function set for class: HuberLossConfig
+2025-08-29 10:05:21,598 - nshconfig._src.config - INFO - Default hash function set for class: L2MAELossConfig
+2025-08-29 10:05:21,602 - nshconfig._src.config - INFO - Default hash function set for class: PropertyConfigBase
+2025-08-29 10:05:21,605 - nshconfig._src.config - INFO - Default hash function set for class: GraphPropertyConfig
+2025-08-29 10:05:21,608 - nshconfig._src.config - INFO - Default hash function set for class: EnergyPropertyConfig
+2025-08-29 10:05:21,611 - nshconfig._src.config - INFO - Default hash function set for class: ForcesPropertyConfig
+2025-08-29 10:05:21,613 - nshconfig._src.config - INFO - Default hash function set for class: StressesPropertyConfig
+2025-08-29 10:05:21,616 - nshconfig._src.config - INFO - Default hash function set for class: NormalizerConfigBase
+2025-08-29 10:05:21,618 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomNormalizerConfig
+2025-08-29 10:05:21,620 - nshconfig._src.config - INFO - Default hash function set for class: MeanStdNormalizerConfig
+2025-08-29 10:05:21,622 - nshconfig._src.config - INFO - Default hash function set for class: RMSNormalizerConfig
+2025-08-29 10:05:21,625 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomReferencingNormalizerConfig
+2025-08-29 10:05:21,631 - nshconfig._src.config - INFO - Default hash function set for class: StepLRConfig
+2025-08-29 10:05:21,633 - nshconfig._src.config - INFO - Default hash function set for class: MultiStepLRConfig
+2025-08-29 10:05:21,634 - nshconfig._src.config - INFO - Default hash function set for class: ExponentialConfig
+2025-08-29 10:05:21,637 - nshconfig._src.config - INFO - Default hash function set for class: ReduceOnPlateauConfig
+2025-08-29 10:05:21,639 - nshconfig._src.config - INFO - Default hash function set for class: CosineAnnealingLRConfig
+2025-08-29 10:05:21,640 - nshconfig._src.config - INFO - Default hash function set for class: ConstantLRConfig
+2025-08-29 10:05:21,642 - nshconfig._src.config - INFO - Default hash function set for class: LinearLRConfig
+2025-08-29 10:05:21,648 - nshconfig._src.config - INFO - Default hash function set for class: OptimizerConfigBase
+2025-08-29 10:05:21,652 - nshconfig._src.config - INFO - Default hash function set for class: AdamConfig
+2025-08-29 10:05:21,656 - nshconfig._src.config - INFO - Default hash function set for class: AdamWConfig
+2025-08-29 10:05:21,659 - nshconfig._src.config - INFO - Default hash function set for class: SGDConfig
+2025-08-29 10:05:21,664 - nshconfig._src.config - INFO - Default hash function set for class: FinetuneModuleBaseConfig
+2025-08-29 10:05:21,687 - nshconfig._src.config - INFO - Default hash function set for class: BaseFileConfig
+2025-08-29 10:05:21,930 - nshconfig._src.config - INFO - Default hash function set for class: CachedPathConfig
+2025-08-29 10:05:21,937 - nshconfig._src.config - INFO - Default hash function set for class: SSHConfig
+2025-08-29 10:05:21,942 - nshconfig._src.config - INFO - Default hash function set for class: RemoteSSHFileConfig
+2025-08-29 10:05:21,945 - nshconfig._src.config - INFO - Default hash function set for class: FAIRChemAtomsToGraphSystemConfig
+2025-08-29 10:05:21,950 - nshconfig._src.config - INFO - Default hash function set for class: EqV2BackboneConfig
+2025-08-29 10:05:21,950 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 10:05:21,958 - nshconfig._src.config - INFO - Default hash function set for class: CutoffsConfig
+2025-08-29 10:05:21,960 - nshconfig._src.config - INFO - Default hash function set for class: MaxNeighborsConfig
+2025-08-29 10:05:21,962 - nshconfig._src.config - INFO - Default hash function set for class: JMPGraphComputerConfig
+2025-08-29 10:05:21,967 - nshconfig._src.config - INFO - Default hash function set for class: JMPBackboneConfig
+2025-08-29 10:05:21,967 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 10:05:21,974 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetGraphComputerConfig
+2025-08-29 10:05:21,979 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetBackboneConfig
+2025-08-29 10:05:21,979 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 10:05:21,986 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimGraphConvertorConfig
+2025-08-29 10:05:21,991 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimBackboneConfig
+2025-08-29 10:05:21,991 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 10:05:21,998 - nshconfig._src.config - INFO - Default hash function set for class: ORBSystemConfig
+2025-08-29 10:05:22,003 - nshconfig._src.config - INFO - Default hash function set for class: ORBBackboneConfig
+2025-08-29 10:05:22,003 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 10:05:22,011 - nshconfig._src.config - INFO - Default hash function set for class: EarlyStoppingConfig
+2025-08-29 10:05:22,017 - nshconfig._src.config - INFO - Default hash function set for class: EMAConfig
+2025-08-29 10:05:22,023 - nshconfig._src.config - INFO - Default hash function set for class: ModelCheckpointConfig
+2025-08-29 10:05:22,030 - nshconfig._src.config - INFO - Default hash function set for class: DatasetConfigBase
+2025-08-29 10:05:22,035 - nshconfig._src.config - INFO - Default hash function set for class: JSONDatasetConfig
+2025-08-29 10:05:22,035 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 10:05:22,040 - nshconfig._src.config - INFO - Default hash function set for class: MatbenchDatasetConfig
+2025-08-29 10:05:22,041 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 10:05:22,045 - nshconfig._src.config - INFO - Default hash function set for class: MPDatasetConfig
+2025-08-29 10:05:22,045 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 10:05:22,050 - nshconfig._src.config - INFO - Default hash function set for class: OMAT24DatasetConfig
+2025-08-29 10:05:22,050 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 10:05:22,090 - nshconfig._src.config - INFO - Default hash function set for class: XYZDatasetConfig
+2025-08-29 10:05:22,090 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 10:05:22,097 - nshconfig._src.config - INFO - Default hash function set for class: DataModuleBaseConfig
+2025-08-29 10:05:22,100 - nshconfig._src.config - INFO - Default hash function set for class: ManualSplitDataModuleConfig
+2025-08-29 10:05:22,101 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:05:22,105 - nshconfig._src.config - INFO - Default hash function set for class: AutoSplitDataModuleConfig
+2025-08-29 10:05:22,107 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:05:22,111 - nshconfig._src.config - INFO - Default hash function set for class: CSVLoggerConfig
+2025-08-29 10:05:22,115 - nshconfig._src.config - INFO - Default hash function set for class: WandbLoggerConfig
+2025-08-29 10:05:22,118 - nshconfig._src.config - INFO - Default hash function set for class: TensorBoardLoggerConfig
+2025-08-29 10:05:22,124 - nshconfig._src.config - INFO - Default hash function set for class: RecipeConfigBase
+2025-08-29 10:05:22,129 - nshconfig._src.config - INFO - Default hash function set for class: EMARecipeConfig
+2025-08-29 10:05:22,130 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.ema.EMARecipeConfig'> with tag 'ema'.
+2025-08-29 10:05:22,133 - nshconfig._src.config - INFO - Default hash function set for class: PeftConfig
+2025-08-29 10:05:22,138 - nshconfig._src.config - INFO - Default hash function set for class: LoraConfig
+2025-08-29 10:05:22,140 - nshconfig._src.config - INFO - Default hash function set for class: LoRARecipeConfig
+2025-08-29 10:05:22,141 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.lora.LoRARecipeConfig'> with tag 'lora'.
+2025-08-29 10:05:22,145 - nshconfig._src.config - INFO - Default hash function set for class: NoOpRecipeConfig
+2025-08-29 10:05:22,145 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.noop.NoOpRecipeConfig'> with tag 'no-op'.
+2025-08-29 10:05:22,154 - nshconfig._src.config - INFO - Default hash function set for class: TrainerConfig
+2025-08-29 10:05:22,159 - nshconfig._src.config - INFO - Default hash function set for class: MatterTunerConfig
+2025-08-29 10:05:22,162 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:05:22,165 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:05:22,171 - nshconfig._src.config - INFO - Default hash function set for class: AtomsListDatasetConfig
+2025-08-29 10:05:22,172 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.atoms_list.AtomsListDatasetConfig'> with tag 'atoms_list'.
+2025-08-29 10:05:22,173 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:05:22,175 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:05:22,178 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:05:22,186 - nshconfig._src.config - INFO - Default hash function set for class: DBDatasetConfig
+2025-08-29 10:05:22,186 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 10:05:22,188 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:05:22,189 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:05:22,193 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:05:22,197 - nshconfig._src.config - INFO - Default hash function set for class: MPTrajDatasetConfig
+2025-08-29 10:05:22,198 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 10:05:22,199 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:05:22,201 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:05:22,204 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:05:42,953 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 10:05:42,954 - root - INFO - GPU is available: True, Quantity: None
+2025-08-29 10:05:42,954 - root - INFO - Dataset(s) used:
+2025-08-29 10:05:42,954 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 10:05:42,955 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 10:05:42,955 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 10:05:42,956 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 10:06:38,288 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 10:06:38,289 - root - INFO - GPU is available: True, Quantity: None
+2025-08-29 10:06:38,289 - root - INFO - Dataset(s) used:
+2025-08-29 10:06:38,290 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 10:06:38,290 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 10:06:38,290 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 10:06:38,291 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 10:08:39,800 - nshconfig._src.config - INFO - Default hash function set for class: Invalid
+2025-08-29 10:08:39,832 - nshconfig._src.config - INFO - Default hash function set for class: RootConfig
+2025-08-29 10:08:42,859 - nshconfig._src.config - INFO - Default hash function set for class: MAELossConfig
+2025-08-29 10:08:42,861 - nshconfig._src.config - INFO - Default hash function set for class: MSELossConfig
+2025-08-29 10:08:42,863 - nshconfig._src.config - INFO - Default hash function set for class: HuberLossConfig
+2025-08-29 10:08:42,865 - nshconfig._src.config - INFO - Default hash function set for class: L2MAELossConfig
+2025-08-29 10:08:42,869 - nshconfig._src.config - INFO - Default hash function set for class: PropertyConfigBase
+2025-08-29 10:08:42,871 - nshconfig._src.config - INFO - Default hash function set for class: GraphPropertyConfig
+2025-08-29 10:08:42,874 - nshconfig._src.config - INFO - Default hash function set for class: EnergyPropertyConfig
+2025-08-29 10:08:42,877 - nshconfig._src.config - INFO - Default hash function set for class: ForcesPropertyConfig
+2025-08-29 10:08:42,880 - nshconfig._src.config - INFO - Default hash function set for class: StressesPropertyConfig
+2025-08-29 10:08:42,882 - nshconfig._src.config - INFO - Default hash function set for class: NormalizerConfigBase
+2025-08-29 10:08:42,884 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomNormalizerConfig
+2025-08-29 10:08:42,885 - nshconfig._src.config - INFO - Default hash function set for class: MeanStdNormalizerConfig
+2025-08-29 10:08:42,887 - nshconfig._src.config - INFO - Default hash function set for class: RMSNormalizerConfig
+2025-08-29 10:08:42,890 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomReferencingNormalizerConfig
+2025-08-29 10:08:42,897 - nshconfig._src.config - INFO - Default hash function set for class: StepLRConfig
+2025-08-29 10:08:42,899 - nshconfig._src.config - INFO - Default hash function set for class: MultiStepLRConfig
+2025-08-29 10:08:42,900 - nshconfig._src.config - INFO - Default hash function set for class: ExponentialConfig
+2025-08-29 10:08:42,903 - nshconfig._src.config - INFO - Default hash function set for class: ReduceOnPlateauConfig
+2025-08-29 10:08:42,905 - nshconfig._src.config - INFO - Default hash function set for class: CosineAnnealingLRConfig
+2025-08-29 10:08:42,906 - nshconfig._src.config - INFO - Default hash function set for class: ConstantLRConfig
+2025-08-29 10:08:42,908 - nshconfig._src.config - INFO - Default hash function set for class: LinearLRConfig
+2025-08-29 10:08:42,915 - nshconfig._src.config - INFO - Default hash function set for class: OptimizerConfigBase
+2025-08-29 10:08:42,919 - nshconfig._src.config - INFO - Default hash function set for class: AdamConfig
+2025-08-29 10:08:42,923 - nshconfig._src.config - INFO - Default hash function set for class: AdamWConfig
+2025-08-29 10:08:42,926 - nshconfig._src.config - INFO - Default hash function set for class: SGDConfig
+2025-08-29 10:08:42,931 - nshconfig._src.config - INFO - Default hash function set for class: FinetuneModuleBaseConfig
+2025-08-29 10:08:42,956 - nshconfig._src.config - INFO - Default hash function set for class: BaseFileConfig
+2025-08-29 10:08:43,224 - nshconfig._src.config - INFO - Default hash function set for class: CachedPathConfig
+2025-08-29 10:08:43,232 - nshconfig._src.config - INFO - Default hash function set for class: SSHConfig
+2025-08-29 10:08:43,236 - nshconfig._src.config - INFO - Default hash function set for class: RemoteSSHFileConfig
+2025-08-29 10:08:43,240 - nshconfig._src.config - INFO - Default hash function set for class: FAIRChemAtomsToGraphSystemConfig
+2025-08-29 10:08:43,245 - nshconfig._src.config - INFO - Default hash function set for class: EqV2BackboneConfig
+2025-08-29 10:08:43,245 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 10:08:43,253 - nshconfig._src.config - INFO - Default hash function set for class: CutoffsConfig
+2025-08-29 10:08:43,256 - nshconfig._src.config - INFO - Default hash function set for class: MaxNeighborsConfig
+2025-08-29 10:08:43,258 - nshconfig._src.config - INFO - Default hash function set for class: JMPGraphComputerConfig
+2025-08-29 10:08:43,263 - nshconfig._src.config - INFO - Default hash function set for class: JMPBackboneConfig
+2025-08-29 10:08:43,263 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 10:08:43,270 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetGraphComputerConfig
+2025-08-29 10:08:43,274 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetBackboneConfig
+2025-08-29 10:08:43,275 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 10:08:43,281 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimGraphConvertorConfig
+2025-08-29 10:08:43,285 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimBackboneConfig
+2025-08-29 10:08:43,286 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 10:08:43,294 - nshconfig._src.config - INFO - Default hash function set for class: ORBSystemConfig
+2025-08-29 10:08:43,298 - nshconfig._src.config - INFO - Default hash function set for class: ORBBackboneConfig
+2025-08-29 10:08:43,299 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 10:08:43,306 - nshconfig._src.config - INFO - Default hash function set for class: EarlyStoppingConfig
+2025-08-29 10:08:43,310 - nshconfig._src.config - INFO - Default hash function set for class: EMAConfig
+2025-08-29 10:08:43,316 - nshconfig._src.config - INFO - Default hash function set for class: ModelCheckpointConfig
+2025-08-29 10:08:43,323 - nshconfig._src.config - INFO - Default hash function set for class: DatasetConfigBase
+2025-08-29 10:08:43,328 - nshconfig._src.config - INFO - Default hash function set for class: JSONDatasetConfig
+2025-08-29 10:08:43,328 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 10:08:43,333 - nshconfig._src.config - INFO - Default hash function set for class: MatbenchDatasetConfig
+2025-08-29 10:08:43,334 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 10:08:43,338 - nshconfig._src.config - INFO - Default hash function set for class: MPDatasetConfig
+2025-08-29 10:08:43,338 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 10:08:43,343 - nshconfig._src.config - INFO - Default hash function set for class: OMAT24DatasetConfig
+2025-08-29 10:08:43,343 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 10:08:43,385 - nshconfig._src.config - INFO - Default hash function set for class: XYZDatasetConfig
+2025-08-29 10:08:43,386 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 10:08:43,393 - nshconfig._src.config - INFO - Default hash function set for class: DataModuleBaseConfig
+2025-08-29 10:08:43,396 - nshconfig._src.config - INFO - Default hash function set for class: ManualSplitDataModuleConfig
+2025-08-29 10:08:43,398 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:08:43,402 - nshconfig._src.config - INFO - Default hash function set for class: AutoSplitDataModuleConfig
+2025-08-29 10:08:43,403 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:08:43,408 - nshconfig._src.config - INFO - Default hash function set for class: CSVLoggerConfig
+2025-08-29 10:08:43,412 - nshconfig._src.config - INFO - Default hash function set for class: WandbLoggerConfig
+2025-08-29 10:08:43,415 - nshconfig._src.config - INFO - Default hash function set for class: TensorBoardLoggerConfig
+2025-08-29 10:08:43,421 - nshconfig._src.config - INFO - Default hash function set for class: RecipeConfigBase
+2025-08-29 10:08:43,425 - nshconfig._src.config - INFO - Default hash function set for class: EMARecipeConfig
+2025-08-29 10:08:43,426 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.ema.EMARecipeConfig'> with tag 'ema'.
+2025-08-29 10:08:43,430 - nshconfig._src.config - INFO - Default hash function set for class: PeftConfig
+2025-08-29 10:08:43,435 - nshconfig._src.config - INFO - Default hash function set for class: LoraConfig
+2025-08-29 10:08:43,437 - nshconfig._src.config - INFO - Default hash function set for class: LoRARecipeConfig
+2025-08-29 10:08:43,437 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.lora.LoRARecipeConfig'> with tag 'lora'.
+2025-08-29 10:08:43,441 - nshconfig._src.config - INFO - Default hash function set for class: NoOpRecipeConfig
+2025-08-29 10:08:43,442 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.noop.NoOpRecipeConfig'> with tag 'no-op'.
+2025-08-29 10:08:43,448 - nshconfig._src.config - INFO - Default hash function set for class: TrainerConfig
+2025-08-29 10:08:43,453 - nshconfig._src.config - INFO - Default hash function set for class: MatterTunerConfig
+2025-08-29 10:08:43,456 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:08:43,460 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:08:43,465 - nshconfig._src.config - INFO - Default hash function set for class: AtomsListDatasetConfig
+2025-08-29 10:08:43,466 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.atoms_list.AtomsListDatasetConfig'> with tag 'atoms_list'.
+2025-08-29 10:08:43,467 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:08:43,469 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:08:43,472 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:08:43,481 - nshconfig._src.config - INFO - Default hash function set for class: DBDatasetConfig
+2025-08-29 10:08:43,481 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 10:08:43,483 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:08:43,484 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:08:43,488 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:08:43,492 - nshconfig._src.config - INFO - Default hash function set for class: MPTrajDatasetConfig
+2025-08-29 10:08:43,493 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 10:08:43,494 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:08:43,496 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:08:43,499 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:09:04,224 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 10:09:04,225 - root - INFO - GPU is available: True, Quantity: None
+2025-08-29 10:09:04,225 - root - INFO - Dataset(s) used:
+2025-08-29 10:09:04,226 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 10:09:04,226 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 10:09:04,227 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 10:09:04,227 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 10:41:45,204 - nshconfig._src.config - INFO - Default hash function set for class: Invalid
+2025-08-29 10:41:45,235 - nshconfig._src.config - INFO - Default hash function set for class: RootConfig
+2025-08-29 10:41:48,256 - nshconfig._src.config - INFO - Default hash function set for class: MAELossConfig
+2025-08-29 10:41:48,258 - nshconfig._src.config - INFO - Default hash function set for class: MSELossConfig
+2025-08-29 10:41:48,259 - nshconfig._src.config - INFO - Default hash function set for class: HuberLossConfig
+2025-08-29 10:41:48,261 - nshconfig._src.config - INFO - Default hash function set for class: L2MAELossConfig
+2025-08-29 10:41:48,265 - nshconfig._src.config - INFO - Default hash function set for class: PropertyConfigBase
+2025-08-29 10:41:48,268 - nshconfig._src.config - INFO - Default hash function set for class: GraphPropertyConfig
+2025-08-29 10:41:48,270 - nshconfig._src.config - INFO - Default hash function set for class: EnergyPropertyConfig
+2025-08-29 10:41:48,273 - nshconfig._src.config - INFO - Default hash function set for class: ForcesPropertyConfig
+2025-08-29 10:41:48,276 - nshconfig._src.config - INFO - Default hash function set for class: StressesPropertyConfig
+2025-08-29 10:41:48,278 - nshconfig._src.config - INFO - Default hash function set for class: NormalizerConfigBase
+2025-08-29 10:41:48,280 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomNormalizerConfig
+2025-08-29 10:41:48,281 - nshconfig._src.config - INFO - Default hash function set for class: MeanStdNormalizerConfig
+2025-08-29 10:41:48,283 - nshconfig._src.config - INFO - Default hash function set for class: RMSNormalizerConfig
+2025-08-29 10:41:48,286 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomReferencingNormalizerConfig
+2025-08-29 10:41:48,292 - nshconfig._src.config - INFO - Default hash function set for class: StepLRConfig
+2025-08-29 10:41:48,294 - nshconfig._src.config - INFO - Default hash function set for class: MultiStepLRConfig
+2025-08-29 10:41:48,295 - nshconfig._src.config - INFO - Default hash function set for class: ExponentialConfig
+2025-08-29 10:41:48,298 - nshconfig._src.config - INFO - Default hash function set for class: ReduceOnPlateauConfig
+2025-08-29 10:41:48,300 - nshconfig._src.config - INFO - Default hash function set for class: CosineAnnealingLRConfig
+2025-08-29 10:41:48,301 - nshconfig._src.config - INFO - Default hash function set for class: ConstantLRConfig
+2025-08-29 10:41:48,303 - nshconfig._src.config - INFO - Default hash function set for class: LinearLRConfig
+2025-08-29 10:41:48,309 - nshconfig._src.config - INFO - Default hash function set for class: OptimizerConfigBase
+2025-08-29 10:41:48,313 - nshconfig._src.config - INFO - Default hash function set for class: AdamConfig
+2025-08-29 10:41:48,317 - nshconfig._src.config - INFO - Default hash function set for class: AdamWConfig
+2025-08-29 10:41:48,320 - nshconfig._src.config - INFO - Default hash function set for class: SGDConfig
+2025-08-29 10:41:48,325 - nshconfig._src.config - INFO - Default hash function set for class: FinetuneModuleBaseConfig
+2025-08-29 10:41:48,349 - nshconfig._src.config - INFO - Default hash function set for class: BaseFileConfig
+2025-08-29 10:41:48,614 - nshconfig._src.config - INFO - Default hash function set for class: CachedPathConfig
+2025-08-29 10:41:48,621 - nshconfig._src.config - INFO - Default hash function set for class: SSHConfig
+2025-08-29 10:41:48,626 - nshconfig._src.config - INFO - Default hash function set for class: RemoteSSHFileConfig
+2025-08-29 10:41:48,629 - nshconfig._src.config - INFO - Default hash function set for class: FAIRChemAtomsToGraphSystemConfig
+2025-08-29 10:41:48,634 - nshconfig._src.config - INFO - Default hash function set for class: EqV2BackboneConfig
+2025-08-29 10:41:48,634 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 10:41:48,642 - nshconfig._src.config - INFO - Default hash function set for class: CutoffsConfig
+2025-08-29 10:41:48,644 - nshconfig._src.config - INFO - Default hash function set for class: MaxNeighborsConfig
+2025-08-29 10:41:48,646 - nshconfig._src.config - INFO - Default hash function set for class: JMPGraphComputerConfig
+2025-08-29 10:41:48,651 - nshconfig._src.config - INFO - Default hash function set for class: JMPBackboneConfig
+2025-08-29 10:41:48,651 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 10:41:48,658 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetGraphComputerConfig
+2025-08-29 10:41:48,663 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetBackboneConfig
+2025-08-29 10:41:48,663 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 10:41:48,669 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimGraphConvertorConfig
+2025-08-29 10:41:48,673 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimBackboneConfig
+2025-08-29 10:41:48,674 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 10:41:48,680 - nshconfig._src.config - INFO - Default hash function set for class: ORBSystemConfig
+2025-08-29 10:41:48,685 - nshconfig._src.config - INFO - Default hash function set for class: ORBBackboneConfig
+2025-08-29 10:41:48,685 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 10:41:48,691 - nshconfig._src.config - INFO - Default hash function set for class: EarlyStoppingConfig
+2025-08-29 10:41:48,696 - nshconfig._src.config - INFO - Default hash function set for class: EMAConfig
+2025-08-29 10:41:48,702 - nshconfig._src.config - INFO - Default hash function set for class: ModelCheckpointConfig
+2025-08-29 10:41:48,707 - nshconfig._src.config - INFO - Default hash function set for class: DatasetConfigBase
+2025-08-29 10:41:48,712 - nshconfig._src.config - INFO - Default hash function set for class: JSONDatasetConfig
+2025-08-29 10:41:48,713 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 10:41:48,717 - nshconfig._src.config - INFO - Default hash function set for class: MatbenchDatasetConfig
+2025-08-29 10:41:48,718 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 10:41:48,722 - nshconfig._src.config - INFO - Default hash function set for class: MPDatasetConfig
+2025-08-29 10:41:48,722 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 10:41:48,726 - nshconfig._src.config - INFO - Default hash function set for class: OMAT24DatasetConfig
+2025-08-29 10:41:48,727 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 10:41:48,768 - nshconfig._src.config - INFO - Default hash function set for class: XYZDatasetConfig
+2025-08-29 10:41:48,768 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 10:41:48,775 - nshconfig._src.config - INFO - Default hash function set for class: DataModuleBaseConfig
+2025-08-29 10:41:48,778 - nshconfig._src.config - INFO - Default hash function set for class: ManualSplitDataModuleConfig
+2025-08-29 10:41:48,779 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:41:48,783 - nshconfig._src.config - INFO - Default hash function set for class: AutoSplitDataModuleConfig
+2025-08-29 10:41:48,785 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:41:48,789 - nshconfig._src.config - INFO - Default hash function set for class: CSVLoggerConfig
+2025-08-29 10:41:48,793 - nshconfig._src.config - INFO - Default hash function set for class: WandbLoggerConfig
+2025-08-29 10:41:48,796 - nshconfig._src.config - INFO - Default hash function set for class: TensorBoardLoggerConfig
+2025-08-29 10:41:48,802 - nshconfig._src.config - INFO - Default hash function set for class: RecipeConfigBase
+2025-08-29 10:41:48,806 - nshconfig._src.config - INFO - Default hash function set for class: EMARecipeConfig
+2025-08-29 10:41:48,807 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.ema.EMARecipeConfig'> with tag 'ema'.
+2025-08-29 10:41:48,811 - nshconfig._src.config - INFO - Default hash function set for class: PeftConfig
+2025-08-29 10:41:48,815 - nshconfig._src.config - INFO - Default hash function set for class: LoraConfig
+2025-08-29 10:41:48,817 - nshconfig._src.config - INFO - Default hash function set for class: LoRARecipeConfig
+2025-08-29 10:41:48,818 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.lora.LoRARecipeConfig'> with tag 'lora'.
+2025-08-29 10:41:48,822 - nshconfig._src.config - INFO - Default hash function set for class: NoOpRecipeConfig
+2025-08-29 10:41:48,822 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.noop.NoOpRecipeConfig'> with tag 'no-op'.
+2025-08-29 10:41:48,829 - nshconfig._src.config - INFO - Default hash function set for class: TrainerConfig
+2025-08-29 10:41:48,834 - nshconfig._src.config - INFO - Default hash function set for class: MatterTunerConfig
+2025-08-29 10:41:48,837 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:41:48,840 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:41:48,845 - nshconfig._src.config - INFO - Default hash function set for class: AtomsListDatasetConfig
+2025-08-29 10:41:48,846 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.atoms_list.AtomsListDatasetConfig'> with tag 'atoms_list'.
+2025-08-29 10:41:48,847 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:41:48,848 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:41:48,852 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:41:48,860 - nshconfig._src.config - INFO - Default hash function set for class: DBDatasetConfig
+2025-08-29 10:41:48,860 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 10:41:48,862 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:41:48,863 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:41:48,866 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:41:48,871 - nshconfig._src.config - INFO - Default hash function set for class: MPTrajDatasetConfig
+2025-08-29 10:41:48,872 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 10:41:48,873 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:41:48,875 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:41:48,878 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:42:09,460 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 10:42:09,461 - root - INFO - GPU is available: True, Quantity: None
+2025-08-29 10:42:09,462 - root - INFO - Dataset(s) used:
+2025-08-29 10:42:09,462 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 10:42:09,463 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 10:42:09,463 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 10:42:09,463 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 10:46:37,437 - nshconfig._src.config - INFO - Default hash function set for class: Invalid
+2025-08-29 10:46:37,468 - nshconfig._src.config - INFO - Default hash function set for class: RootConfig
+2025-08-29 10:46:40,467 - nshconfig._src.config - INFO - Default hash function set for class: MAELossConfig
+2025-08-29 10:46:40,469 - nshconfig._src.config - INFO - Default hash function set for class: MSELossConfig
+2025-08-29 10:46:40,471 - nshconfig._src.config - INFO - Default hash function set for class: HuberLossConfig
+2025-08-29 10:46:40,473 - nshconfig._src.config - INFO - Default hash function set for class: L2MAELossConfig
+2025-08-29 10:46:40,477 - nshconfig._src.config - INFO - Default hash function set for class: PropertyConfigBase
+2025-08-29 10:46:40,479 - nshconfig._src.config - INFO - Default hash function set for class: GraphPropertyConfig
+2025-08-29 10:46:40,482 - nshconfig._src.config - INFO - Default hash function set for class: EnergyPropertyConfig
+2025-08-29 10:46:40,484 - nshconfig._src.config - INFO - Default hash function set for class: ForcesPropertyConfig
+2025-08-29 10:46:40,487 - nshconfig._src.config - INFO - Default hash function set for class: StressesPropertyConfig
+2025-08-29 10:46:40,490 - nshconfig._src.config - INFO - Default hash function set for class: NormalizerConfigBase
+2025-08-29 10:46:40,492 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomNormalizerConfig
+2025-08-29 10:46:40,494 - nshconfig._src.config - INFO - Default hash function set for class: MeanStdNormalizerConfig
+2025-08-29 10:46:40,495 - nshconfig._src.config - INFO - Default hash function set for class: RMSNormalizerConfig
+2025-08-29 10:46:40,498 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomReferencingNormalizerConfig
+2025-08-29 10:46:40,506 - nshconfig._src.config - INFO - Default hash function set for class: StepLRConfig
+2025-08-29 10:46:40,507 - nshconfig._src.config - INFO - Default hash function set for class: MultiStepLRConfig
+2025-08-29 10:46:40,509 - nshconfig._src.config - INFO - Default hash function set for class: ExponentialConfig
+2025-08-29 10:46:40,513 - nshconfig._src.config - INFO - Default hash function set for class: ReduceOnPlateauConfig
+2025-08-29 10:46:40,517 - nshconfig._src.config - INFO - Default hash function set for class: CosineAnnealingLRConfig
+2025-08-29 10:46:40,519 - nshconfig._src.config - INFO - Default hash function set for class: ConstantLRConfig
+2025-08-29 10:46:40,521 - nshconfig._src.config - INFO - Default hash function set for class: LinearLRConfig
+2025-08-29 10:46:40,530 - nshconfig._src.config - INFO - Default hash function set for class: OptimizerConfigBase
+2025-08-29 10:46:40,534 - nshconfig._src.config - INFO - Default hash function set for class: AdamConfig
+2025-08-29 10:46:40,538 - nshconfig._src.config - INFO - Default hash function set for class: AdamWConfig
+2025-08-29 10:46:40,541 - nshconfig._src.config - INFO - Default hash function set for class: SGDConfig
+2025-08-29 10:46:40,547 - nshconfig._src.config - INFO - Default hash function set for class: FinetuneModuleBaseConfig
+2025-08-29 10:46:40,585 - nshconfig._src.config - INFO - Default hash function set for class: BaseFileConfig
+2025-08-29 10:46:40,850 - nshconfig._src.config - INFO - Default hash function set for class: CachedPathConfig
+2025-08-29 10:46:40,857 - nshconfig._src.config - INFO - Default hash function set for class: SSHConfig
+2025-08-29 10:46:40,862 - nshconfig._src.config - INFO - Default hash function set for class: RemoteSSHFileConfig
+2025-08-29 10:46:40,865 - nshconfig._src.config - INFO - Default hash function set for class: FAIRChemAtomsToGraphSystemConfig
+2025-08-29 10:46:40,870 - nshconfig._src.config - INFO - Default hash function set for class: EqV2BackboneConfig
+2025-08-29 10:46:40,873 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 10:46:40,884 - nshconfig._src.config - INFO - Default hash function set for class: CutoffsConfig
+2025-08-29 10:46:40,886 - nshconfig._src.config - INFO - Default hash function set for class: MaxNeighborsConfig
+2025-08-29 10:46:40,889 - nshconfig._src.config - INFO - Default hash function set for class: JMPGraphComputerConfig
+2025-08-29 10:46:40,893 - nshconfig._src.config - INFO - Default hash function set for class: JMPBackboneConfig
+2025-08-29 10:46:40,894 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 10:46:40,915 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetGraphComputerConfig
+2025-08-29 10:46:40,920 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetBackboneConfig
+2025-08-29 10:46:40,920 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 10:46:40,927 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimGraphConvertorConfig
+2025-08-29 10:46:40,932 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimBackboneConfig
+2025-08-29 10:46:40,932 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 10:46:40,940 - nshconfig._src.config - INFO - Default hash function set for class: ORBSystemConfig
+2025-08-29 10:46:40,944 - nshconfig._src.config - INFO - Default hash function set for class: ORBBackboneConfig
+2025-08-29 10:46:40,945 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 10:46:40,953 - nshconfig._src.config - INFO - Default hash function set for class: EarlyStoppingConfig
+2025-08-29 10:46:40,957 - nshconfig._src.config - INFO - Default hash function set for class: EMAConfig
+2025-08-29 10:46:40,964 - nshconfig._src.config - INFO - Default hash function set for class: ModelCheckpointConfig
+2025-08-29 10:46:40,969 - nshconfig._src.config - INFO - Default hash function set for class: DatasetConfigBase
+2025-08-29 10:46:40,975 - nshconfig._src.config - INFO - Default hash function set for class: JSONDatasetConfig
+2025-08-29 10:46:40,975 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 10:46:40,980 - nshconfig._src.config - INFO - Default hash function set for class: MatbenchDatasetConfig
+2025-08-29 10:46:40,980 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 10:46:40,987 - nshconfig._src.config - INFO - Default hash function set for class: MPDatasetConfig
+2025-08-29 10:46:40,988 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 10:46:40,992 - nshconfig._src.config - INFO - Default hash function set for class: OMAT24DatasetConfig
+2025-08-29 10:46:40,992 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 10:46:41,037 - nshconfig._src.config - INFO - Default hash function set for class: XYZDatasetConfig
+2025-08-29 10:46:41,038 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 10:46:41,046 - nshconfig._src.config - INFO - Default hash function set for class: DataModuleBaseConfig
+2025-08-29 10:46:41,049 - nshconfig._src.config - INFO - Default hash function set for class: ManualSplitDataModuleConfig
+2025-08-29 10:46:41,050 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:46:41,054 - nshconfig._src.config - INFO - Default hash function set for class: AutoSplitDataModuleConfig
+2025-08-29 10:46:41,056 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:46:41,062 - nshconfig._src.config - INFO - Default hash function set for class: CSVLoggerConfig
+2025-08-29 10:46:41,066 - nshconfig._src.config - INFO - Default hash function set for class: WandbLoggerConfig
+2025-08-29 10:46:41,069 - nshconfig._src.config - INFO - Default hash function set for class: TensorBoardLoggerConfig
+2025-08-29 10:46:41,075 - nshconfig._src.config - INFO - Default hash function set for class: RecipeConfigBase
+2025-08-29 10:46:41,081 - nshconfig._src.config - INFO - Default hash function set for class: EMARecipeConfig
+2025-08-29 10:46:41,082 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.ema.EMARecipeConfig'> with tag 'ema'.
+2025-08-29 10:46:41,087 - nshconfig._src.config - INFO - Default hash function set for class: PeftConfig
+2025-08-29 10:46:41,092 - nshconfig._src.config - INFO - Default hash function set for class: LoraConfig
+2025-08-29 10:46:41,094 - nshconfig._src.config - INFO - Default hash function set for class: LoRARecipeConfig
+2025-08-29 10:46:41,095 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.lora.LoRARecipeConfig'> with tag 'lora'.
+2025-08-29 10:46:41,099 - nshconfig._src.config - INFO - Default hash function set for class: NoOpRecipeConfig
+2025-08-29 10:46:41,099 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.noop.NoOpRecipeConfig'> with tag 'no-op'.
+2025-08-29 10:46:41,110 - nshconfig._src.config - INFO - Default hash function set for class: TrainerConfig
+2025-08-29 10:46:41,114 - nshconfig._src.config - INFO - Default hash function set for class: MatterTunerConfig
+2025-08-29 10:46:41,117 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:46:41,121 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:46:41,130 - nshconfig._src.config - INFO - Default hash function set for class: AtomsListDatasetConfig
+2025-08-29 10:46:41,131 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.atoms_list.AtomsListDatasetConfig'> with tag 'atoms_list'.
+2025-08-29 10:46:41,133 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:46:41,134 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:46:41,138 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:46:41,147 - nshconfig._src.config - INFO - Default hash function set for class: DBDatasetConfig
+2025-08-29 10:46:41,148 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 10:46:41,149 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:46:41,151 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:46:41,154 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:46:41,159 - nshconfig._src.config - INFO - Default hash function set for class: MPTrajDatasetConfig
+2025-08-29 10:46:41,159 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 10:46:41,161 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:46:41,162 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 10:46:41,166 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 10:47:01,981 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 10:47:01,981 - root - INFO - GPU is available: True, Quantity: None
+2025-08-29 10:47:01,982 - root - INFO - Dataset(s) used:
+2025-08-29 10:47:01,982 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 10:47:01,983 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 10:47:01,983 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 10:47:01,983 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 11:18:02,966 - nshconfig._src.config - INFO - Default hash function set for class: Invalid
+2025-08-29 11:18:03,022 - nshconfig._src.config - INFO - Default hash function set for class: RootConfig
+2025-08-29 11:18:06,274 - nshconfig._src.config - INFO - Default hash function set for class: MAELossConfig
+2025-08-29 11:18:06,275 - nshconfig._src.config - INFO - Default hash function set for class: MSELossConfig
+2025-08-29 11:18:06,277 - nshconfig._src.config - INFO - Default hash function set for class: HuberLossConfig
+2025-08-29 11:18:06,279 - nshconfig._src.config - INFO - Default hash function set for class: L2MAELossConfig
+2025-08-29 11:18:06,283 - nshconfig._src.config - INFO - Default hash function set for class: PropertyConfigBase
+2025-08-29 11:18:06,286 - nshconfig._src.config - INFO - Default hash function set for class: GraphPropertyConfig
+2025-08-29 11:18:06,288 - nshconfig._src.config - INFO - Default hash function set for class: EnergyPropertyConfig
+2025-08-29 11:18:06,291 - nshconfig._src.config - INFO - Default hash function set for class: ForcesPropertyConfig
+2025-08-29 11:18:06,294 - nshconfig._src.config - INFO - Default hash function set for class: StressesPropertyConfig
+2025-08-29 11:18:06,296 - nshconfig._src.config - INFO - Default hash function set for class: NormalizerConfigBase
+2025-08-29 11:18:06,298 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomNormalizerConfig
+2025-08-29 11:18:06,300 - nshconfig._src.config - INFO - Default hash function set for class: MeanStdNormalizerConfig
+2025-08-29 11:18:06,301 - nshconfig._src.config - INFO - Default hash function set for class: RMSNormalizerConfig
+2025-08-29 11:18:06,305 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomReferencingNormalizerConfig
+2025-08-29 11:18:06,312 - nshconfig._src.config - INFO - Default hash function set for class: StepLRConfig
+2025-08-29 11:18:06,314 - nshconfig._src.config - INFO - Default hash function set for class: MultiStepLRConfig
+2025-08-29 11:18:06,315 - nshconfig._src.config - INFO - Default hash function set for class: ExponentialConfig
+2025-08-29 11:18:06,318 - nshconfig._src.config - INFO - Default hash function set for class: ReduceOnPlateauConfig
+2025-08-29 11:18:06,320 - nshconfig._src.config - INFO - Default hash function set for class: CosineAnnealingLRConfig
+2025-08-29 11:18:06,321 - nshconfig._src.config - INFO - Default hash function set for class: ConstantLRConfig
+2025-08-29 11:18:06,323 - nshconfig._src.config - INFO - Default hash function set for class: LinearLRConfig
+2025-08-29 11:18:06,330 - nshconfig._src.config - INFO - Default hash function set for class: OptimizerConfigBase
+2025-08-29 11:18:06,334 - nshconfig._src.config - INFO - Default hash function set for class: AdamConfig
+2025-08-29 11:18:06,337 - nshconfig._src.config - INFO - Default hash function set for class: AdamWConfig
+2025-08-29 11:18:06,341 - nshconfig._src.config - INFO - Default hash function set for class: SGDConfig
+2025-08-29 11:18:06,346 - nshconfig._src.config - INFO - Default hash function set for class: FinetuneModuleBaseConfig
+2025-08-29 11:18:06,370 - nshconfig._src.config - INFO - Default hash function set for class: BaseFileConfig
+2025-08-29 11:18:06,627 - nshconfig._src.config - INFO - Default hash function set for class: CachedPathConfig
+2025-08-29 11:18:06,635 - nshconfig._src.config - INFO - Default hash function set for class: SSHConfig
+2025-08-29 11:18:06,640 - nshconfig._src.config - INFO - Default hash function set for class: RemoteSSHFileConfig
+2025-08-29 11:18:06,643 - nshconfig._src.config - INFO - Default hash function set for class: FAIRChemAtomsToGraphSystemConfig
+2025-08-29 11:18:06,648 - nshconfig._src.config - INFO - Default hash function set for class: EqV2BackboneConfig
+2025-08-29 11:18:06,648 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 11:18:06,657 - nshconfig._src.config - INFO - Default hash function set for class: CutoffsConfig
+2025-08-29 11:18:06,659 - nshconfig._src.config - INFO - Default hash function set for class: MaxNeighborsConfig
+2025-08-29 11:18:06,661 - nshconfig._src.config - INFO - Default hash function set for class: JMPGraphComputerConfig
+2025-08-29 11:18:06,665 - nshconfig._src.config - INFO - Default hash function set for class: JMPBackboneConfig
+2025-08-29 11:18:06,666 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 11:18:06,673 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetGraphComputerConfig
+2025-08-29 11:18:06,678 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetBackboneConfig
+2025-08-29 11:18:06,678 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 11:18:06,684 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimGraphConvertorConfig
+2025-08-29 11:18:06,689 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimBackboneConfig
+2025-08-29 11:18:06,689 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 11:18:06,696 - nshconfig._src.config - INFO - Default hash function set for class: ORBSystemConfig
+2025-08-29 11:18:06,701 - nshconfig._src.config - INFO - Default hash function set for class: ORBBackboneConfig
+2025-08-29 11:18:06,701 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 11:18:06,709 - nshconfig._src.config - INFO - Default hash function set for class: EarlyStoppingConfig
+2025-08-29 11:18:06,713 - nshconfig._src.config - INFO - Default hash function set for class: EMAConfig
+2025-08-29 11:18:06,719 - nshconfig._src.config - INFO - Default hash function set for class: ModelCheckpointConfig
+2025-08-29 11:18:06,725 - nshconfig._src.config - INFO - Default hash function set for class: DatasetConfigBase
+2025-08-29 11:18:06,731 - nshconfig._src.config - INFO - Default hash function set for class: JSONDatasetConfig
+2025-08-29 11:18:06,731 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 11:18:06,735 - nshconfig._src.config - INFO - Default hash function set for class: MatbenchDatasetConfig
+2025-08-29 11:18:06,736 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 11:18:06,740 - nshconfig._src.config - INFO - Default hash function set for class: MPDatasetConfig
+2025-08-29 11:18:06,741 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 11:18:06,745 - nshconfig._src.config - INFO - Default hash function set for class: OMAT24DatasetConfig
+2025-08-29 11:18:06,746 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 11:18:06,811 - nshconfig._src.config - INFO - Default hash function set for class: XYZDatasetConfig
+2025-08-29 11:18:06,811 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 11:18:06,819 - nshconfig._src.config - INFO - Default hash function set for class: DataModuleBaseConfig
+2025-08-29 11:18:06,822 - nshconfig._src.config - INFO - Default hash function set for class: ManualSplitDataModuleConfig
+2025-08-29 11:18:06,823 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:18:06,827 - nshconfig._src.config - INFO - Default hash function set for class: AutoSplitDataModuleConfig
+2025-08-29 11:18:06,829 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:18:06,833 - nshconfig._src.config - INFO - Default hash function set for class: CSVLoggerConfig
+2025-08-29 11:18:06,837 - nshconfig._src.config - INFO - Default hash function set for class: WandbLoggerConfig
+2025-08-29 11:18:06,840 - nshconfig._src.config - INFO - Default hash function set for class: TensorBoardLoggerConfig
+2025-08-29 11:18:06,846 - nshconfig._src.config - INFO - Default hash function set for class: RecipeConfigBase
+2025-08-29 11:18:06,851 - nshconfig._src.config - INFO - Default hash function set for class: EMARecipeConfig
+2025-08-29 11:18:06,851 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.ema.EMARecipeConfig'> with tag 'ema'.
+2025-08-29 11:18:06,856 - nshconfig._src.config - INFO - Default hash function set for class: PeftConfig
+2025-08-29 11:18:06,860 - nshconfig._src.config - INFO - Default hash function set for class: LoraConfig
+2025-08-29 11:18:06,862 - nshconfig._src.config - INFO - Default hash function set for class: LoRARecipeConfig
+2025-08-29 11:18:06,863 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.lora.LoRARecipeConfig'> with tag 'lora'.
+2025-08-29 11:18:06,867 - nshconfig._src.config - INFO - Default hash function set for class: NoOpRecipeConfig
+2025-08-29 11:18:06,867 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.noop.NoOpRecipeConfig'> with tag 'no-op'.
+2025-08-29 11:18:06,874 - nshconfig._src.config - INFO - Default hash function set for class: TrainerConfig
+2025-08-29 11:18:06,878 - nshconfig._src.config - INFO - Default hash function set for class: MatterTunerConfig
+2025-08-29 11:18:06,882 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 11:18:06,885 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 11:18:06,891 - nshconfig._src.config - INFO - Default hash function set for class: AtomsListDatasetConfig
+2025-08-29 11:18:06,891 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.atoms_list.AtomsListDatasetConfig'> with tag 'atoms_list'.
+2025-08-29 11:18:06,893 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:18:06,894 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:18:06,897 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 11:18:06,906 - nshconfig._src.config - INFO - Default hash function set for class: DBDatasetConfig
+2025-08-29 11:18:06,906 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 11:18:06,908 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:18:06,909 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:18:06,913 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 11:18:06,917 - nshconfig._src.config - INFO - Default hash function set for class: MPTrajDatasetConfig
+2025-08-29 11:18:06,918 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 11:18:06,919 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:18:06,921 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:18:06,924 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 11:18:27,622 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 11:18:27,622 - root - INFO - GPU is available: True, Quantity: None
+2025-08-29 11:18:27,624 - root - INFO - Dataset(s) used:
+2025-08-29 11:18:27,625 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 11:18:27,626 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 11:18:27,627 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 11:18:27,628 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 11:35:17,449 - nshconfig._src.config - INFO - Default hash function set for class: Invalid
+2025-08-29 11:35:17,480 - nshconfig._src.config - INFO - Default hash function set for class: RootConfig
+2025-08-29 11:35:20,578 - nshconfig._src.config - INFO - Default hash function set for class: MAELossConfig
+2025-08-29 11:35:20,579 - nshconfig._src.config - INFO - Default hash function set for class: MSELossConfig
+2025-08-29 11:35:20,581 - nshconfig._src.config - INFO - Default hash function set for class: HuberLossConfig
+2025-08-29 11:35:20,583 - nshconfig._src.config - INFO - Default hash function set for class: L2MAELossConfig
+2025-08-29 11:35:20,587 - nshconfig._src.config - INFO - Default hash function set for class: PropertyConfigBase
+2025-08-29 11:35:20,589 - nshconfig._src.config - INFO - Default hash function set for class: GraphPropertyConfig
+2025-08-29 11:35:20,592 - nshconfig._src.config - INFO - Default hash function set for class: EnergyPropertyConfig
+2025-08-29 11:35:20,595 - nshconfig._src.config - INFO - Default hash function set for class: ForcesPropertyConfig
+2025-08-29 11:35:20,598 - nshconfig._src.config - INFO - Default hash function set for class: StressesPropertyConfig
+2025-08-29 11:35:20,600 - nshconfig._src.config - INFO - Default hash function set for class: NormalizerConfigBase
+2025-08-29 11:35:20,602 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomNormalizerConfig
+2025-08-29 11:35:20,604 - nshconfig._src.config - INFO - Default hash function set for class: MeanStdNormalizerConfig
+2025-08-29 11:35:20,605 - nshconfig._src.config - INFO - Default hash function set for class: RMSNormalizerConfig
+2025-08-29 11:35:20,608 - nshconfig._src.config - INFO - Default hash function set for class: PerAtomReferencingNormalizerConfig
+2025-08-29 11:35:20,614 - nshconfig._src.config - INFO - Default hash function set for class: StepLRConfig
+2025-08-29 11:35:20,617 - nshconfig._src.config - INFO - Default hash function set for class: MultiStepLRConfig
+2025-08-29 11:35:20,618 - nshconfig._src.config - INFO - Default hash function set for class: ExponentialConfig
+2025-08-29 11:35:20,621 - nshconfig._src.config - INFO - Default hash function set for class: ReduceOnPlateauConfig
+2025-08-29 11:35:20,623 - nshconfig._src.config - INFO - Default hash function set for class: CosineAnnealingLRConfig
+2025-08-29 11:35:20,624 - nshconfig._src.config - INFO - Default hash function set for class: ConstantLRConfig
+2025-08-29 11:35:20,626 - nshconfig._src.config - INFO - Default hash function set for class: LinearLRConfig
+2025-08-29 11:35:20,632 - nshconfig._src.config - INFO - Default hash function set for class: OptimizerConfigBase
+2025-08-29 11:35:20,636 - nshconfig._src.config - INFO - Default hash function set for class: AdamConfig
+2025-08-29 11:35:20,640 - nshconfig._src.config - INFO - Default hash function set for class: AdamWConfig
+2025-08-29 11:35:20,643 - nshconfig._src.config - INFO - Default hash function set for class: SGDConfig
+2025-08-29 11:35:20,648 - nshconfig._src.config - INFO - Default hash function set for class: FinetuneModuleBaseConfig
+2025-08-29 11:35:20,672 - nshconfig._src.config - INFO - Default hash function set for class: BaseFileConfig
+2025-08-29 11:35:20,928 - nshconfig._src.config - INFO - Default hash function set for class: CachedPathConfig
+2025-08-29 11:35:20,935 - nshconfig._src.config - INFO - Default hash function set for class: SSHConfig
+2025-08-29 11:35:20,940 - nshconfig._src.config - INFO - Default hash function set for class: RemoteSSHFileConfig
+2025-08-29 11:35:20,943 - nshconfig._src.config - INFO - Default hash function set for class: FAIRChemAtomsToGraphSystemConfig
+2025-08-29 11:35:20,948 - nshconfig._src.config - INFO - Default hash function set for class: EqV2BackboneConfig
+2025-08-29 11:35:20,948 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 11:35:20,956 - nshconfig._src.config - INFO - Default hash function set for class: CutoffsConfig
+2025-08-29 11:35:20,959 - nshconfig._src.config - INFO - Default hash function set for class: MaxNeighborsConfig
+2025-08-29 11:35:20,961 - nshconfig._src.config - INFO - Default hash function set for class: JMPGraphComputerConfig
+2025-08-29 11:35:20,965 - nshconfig._src.config - INFO - Default hash function set for class: JMPBackboneConfig
+2025-08-29 11:35:20,966 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 11:35:20,973 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetGraphComputerConfig
+2025-08-29 11:35:20,978 - nshconfig._src.config - INFO - Default hash function set for class: M3GNetBackboneConfig
+2025-08-29 11:35:20,978 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 11:35:20,984 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimGraphConvertorConfig
+2025-08-29 11:35:20,989 - nshconfig._src.config - INFO - Default hash function set for class: MatterSimBackboneConfig
+2025-08-29 11:35:20,989 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 11:35:20,996 - nshconfig._src.config - INFO - Default hash function set for class: ORBSystemConfig
+2025-08-29 11:35:21,001 - nshconfig._src.config - INFO - Default hash function set for class: ORBBackboneConfig
+2025-08-29 11:35:21,001 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 11:35:21,008 - nshconfig._src.config - INFO - Default hash function set for class: EarlyStoppingConfig
+2025-08-29 11:35:21,012 - nshconfig._src.config - INFO - Default hash function set for class: EMAConfig
+2025-08-29 11:35:21,018 - nshconfig._src.config - INFO - Default hash function set for class: ModelCheckpointConfig
+2025-08-29 11:35:21,024 - nshconfig._src.config - INFO - Default hash function set for class: DatasetConfigBase
+2025-08-29 11:35:21,029 - nshconfig._src.config - INFO - Default hash function set for class: JSONDatasetConfig
+2025-08-29 11:35:21,029 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 11:35:21,034 - nshconfig._src.config - INFO - Default hash function set for class: MatbenchDatasetConfig
+2025-08-29 11:35:21,035 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 11:35:21,040 - nshconfig._src.config - INFO - Default hash function set for class: MPDatasetConfig
+2025-08-29 11:35:21,040 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 11:35:21,044 - nshconfig._src.config - INFO - Default hash function set for class: OMAT24DatasetConfig
+2025-08-29 11:35:21,045 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 11:35:21,100 - nshconfig._src.config - INFO - Default hash function set for class: XYZDatasetConfig
+2025-08-29 11:35:21,101 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 11:35:21,107 - nshconfig._src.config - INFO - Default hash function set for class: DataModuleBaseConfig
+2025-08-29 11:35:21,110 - nshconfig._src.config - INFO - Default hash function set for class: ManualSplitDataModuleConfig
+2025-08-29 11:35:21,112 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:35:21,116 - nshconfig._src.config - INFO - Default hash function set for class: AutoSplitDataModuleConfig
+2025-08-29 11:35:21,117 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:35:21,122 - nshconfig._src.config - INFO - Default hash function set for class: CSVLoggerConfig
+2025-08-29 11:35:21,126 - nshconfig._src.config - INFO - Default hash function set for class: WandbLoggerConfig
+2025-08-29 11:35:21,129 - nshconfig._src.config - INFO - Default hash function set for class: TensorBoardLoggerConfig
+2025-08-29 11:35:21,135 - nshconfig._src.config - INFO - Default hash function set for class: RecipeConfigBase
+2025-08-29 11:35:21,140 - nshconfig._src.config - INFO - Default hash function set for class: EMARecipeConfig
+2025-08-29 11:35:21,140 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.ema.EMARecipeConfig'> with tag 'ema'.
+2025-08-29 11:35:21,145 - nshconfig._src.config - INFO - Default hash function set for class: PeftConfig
+2025-08-29 11:35:21,149 - nshconfig._src.config - INFO - Default hash function set for class: LoraConfig
+2025-08-29 11:35:21,151 - nshconfig._src.config - INFO - Default hash function set for class: LoRARecipeConfig
+2025-08-29 11:35:21,152 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.lora.LoRARecipeConfig'> with tag 'lora'.
+2025-08-29 11:35:21,156 - nshconfig._src.config - INFO - Default hash function set for class: NoOpRecipeConfig
+2025-08-29 11:35:21,156 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.noop.NoOpRecipeConfig'> with tag 'no-op'.
+2025-08-29 11:35:21,163 - nshconfig._src.config - INFO - Default hash function set for class: TrainerConfig
+2025-08-29 11:35:21,168 - nshconfig._src.config - INFO - Default hash function set for class: MatterTunerConfig
+2025-08-29 11:35:21,171 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 11:35:21,174 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 11:35:21,180 - nshconfig._src.config - INFO - Default hash function set for class: AtomsListDatasetConfig
+2025-08-29 11:35:21,181 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.atoms_list.AtomsListDatasetConfig'> with tag 'atoms_list'.
+2025-08-29 11:35:21,182 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:35:21,184 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:35:21,187 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 11:35:21,195 - nshconfig._src.config - INFO - Default hash function set for class: DBDatasetConfig
+2025-08-29 11:35:21,196 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 11:35:21,197 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:35:21,199 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:35:21,202 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 11:35:21,207 - nshconfig._src.config - INFO - Default hash function set for class: MPTrajDatasetConfig
+2025-08-29 11:35:21,208 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 11:35:21,210 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:35:21,211 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 11:35:21,215 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 11:35:41,916 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 11:35:41,917 - root - INFO - GPU is available: True, Quantity: None
+2025-08-29 11:35:41,917 - root - INFO - Dataset(s) used:
+2025-08-29 11:35:41,918 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 11:35:41,918 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 11:35:41,918 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 11:35:41,919 - root - INFO - Dataset length: ('test', 1233)
