@@ -297,9 +297,9 @@ class PSO():
                         atoms.set_cell(cell)
                         atoms.wrap()
 
-                        ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
-                        # ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
-                        #ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
+                        #ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
+                        #ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
+                        ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
 
                         try:
                             optimizer = BFGS(ucf, logfile=None, maxstep=0.05)
@@ -307,6 +307,10 @@ class PSO():
                         except ValueError as e:
                             print("Optimization failed due to invalid deformation:", e)
                             pass
+                        finally:
+                            del optimizer
+                            del ucf
+                            torch.cuda.empty_cache()
                     return atoms
 
                 # optimized_atoms = [localopt(atoms, steps=steps) for atoms in new_atoms]
@@ -314,7 +318,6 @@ class PSO():
                 optimized_atoms = []
                 for atoms in new_atoms:
                     optimized_atoms.append(localopt(atoms, steps=steps))
-                    torch.cuda.empty_cache()
 
                 self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
                 self.optimizer.swarm.position = np.array([self.atoms_to_dimensions(optimized_atoms[i]) for i in range(len(optimized_atoms))])
