@@ -297,15 +297,15 @@ class PSO():
                         atoms.set_cell(cell)
                         atoms.wrap()
 
-                        #ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
+                        ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
                         #ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
-                        ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
+                        #ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
 
                         try:
                             optimizer = BFGS(ucf, logfile=None, maxstep=0.05)
                             optimizer.run(fmax=0.01, steps=steps)
                         except ValueError as e:
-                            print("Optimization failed due to invalid deformation:", e)
+                            #print("Optimization failed due to invalid deformation:", e)
                             pass
                         finally:
                             del optimizer
@@ -341,11 +341,15 @@ class PSO():
             plt.savefig(f'plots/avg_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
-            optimized_structure = AseAtomsAdaptor.get_structure(self.dimensions_to_atoms(pos))
-            original_cif = os.path.join("cifs", self.cif_name + ".cif")
-            ground_truth = Structure.from_file(original_cif)
-            matched = matcher.fit(ground_truth, optimized_structure)
-            matches.append(matched)
+            try:
+                optimized_structure = AseAtomsAdaptor.get_structure(self.dimensions_to_atoms(pos))
+                original_cif = os.path.join("cifs", self.cif_name + ".cif")
+                ground_truth = Structure.from_file(original_cif)
+                matched = matcher.fit(ground_truth, optimized_structure)
+                matches.append(matched)
+            except ValueError as e:
+                print("invalid structure, cannot match")
+                pass
 
             if matched:
                 filename = f"matches/best_structure_{self.cif_name}_{iteration}" ".cif"
@@ -407,8 +411,8 @@ if __name__ == "__main__":
 
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
         particles = 10  # number of particles in system
-        iters = 20
-        local_steps = 50
+        iters = 50
+        local_steps = 100
 
         cell_perturb = True
         if cell_perturb:
