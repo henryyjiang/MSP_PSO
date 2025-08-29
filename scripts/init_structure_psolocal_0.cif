@@ -1,11 +1,11 @@
 data_image0
 _chemical_formula_structural       Pr2Ga4Ni2
 _chemical_formula_sum              "Pr2 Ga4 Ni2"
-_cell_length_a       5.116731992165447
-_cell_length_b       6.509872020565831
-_cell_length_c       6.2786830868845644
+_cell_length_a       5.603268525981038
+_cell_length_b       5.437632951415054
+_cell_length_c       6.854035346895659
 _cell_angle_alpha    90.0
-_cell_angle_beta     86.66635685950088
+_cell_angle_beta     88.77359260502007
 _cell_angle_gamma    90.0
 
 _space_group_name_H-M_alt    "P 1"
@@ -26,8 +26,8 @@ loop_
   Pr  Pr1       1.0  0.0  0.0  0.0  1.0000
   Pr  Pr2       1.0  0.0  0.5  0.5  1.0000
   Ga  Ga1       1.0  0.0  0.0  0.5  1.0000
-  Ga  Ga2       1.0  0.0  0.5  3.92628564732811e-33  1.0000
-  Ga  Ga3       1.0  0.5  0.0  0.0  1.0000
-  Ga  Ga4       1.0  0.5  0.5  0.5  1.0000
-  Ni  Ni1       1.0  0.5  0.0  0.5  1.0000
-  Ni  Ni2       1.0  0.5  0.5  0.0  1.0000
+  Ga  Ga2       1.0  0.0  0.5  3.596699176540138e-33  1.0000
+  Ga  Ga3       1.0  0.5  0.0  0.5  1.0000
+  Ga  Ga4       1.0  0.5  0.5  1.012380816951871e-18  1.0000
+  Ni  Ni1       1.0  0.5  0.0  1.012380816951871e-18  1.0000
+  Ni  Ni2       1.0  0.5  0.5  0.4999999999999999  1.0000

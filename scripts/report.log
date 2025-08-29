@@ -21198,3 +21198,293 @@ Detected KeyboardInterrupt, attempting graceful shutdown ...
 2025-08-27 10:19:36,214 - root - INFO - Dataset length: ('train', 22209)
 2025-08-27 10:19:36,215 - root - INFO - Dataset length: ('val', 1233)
 2025-08-27 10:19:36,215 - root - INFO - Dataset length: ('test', 1233)
+2025-08-28 20:00:40,740 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-28 20:00:40,803 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-28 20:00:40,856 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-28 20:00:40,908 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-28 20:00:40,970 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-28 20:00:41,105 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-28 20:00:41,148 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-28 20:00:41,181 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-28 20:00:41,213 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-28 20:00:41,388 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-28 20:00:41,444 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:00:41,462 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:00:41,760 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:00:41,793 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:00:41,849 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-28 20:00:41,856 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:00:41,864 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:00:41,897 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:00:41,933 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-28 20:00:41,938 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:00:41,943 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:00:41,964 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:01:52,803 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-28 20:01:52,804 - root - INFO - GPU is available: False, Quantity: None
+2025-08-28 20:01:52,804 - root - INFO - Dataset(s) used:
+2025-08-28 20:01:52,804 - root - INFO - Dataset length: ('full', 24677)
+2025-08-28 20:01:52,805 - root - INFO - Dataset length: ('train', 22209)
+2025-08-28 20:01:52,805 - root - INFO - Dataset length: ('val', 1233)
+2025-08-28 20:01:52,805 - root - INFO - Dataset length: ('test', 1233)
+2025-08-28 20:02:16,141 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-28 20:02:16,164 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-28 20:02:16,182 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-28 20:02:16,197 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-28 20:02:16,216 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-28 20:02:16,252 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-28 20:02:16,261 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-28 20:02:16,267 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-28 20:02:16,275 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-28 20:02:16,350 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-28 20:02:16,371 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:02:16,381 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:02:16,561 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:02:16,579 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:02:16,594 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-28 20:02:16,597 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:02:16,602 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:02:16,613 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:02:16,622 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-28 20:02:16,624 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:02:16,627 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:02:16,639 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:02:48,734 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-28 20:02:48,735 - root - INFO - GPU is available: False, Quantity: None
+2025-08-28 20:02:48,735 - root - INFO - Dataset(s) used:
+2025-08-28 20:02:48,735 - root - INFO - Dataset length: ('full', 24677)
+2025-08-28 20:02:48,736 - root - INFO - Dataset length: ('train', 22209)
+2025-08-28 20:02:48,736 - root - INFO - Dataset length: ('val', 1233)
+2025-08-28 20:02:48,736 - root - INFO - Dataset length: ('test', 1233)
+2025-08-28 20:14:27,946 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-28 20:14:27,980 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-28 20:14:28,010 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-28 20:14:28,036 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-28 20:14:28,066 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-28 20:14:28,138 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-28 20:14:28,156 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-28 20:14:28,173 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-28 20:14:28,190 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-28 20:14:28,266 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-28 20:14:28,293 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:14:28,301 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:14:28,480 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:14:28,490 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:14:28,514 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-28 20:14:28,516 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:14:28,518 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:14:28,529 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:14:28,548 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-28 20:14:28,550 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:14:28,554 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:14:28,565 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:15:02,285 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-28 20:15:02,285 - root - INFO - GPU is available: False, Quantity: None
+2025-08-28 20:15:02,285 - root - INFO - Dataset(s) used:
+2025-08-28 20:15:02,286 - root - INFO - Dataset length: ('full', 24677)
+2025-08-28 20:15:02,286 - root - INFO - Dataset length: ('train', 22209)
+2025-08-28 20:15:02,286 - root - INFO - Dataset length: ('val', 1233)
+2025-08-28 20:15:02,286 - root - INFO - Dataset length: ('test', 1233)
+2025-08-28 20:18:27,808 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-28 20:18:27,830 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-28 20:18:27,848 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-28 20:18:27,866 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-28 20:18:27,884 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-28 20:18:27,917 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-28 20:18:27,923 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-28 20:18:27,929 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-28 20:18:27,936 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-28 20:18:27,997 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-28 20:18:28,011 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:18:28,020 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:18:28,174 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:18:28,184 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:18:28,196 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-28 20:18:28,198 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:18:28,201 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:18:28,210 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:18:28,219 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-28 20:18:28,221 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:18:28,224 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:18:28,235 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:19:01,174 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-28 20:19:01,175 - root - INFO - GPU is available: False, Quantity: None
+2025-08-28 20:19:01,175 - root - INFO - Dataset(s) used:
+2025-08-28 20:19:01,175 - root - INFO - Dataset length: ('full', 24677)
+2025-08-28 20:19:01,176 - root - INFO - Dataset length: ('train', 22209)
+2025-08-28 20:19:01,176 - root - INFO - Dataset length: ('val', 1233)
+2025-08-28 20:19:01,176 - root - INFO - Dataset length: ('test', 1233)
+2025-08-28 20:33:48,257 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-28 20:33:48,285 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-28 20:33:48,304 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-28 20:33:48,320 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-28 20:33:48,338 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-28 20:33:48,377 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-28 20:33:48,386 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-28 20:33:48,395 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-28 20:33:48,403 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-28 20:33:48,478 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-28 20:33:48,498 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:33:48,510 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:33:48,568 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:33:48,579 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:33:48,593 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-28 20:33:48,595 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:33:48,598 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:33:48,609 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:33:48,619 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-28 20:33:48,622 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:33:48,625 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:33:48,636 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:34:01,189 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-28 20:34:01,190 - root - INFO - GPU is available: False, Quantity: None
+2025-08-28 20:34:01,190 - root - INFO - Dataset(s) used:
+2025-08-28 20:34:01,190 - root - INFO - Dataset length: ('full', 24677)
+2025-08-28 20:34:01,190 - root - INFO - Dataset length: ('train', 22209)
+2025-08-28 20:34:01,190 - root - INFO - Dataset length: ('val', 1233)
+2025-08-28 20:34:01,191 - root - INFO - Dataset length: ('test', 1233)
+2025-08-28 20:40:03,838 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-28 20:40:03,860 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-28 20:40:03,876 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-28 20:40:03,892 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-28 20:40:03,908 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-28 20:40:03,939 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-28 20:40:03,946 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-28 20:40:03,952 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-28 20:40:03,959 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-28 20:40:04,010 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-28 20:40:04,025 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:40:04,033 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:40:04,082 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:40:04,091 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:40:04,104 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-28 20:40:04,106 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:40:04,108 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:40:04,118 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:40:04,126 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-28 20:40:04,128 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:40:04,130 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:40:04,140 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:40:15,325 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-28 20:40:15,325 - root - INFO - GPU is available: False, Quantity: None
+2025-08-28 20:40:15,325 - root - INFO - Dataset(s) used:
+2025-08-28 20:40:15,326 - root - INFO - Dataset length: ('full', 24677)
+2025-08-28 20:40:15,326 - root - INFO - Dataset length: ('train', 22209)
+2025-08-28 20:40:15,326 - root - INFO - Dataset length: ('val', 1233)
+2025-08-28 20:40:15,326 - root - INFO - Dataset length: ('test', 1233)
+2025-08-28 20:47:04,401 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-28 20:47:04,426 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-28 20:47:04,443 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-28 20:47:04,459 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-28 20:47:04,477 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-28 20:47:04,512 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-28 20:47:04,519 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-28 20:47:04,527 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-28 20:47:04,533 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-28 20:47:04,585 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-28 20:47:04,601 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:47:04,609 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:47:04,776 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:47:04,785 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:47:04,798 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-28 20:47:04,800 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:47:04,802 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:47:04,812 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:47:04,822 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-28 20:47:04,824 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:47:04,828 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-28 20:47:04,839 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-28 20:47:36,962 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-28 20:47:36,962 - root - INFO - GPU is available: False, Quantity: None
+2025-08-28 20:47:36,962 - root - INFO - Dataset(s) used:
+2025-08-28 20:47:36,963 - root - INFO - Dataset length: ('full', 24677)
+2025-08-28 20:47:36,963 - root - INFO - Dataset length: ('train', 22209)
+2025-08-28 20:47:36,963 - root - INFO - Dataset length: ('val', 1233)
+2025-08-28 20:47:36,963 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 09:49:21,545 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 09:49:21,582 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 09:49:21,612 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 09:49:21,641 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 09:49:21,674 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 09:49:21,752 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 09:49:21,770 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 09:49:21,789 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 09:49:21,807 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 09:49:21,889 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 09:49:21,917 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:49:21,924 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:49:22,117 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:49:22,130 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:49:22,157 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 09:49:22,159 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:49:22,162 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:49:22,172 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:49:22,190 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 09:49:22,193 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:49:22,196 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:49:22,208 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:49:55,026 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 09:49:55,027 - root - INFO - GPU is available: False, Quantity: None
+2025-08-29 09:49:55,027 - root - INFO - Dataset(s) used:
+2025-08-29 09:49:55,027 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 09:49:55,028 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 09:49:55,028 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 09:49:55,028 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 09:50:51,896 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 09:50:51,900 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-08-29 09:50:51,921 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 09:50:51,927 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-08-29 09:50:51,941 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 09:50:51,944 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-08-29 09:50:51,959 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 09:50:51,962 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-08-29 09:50:51,980 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 09:50:51,983 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-08-29 09:50:52,022 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 09:50:52,024 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-08-29 09:50:52,030 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 09:50:52,032 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-08-29 09:50:52,039 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 09:50:52,041 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-08-29 09:50:52,047 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 09:50:52,049 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-08-29 09:50:52,114 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 09:50:52,115 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-08-29 09:50:52,131 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,132 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,139 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,140 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,409 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:50:52,444 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:50:52,454 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:50:52,470 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:50:52,487 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 09:50:52,491 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,495 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-08-29 09:50:52,496 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,499 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,504 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,509 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:50:52,520 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 09:50:52,523 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,527 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,529 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:50:52,539 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-08-29 09:50:52,540 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:50:52,542 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,545 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-08-29 09:50:52,557 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-08-29 09:51:27,951 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 09:51:27,951 - root - INFO - Using PyTorch automatic mixed-precision
+2025-08-29 09:51:27,951 - root - INFO - GPU is available: False, Quantity: None
+2025-08-29 09:51:27,951 - root - INFO - Dataset(s) used:
+2025-08-29 09:51:27,951 - root - INFO - GPU is available: False, Quantity: None
+2025-08-29 09:51:27,952 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 09:51:27,952 - root - INFO - Dataset(s) used:
+2025-08-29 09:51:27,952 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 09:51:27,952 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 09:51:27,952 - root - INFO - Dataset length: ('full', 24677)
+2025-08-29 09:51:27,953 - root - INFO - Dataset length: ('test', 1233)
+2025-08-29 09:51:27,953 - root - INFO - Dataset length: ('train', 22209)
+2025-08-29 09:51:27,953 - root - INFO - Dataset length: ('val', 1233)
+2025-08-29 09:51:27,953 - root - INFO - Dataset length: ('test', 1233)
