@@ -27,6 +27,7 @@ from pathlib import Path
 from collections import Counter
 from loss_calculator import calculate_loss
 import torch
+import gc
 
 logging.getLogger("mattertune").setLevel(logging.CRITICAL)
 logging.getLogger("lightning.pytorch").setLevel(logging.CRITICAL)
@@ -299,8 +300,8 @@ class PSO():
                         atoms.set_cell(cell)
                         atoms.wrap()
 
-                        #ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
-                        ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
+                        ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
+                        #ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
                         #ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
 
                         try:

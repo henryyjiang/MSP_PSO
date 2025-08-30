@@ -9,13 +9,17 @@ API_KEY = "yvC2UCUjpLKJgwZ4Vhx5xFKHvVfOiF7k"
 SAVE_DIR = "cifs"
 os.makedirs(SAVE_DIR, exist_ok=True)
 
+total_structs = 25
+max_atoms = 20
+
 with MPRester(API_KEY) as mpr:
     # Fetch 100 materials with 0.0 energy above hull
     docs = mpr.summary.search(
         energy_above_hull=(0.0, 0.0),
+        num_sites=(1,max_atoms),
         num_chunks=None,
     )
-    random_sample = random.sample(docs, 50)
+    random_sample = random.sample(docs, total_structs)
 
     print(f"Found {len(random_sample)} stable materials. Downloading CIFs...")
 
