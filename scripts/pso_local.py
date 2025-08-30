@@ -1,3 +1,5 @@
+import gc
+
 from ase import Atoms
 from ase.filters import ExpCellFilter, UnitCellFilter, FrechetCellFilter
 from ase.geometry import cell_to_cellpar
@@ -310,14 +312,18 @@ class PSO():
                         finally:
                             del optimizer
                             del ucf
+                            gc.collect()
                             torch.cuda.empty_cache()
                     return atoms
 
                 # optimized_atoms = [localopt(atoms, steps=steps) for atoms in new_atoms]
                 # optimized_atoms = [opt.atoms if hasattr(opt, "atoms") else opt for opt in optimized_atoms]
                 optimized_atoms = []
-                for atoms in new_atoms:
-                    optimized_atoms.append(localopt(atoms, steps=steps))
+                batch_size = 2
+                for j in range(0, len(new_atoms), batch_size):
+                    batch = new_atoms[j:j + batch_size]
+                    optimized_batch = [localopt(atoms, steps=steps) for atoms in batch]
+                    optimized_atoms.extend(optimized_batch)
 
                 self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
                 self.optimizer.swarm.position = np.array([self.atoms_to_dimensions(optimized_atoms[i]) for i in range(len(optimized_atoms))])
