@@ -297,8 +297,8 @@ class PSO():
                         atoms.set_cell(cell)
                         atoms.wrap()
 
-                        ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
-                        #ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
+                        #ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
+                        ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
                         #ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
 
                         try:
@@ -347,16 +347,22 @@ class PSO():
                 ground_truth = Structure.from_file(original_cif)
                 matched = matcher.fit(ground_truth, optimized_structure)
                 matches.append(matched)
+
+                if matched:
+                    filename = f"matches/best_structure_{self.cif_name}_{iteration}" ".cif"
+                    ase.io.write(filename, self.dimensions_to_atoms(pos))
+                else:
+                    filename = f"fails/best_structure_{self.cif_name}_{iteration}" ".cif"
+                    ase.io.write(filename, self.dimensions_to_atoms(pos))
+
             except ValueError as e:
                 print("invalid structure, cannot match")
-                pass
+                matched = False
+                matches.append(matched)
 
-            if matched:
-                filename = f"matches/best_structure_{self.cif_name}_{iteration}" ".cif"
-                ase.io.write(filename, self.dimensions_to_atoms(pos))
-            else:
                 filename = f"fails/best_structure_{self.cif_name}_{iteration}" ".cif"
                 ase.io.write(filename, self.dimensions_to_atoms(pos))
+                pass
 
         costs_filename = f"plots/{self.cif_name}_costs.txt"
         with open(costs_filename, "w") as f:
@@ -410,9 +416,9 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
-        particles = 10  # number of particles in system
+        particles = 8  # number of particles in system
         iters = 50
-        local_steps = 100
+        local_steps = 50
 
         cell_perturb = True
         if cell_perturb:
