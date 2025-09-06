@@ -299,43 +299,18 @@ class PSO():
                     #ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
 
                     try:
-                        optimizer = BFGS(ucf, logfile=None, maxstep=0.05)
+                        #optimizer = BFGS(ucf, logfile=None, maxstep=0.05)
+                        optimizer = BFGS(atoms, logfile=None, maxstep=0.05)
                         optimizer.run(fmax=0.01, steps=steps)
                     except ValueError as e:
-                        #print("Optimization failed due to invalid deformation:", e)
+                        print("Optimization failed due to invalid deformation:", e)
                         pass
 
-                    # with torch.no_grad():
-                    #     cell = atoms.cell.array
-                    #     cell[np.abs(cell) < 1e-8] = 1e-8
-                    #     atoms.set_cell(cell)
-                    #     atoms.wrap()
-                    #
-                    #     ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
-                    #     #ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
-                    #     #ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
-                    #
-                    #     try:
-                    #         optimizer = BFGS(ucf, logfile=None, maxstep=0.05)
-                    #         optimizer.run(fmax=0.01, steps=steps)
-                    #     except ValueError as e:
-                    #         #print("Optimization failed due to invalid deformation:", e)
-                    #         pass
-                    #     finally:
-                    #         del optimizer
-                    #         del ucf
-                    #         gc.collect()
-                    #         torch.cuda.empty_cache()
                     return atoms
 
                 optimized_atoms = [localopt(atoms, steps=steps) for atoms in new_atoms]
                 optimized_atoms = [opt.atoms if hasattr(opt, "atoms") else opt for opt in optimized_atoms]
-                # optimized_atoms = []
-                # batch_size = 2
-                # for j in range(0, len(new_atoms), batch_size):
-                #     batch = new_atoms[j:j + batch_size]
-                #     optimized_batch = [localopt(atoms, steps=steps) for atoms in batch]
-                #     optimized_atoms.extend(optimized_batch)
+
 
                 self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
                 self.optimizer.swarm.position = np.array([self.atoms_to_dimensions(optimized_atoms[i]) for i in range(len(optimized_atoms))])
@@ -434,9 +409,9 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
-        particles = 10  # number of particles in system
-        iters = 50
-        local_steps = 100
+        particles = 8  # number of particles in system
+        iters = 10
+        local_steps = 50
 
         cell_perturb = True
         if cell_perturb:
