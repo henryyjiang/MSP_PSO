@@ -1,9 +1,9 @@
 data_image0
-_chemical_formula_structural       Pr2Ga4Ni2
-_chemical_formula_sum              "Pr2 Ga4 Ni2"
-_cell_length_a       4.863327606994381
-_cell_length_b       4.863327606994381
-_cell_length_c       6.671164240293384
+_chemical_formula_structural       ScP4Ru6
+_chemical_formula_sum              "Sc1 P4 Ru6"
+_cell_length_a       6.535740782201701
+_cell_length_b       6.535740782201701
+_cell_length_c       6.535740782201701
 _cell_angle_alpha    90.0
 _cell_angle_beta     90.0
 _cell_angle_gamma    90.0
@@ -23,11 +23,14 @@ loop_
   _atom_site_fract_y
   _atom_site_fract_z
   _atom_site_occupancy
-  Pr  Pr1       1.0  0.0  0.0  0.0  1.0000
-  Pr  Pr2       1.0  0.5  0.5  0.5  1.0000
-  Ga  Ga1       1.0  0.0  0.5  0.25  1.0000
-  Ga  Ga2       1.0  0.0  0.5  0.7500000000000002  1.0000
-  Ga  Ga3       1.0  0.5  0.0  0.7500000000000002  1.0000
-  Ga  Ga4       1.0  0.5  0.0  0.25  1.0000
-  Ni  Ni1       1.0  0.0  0.0  0.5  1.0000
-  Ni  Ni2       1.0  0.5  0.5  0.0  1.0000
+  Sc  Sc1       1.0  0.5  0.0  0.0  1.0000
+  P   P1        1.0  0.0  0.5  0.0  1.0000
+  P   P2        1.0  0.0  0.0  0.5  1.0000
+  P   P3        1.0  0.5  0.5  0.5  1.0000
+  P   P4        1.0  0.0  0.0  0.0  1.0000
+  Ru  Ru1       1.0  0.8200994728324744  0.5  0.5  1.0000
+  Ru  Ru2       1.0  0.17990052716752558  0.5  0.5  1.0000
+  Ru  Ru3       1.0  0.5  0.8200994728324745  0.5  1.0000
+  Ru  Ru4       1.0  0.5  0.17990052716752558  0.5  1.0000
+  Ru  Ru5       1.0  0.5  0.5  0.8200994728324745  1.0000
+  Ru  Ru6       1.0  0.5  0.5  0.17990052716752558  1.0000
