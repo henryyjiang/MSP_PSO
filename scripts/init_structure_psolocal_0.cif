@@ -1,12 +1,12 @@
 data_image0
-_chemical_formula_structural       ScP4Ru6
-_chemical_formula_sum              "Sc1 P4 Ru6"
-_cell_length_a       6.535740782201701
-_cell_length_b       6.535740782201701
-_cell_length_c       6.535740782201701
+_chemical_formula_structural       Sc3Ge3Pd3
+_chemical_formula_sum              "Sc3 Ge3 Pd3"
+_cell_length_a       4.68856472379377
+_cell_length_b       4.688564723793769
+_cell_length_c       14.360277990302642
 _cell_angle_alpha    90.0
 _cell_angle_beta     90.0
-_cell_angle_gamma    90.0
+_cell_angle_gamma    119.99999999999999
 
 _space_group_name_H-M_alt    "P 1"
 _space_group_IT_number       1
@@ -23,14 +23,12 @@ loop_
   _atom_site_fract_y
   _atom_site_fract_z
   _atom_site_occupancy
-  Sc  Sc1       1.0  0.5  0.0  0.0  1.0000
-  P   P1        1.0  0.0  0.5  0.0  1.0000
-  P   P2        1.0  0.0  0.0  0.5  1.0000
-  P   P3        1.0  0.5  0.5  0.5  1.0000
-  P   P4        1.0  0.0  0.0  0.0  1.0000
-  Ru  Ru1       1.0  0.8200994728324744  0.5  0.5  1.0000
-  Ru  Ru2       1.0  0.17990052716752558  0.5  0.5  1.0000
-  Ru  Ru3       1.0  0.5  0.8200994728324745  0.5  1.0000
-  Ru  Ru4       1.0  0.5  0.17990052716752558  0.5  1.0000
-  Ru  Ru5       1.0  0.5  0.5  0.8200994728324745  1.0000
-  Ru  Ru6       1.0  0.5  0.5  0.17990052716752558  1.0000
+  Sc  Sc1       1.0  0.5  0.0  1.7166731246291898e-33  1.0000
+  Sc  Sc2       1.0  0.0  0.5  0.0  1.0000
+  Sc  Sc3       1.0  0.5  0.5  0.0  1.0000
+  Ge  Ge1       1.0  0.5  0.0  0.4999999999999999  1.0000
+  Ge  Ge2       1.0  0.0  0.5  0.4999999999999999  1.0000
+  Ge  Ge3       1.0  0.5  0.5  0.4999999999999999  1.0000
+  Pd  Pd1       1.0  0.3333333333333333  0.6666666666666665  0.7909660507190519  1.0000
+  Pd  Pd2       1.0  0.6666666666666666  0.33333333333333337  0.20903394928094784  1.0000
+  Pd  Pd3       1.0  0.0  0.0  0.0  1.0000

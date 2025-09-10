@@ -22573,3 +22573,32 @@ Detected KeyboardInterrupt, attempting graceful shutdown ...
 2025-09-01 03:05:34,563 - root - INFO - Dataset length: ('train', 22209)
 2025-09-01 03:05:34,564 - root - INFO - Dataset length: ('val', 1233)
 2025-09-01 03:05:34,564 - root - INFO - Dataset length: ('test', 1233)
+2025-09-10 15:19:15,270 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-09-10 15:19:15,304 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-09-10 15:19:15,334 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-09-10 15:19:15,362 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-09-10 15:19:15,395 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-09-10 15:19:15,484 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-09-10 15:19:15,507 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-09-10 15:19:15,527 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-09-10 15:19:15,545 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-09-10 15:19:15,684 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-09-10 15:19:15,717 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-09-10 15:19:15,727 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-09-10 15:19:15,805 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-09-10 15:19:15,817 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-09-10 15:19:15,951 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-09-10 15:19:15,954 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-09-10 15:19:15,957 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-09-10 15:19:15,970 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-09-10 15:19:15,988 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-09-10 15:19:15,990 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-09-10 15:19:15,993 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-09-10 15:19:16,003 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-09-10 15:19:36,743 - root - INFO - Using PyTorch automatic mixed-precision
+2025-09-10 15:19:36,744 - root - INFO - GPU is available: False, Quantity: None
+2025-09-10 15:19:36,744 - root - INFO - Dataset(s) used:
+2025-09-10 15:19:36,744 - root - INFO - Dataset length: ('full', 24677)
+2025-09-10 15:19:36,745 - root - INFO - Dataset length: ('train', 22209)
+2025-09-10 15:19:36,745 - root - INFO - Dataset length: ('val', 1233)
+2025-09-10 15:19:36,745 - root - INFO - Dataset length: ('test', 1233)

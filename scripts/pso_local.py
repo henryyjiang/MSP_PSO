@@ -10,24 +10,24 @@ import matplotlib.pyplot as plt
 from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
 from mattertune import configs as MC
 #from matdeeplearn.common.ase_utils import MDLCalculator
+from msp.utils.objectives import Energy
+from msp.forcefield import MDL_FF
+from ase.optimize import BFGS, FIRE
+import torch
+import gc
+import json
+import logging
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname("../.."))))
-from msp.utils.objectives import Energy
-from msp.forcefield import MDL_FF
-from ase.optimize import BFGS
 from pymatgen.core.structure import Structure
 from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.analysis.structure_matcher import StructureMatcher
-import json
-import logging
 from pyxtal import pyxtal
 import periodictable
 from pathlib import Path
 from collections import Counter
 from loss_calculator import calculate_loss
-import torch
-import gc
 
 logging.getLogger("mattertune").setLevel(logging.CRITICAL)
 logging.getLogger("lightning.pytorch").setLevel(logging.CRITICAL)
@@ -293,22 +293,38 @@ class PSO():
                 positions = self.optimizer.swarm.position
                 new_atoms = [self.dimensions_to_atoms(positions[i]) for i in range(len(positions))]
 
-                def localopt(atoms, steps=1):
-                    #ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
+                # def localopt(atoms, steps=1):
+                #     #ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
+                #     ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
+                #     #ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
+                #
+                #     try:
+                #         optimizer = BFGS(ucf, logfile=None) #try FIRE
+                #         #optimizer = BFGS(atoms, logfile=None)
+                #         optimizer.run(fmax=0.01, steps=steps)
+                #     except ValueError as e:
+                #         print("Optimization failed due to invalid deformation:", e)
+                #         pass
+                #     finally:
+                #         del optimizer
+                #         del ucf
+                #         gc.collect()
+                #         torch.cuda.empty_cache()
+                #
+                #     return atoms
+
+                #optimized_atoms = [localopt(atoms, steps=steps) for atoms in new_atoms]
+                optimized_atoms = []
+                for atoms in new_atoms:
                     ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
-                    #ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
+                    optimizer = FIRE(ucf, logfile=None)
+                    optimizer.run(fmax=0.01, steps=steps)
+                    optimized_atoms.append(atoms)
+                    del optimizer
+                    del ucf
+                    gc.collect()
+                    torch.cuda.empty_cache()
 
-                    try:
-                        #optimizer = BFGS(ucf, logfile=None, maxstep=0.05)
-                        optimizer = BFGS(atoms, logfile=None, maxstep=0.05)
-                        optimizer.run(fmax=0.01, steps=steps)
-                    except ValueError as e:
-                        print("Optimization failed due to invalid deformation:", e)
-                        pass
-
-                    return atoms
-
-                optimized_atoms = [localopt(atoms, steps=steps) for atoms in new_atoms]
                 optimized_atoms = [opt.atoms if hasattr(opt, "atoms") else opt for opt in optimized_atoms]
 
 
