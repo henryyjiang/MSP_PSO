@@ -10,8 +10,6 @@ import matplotlib.pyplot as plt
 from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
 from mattertune import configs as MC
 #from matdeeplearn.common.ase_utils import MDLCalculator
-from msp.utils.objectives import Energy
-from msp.forcefield import MDL_FF
 from ase.optimize import BFGS, FIRE
 import torch
 import gc
@@ -20,6 +18,8 @@ import logging
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname("../.."))))
+from msp.utils.objectives import Energy
+from msp.forcefield import MDL_FF
 from pymatgen.core.structure import Structure
 from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.analysis.structure_matcher import StructureMatcher
