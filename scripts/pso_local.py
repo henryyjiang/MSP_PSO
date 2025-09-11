@@ -425,9 +425,9 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
-        particles = 8  # number of particles in system
-        iters = 10
-        local_steps = 50
+        particles = 10  # number of particles in system
+        iters = 50
+        local_steps = 100
 
         cell_perturb = True
         if cell_perturb:
