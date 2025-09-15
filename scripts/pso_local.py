@@ -316,12 +316,14 @@ class PSO():
                 #optimized_atoms = [localopt(atoms, steps=steps) for atoms in new_atoms]
                 optimized_atoms = []
                 for atoms in new_atoms:
-                    ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
-                    optimizer = FIRE(ucf, logfile=None)
+                    #ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
+                    #ucf = ExpCellFilter(atoms, scalar_pressure=0.0)
+                    #optimizer = FIRE(ucf, logfile=None)
+                    optimizer = FIRE(atoms, logfile=None)
                     optimizer.run(fmax=0.01, steps=steps)
                     optimized_atoms.append(atoms)
                     del optimizer
-                    del ucf
+                    #del ucf
                     gc.collect()
                     torch.cuda.empty_cache()
 
@@ -424,8 +426,8 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
 
-        options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
-        particles = 10  # number of particles in system
+        options = {'c1': 0.5, 'c2': 0.5, 'w': 0.9}  # cognitive, social, inertia
+        particles = 30  # number of particles in system
         iters = 50
         local_steps = 100
 
