@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Y2Rh4
+_chemical_formula_sum              "Y2 Rh4"
+_cell_length_a       5.3558784234278365
+_cell_length_b       5.355607348066801
+_cell_length_c       5.3559316194291435
+_cell_angle_alpha    60.00241739929131
+_cell_angle_beta     59.98672430143031
+_cell_angle_gamma    89.99838775672306
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Y   Y1        1.0  0.4606245006068966  0.8832875035587425  0.19665061888088947  1.0000
+  Y   Y2        1.0  0.7103562324098515  0.6334728491428444  0.696531222502387  1.0000
+  Rh  Rh1       1.0  0.08547635176058241  0.7580385566293886  0.9477553756710755  1.0000
+  Rh  Rh2       1.0  0.5852230807946317  0.25707339536279544  0.4465204612165396  1.0000
+  Rh  Rh3       1.0  0.08494026300044492  0.2577186192569113  0.4471923484398868  1.0000
+  Rh  Rh4       1.0  0.08597871897788777  0.2591795469267407  0.9454044070390021  1.0000

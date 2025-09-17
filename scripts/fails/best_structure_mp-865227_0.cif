@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       TmMgCd2
+_chemical_formula_sum              "Tm1 Mg1 Cd2"
+_cell_length_a       5.540276448457304
+_cell_length_b       5.223761880541747
+_cell_length_c       5.28515452749605
+_cell_angle_alpha    62.50283444737324
+_cell_angle_beta     59.95137567220432
+_cell_angle_gamma    52.18428023690756
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Tm  Tm1       1.0  0.6886362625962583  0.36509533190928495  0.3501383162079497  1.0000
+  Mg  Mg1       1.0  0.1891059292027153  0.8648486667896745  0.8500724464059923  1.0000
+  Cd  Cd1       1.0  0.44091990764384575  0.1261529229890739  0.09086714362743432  1.0000
+  Cd  Cd2       1.0  0.9365377598573406  0.6033154176663066  0.6100233870355534  1.0000

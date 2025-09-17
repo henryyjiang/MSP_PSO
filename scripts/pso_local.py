@@ -319,7 +319,7 @@ class PSO():
                     #ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
                     #ucf = ExpCellFilter(atoms, scalar_pressure=0.0)
                     #optimizer = FIRE(ucf, logfile=None)
-                    optimizer = FIRE(atoms, logfile=None)
+                    optimizer = BFGS(atoms, logfile=None)
                     optimizer.run(fmax=0.01, steps=steps)
                     optimized_atoms.append(atoms)
                     del optimizer

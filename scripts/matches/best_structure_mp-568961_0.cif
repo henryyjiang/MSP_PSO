@@ -1,0 +1,30 @@
+data_image0
+_chemical_formula_structural       BaFe2As2
+_chemical_formula_sum              "Ba1 Fe2 As2"
+_cell_length_a       6.843453749210814
+_cell_length_b       6.845396321961567
+_cell_length_c       4.0011823798818185
+_cell_angle_alpha    72.99981861716384
+_cell_angle_beta     73.15573701720578
+_cell_angle_gamma    131.45466179824535
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ba  Ba1       1.0  0.74855420069187  0.9337751594550531  0.06051995715452896  1.0000
+  Fe  Fe1       1.0  0.49779956087849725  0.18418859905992377  0.5618302081068226  1.0000
+  Fe  Fe2       1.0  0.9991487964385446  0.682692441630208  0.5633019315856936  1.0000
+  As  As1       1.0  0.4033416063040712  0.27875430078282404  0.06048184357370534  1.0000
+  As  As2       1.0  0.09413975036310127  0.5882605650607949  0.06301202931088447  1.0000

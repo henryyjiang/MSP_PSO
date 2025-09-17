@@ -1,12 +1,12 @@
 data_image0
-_chemical_formula_structural       Sc3Ge3Pd3
-_chemical_formula_sum              "Sc3 Ge3 Pd3"
-_cell_length_a       4.68856472379377
-_cell_length_b       4.688564723793769
-_cell_length_c       14.360277990302642
+_chemical_formula_structural       Li2In2O4
+_chemical_formula_sum              "Li2 In2 O4"
+_cell_length_a       5.114842127223181
+_cell_length_b       4.369631106159675
+_cell_length_c       4.9535856648191645
 _cell_angle_alpha    90.0
-_cell_angle_beta     90.0
-_cell_angle_gamma    119.99999999999999
+_cell_angle_beta     59.90654416548803
+_cell_angle_gamma    90.0
 
 _space_group_name_H-M_alt    "P 1"
 _space_group_IT_number       1
@@ -23,12 +23,11 @@ loop_
   _atom_site_fract_y
   _atom_site_fract_z
   _atom_site_occupancy
-  Sc  Sc1       1.0  0.5  0.0  1.7166731246291898e-33  1.0000
-  Sc  Sc2       1.0  0.0  0.5  0.0  1.0000
-  Sc  Sc3       1.0  0.5  0.5  0.0  1.0000
-  Ge  Ge1       1.0  0.5  0.0  0.4999999999999999  1.0000
-  Ge  Ge2       1.0  0.0  0.5  0.4999999999999999  1.0000
-  Ge  Ge3       1.0  0.5  0.5  0.4999999999999999  1.0000
-  Pd  Pd1       1.0  0.3333333333333333  0.6666666666666665  0.7909660507190519  1.0000
-  Pd  Pd2       1.0  0.6666666666666666  0.33333333333333337  0.20903394928094784  1.0000
-  Pd  Pd3       1.0  0.0  0.0  0.0  1.0000
+  Li  Li1       1.0  0.0  0.0  0.5  1.0000
+  Li  Li2       1.0  0.5  0.5  0.5000000000000002  1.0000
+  In  In1       1.0  0.0  0.5  0.0  1.0000
+  In  In2       1.0  0.5  0.0  4.482502573883261e-17  1.0000
+  O   O1        1.0  0.0  0.5  0.5  1.0000
+  O   O2        1.0  0.5  0.0  0.5000000000000001  1.0000
+  O   O3        1.0  0.0  0.0  0.0  1.0000
+  O   O4        1.0  0.5  0.5  8.965005147766522e-17  1.0000
