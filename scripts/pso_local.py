@@ -1,5 +1,6 @@
 import gc
 from ase.neighborlist import neighbor_list
+from ase.geometry import get_distances
 from ase import Atoms
 from ase.filters import ExpCellFilter, UnitCellFilter, FrechetCellFilter
 from ase.geometry import cell_to_cellpar, cellpar_to_cell
@@ -9,7 +10,6 @@ import pyswarms as ps
 import matplotlib.pyplot as plt
 from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
 from mattertune import configs as MC
-from matdeeplearn.common.ase_utils import MDLCalculator
 from ase.optimize import BFGS, FIRE
 import torch
 import gc
@@ -18,6 +18,7 @@ import logging
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname("../.."))))
+#from matdeeplearn.common.ase_utils import MDLCalculator
 from msp.utils.objectives import Energy
 from msp.forcefield import MDL_FF
 from pymatgen.core.structure import Structure
@@ -73,8 +74,8 @@ class PSO():
 
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
 
-        #self.calculator = model.ase_calculator()
-        self.calculator = MDLCalculator(config=train_config)
+        self.calculator = model.ase_calculator()
+        #self.calculator = MDLCalculator(config=train_config)
 
     def composition_to_zs(self):
         counter = Counter(self.composition)
@@ -253,8 +254,8 @@ class PSO():
             self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions)
             #self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions, oh_strategy={'w':'exp_decay'})
 
-
             #cost, pos = self.optimizer.optimize(self.f, iters=10)
+
             for i in range(iters):
                 cost = self.f(self.optimizer.swarm.position)
                 self.optimizer.swarm.current_cost = cost
@@ -293,6 +294,24 @@ class PSO():
                 positions = self.optimizer.swarm.position
                 new_atoms = [self.dimensions_to_atoms(positions[i]) for i in range(len(positions))]
 
+                def separate_close_atoms(atoms, min_dist=0.5):
+                    indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=3.0)
+
+                    moved = False
+                    for i, j, d in zip(indices_i, indices_j, distances):
+                        if d < min_dist:
+                            # Vector from i to j
+                            vec = atoms.positions[j] - atoms.positions[i]
+                            if np.all(vec == 0):
+                                vec = np.random.rand(3) * 1e-3
+                            vec /= np.linalg.norm(vec)
+                            shift = 0.5 * (min_dist - d) * vec
+                            atoms.positions[i] -= shift
+                            atoms.positions[j] += shift
+                            moved = True
+                            #print("atoms too close together")
+                    return moved
+
                 optimized_atoms = []
                 for atoms in new_atoms:
                     atoms.calc = self.calculator
@@ -305,11 +324,18 @@ class PSO():
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
                     if np.any(lengths < 1.0) or np.any(lengths > 20.0):
-                        raise ValueError(f"Unstable cell length: {lengths}")
+                        print("cell lengths out of bounds")
+                        lengths = np.clip(lengths, 1.0, 20.0)
+                        cell = atoms.get_cell()
+                        for i in range(3):
+                            cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
+                        atoms.set_cell(cell, scale_atoms=True)
 
-                    distances = neighbor_list('d', atoms, cutoff=3.0)
-                    if np.any(distances < 0.5):
-                        continue
+                    separate_close_atoms(atoms, min_dist=0.5)
+
+                    if not np.all(np.isfinite(atoms.get_forces())):
+                        print("forces are infinite")
+                        atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
 
                     try:
                         # ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
@@ -321,8 +347,9 @@ class PSO():
 
                         optimizer.run(fmax=0.01, steps=steps)
                         optimized_atoms.append(atoms)
-                    except:
-                        print("Infs or nans in the array")
+                    except Exception as e:
+                        #print("Error: ", e)
+                        optimized_atoms.append(atoms.copy())
                         continue
                     finally:
                         del optimizer
@@ -332,10 +359,8 @@ class PSO():
 
                 optimized_atoms = [opt.atoms if hasattr(opt, "atoms") else opt for opt in optimized_atoms]
 
-
                 self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
                 self.optimizer.swarm.position = np.array([self.atoms_to_dimensions(optimized_atoms[i]) for i in range(len(optimized_atoms))])
-
 
             cost = self.optimizer.swarm.best_cost
             costs.append(cost)
