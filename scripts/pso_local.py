@@ -1,5 +1,5 @@
 import gc
-
+from ase.neighborlist import neighbor_list
 from ase import Atoms
 from ase.filters import ExpCellFilter, UnitCellFilter, FrechetCellFilter
 from ase.geometry import cell_to_cellpar, cellpar_to_cell
@@ -293,25 +293,6 @@ class PSO():
                 positions = self.optimizer.swarm.position
                 new_atoms = [self.dimensions_to_atoms(positions[i]) for i in range(len(positions))]
 
-                def validate_atoms(atoms, tag=""):
-                    """Check atoms positions and cell for NaN, Inf, or complex values."""
-                    pos = atoms.get_positions()
-                    cell = atoms.get_cell().array  # numpy array
-
-                    def check_array(arr, name):
-                        if np.any(np.isnan(arr)):
-                            raise ValueError(f"[{tag}] {name} contains NaN values:\n{arr}")
-                        if np.any(np.isinf(arr)):
-                            raise ValueError(f"[{tag}] {name} contains Inf values:\n{arr}")
-                        if np.iscomplexobj(arr):
-                            raise ValueError(f"[{tag}] {name} contains complex values:\n{arr}")
-
-                    check_array(pos, "positions")
-                    check_array(cell, "cell")
-
-                    # If everything is fine:
-                    return True
-
                 optimized_atoms = []
                 for atoms in new_atoms:
                     atoms.calc = self.calculator
@@ -326,20 +307,29 @@ class PSO():
                     if np.any(lengths < 1.0) or np.any(lengths > 20.0):
                         raise ValueError(f"Unstable cell length: {lengths}")
 
-                    validate_atoms(atoms, tag="Before ExpCellFilter")
+                    distances = neighbor_list('d', atoms, cutoff=3.0)
+                    if np.any(distances < 0.5):
+                        continue
 
-                    #ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
-                    #ucf = ExpCellFilter(atoms, scalar_pressure=0.0)
-                    ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
-                    optimizer = BFGS(ucf, logfile=None)
-                    #optimizer = BFGS(atoms, logfile=None)
+                    try:
+                        # ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
+                        # ucf = ExpCellFilter(atoms, scalar_pressure=0.0)
+                        ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
 
-                    optimizer.run(fmax=0.01, steps=steps)
+                        optimizer = FIRE(ucf, logfile=None)
+                        # optimizer = BFGS(atoms, logfile=None)
+
+                        optimizer.run(fmax=0.01, steps=steps)
+                    except:
+                        print("Infs or nans in the array")
+                        continue
+                    finally:
+                        del optimizer
+                        del ucf
+                        gc.collect()
+                        torch.cuda.empty_cache()
+
                     optimized_atoms.append(atoms)
-                    del optimizer
-                    #del ucf
-                    gc.collect()
-                    torch.cuda.empty_cache()
 
                 optimized_atoms = [opt.atoms if hasattr(opt, "atoms") else opt for opt in optimized_atoms]
 
