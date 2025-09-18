@@ -2,7 +2,7 @@ import gc
 
 from ase import Atoms
 from ase.filters import ExpCellFilter, UnitCellFilter, FrechetCellFilter
-from ase.geometry import cell_to_cellpar
+from ase.geometry import cell_to_cellpar, cellpar_to_cell
 import ase
 import numpy as np
 import pyswarms as ps
@@ -195,7 +195,7 @@ class PSO():
     def obj_func(self, params):
         atoms = self.dimensions_to_atoms(params)
 
-        atoms.set_calculator(self.calculator)
+        atoms.calc = self.calculator
         loss = atoms.get_potential_energy()
 
         if loss < self.best_loss:
@@ -293,33 +293,47 @@ class PSO():
                 positions = self.optimizer.swarm.position
                 new_atoms = [self.dimensions_to_atoms(positions[i]) for i in range(len(positions))]
 
-                # def localopt(atoms, steps=1):
-                #     #ucf = ExpCellFilter(atoms, hydrostatic_strain=True, scalar_pressure=0.0)
-                #     ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
-                #     #ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
-                #
-                #     try:
-                #         optimizer = BFGS(ucf, logfile=None) #try FIRE
-                #         #optimizer = BFGS(atoms, logfile=None)
-                #         optimizer.run(fmax=0.01, steps=steps)
-                #     except ValueError as e:
-                #         print("Optimization failed due to invalid deformation:", e)
-                #         pass
-                #     finally:
-                #         del optimizer
-                #         del ucf
-                #         gc.collect()
-                #         torch.cuda.empty_cache()
-                #
-                #     return atoms
+                def validate_atoms(atoms, tag=""):
+                    """Check atoms positions and cell for NaN, Inf, or complex values."""
+                    pos = atoms.get_positions()
+                    cell = atoms.get_cell().array  # numpy array
 
-                #optimized_atoms = [localopt(atoms, steps=steps) for atoms in new_atoms]
+                    def check_array(arr, name):
+                        if np.any(np.isnan(arr)):
+                            raise ValueError(f"[{tag}] {name} contains NaN values:\n{arr}")
+                        if np.any(np.isinf(arr)):
+                            raise ValueError(f"[{tag}] {name} contains Inf values:\n{arr}")
+                        if np.iscomplexobj(arr):
+                            raise ValueError(f"[{tag}] {name} contains complex values:\n{arr}")
+
+                    check_array(pos, "positions")
+                    check_array(cell, "cell")
+
+                    # If everything is fine:
+                    return True
+
                 optimized_atoms = []
                 for atoms in new_atoms:
+                    atoms.calc = self.calculator
+
+                    cellpar = cell_to_cellpar(atoms.cell)
+                    cellpar[3:] = np.clip(cellpar[3:], 60.0, 120.0)
+
+                    atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
+
+                    cell = atoms.get_cell().array
+                    lengths = np.linalg.norm(cell, axis=1)
+                    if np.any(lengths < 1.0) or np.any(lengths > 20.0):
+                        raise ValueError(f"Unstable cell length: {lengths}")
+
+                    validate_atoms(atoms, tag="Before ExpCellFilter")
+
                     #ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
                     #ucf = ExpCellFilter(atoms, scalar_pressure=0.0)
-                    #optimizer = FIRE(ucf, logfile=None)
-                    optimizer = BFGS(atoms, logfile=None)
+                    ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
+                    optimizer = BFGS(ucf, logfile=None)
+                    #optimizer = BFGS(atoms, logfile=None)
+
                     optimizer.run(fmax=0.01, steps=steps)
                     optimized_atoms.append(atoms)
                     del optimizer
@@ -427,9 +441,9 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.5, 'w': 0.9}  # cognitive, social, inertia
-        particles = 30  # number of particles in system
+        particles = 5  # number of particles in system
         iters = 50
-        local_steps = 100
+        local_steps = 10
 
         cell_perturb = True
         if cell_perturb:
