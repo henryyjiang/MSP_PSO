@@ -9,7 +9,7 @@ import pyswarms as ps
 import matplotlib.pyplot as plt
 from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
 from mattertune import configs as MC
-#from matdeeplearn.common.ase_utils import MDLCalculator
+from matdeeplearn.common.ase_utils import MDLCalculator
 from ase.optimize import BFGS, FIRE
 import torch
 import gc
@@ -73,8 +73,8 @@ class PSO():
 
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
 
-        self.calculator = model.ase_calculator()
-        # self.calculator = MDLCalculator(config=train_config)
+        #self.calculator = model.ase_calculator()
+        self.calculator = MDLCalculator(config=train_config)
 
     def composition_to_zs(self):
         counter = Counter(self.composition)
@@ -320,6 +320,7 @@ class PSO():
                         # optimizer = BFGS(atoms, logfile=None)
 
                         optimizer.run(fmax=0.01, steps=steps)
+                        optimized_atoms.append(atoms)
                     except:
                         print("Infs or nans in the array")
                         continue
@@ -328,8 +329,6 @@ class PSO():
                         del ucf
                         gc.collect()
                         torch.cuda.empty_cache()
-
-                    optimized_atoms.append(atoms)
 
                 optimized_atoms = [opt.atoms if hasattr(opt, "atoms") else opt for opt in optimized_atoms]
 
@@ -431,7 +430,7 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.5, 'w': 0.9}  # cognitive, social, inertia
-        particles = 5  # number of particles in system
+        particles = 10  # number of particles in system
         iters = 50
         local_steps = 10
 
