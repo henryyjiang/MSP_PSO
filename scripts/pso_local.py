@@ -454,12 +454,12 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
 
-        options = {'c1': 0.5, 'c2': 0.5, 'w': 0.9}  # cognitive, social, inertia
+        options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
         particles = 10  # number of particles in system
         iters = 50
         local_steps = 50
 
-        cell_perturb = True
+        cell_perturb = False
         if cell_perturb:
                 pso = PSO(cif_name, model, composition, None, options, particles, iters, local_steps, cell_perturb)
         else:

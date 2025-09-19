@@ -9,7 +9,7 @@ API_KEY = "yvC2UCUjpLKJgwZ4Vhx5xFKHvVfOiF7k"
 SAVE_DIR = "cifs"
 os.makedirs(SAVE_DIR, exist_ok=True)
 
-total_structs = 15
+total_structs = 10
 max_atoms = 20
 
 with MPRester(API_KEY) as mpr:
