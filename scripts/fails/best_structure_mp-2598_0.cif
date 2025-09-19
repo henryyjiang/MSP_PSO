@@ -1,0 +1,34 @@
+data_image0
+_chemical_formula_structural       Ta5Sb4
+_chemical_formula_sum              "Ta5 Sb4"
+_cell_length_a       6.2519835529704615
+_cell_length_b       6.241222337267224
+_cell_length_c       8.355463534791534
+_cell_angle_alpha    79.64338148957745
+_cell_angle_beta     85.27110501510003
+_cell_angle_gamma    102.82214205900495
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ta  Ta1       1.0  0.5923563464470274  0.03654231051114688  0.03400923048800247  1.0000
+  Ta  Ta2       1.0  0.9423902553802137  0.6002431081479916  0.019207033424032544  1.0000
+  Ta  Ta3       1.0  0.40722368251836655  0.42574973130513105  0.9456574213777743  1.0000
+  Ta  Ta4       1.0  0.9962214091538045  0.07224789359438322  0.002175244142846228  1.0000
+  Ta  Ta5       1.0  0.25013850495361956  0.6085958522712912  0.7099145627447855  1.0000
+  Sb  Sb1       1.0  0.5438449504484213  0.22901206614381323  0.7413817526983789  1.0000
+  Sb  Sb2       1.0  0.594590924177395  0.25136804639959803  0.3145950210903163  1.0000
+  Sb  Sb3       1.0  0.18965847806104755  0.6128636567353514  0.2967484805663968  1.0000
+  Sb  Sb4       1.0  0.09317941935082133  0.10603477211462421  0.5664835126075518  1.0000

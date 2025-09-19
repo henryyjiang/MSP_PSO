@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       SmB2Ir3
+_chemical_formula_sum              "Sm1 B2 Ir3"
+_cell_length_a       4.795450339508582
+_cell_length_b       4.598624210669065
+_cell_length_c       5.664470108441391
+_cell_angle_alpha    59.4347265902422
+_cell_angle_beta     59.14648500017614
+_cell_angle_gamma    68.3027978516637
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Sm  Sm1       1.0  0.30234877091571355  0.10068047906030309  0.838401077959085  1.0000
+  B   B1        1.0  0.5805161855688985  0.0779796477744066  0.21073331040329873  1.0000
+  B   B2        1.0  0.2225177212359869  0.39361865682740255  0.18112846527212131  1.0000
+  Ir  Ir1       1.0  0.11360311411818967  0.9223241773428459  0.5331032201178582  1.0000
+  Ir  Ir2       1.0  0.6762423668268107  0.4773624015734597  0.7996497441454161  1.0000
+  Ir  Ir3       1.0  0.741824898679448  0.566974886774651  0.23115914683255484  1.0000
