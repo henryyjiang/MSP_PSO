@@ -1,0 +1,30 @@
+data_image0
+_chemical_formula_structural       LaCo2Ge2
+_chemical_formula_sum              "La1 Co2 Ge2"
+_cell_length_a       4.1650744699999995
+_cell_length_b       4.16507535
+_cell_length_c       5.77525432
+_cell_angle_alpha    111.13683638
+_cell_angle_beta     111.13683543000002
+_cell_angle_gamma    90.00000615
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  La  La1       1.0  0.44652939439826  0.656310115087869  0.290466531691232  1.0000
+  Co  Co1       1.0  0.8412302692678764  0.013929307705600857  0.017737392934669163  1.0000
+  Co  Co2       1.0  0.9611119733658893  0.13175190744693277  0.4688239866639513  1.0000
+  Ge  Ge1       1.0  0.293565059320974  0.9436614530664682  0.8543254992702844  1.0000
+  Ge  Ge2       1.0  0.828781103928776  0.5030878146093811  0.8705098695529176  1.0000
