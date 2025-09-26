@@ -1,4 +1,6 @@
 import gc
+
+import mattersim.applications.relax
 from ase.neighborlist import neighbor_list
 from ase.geometry import get_distances
 from ase import Atoms
@@ -10,8 +12,12 @@ import pyswarms as ps
 import matplotlib.pyplot as plt
 from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
 from mattertune import configs as MC
+from mattersim.forcefield.potential import Potential
 from ase.optimize import BFGS, FIRE
 import torch
+import torch_sim as ts
+from torch_sim.models.mattersim import MatterSimModel
+from mattersim.forcefield.m3gnet import m3gnet
 import gc
 import json
 import logging
@@ -76,6 +82,14 @@ class PSO():
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
 
         self.calculator = model.ase_calculator()
+        self.model = model
+
+        ckpt = torch.load("MatterSim-v1.0.0-5M.pth", map_location="cpu")
+        m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
+        state_dict = ckpt["model"]
+        m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
+        self.mattersim_model = MatterSimModel(model=Potential(model))
+
         #self.calculator = MDLCalculator(config=train_config)
 
     def composition_to_zs(self):
@@ -289,7 +303,7 @@ class PSO():
                             #print("atoms too close together")
                     return moved
 
-                optimized_atoms = []
+                sanitized_atoms = []
                 for atoms in new_atoms:
                     atoms.calc = self.calculator
 
@@ -314,27 +328,17 @@ class PSO():
                         print("forces are infinite")
                         atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
 
-                    try:
-                        # ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
-                        ucf = ExpCellFilter(atoms, scalar_pressure=0.0)
-                        # ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
+                    sanitized_atoms.append(atoms)
 
-                        optimizer = FIRE(ucf, logfile=None)
-                        # optimizer = BFGS(atoms, logfile=None)
+                optimized_state = ts.optimize(
+                        system=sanitized_atoms,
+                        model=self.mattersim_model,
+                        optimizer=ts.frechet_cell_fire,
+                        autobatcher=False,)
+                optimized_atoms = optimized_state.to_atoms()
+                for atom in optimized_atoms:
+                    atom.set_calculator(self.calculator)
 
-                        optimizer.run(fmax=0.01, steps=steps)
-                        optimized_atoms.append(atoms)
-                    except Exception as e:
-                        #print("Error: ", e)
-                        optimized_atoms.append(atoms.copy())
-                        continue
-                    finally:
-                        del optimizer
-                        del ucf
-                        gc.collect()
-                        torch.cuda.empty_cache()
-
-                optimized_atoms = [opt.atoms if hasattr(opt, "atoms") else opt for opt in optimized_atoms]
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
 
