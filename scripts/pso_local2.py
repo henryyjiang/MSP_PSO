@@ -88,7 +88,7 @@ class PSO():
         m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
         state_dict = ckpt["model"]
         m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
-        self.mattersim_model = MatterSimModel(model=Potential(model))
+        self.mattersim_model = MatterSimModel(model=Potential(m3gnet_model))
 
         #self.calculator = MDLCalculator(config=train_config)
 
