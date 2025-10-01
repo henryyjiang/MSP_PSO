@@ -249,7 +249,7 @@ class PSO():
                 if self.optimizer.swarm.pbest_cost[min_idx] < self.optimizer.swarm.best_cost:
                     self.optimizer.swarm.best_cost = self.optimizer.swarm.pbest_cost[min_idx]
                     self.optimizer.swarm.best_pos = self.optimizer.swarm.pbest_pos[min_idx]
-                    self.best_cell = self.cell[i]
+                    self.best_cell = self.cell[min_idx]
 
                 #compute velocity
                 n_particles, dimensions = self.optimizer.swarm.position.shape
