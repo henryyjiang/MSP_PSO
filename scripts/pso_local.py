@@ -49,7 +49,7 @@ class PSO():
         self.cif_name = cif_name
         self.cell_perturb = cell_perturb
         self.composition = composition
-        self.cell = [cell] * 10
+        self.cell = [cell] * particles
         self.best_cell = []
 
         self.options = options
@@ -360,7 +360,7 @@ class PSO():
             plt.close()
 
             try:
-                optimized_structure = AseAtomsAdaptor.get_structure(self.dimensions_to_atoms(pos, self.best_cell))
+                optimized_structure = AseAtomsAdaptor.get_structure(self.final_dimensions(pos, self.best_cell))
                 original_cif = os.path.join("cifs", self.cif_name + ".cif")
                 ground_truth = Structure.from_file(original_cif)
                 matched = matcher.fit(ground_truth, optimized_structure)

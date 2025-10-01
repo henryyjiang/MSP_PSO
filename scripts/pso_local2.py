@@ -55,7 +55,7 @@ class PSO():
         self.cif_name = cif_name
         self.cell_perturb = cell_perturb
         self.composition = composition
-        self.cell = [cell] * 10
+        self.cell = [cell] * particles
         self.best_cell = []
 
         self.options = options
@@ -84,7 +84,7 @@ class PSO():
         self.calculator = model.ase_calculator()
         self.model = model
 
-        ckpt = torch.load("MatterSim-v1.0.0-5M.pth", map_location="cpu")
+        ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location="cpu")
         m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
         state_dict = ckpt["model"]
         m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
@@ -364,7 +364,7 @@ class PSO():
             plt.close()
 
             try:
-                optimized_structure = AseAtomsAdaptor.get_structure(self.dimensions_to_atoms(pos, self.best_cell))
+                optimized_structure = AseAtomsAdaptor.get_structure(self.final_dimensions(pos, self.best_cell))
                 original_cif = os.path.join("cifs", self.cif_name + ".cif")
                 ground_truth = Structure.from_file(original_cif)
                 matched = matcher.fit(ground_truth, optimized_structure)
