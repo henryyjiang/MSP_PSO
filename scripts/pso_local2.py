@@ -18,7 +18,6 @@ import torch
 import torch_sim as ts
 from torch_sim.models.mattersim import MatterSimModel
 from mattersim.forcefield.m3gnet import m3gnet
-import gc
 import json
 import logging
 import sys
@@ -438,7 +437,7 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
-        particles = 10  # number of particles in system
+        particles = 100  # number of particles in system
         iters = 50
         local_steps = 50
 
