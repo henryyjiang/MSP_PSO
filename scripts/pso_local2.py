@@ -284,7 +284,7 @@ class PSO():
                 positions = self.optimizer.swarm.position
                 new_atoms = [self.dimensions_to_atoms(positions[i], i) for i in range(len(positions))]
 
-                def separate_close_atoms(atoms, min_dist=0.5):
+                def separate_close_atoms(atoms, min_dist=1.2):
                     indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=3.0)
 
                     moved = False
@@ -313,9 +313,9 @@ class PSO():
 
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
-                    if np.any(lengths < 1.0) or np.any(lengths > 200.0):
+                    if np.any(lengths < 3.0) or np.any(lengths > 150.0):
                         print("cell lengths out of bounds")
-                        lengths = np.clip(lengths, 1.0, 200.0)
+                        lengths = np.clip(lengths, 3.0, 150.0)
                         cell = atoms.get_cell()
                         for i in range(3):
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
