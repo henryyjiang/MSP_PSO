@@ -1,0 +1,34 @@
+data_image0
+_chemical_formula_structural       Sc3Ge3Os3
+_chemical_formula_sum              "Sc3 Ge3 Os3"
+_cell_length_a       7.019477241552856
+_cell_length_b       7.0150086474728335
+_cell_length_c       3.4606920755781663
+_cell_angle_alpha    90.03400854225559
+_cell_angle_beta     90.08091252289806
+_cell_angle_gamma    120.03137983324181
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Sc  Sc1       1.0  0.41872111585190447  0.03716058002282807  0.45718829912510484  1.0000
+  Sc  Sc2       1.0  0.21698181212257484  0.43567724691734294  0.45676675320795534  1.0000
+  Sc  Sc3       1.0  0.8173325944867523  0.8348403346358315  0.4570115989205216  1.0000
+  Ge  Ge1       1.0  0.15133475056104873  0.10268082910019874  0.955701188030612  1.0000
+  Ge  Ge2       1.0  0.48433190022465145  0.7692787285574261  0.955828767522949  1.0000
+  Ge  Ge3       1.0  0.817669590165786  0.43618604477755857  0.45775938886767764  1.0000
+  Os  Os1       1.0  0.8175952392719876  0.1800531493012761  0.9576016465009447  1.0000
+  Os  Os2       1.0  0.07327596337143412  0.6917101046161682  0.9580940688411  1.0000
+  Os  Os3       1.0  0.5615889971287409  0.4354694550044771  0.9571107057851113  1.0000
