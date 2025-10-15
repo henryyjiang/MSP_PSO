@@ -1,0 +1,34 @@
+data_image0
+_chemical_formula_structural       Ho3Mg3Ag3
+_chemical_formula_sum              "Ho3 Mg3 Ag3"
+_cell_length_a       7.857268876258515
+_cell_length_b       7.8214175847215195
+_cell_length_c       3.968221423973723
+_cell_angle_alpha    90.01134746465286
+_cell_angle_beta     89.97605762455234
+_cell_angle_gamma    120.16333089827724
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ho  Ho1       1.0  0.41708006046999574  0.12525201298490996  0.5032790640405916  1.0000
+  Ho  Ho2       1.0  0.00895367027486035  0.3074332650461821  0.5029510461816997  1.0000
+  Ho  Ho3       1.0  0.8273791718619833  0.7155889674576414  0.5034131764862787  1.0000
+  Mg  Mg1       1.0  0.6698601648100382  0.9677448079028169  0.0023899633426176514  1.0000
+  Mg  Mg2       1.0  0.1665671499311294  0.7160832495946782  0.0027198418414606795  1.0000
+  Mg  Mg3       1.0  0.41822792349766696  0.4658350939532885  0.002985797259045908  1.0000
+  Ag  Ag1       1.0  0.08452129778481277  0.04971342160612411  0.0027705117514749134  1.0000
+  Ag  Ag2       1.0  0.7507329582212918  0.3821349037368024  0.0028376851799365443  1.0000
+  Ag  Ag3       1.0  0.41826011632517124  0.7172004898552597  0.5029185869968968  1.0000
