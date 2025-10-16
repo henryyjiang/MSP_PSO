@@ -12,7 +12,7 @@ import pyswarms as ps
 import matplotlib.pyplot as plt
 # from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
 # from mattertune import configs as MC
-from mattersim.forcefield.potential import Potential
+from mattersim.forcefield.potential import Potential, MatterSimCalculator
 from ase.optimize import BFGS, FIRE
 import torch
 import torch_sim as ts
@@ -39,6 +39,8 @@ logging.getLogger("mattertune").setLevel(logging.CRITICAL)
 logging.getLogger("lightning.pytorch").setLevel(logging.CRITICAL)
 logging.getLogger("pandas").setLevel(logging.CRITICAL)
 
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
 def extract_cell(cif_path):
     structure = Structure.from_file(cif_path)
     cell = structure.lattice.matrix
@@ -48,6 +50,8 @@ def extract_composition(cif_path):
     structure = Structure.from_file(cif_path)
     composition = [site.specie.Z for site in structure]
     return composition
+
+
 
 class PSO():
     def __init__(self, cif_name, model, composition, cell, options, particles, iters, local_steps, cell_perturb=True):
@@ -81,7 +85,7 @@ class PSO():
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
         self.model = model
 
-        self.calculator = self.model.ase_calculator()
+        self.calculator = MatterSimCalculator(device=device)
 
         #self.calculator = MDLCalculator(config=train_config)
 
