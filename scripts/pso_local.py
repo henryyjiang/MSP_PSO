@@ -1,4 +1,6 @@
 import gc
+
+import mattersim.applications.relax
 from ase.neighborlist import neighbor_list
 from ase.geometry import get_distances
 from ase import Atoms
@@ -10,9 +12,12 @@ import pyswarms as ps
 import matplotlib.pyplot as plt
 from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
 from mattertune import configs as MC
+from mattersim.forcefield.potential import Potential
 from ase.optimize import BFGS, FIRE
 import torch
-import gc
+import torch_sim as ts
+from torch_sim.models.mattersim import MatterSimModel
+from mattersim.forcefield.m3gnet import m3gnet
 import json
 import logging
 import sys
@@ -76,6 +81,14 @@ class PSO():
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
 
         self.calculator = model.ase_calculator()
+        self.model = model
+
+        ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location="cpu")
+        m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
+        state_dict = ckpt["model"]
+        m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
+        self.mattersim_model = MatterSimModel(model=Potential(m3gnet_model))
+
         #self.calculator = MDLCalculator(config=train_config)
 
     def composition_to_zs(self):
@@ -271,7 +284,7 @@ class PSO():
                 positions = self.optimizer.swarm.position
                 new_atoms = [self.dimensions_to_atoms(positions[i], i) for i in range(len(positions))]
 
-                def separate_close_atoms(atoms, min_dist=0.5):
+                def separate_close_atoms(atoms, min_dist=1.2):
                     indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=3.0)
 
                     moved = False
@@ -289,7 +302,7 @@ class PSO():
                             #print("atoms too close together")
                     return moved
 
-                optimized_atoms = []
+                sanitized_atoms = []
                 for atoms in new_atoms:
                     atoms.calc = self.calculator
 
@@ -300,9 +313,9 @@ class PSO():
 
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
-                    if np.any(lengths < 1.0) or np.any(lengths > 200.0):
+                    if np.any(lengths < 3.0) or np.any(lengths > 150.0):
                         print("cell lengths out of bounds")
-                        lengths = np.clip(lengths, 1.0, 200.0)
+                        lengths = np.clip(lengths, 3.0, 150.0)
                         cell = atoms.get_cell()
                         for i in range(3):
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
@@ -314,27 +327,17 @@ class PSO():
                         print("forces are infinite")
                         atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
 
-                    try:
-                        # ucf = UnitCellFilter(atoms, scalar_pressure=0.0)
-                        ucf = ExpCellFilter(atoms, scalar_pressure=0.0)
-                        # ucf = FrechetCellFilter(atoms, scalar_pressure=0.0)
+                    sanitized_atoms.append(atoms)
 
-                        optimizer = FIRE(ucf, logfile=None)
-                        # optimizer = BFGS(atoms, logfile=None)
+                optimized_state = ts.optimize(
+                        system=sanitized_atoms,
+                        model=self.mattersim_model,
+                        optimizer=ts.frechet_cell_fire,
+                        autobatcher=False,)
+                optimized_atoms = optimized_state.to_atoms()
+                for atom in optimized_atoms:
+                    atom.set_calculator(self.calculator)
 
-                        optimizer.run(fmax=0.01, steps=steps)
-                        optimized_atoms.append(atoms)
-                    except Exception as e:
-                        #print("Error: ", e)
-                        optimized_atoms.append(atoms.copy())
-                        continue
-                    finally:
-                        del optimizer
-                        del ucf
-                        gc.collect()
-                        torch.cuda.empty_cache()
-
-                optimized_atoms = [opt.atoms if hasattr(opt, "atoms") else opt for opt in optimized_atoms]
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
 
@@ -434,9 +437,9 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
-        particles = 10  # number of particles in system
-        iters = 50
-        local_steps = 50
+        particles = 50  # number of particles in system
+        iters = 200
+        local_steps = 100
 
         cell_perturb = False
         if cell_perturb:

@@ -10,8 +10,8 @@ import ase
 import numpy as np
 import pyswarms as ps
 import matplotlib.pyplot as plt
-from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
-from mattertune import configs as MC
+# from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
+# from mattertune import configs as MC
 from mattersim.forcefield.potential import Potential
 from ase.optimize import BFGS, FIRE
 import torch
@@ -79,15 +79,9 @@ class PSO():
         self.energy = Energy(normalize=True, ljr_ratio=1)
 
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
-
-        self.calculator = model.ase_calculator()
         self.model = model
 
-        ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location="cpu")
-        m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
-        state_dict = ckpt["model"]
-        m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
-        self.mattersim_model = MatterSimModel(model=Potential(m3gnet_model))
+        self.calculator = self.model.ase_calculator()
 
         #self.calculator = MDLCalculator(config=train_config)
 
@@ -331,7 +325,7 @@ class PSO():
 
                 optimized_state = ts.optimize(
                         system=sanitized_atoms,
-                        model=self.mattersim_model,
+                        model=self.model,
                         optimizer=ts.frechet_cell_fire,
                         autobatcher=False,)
                 optimized_atoms = optimized_state.to_atoms()
@@ -396,36 +390,11 @@ class PSO():
 
 
 if __name__ == "__main__":
-    config = MC.MatterSimBackboneConfig(
-        pretrained_model="MatterSim-v1.0.0-5M",
-        graph_convertor=MC.MatterSimGraphConvertorConfig(
-            twobody_cutoff=5.0,
-            has_threebody=True,
-            threebody_cutoff=4.0
-        ),
-        properties=[
-            MC.EnergyPropertyConfig(
-                loss=MC.MAELossConfig(),
-                loss_coefficient=1.0
-            ),
-            MC.ForcesPropertyConfig(
-                loss=MC.MAELossConfig(),
-                loss_coefficient=10.0,
-                conservative=True
-            ),
-            MC.StressesPropertyConfig(
-                loss=MC.MAELossConfig(),
-                loss_coefficient=1.0,
-                conservative=True
-            ),
-        ],
-        optimizer=MC.AdamWConfig(lr=1e-4),
-        lr_scheduler=MC.CosineAnnealingLRConfig(
-            T_max=100,
-            eta_min=1e-6
-        )
-    )
-    model = MatterSimM3GNetBackboneModule(config)
+    ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location="cpu")
+    m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
+    state_dict = ckpt["model"]
+    m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
+    model = MatterSimModel(model=Potential(m3gnet_model))
 
     all_matches = []
 
@@ -437,9 +406,9 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
-        particles = 10  # number of particles in system
-        iters = 50
-        local_steps = 500
+        particles = 50  # number of particles in system
+        iters = 200
+        local_steps = 100
 
         cell_perturb = False
         if cell_perturb:
