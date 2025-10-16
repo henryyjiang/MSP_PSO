@@ -216,7 +216,6 @@ class PSO():
             options = self.options  # cognitive, social, inertia
             particles = self.particles  # number of particles in system
             iters = self.iters
-            steps = self.local_steps
             if not self.cell_perturb:
                 dimensions = len(self.composition)*3
             else:
@@ -327,7 +326,8 @@ class PSO():
                         system=sanitized_atoms,
                         model=self.model,
                         optimizer=ts.frechet_cell_fire,
-                        autobatcher=False,)
+                        autobatcher=False,
+                        max_steps =self.local_steps)
                 optimized_atoms = optimized_state.to_atoms()
                 for atom in optimized_atoms:
                     atom.set_calculator(self.calculator)
