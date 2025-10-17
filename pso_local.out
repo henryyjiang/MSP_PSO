@@ -1,0 +1,437 @@
+---------------------------------------
+Begin Slurm Prolog: Oct-16-2025 20:32:38
+Job ID:    1583588
+User ID:   hjiang378
+Account:   gts-vfung3
+Job name:  pso_local
+Partition: gpu-v100
+QOS:       inferno
+---------------------------------------
+
+CondaError: Run 'conda init' before 'conda deactivate'
+
+2025-10-16 20:32:54,231 - numexpr.utils - INFO - Note: NumExpr detected 24 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2025-10-16 20:32:54,232 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/e3nn/o3/_wigner.py:10: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd, _W3j_flat, _W3j_indices = torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
+2025-10-16 20:33:10,891 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-10-16 20:33:10,914 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-10-16 20:33:10,932 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-10-16 20:33:10,948 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-10-16 20:33:10,965 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-10-16 20:33:11,002 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-10-16 20:33:11,009 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-10-16 20:33:11,016 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-10-16 20:33:11,022 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-10-16 20:33:11,028 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-10-16 20:33:11,043 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,050 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,078 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.ema.EMARecipeConfig'> with tag 'ema'.
+2025-10-16 20:33:11,094 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.lora.LoRARecipeConfig'> with tag 'lora'.
+2025-10-16 20:33:11,100 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.noop.NoOpRecipeConfig'> with tag 'no-op'.
+2025-10-16 20:33:11,133 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-10-16 20:33:11,144 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-10-16 20:33:11,152 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.atoms_list.AtomsListDatasetConfig'> with tag 'atoms_list'.
+2025-10-16 20:33:11,154 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,157 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,167 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-10-16 20:33:11,175 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-10-16 20:33:11,177 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,180 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,191 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-10-16 20:33:11,198 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-10-16 20:33:11,201 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,204 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,215 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/pso_local2.py:396: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location=device)
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/core/structure.py:2872: EncodingWarning: We strongly encourage explicit `encoding`, and we would use UTF-8 by default as per PEP 686
+  with zopen(filename, "rt", errors="replace") as f:
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/torch_geometric/nn/conv/message_passing.py:1032: UserWarning: 'NeighborEmbedding.jittable' is deprecated and a no-op. Please remove its usage.
+  warnings.warn(f"'{self.__class__.__name__}.jittable' is deprecated "
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/torch_geometric/nn/conv/message_passing.py:1032: UserWarning: 'EquivariantMultiHeadAttention.jittable' is deprecated and a no-op. Please remove its usage.
+  warnings.warn(f"'{self.__class__.__name__}.jittable' is deprecated "
+2025-10-16 20:33:22,129 - root - INFO - Using PyTorch automatic mixed-precision
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/matdeeplearn/trainers/base_trainer.py:84: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = GradScaler(enabled=self.use_amp and self.device.type == "cuda")
+2025-10-16 20:33:22,129 - root - INFO - GPU is available: True, Quantity: None
+2025-10-16 20:33:22,130 - root - INFO - Dataset(s) used:
+2025-10-16 20:33:22,130 - root - INFO - Dataset length: ('full', 24677)
+2025-10-16 20:33:22,130 - root - INFO - Dataset length: ('train', 22209)
+2025-10-16 20:33:22,131 - root - INFO - Dataset length: ('val', 1233)
+2025-10-16 20:33:22,131 - root - INFO - Dataset length: ('test', 1233)
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/msp/forcefield/mdl_ff.py:525: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(model_path, map_location=torch.device(self.trainer.rank))
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+[32m2025-10-16 20:33:22.656[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/mattersim/forcefield/potential.py:896: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(load_path, map_location=device)
+[32m2025-10-16 20:33:22.897[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfreeze_reset_model[0m:[36m120[0m - [1mfine-tuning all layers[0m
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/loss_calculator.py:55: FutureWarning: Please use atoms.calc = calc
+  atoms.set_calculator(model.ase_calculator())
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/pso_local2.py:166: FutureWarning: Please use atoms.calc = calc
+  atoms.set_calculator(self.calculator)
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/pso_local2.py:336: FutureWarning: Please use atoms.calc = calc
+  atom.set_calculator(self.calculator)
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/core/structure.py:2872: EncodingWarning: We strongly encourage explicit `encoding`, and we would use UTF-8 by default as per PEP 686
+  with zopen(filename, "rt", errors="replace") as f:
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/io/cif.py:1221: UserWarning: Issues encountered while parsing CIF: 4 fractional coordinates rounded to ideal values to avoid issues with finite precision.
+  warnings.warn("Issues encountered while parsing CIF: " + "\n".join(self.warnings))
+2025-10-16 20:43:55,059 - root - INFO - Using PyTorch automatic mixed-precision
+2025-10-16 20:43:55,060 - root - INFO - GPU is available: True, Quantity: None
+2025-10-16 20:43:55,060 - root - INFO - Dataset(s) used:
+2025-10-16 20:43:55,061 - root - INFO - Dataset length: ('full', 24677)
+2025-10-16 20:43:55,061 - root - INFO - Dataset length: ('train', 22209)
+2025-10-16 20:43:55,062 - root - INFO - Dataset length: ('val', 1233)
+2025-10-16 20:43:55,062 - root - INFO - Dataset length: ('test', 1233)
+Iteration 1: Ground Truth: -18.45876693725586, Best Cost = -18.288419723510742
+cell lengths out of bounds
+cell lengths out of bounds
+Iteration 2: Ground Truth: -18.45876693725586, Best Cost = -18.47624969482422
+Iteration 3: Ground Truth: -18.45876693725586, Best Cost = -18.47624969482422
+Iteration 4: Ground Truth: -18.45876693725586, Best Cost = -18.47624969482422
+Iteration 5: Ground Truth: -18.45876693725586, Best Cost = -18.47624969482422
+Iteration 6: Ground Truth: -18.45876693725586, Best Cost = -18.47758674621582
+Iteration 7: Ground Truth: -18.45876693725586, Best Cost = -18.47758674621582
+Iteration 8: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 9: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 10: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 11: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 12: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 13: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 14: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 15: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 16: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 17: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 18: Ground Truth: -18.45876693725586, Best Cost = -18.47762107849121
+Iteration 19: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 20: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 21: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 22: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 23: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 24: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 25: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 26: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 27: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 28: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 29: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 30: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 31: Ground Truth: -18.45876693725586, Best Cost = -18.477806091308594
+Iteration 32: Ground Truth: -18.45876693725586, Best Cost = -18.478063583374023
+Iteration 33: Ground Truth: -18.45876693725586, Best Cost = -18.478063583374023
+Iteration 34: Ground Truth: -18.45876693725586, Best Cost = -18.478063583374023
+Iteration 35: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 36: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 37: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 38: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 39: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 40: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 41: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 42: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 43: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 44: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 45: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 46: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 47: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 48: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 49: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+Iteration 50: Ground Truth: -18.45876693725586, Best Cost = -18.47811508178711
+mp-1064843 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+[32m2025-10-16 20:43:55.759[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[32m2025-10-16 20:43:55.997[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfreeze_reset_model[0m:[36m120[0m - [1mfine-tuning all layers[0m
+2025-10-16 21:03:12,191 - root - INFO - Using PyTorch automatic mixed-precision
+2025-10-16 21:03:12,192 - root - INFO - GPU is available: True, Quantity: None
+2025-10-16 21:03:12,193 - root - INFO - Dataset(s) used:
+2025-10-16 21:03:12,193 - root - INFO - Dataset length: ('full', 24677)
+2025-10-16 21:03:12,194 - root - INFO - Dataset length: ('train', 22209)
+2025-10-16 21:03:12,194 - root - INFO - Dataset length: ('val', 1233)
+2025-10-16 21:03:12,194 - root - INFO - Dataset length: ('test', 1233)
+Iteration 1: Ground Truth: -72.15457153320312, Best Cost = -55.47353744506836
+Iteration 2: Ground Truth: -72.15457153320312, Best Cost = -69.90612030029297
+Iteration 3: Ground Truth: -72.15457153320312, Best Cost = -70.47998809814453
+Iteration 4: Ground Truth: -72.15457153320312, Best Cost = -70.47998809814453
+Iteration 5: Ground Truth: -72.15457153320312, Best Cost = -70.47998809814453
+Iteration 6: Ground Truth: -72.15457153320312, Best Cost = -70.47998809814453
+Iteration 7: Ground Truth: -72.15457153320312, Best Cost = -70.48030090332031
+Iteration 8: Ground Truth: -72.15457153320312, Best Cost = -70.48197937011719
+Iteration 9: Ground Truth: -72.15457153320312, Best Cost = -70.48197937011719
+Iteration 10: Ground Truth: -72.15457153320312, Best Cost = -70.50474548339844
+Iteration 11: Ground Truth: -72.15457153320312, Best Cost = -70.50474548339844
+Iteration 12: Ground Truth: -72.15457153320312, Best Cost = -70.50474548339844
+Iteration 13: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 14: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 15: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 16: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 17: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 18: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 19: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 20: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 21: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 22: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 23: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 24: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 25: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 26: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 27: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 28: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 29: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 30: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 31: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 32: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 33: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 34: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 35: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 36: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 37: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 38: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 39: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 40: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 41: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 42: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 43: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+Iteration 44: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 45: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 46: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 47: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 48: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 49: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+Iteration 50: Ground Truth: -72.15457153320312, Best Cost = -72.18107604980469
+cell lengths out of bounds
+mp-1078635 match: [True]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+[32m2025-10-16 21:03:12.962[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[32m2025-10-16 21:03:13.191[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfreeze_reset_model[0m:[36m120[0m - [1mfine-tuning all layers[0m
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/pso_local2.py:328: UserWarning: Optimize has reached max steps: 501
+  optimized_state = ts.optimize(
+2025-10-16 21:30:10,714 - root - INFO - Using PyTorch automatic mixed-precision
+2025-10-16 21:30:10,715 - root - INFO - GPU is available: True, Quantity: None
+2025-10-16 21:30:10,716 - root - INFO - Dataset(s) used:
+2025-10-16 21:30:10,716 - root - INFO - Dataset length: ('full', 24677)
+2025-10-16 21:30:10,717 - root - INFO - Dataset length: ('train', 22209)
+2025-10-16 21:30:10,717 - root - INFO - Dataset length: ('val', 1233)
+2025-10-16 21:30:10,717 - root - INFO - Dataset length: ('test', 1233)
+Iteration 1: Ground Truth: -29.30103302001953, Best Cost = -26.117494583129883
+cell lengths out of bounds
+Iteration 2: Ground Truth: -29.30103302001953, Best Cost = -28.3208065032959
+Iteration 3: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 4: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 5: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 6: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 7: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 8: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 9: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 10: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 11: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 12: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 13: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 14: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 15: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 16: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 17: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 18: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 19: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 20: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 21: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 22: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 23: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 24: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 25: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 26: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 27: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 28: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 29: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 30: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 31: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 32: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 33: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 34: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 35: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 36: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 37: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 38: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+cell lengths out of bounds
+Iteration 39: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+cell lengths out of bounds
+Iteration 40: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 41: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 42: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 43: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 44: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 45: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+cell lengths out of bounds
+cell lengths out of bounds
+Iteration 46: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+cell lengths out of bounds
+cell lengths out of bounds
+Iteration 47: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+cell lengths out of bounds
+Iteration 48: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+Iteration 49: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+cell lengths out of bounds
+Iteration 50: Ground Truth: -29.30103302001953, Best Cost = -42.496849060058594
+cell lengths out of bounds
+mp-1205940 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+[32m2025-10-16 21:30:11.530[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[32m2025-10-16 21:30:11.787[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfreeze_reset_model[0m:[36m120[0m - [1mfine-tuning all layers[0m
+2025-10-16 21:44:10,390 - root - INFO - Using PyTorch automatic mixed-precision
+2025-10-16 21:44:10,391 - root - INFO - GPU is available: True, Quantity: None
+2025-10-16 21:44:10,392 - root - INFO - Dataset(s) used:
+2025-10-16 21:44:10,392 - root - INFO - Dataset length: ('full', 24677)
+2025-10-16 21:44:10,393 - root - INFO - Dataset length: ('train', 22209)
+2025-10-16 21:44:10,393 - root - INFO - Dataset length: ('val', 1233)
+2025-10-16 21:44:10,393 - root - INFO - Dataset length: ('test', 1233)
+Iteration 1: Ground Truth: -30.03382682800293, Best Cost = -28.47195053100586
+cell lengths out of bounds
+Iteration 2: Ground Truth: -30.03382682800293, Best Cost = -30.135011672973633
+Iteration 3: Ground Truth: -30.03382682800293, Best Cost = -30.14522361755371
+Iteration 4: Ground Truth: -30.03382682800293, Best Cost = -30.145870208740234
+Iteration 5: Ground Truth: -30.03382682800293, Best Cost = -30.14698028564453
+Iteration 6: Ground Truth: -30.03382682800293, Best Cost = -30.14698028564453
+Iteration 7: Ground Truth: -30.03382682800293, Best Cost = -30.14698028564453
+Iteration 8: Ground Truth: -30.03382682800293, Best Cost = -30.14751625061035
+Iteration 9: Ground Truth: -30.03382682800293, Best Cost = -30.14751625061035
+Iteration 10: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 11: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 12: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 13: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 14: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 15: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 16: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 17: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 18: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 19: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 20: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 21: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 22: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 23: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 24: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 25: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 26: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 27: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 28: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 29: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 30: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 31: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 32: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 33: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 34: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 35: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 36: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 37: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 38: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 39: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 40: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 41: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 42: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 43: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 44: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 45: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 46: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 47: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 48: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 49: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+Iteration 50: Ground Truth: -30.03382682800293, Best Cost = -30.1477108001709
+mp-20394 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+[32m2025-10-16 21:44:11.181[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfrom_checkpoint[0m:[36m891[0m - [1mLoading the pre-trained mattersim-v1.0.0-5M.pth model[0m
+[32m2025-10-16 21:44:11.425[0m | [1mINFO    [0m | [36mmattersim.forcefield.potential[0m:[36mfreeze_reset_model[0m:[36m120[0m - [1mfine-tuning all layers[0m
+Iteration 1: Ground Truth: -21.945011138916016, Best Cost = -15.927672386169434
+Iteration 2: Ground Truth: -21.945011138916016, Best Cost = -21.48829460144043
+Iteration 3: Ground Truth: -21.945011138916016, Best Cost = -21.70921516418457
+Iteration 4: Ground Truth: -21.945011138916016, Best Cost = -21.70921516418457
+Iteration 5: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 6: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 7: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 8: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 9: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 10: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 11: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 12: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 13: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 14: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 15: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 16: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 17: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 18: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 19: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 20: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 21: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 22: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 23: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 24: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 25: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 26: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 27: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 28: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 29: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 30: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 31: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 32: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 33: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 34: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 35: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 36: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 37: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 38: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 39: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 40: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 41: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 42: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 43: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 44: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 45: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 46: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 47: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 48: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 49: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+Iteration 50: Ground Truth: -21.945011138916016, Best Cost = -21.721635818481445
+mp-570219 match: [False]
+
+Matched 1/5 structures.
+Match ratio: 0.20
+---------------------------------------
+Begin Slurm Epilog: Oct-16-2025 21:58:35
+Job ID:        1583588
+User ID:       hjiang378
+Account:       gts-vfung3
+Job name:      pso_local
+Resources:     cpu=12,gres/gpu:v100=1,mem=48G,node=1
+Rsrc Used:     cput=17:11:24,vmem=0,walltime=01:25:57,mem=1972340K,energy_used=0
+Partition:     gpu-v100
+QOS:           inferno
+Nodes:         atl1-1-02-009-35-0
+---------------------------------------

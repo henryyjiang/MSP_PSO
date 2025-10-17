@@ -24454,3 +24454,69 @@ Detected KeyboardInterrupt, attempting graceful shutdown ...
 2025-10-15 11:28:09,823 - root - INFO - Dataset length: ('train', 22209)
 2025-10-15 11:28:09,824 - root - INFO - Dataset length: ('val', 1233)
 2025-10-15 11:28:09,825 - root - INFO - Dataset length: ('test', 1233)
+2025-10-16 20:32:54,231 - numexpr.utils - INFO - Note: NumExpr detected 24 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2025-10-16 20:32:54,232 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-10-16 20:33:10,891 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.eqV2.model.EqV2BackboneConfig'> with tag 'eqV2'.
+2025-10-16 20:33:10,914 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.jmp.model.JMPBackboneConfig'> with tag 'jmp'.
+2025-10-16 20:33:10,932 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.m3gnet.model.M3GNetBackboneConfig'> with tag 'm3gnet'.
+2025-10-16 20:33:10,948 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.mattersim.model.MatterSimBackboneConfig'> with tag 'mattersim'.
+2025-10-16 20:33:10,965 - nshconfig._src.registry - INFO - Registered <class 'mattertune.backbones.orb.model.ORBBackboneConfig'> with tag 'orb'.
+2025-10-16 20:33:11,002 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.json_data.JSONDatasetConfig'> with tag 'json'.
+2025-10-16 20:33:11,009 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.matbench.MatbenchDatasetConfig'> with tag 'matbench'.
+2025-10-16 20:33:11,016 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mp.MPDatasetConfig'> with tag 'mp'.
+2025-10-16 20:33:11,022 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.omat24.OMAT24DatasetConfig'> with tag 'omat24'.
+2025-10-16 20:33:11,028 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.xyz.XYZDatasetConfig'> with tag 'xyz'.
+2025-10-16 20:33:11,043 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,050 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,078 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.ema.EMARecipeConfig'> with tag 'ema'.
+2025-10-16 20:33:11,094 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.lora.LoRARecipeConfig'> with tag 'lora'.
+2025-10-16 20:33:11,100 - nshconfig._src.registry - INFO - Registered <class 'mattertune.recipes.noop.NoOpRecipeConfig'> with tag 'no-op'.
+2025-10-16 20:33:11,133 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-10-16 20:33:11,144 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-10-16 20:33:11,152 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.atoms_list.AtomsListDatasetConfig'> with tag 'atoms_list'.
+2025-10-16 20:33:11,154 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,157 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,167 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-10-16 20:33:11,175 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.db.DBDatasetConfig'> with tag 'db'.
+2025-10-16 20:33:11,177 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,180 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,191 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-10-16 20:33:11,198 - nshconfig._src.registry - INFO - Registered <class 'mattertune.data.mptraj.MPTrajDatasetConfig'> with tag 'mptraj'.
+2025-10-16 20:33:11,201 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.ManualSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,204 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.data.datamodule.AutoSplitDataModuleConfig'> schema due to registry changes.
+2025-10-16 20:33:11,215 - nshconfig._src.registry - INFO - Rebuilt <class 'mattertune.main.MatterTunerConfig'> schema due to registry changes.
+2025-10-16 20:33:22,129 - root - INFO - Using PyTorch automatic mixed-precision
+2025-10-16 20:33:22,129 - root - INFO - GPU is available: True, Quantity: None
+2025-10-16 20:33:22,130 - root - INFO - Dataset(s) used:
+2025-10-16 20:33:22,130 - root - INFO - Dataset length: ('full', 24677)
+2025-10-16 20:33:22,130 - root - INFO - Dataset length: ('train', 22209)
+2025-10-16 20:33:22,131 - root - INFO - Dataset length: ('val', 1233)
+2025-10-16 20:33:22,131 - root - INFO - Dataset length: ('test', 1233)
+2025-10-16 20:43:55,059 - root - INFO - Using PyTorch automatic mixed-precision
+2025-10-16 20:43:55,060 - root - INFO - GPU is available: True, Quantity: None
+2025-10-16 20:43:55,060 - root - INFO - Dataset(s) used:
+2025-10-16 20:43:55,061 - root - INFO - Dataset length: ('full', 24677)
+2025-10-16 20:43:55,061 - root - INFO - Dataset length: ('train', 22209)
+2025-10-16 20:43:55,062 - root - INFO - Dataset length: ('val', 1233)
+2025-10-16 20:43:55,062 - root - INFO - Dataset length: ('test', 1233)
+2025-10-16 21:03:12,191 - root - INFO - Using PyTorch automatic mixed-precision
+2025-10-16 21:03:12,192 - root - INFO - GPU is available: True, Quantity: None
+2025-10-16 21:03:12,193 - root - INFO - Dataset(s) used:
+2025-10-16 21:03:12,193 - root - INFO - Dataset length: ('full', 24677)
+2025-10-16 21:03:12,194 - root - INFO - Dataset length: ('train', 22209)
+2025-10-16 21:03:12,194 - root - INFO - Dataset length: ('val', 1233)
+2025-10-16 21:03:12,194 - root - INFO - Dataset length: ('test', 1233)
+2025-10-16 21:30:10,714 - root - INFO - Using PyTorch automatic mixed-precision
+2025-10-16 21:30:10,715 - root - INFO - GPU is available: True, Quantity: None
+2025-10-16 21:30:10,716 - root - INFO - Dataset(s) used:
+2025-10-16 21:30:10,716 - root - INFO - Dataset length: ('full', 24677)
+2025-10-16 21:30:10,717 - root - INFO - Dataset length: ('train', 22209)
+2025-10-16 21:30:10,717 - root - INFO - Dataset length: ('val', 1233)
+2025-10-16 21:30:10,717 - root - INFO - Dataset length: ('test', 1233)
+2025-10-16 21:44:10,390 - root - INFO - Using PyTorch automatic mixed-precision
+2025-10-16 21:44:10,391 - root - INFO - GPU is available: True, Quantity: None
+2025-10-16 21:44:10,392 - root - INFO - Dataset(s) used:
+2025-10-16 21:44:10,392 - root - INFO - Dataset length: ('full', 24677)
+2025-10-16 21:44:10,393 - root - INFO - Dataset length: ('train', 22209)
+2025-10-16 21:44:10,393 - root - INFO - Dataset length: ('val', 1233)
+2025-10-16 21:44:10,393 - root - INFO - Dataset length: ('test', 1233)
