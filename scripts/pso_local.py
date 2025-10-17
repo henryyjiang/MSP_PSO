@@ -10,9 +10,9 @@ import ase
 import numpy as np
 import pyswarms as ps
 import matplotlib.pyplot as plt
-from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
-from mattertune import configs as MC
-from mattersim.forcefield.potential import Potential
+# from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
+# from mattertune import configs as MC
+from mattersim.forcefield.potential import Potential, MatterSimCalculator
 from ase.optimize import BFGS, FIRE
 import torch
 import torch_sim as ts
@@ -39,6 +39,8 @@ logging.getLogger("mattertune").setLevel(logging.CRITICAL)
 logging.getLogger("lightning.pytorch").setLevel(logging.CRITICAL)
 logging.getLogger("pandas").setLevel(logging.CRITICAL)
 
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
 def extract_cell(cif_path):
     structure = Structure.from_file(cif_path)
     cell = structure.lattice.matrix
@@ -48,6 +50,8 @@ def extract_composition(cif_path):
     structure = Structure.from_file(cif_path)
     composition = [site.specie.Z for site in structure]
     return composition
+
+
 
 class PSO():
     def __init__(self, cif_name, model, composition, cell, options, particles, iters, local_steps, cell_perturb=True):
@@ -79,15 +83,9 @@ class PSO():
         self.energy = Energy(normalize=True, ljr_ratio=1)
 
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
-
-        self.calculator = model.ase_calculator()
         self.model = model
 
-        ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location="cpu")
-        m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
-        state_dict = ckpt["model"]
-        m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
-        self.mattersim_model = MatterSimModel(model=Potential(m3gnet_model))
+        self.calculator = MatterSimCalculator(device=device)
 
         #self.calculator = MDLCalculator(config=train_config)
 
@@ -222,7 +220,6 @@ class PSO():
             options = self.options  # cognitive, social, inertia
             particles = self.particles  # number of particles in system
             iters = self.iters
-            steps = self.local_steps
             if not self.cell_perturb:
                 dimensions = len(self.composition)*3
             else:
@@ -331,9 +328,10 @@ class PSO():
 
                 optimized_state = ts.optimize(
                         system=sanitized_atoms,
-                        model=self.mattersim_model,
+                        model=self.model,
                         optimizer=ts.frechet_cell_fire,
-                        autobatcher=False,)
+                        autobatcher=False,
+                        max_steps =self.local_steps)
                 optimized_atoms = optimized_state.to_atoms()
                 for atom in optimized_atoms:
                     atom.set_calculator(self.calculator)
@@ -396,36 +394,11 @@ class PSO():
 
 
 if __name__ == "__main__":
-    config = MC.MatterSimBackboneConfig(
-        pretrained_model="MatterSim-v1.0.0-5M",
-        graph_convertor=MC.MatterSimGraphConvertorConfig(
-            twobody_cutoff=5.0,
-            has_threebody=True,
-            threebody_cutoff=4.0
-        ),
-        properties=[
-            MC.EnergyPropertyConfig(
-                loss=MC.MAELossConfig(),
-                loss_coefficient=1.0
-            ),
-            MC.ForcesPropertyConfig(
-                loss=MC.MAELossConfig(),
-                loss_coefficient=10.0,
-                conservative=True
-            ),
-            MC.StressesPropertyConfig(
-                loss=MC.MAELossConfig(),
-                loss_coefficient=1.0,
-                conservative=True
-            ),
-        ],
-        optimizer=MC.AdamWConfig(lr=1e-4),
-        lr_scheduler=MC.CosineAnnealingLRConfig(
-            T_max=100,
-            eta_min=1e-6
-        )
-    )
-    model = MatterSimM3GNetBackboneModule(config)
+    ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location="cpu")
+    m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
+    state_dict = ckpt["model"]
+    m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
+    model = MatterSimModel(model=Potential(m3gnet_model))
 
     all_matches = []
 
