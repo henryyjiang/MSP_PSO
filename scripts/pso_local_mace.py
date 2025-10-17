@@ -16,6 +16,7 @@ from ase.optimize import BFGS, FIRE
 import torch
 import torch_sim as ts
 from torch_sim.models.mattersim import MatterSimModel
+from torch_sim.models.mace import MaceModel
 from mattersim.forcefield.m3gnet import m3gnet
 import json
 import logging
@@ -53,7 +54,7 @@ def extract_composition(cif_path):
 
 
 class PSO():
-    def __init__(self, cif_name, model, m3gnet_model, composition, cell, options, particles, iters, local_steps, cell_perturb=True):
+    def __init__(self, cif_name, model, mace, composition, cell, options, particles, iters, local_steps, cell_perturb=True):
         self.cif_name = cif_name
         self.cell_perturb = cell_perturb
         self.composition = composition
@@ -84,7 +85,7 @@ class PSO():
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
         self.model = model
 
-        self.calculator = MatterSimCalculator(potential=Potential(m3gnet_model),device=device)
+        self.calculator = mace
 
         #self.calculator = MDLCalculator(config=train_config)
 
@@ -393,14 +394,9 @@ class PSO():
 
 
 if __name__ == "__main__":
-    ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location=device)
-    m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
-    state_dict = ckpt["model"]
-    m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
 
-    # m3gnet_model = mace_mp(model="large")
-
-    model = MatterSimModel(model=Potential(m3gnet_model))
+    mace = mace_mp(model="large")
+    model = MaceModel(model=mace, device=device)
 
     all_matches = []
 
@@ -414,13 +410,13 @@ if __name__ == "__main__":
         options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
         particles = 10  # number of particles in system
         iters = 50
-        local_steps = 500
+        local_steps = 50
 
         cell_perturb = False
         if cell_perturb:
                 pso = PSO(cif_name, model, composition, None, options, particles, iters, local_steps, cell_perturb)
         else:
-                pso = PSO(cif_name, model, m3gnet_model, composition, cell, options, particles, iters, local_steps,cell_perturb)
+                pso = PSO(cif_name, model, mace, composition, cell, options, particles, iters, local_steps,cell_perturb)
         matches = pso.run()
         all_matches.extend(matches)
         print(f"{cif_name} match: {matches}")
