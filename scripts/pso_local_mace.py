@@ -54,7 +54,7 @@ def extract_composition(cif_path):
 
 
 class PSO():
-    def __init__(self, cif_name, model, mace, composition, cell, options, particles, iters, local_steps, cell_perturb=True):
+    def __init__(self, cif_name, model, composition, cell, options, particles, iters, local_steps, cell_perturb=True):
         self.cif_name = cif_name
         self.cell_perturb = cell_perturb
         self.composition = composition
@@ -85,7 +85,8 @@ class PSO():
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
         self.model = model
 
-        self.calculator = mace
+        calc = mace_mp(model="large", device=device)
+        self.calculator = calc
 
         #self.calculator = MDLCalculator(config=train_config)
 
@@ -395,8 +396,8 @@ class PSO():
 
 if __name__ == "__main__":
 
-    mace = mace_mp(model="large")
-    model = MaceModel(model=mace, device=device)
+    mace = mace_mp(model="large", return_raw_model=True)
+    model = MaceModel(model=mace)
 
     all_matches = []
 
@@ -416,7 +417,7 @@ if __name__ == "__main__":
         if cell_perturb:
                 pso = PSO(cif_name, model, composition, None, options, particles, iters, local_steps, cell_perturb)
         else:
-                pso = PSO(cif_name, model, mace, composition, cell, options, particles, iters, local_steps,cell_perturb)
+                pso = PSO(cif_name, model, composition, cell, options, particles, iters, local_steps,cell_perturb)
         matches = pso.run()
         all_matches.extend(matches)
         print(f"{cif_name} match: {matches}")
