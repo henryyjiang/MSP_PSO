@@ -1,5 +1,4 @@
 from ase.neighborlist import neighbor_list
-from ase import Atoms
 from ase.filters import ExpCellFilter, UnitCellFilter, FrechetCellFilter
 from ase.geometry import cell_to_cellpar, cellpar_to_cell
 import ase
@@ -13,24 +12,23 @@ from mace.calculators import mace_mp
 from ase.optimize import BFGS, FIRE
 import torch
 import torch_sim as ts
+from torch_sim.models.mace import MaceModel
 from torch_sim.models.mattersim import MatterSimModel
 from mattersim.forcefield.m3gnet import m3gnet
 import json
 import logging
 import sys
 import os
+import time
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname("../.."))))
 #from matdeeplearn.common.ase_utils import MDLCalculator
 from msp.utils.objectives import Energy
 from msp.forcefield import MDL_FF
-from pymatgen.core.structure import Structure
 from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.analysis.structure_matcher import StructureMatcher
-from pyxtal import pyxtal
-import periodictable
 from pathlib import Path
-from collections import Counter
-from loss_calculator import calculate_loss
+
+from utils import *
 
 logging.getLogger("mattertune").setLevel(logging.CRITICAL)
 logging.getLogger("lightning.pytorch").setLevel(logging.CRITICAL)
@@ -38,20 +36,9 @@ logging.getLogger("pandas").setLevel(logging.CRITICAL)
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-def extract_cell(cif_path):
-    structure = Structure.from_file(cif_path)
-    cell = structure.lattice.matrix
-    return cell.tolist()
-
-def extract_composition(cif_path):
-    structure = Structure.from_file(cif_path)
-    composition = [site.specie.Z for site in structure]
-    return composition
-
-
 
 class PSO():
-    def __init__(self, cif_name, model, m3gnet_model, composition, cell, options, particles, iters, local_steps, cell_perturb=True):
+    def __init__(self, cif_name, model, composition, cell, calc, options, particles, iters, local_steps, cell_perturb=True):
         self.cif_name = cif_name
         self.cell_perturb = cell_perturb
         self.composition = composition
@@ -63,9 +50,8 @@ class PSO():
         self.iters = iters
         self.local_steps = local_steps
 
-        self.zs, self.zcounts = self.composition_to_zs()
-        self.possible_sgs, self.sg_probs = self.generate_sgs(self.zs, self.zcounts)
-
+        self.zs, self.zcounts = composition_to_zs(self.composition)
+        self.possible_sgs, self.sg_probs = generate_sgs(self.zs, self.zcounts)
         self.el_symbols = np.array([periodictable.elements[i].symbol for i in range(95)])
         self.lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
                                       delimiter=",") * 0.85
@@ -82,104 +68,21 @@ class PSO():
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
         self.model = model
 
-        self.calculator = MatterSimCalculator(potential=Potential(m3gnet_model),device=device)
+        if calc == "mace":
+            self.calculator = mace_mp(model="large", device=device)
+        else:
+            ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location=device)
+            m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
+            state_dict = ckpt["model"]
+            m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
+
+            self.calculator = MatterSimCalculator(potential=Potential(m3gnet_model), device=device)
 
         #self.calculator = MDLCalculator(config=train_config)
 
-    def composition_to_zs(self):
-        counter = Counter(self.composition)
-        zs = [periodictable.elements[z].symbol for z, _ in counter.items()]
-        zcounts = [count for _, count in counter.items()]
-        return zs, zcounts
-
-    def generate_sgs(self, zs, zcounts, seed=0):
-        sg_dist = [146, 2720, 14, 407, 178, 7, 145, 97, 351, 39, 768, 1688, 286,
-                   5736, 2345, 1, 5, 66, 596, 89, 13, 2, 11, 0, 10, 64, 3, 9, 196, 11,
-                   185, 19, 471, 26, 8, 309, 6, 91, 15, 70, 47, 18, 164, 64, 14, 60, 30,
-                   0, 1, 3, 111, 69, 27, 33, 459, 76, 248, 265, 245, 327, 634, 4129, 1480,
-                   342, 237, 34, 21, 23, 59, 220, 449, 205, 36, 206, 5, 29, 3, 10, 12, 5,
-                   12, 157, 12, 31, 64, 95, 221, 204, 0, 7, 8, 107, 0, 1, 5, 41, 5, 5, 17,
-                   28, 0, 13, 1, 1, 5, 2, 105, 14, 45, 20, 14, 5, 94, 46, 15, 10, 9, 18,
-                   26, 9, 116, 126, 405, 31, 51, 15, 434, 113, 880, 75, 44, 7, 8, 11, 35,
-                   289, 79, 26, 1575, 530, 281, 133, 19, 23, 14, 73, 98, 633, 9, 71, 10,
-                   83, 1, 28, 57, 215, 22, 6, 48, 158, 112, 48, 77, 571, 73, 1047, 405, 0,
-                   0, 0, 0, 1, 306, 125, 3, 297, 0, 0, 0, 32, 17, 40, 3, 4, 69, 412, 108,
-                   20, 644, 51, 528, 8, 418, 1567, 0, 2, 16, 245, 27, 31, 47, 22, 11, 170,
-                   234, 68, 0, 2, 0, 0, 0, 23, 44, 17, 58, 509, 118, 71, 18, 176, 1116, 2,
-                   210, 34, 1563, 45, 788, 9, 210, 105]
-
-        rng = np.random.default_rng(seed)
-        possible_sgs = []
-        for i in range(230):
-            try:
-                xtal = pyxtal()
-                xtal.from_random(3, i + 1, zs, zcounts,
-                                 random_state=rng)
-                possible_sgs.append(i + 1)
-            except:
-                continue
-        possible_sgs = np.array(possible_sgs)
-        sg_probs = np.array([sg_dist[i - 1] + 1.0 for i in possible_sgs])
-        sg_probs /= np.sum(sg_probs)
-
-        return possible_sgs, sg_probs
-
-    def get_z(self, site):
-        return np.argmax(self.el_symbols == site.species.elements[0].symbol)
-
-    def lj_reject(self, structure):
-        for i in range(len(structure)):
-            for j in range(i + 1, len(structure)):
-                if structure.sites[i].distance(structure.sites[j]) < self.lj_rmins[self.get_z(
-                        structure.sites[i]) - 1][self.get_z(structure.sites[j]) - 1]:
-                    return True
-        return False
-
-    def init_atoms(self, density=0.2):
-        seed = 0
-        rng = np.random.default_rng(seed)
-        rejected = True
-        while rejected:
-            try:
-                xtal = pyxtal()
-                xtal.from_random(3, np.random.choice(self.possible_sgs,
-                                                     p=self.sg_probs), self.zs, self.zcounts, random_state=rng)
-                new_structure = xtal.to_pymatgen()
-                rejected = self.lj_reject(new_structure)
-            except:
-                rejected = True
-
-        atoms = xtal.to_ase()
-        return atoms
-
-    def dimensions_to_atoms(self, params, i):
-        if not self.cell_perturb:
-            positions = params.reshape(-1, 3)
-            atoms = Atoms(self.composition, cell=self.cell[i], pbc=(True, True, True), positions=positions)
-        else:
-            cell = params[:9].reshape(-1, 3)
-            positions = params[9:].reshape(-1, 3)
-            atoms = Atoms(self.composition, cell=cell, pbc=(True, True, True), positions=positions)
-
-        atoms.set_calculator(self.calculator)
-        return atoms
-
-    def final_dimensions(self, params, best_cell):
-        positions = params.reshape(-1, 3)
-        atoms = Atoms(self.composition, cell=best_cell, pbc=(True, True, True), positions=positions)
-
-        return atoms
-
-    def atoms_to_dimensions(self, atoms):
-        if not self.cell_perturb:
-            pos = [float(i) for l in atoms.positions for i in l]
-        else:
-            pos = [float(i) for l in atoms.cell for i in l][:9] + [float(i) for l in atoms.positions for i in l]
-
-        return np.array(pos)
 
     def obj_func(self, params, i):
-        atoms = self.dimensions_to_atoms(params, i)
+        atoms = dimensions_to_atoms(params, i, self.composition, self.cell, self.calculator, self.cell_perturb)
 
         atoms.calc = self.calculator
         loss = atoms.get_potential_energy()
@@ -201,13 +104,20 @@ class PSO():
     def run(self):
         costs = []
         matches = []
-        matcher = StructureMatcher()
+        dist_energy = []
 
         os.makedirs("plots", exist_ok=True)
         os.makedirs("matches", exist_ok=True)
         os.makedirs("fails", exist_ok=True)
 
-        ground_truth_energy = calculate_loss(f"cifs/{self.cif_name}.cif", 'mdl_config.yml')
+        matcher = StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5)
+
+        original_cif = os.path.join("cifs", self.cif_name + ".cif")
+        ground_truth = Structure.from_file(original_cif)
+
+        atoms_gt = AseAtomsAdaptor.get_atoms(ground_truth)
+        atoms_gt.calc = self.calculator
+        ground_truth_energy = atoms_gt.get_potential_energy()
 
         for iteration in range(1):
             self.best_losses = []
@@ -224,7 +134,7 @@ class PSO():
 
             init_positions = np.empty((particles, dimensions))
             for i in range(particles):
-                init_atoms = self.init_atoms()
+                init_atoms = initialize_atoms(self.el_symbols, self.lj_rmins, self.zs, self.zcounts, self.possible_sgs, self.sg_probs)
                 if self.cell_perturb:
                     flattened_cell = [i for l in init_atoms.get_cell().tolist() for i in l]
                     flattened_pos = [float(i) for l in init_atoms.positions for i in l]
@@ -240,6 +150,8 @@ class PSO():
             #cost, pos = self.optimizer.optimize(self.f, iters=10)
 
             for i in range(iters):
+                start_time = time.time()
+
                 cost = self.f(self.optimizer.swarm.position)
                 self.optimizer.swarm.current_cost = cost
 
@@ -272,11 +184,9 @@ class PSO():
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
 
-                print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}")
-
                 #local optimization
                 positions = self.optimizer.swarm.position
-                new_atoms = [self.dimensions_to_atoms(positions[i], i) for i in range(len(positions))]
+                new_atoms = [dimensions_to_atoms(positions[i], i, self.composition, self.cell, self.calculator, self.cell_perturb) for i in range(len(positions))]
 
                 def separate_close_atoms(atoms, min_dist=1.2):
                     indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=3.0)
@@ -331,13 +241,15 @@ class PSO():
                         max_steps =self.local_steps)
                 optimized_atoms = optimized_state.to_atoms()
                 for atom in optimized_atoms:
-                    atom.set_calculator(self.calculator)
+                    atom.calc = self.calculator
 
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
 
                 self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
-                self.optimizer.swarm.position = np.array([self.atoms_to_dimensions(optimized_atoms[i]) for i in range(len(optimized_atoms))])
+                self.optimizer.swarm.position = np.array([atoms_to_dimensions(optimized_atoms[i], self.cell_perturb) for i in range(len(optimized_atoms))])
+
+                print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Time Taken: {(time.time() - start_time):.2f} s")
 
             cost = self.optimizer.swarm.best_cost
             costs.append(cost)
@@ -357,28 +269,45 @@ class PSO():
             plt.savefig(f'plots/avg_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
+            final_atoms = final_dimensions(pos, self.best_cell, self.composition)
             try:
-                optimized_structure = AseAtomsAdaptor.get_structure(self.final_dimensions(pos, self.best_cell))
-                original_cif = os.path.join("cifs", self.cif_name + ".cif")
-                ground_truth = Structure.from_file(original_cif)
-                matched = matcher.fit(ground_truth, optimized_structure)
-                matches.append(matched)
+                optimized_structure = AseAtomsAdaptor.get_structure(final_atoms)
 
-                if matched:
-                    filename = f"matches/best_structure_{self.cif_name}_{iteration}" ".cif"
-                    ase.io.write(filename, self.final_dimensions(pos, self.best_cell))
+                atoms_opt = AseAtomsAdaptor.get_atoms(optimized_structure)
+                atoms_opt.calc = self.calculator
+                optimized_energy = atoms_opt.get_potential_energy()
+
+                energy_tolerance = 0.05
+                distance_threshold = 0.2
+
+                energy_diff = abs(optimized_energy - ground_truth_energy)
+                try:
+                    # RMSD / distance-like metric from pymatgen
+                    distance = matcher.get_rms_dist(ground_truth, optimized_structure)[0]
+                except Exception:
+                    distance = np.linalg.norm(optimized_structure.frac_coords - ground_truth.frac_coords).mean()
+
+                if distance < distance_threshold and energy_diff <= energy_tolerance:
+                    result_type = "match"
+                    print(f"Matched for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
                 else:
-                    filename = f"fails/best_structure_{self.cif_name}_{iteration}" ".cif"
-                    ase.io.write(filename, self.final_dimensions(pos, self.best_cell))
+                    result_type = "fail"
+                    print(f"No match for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
 
-            except ValueError as e:
-                print("invalid structure, cannot match")
-                matched = False
-                matches.append(matched)
+                # Save CIF accordingly
+                out_dir = "matches" if result_type == "match" else "fails"
+                filename = os.path.join(out_dir, f"best_structure_{self.cif_name}_{iteration}.cif")
+                ase.io.write(filename, final_atoms)
 
-                filename = f"fails/best_structure_{self.cif_name}_{iteration}" ".cif"
-                ase.io.write(filename, self.final_dimensions(pos))
-                pass
+                # Record metrics
+                matches.append(result_type == "match")
+                dist_energy.append((distance, energy_diff))
+
+            except ValueError:
+                print(f"{self.cif_name}: invalid structure, cannot match")
+                matches.append(False)
+                filename = os.path.join("fails", f"best_structure_{self.cif_name}_{iteration}.cif")
+                ase.io.write(filename, final_atoms)
 
         costs_filename = f"plots/{self.cif_name}_costs.txt"
         with open(costs_filename, "w") as f:
@@ -386,19 +315,28 @@ class PSO():
             for cost in costs:
                 f.write(f"{cost}\n")
 
-        return matches
+        return matches, dist_energy
 
 
 
 if __name__ == "__main__":
-    ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location=device)
-    m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
-    state_dict = ckpt["model"]
-    m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
+    calc = "mattersim"
 
-    model = MatterSimModel(model=Potential(m3gnet_model))
+    if calc == "mace":
+        mace = mace_mp(model="large", return_raw_model=True)
+        model = MaceModel(model=mace)
+    else:
+        ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location=device)
+        m3gnet_model = m3gnet.M3Gnet(**ckpt["model_args"])
+        state_dict = ckpt["model"]
+        m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
+
+        model = MatterSimModel(model=Potential(m3gnet_model))
+
+
 
     all_matches = []
+    all_dist_energy = []
 
     for filename in os.listdir("cifs"):
         cif = os.path.join("cifs", filename)
@@ -414,16 +352,20 @@ if __name__ == "__main__":
 
         cell_perturb = False
         if cell_perturb:
-                pso = PSO(cif_name, model, composition, None, options, particles, iters, local_steps, cell_perturb)
+                pso = PSO(cif_name, model, composition, None, calc, options, particles, iters, local_steps, cell_perturb)
         else:
-                pso = PSO(cif_name, model, m3gnet_model, composition, cell, options, particles, iters, local_steps,cell_perturb)
-        matches = pso.run()
+                pso = PSO(cif_name, model, composition, cell, calc, options, particles, iters, local_steps, cell_perturb)
+        matches, dist_energy = pso.run()
         all_matches.extend(matches)
+        all_dist_energy.extend(dist_energy)
         print(f"{cif_name} match: {matches}")
 
     num_true = sum(all_matches)
     total = len(all_matches)
     match_ratio = num_true / total if total > 0 else 0
+
+    print("Distance and Energy Differences:")
+    print(all_dist_energy)
 
     print(f"\nMatched {num_true}/{total} structures.")
     print(f"Match ratio: {match_ratio:.2f}")
