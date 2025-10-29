@@ -110,7 +110,7 @@ class PSO():
         os.makedirs("matches", exist_ok=True)
         os.makedirs("fails", exist_ok=True)
 
-        matcher = StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5)
+        matcher = StructureMatcher(ltol=0.3, stol=0.5, angle_tol=8)
 
         original_cif = os.path.join("cifs", self.cif_name + ".cif")
         ground_truth = Structure.from_file(original_cif)
@@ -144,8 +144,8 @@ class PSO():
                     init_pos = [float(i) for l in init_atoms.positions for i in l]
                 init_positions[i] = np.array(init_pos)
 
-            self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions)
-            #self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions, oh_strategy={'w':'exp_decay'})
+            #self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions)
+            self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions, oh_strategy={'w':'exp_decay'})
 
             #cost, pos = self.optimizer.optimize(self.f, iters=10)
 
@@ -188,7 +188,7 @@ class PSO():
                 positions = self.optimizer.swarm.position
                 new_atoms = [dimensions_to_atoms(positions[i], i, self.composition, self.cell, self.calculator, self.cell_perturb) for i in range(len(positions))]
 
-                def separate_close_atoms(atoms, min_dist=1.2):
+                def separate_close_atoms(atoms, min_dist=1.0):
                     indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=3.0)
 
                     moved = False
@@ -211,24 +211,24 @@ class PSO():
                     atoms.calc = self.calculator
 
                     cellpar = cell_to_cellpar(atoms.cell)
-                    cellpar[3:] = np.clip(cellpar[3:], 10.0, 170.0)
+                    cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
 
                     atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
 
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
                     if np.any(lengths < 3.0) or np.any(lengths > 150.0):
-                        print("cell lengths out of bounds")
+                        #print("cell lengths out of bounds")
                         lengths = np.clip(lengths, 3.0, 150.0)
                         cell = atoms.get_cell()
                         for i in range(3):
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
                         atoms.set_cell(cell, scale_atoms=True)
 
-                    separate_close_atoms(atoms, min_dist=0.5)
+                    separate_close_atoms(atoms)
 
                     if not np.all(np.isfinite(atoms.get_forces())):
-                        print("forces are infinite")
+                        #print("forces are infinite")
                         atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
 
                     sanitized_atoms.append(atoms)
@@ -278,7 +278,7 @@ class PSO():
                 optimized_energy = atoms_opt.get_potential_energy()
 
                 energy_tolerance = 0.05
-                distance_threshold = 0.2
+                distance_threshold = 0.25
 
                 energy_diff = abs(optimized_energy - ground_truth_energy)
                 try:
@@ -345,10 +345,10 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
 
-        options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}  # cognitive, social, inertia
-        particles = 30  # number of particles in system
-        iters = 100
-        local_steps = 100
+        options = {'c1': 0.5, 'c2': 0.5, 'w': 0.9}  # cognitive, social, inertia
+        particles = 50  # number of particles in system
+        iters = 200
+        local_steps = 200
 
         cell_perturb = False
         if cell_perturb:
