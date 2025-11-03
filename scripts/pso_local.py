@@ -144,8 +144,8 @@ class PSO():
                     init_pos = [float(i) for l in init_atoms.positions for i in l]
                 init_positions[i] = np.array(init_pos)
 
-            #self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions)
-            self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions, oh_strategy={'w':'exp_decay'})
+            self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions)
+            #self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions, oh_strategy={'w':'exp_decay'})
 
             #cost, pos = self.optimizer.optimize(self.f, iters=10)
 
