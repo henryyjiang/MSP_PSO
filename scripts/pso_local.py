@@ -287,7 +287,10 @@ class PSO():
                 except Exception:
                     distance = np.linalg.norm(optimized_structure.frac_coords - ground_truth.frac_coords).mean()
 
-                if distance < distance_threshold and energy_diff <= energy_tolerance:
+                if optimized_energy - ground_truth_energy < 0:
+                    result_type = "lower_energy"
+                    print(f"Lower energy for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
+                elif distance < distance_threshold and energy_diff <= energy_tolerance:
                     result_type = "match"
                     print(f"Matched for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
                 else:
@@ -295,12 +298,18 @@ class PSO():
                     print(f"No match for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
 
                 # Save CIF accordingly
-                out_dir = "matches" if result_type == "match" else "fails"
+                if result_type == "match":
+                    out_dir = "matches"
+                elif result_type == "lower_energy":
+                    out_dir = "lower_energy"
+                else:
+                    out_dir = "fails"
+
                 filename = os.path.join(out_dir, f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
 
                 # Record metrics
-                matches.append(result_type == "match")
+                matches.append(result_type == "match" or result_type == "lower_energy")
                 dist_energy.append((distance, energy_diff))
 
             except ValueError:
@@ -348,7 +357,7 @@ if __name__ == "__main__":
         options = {'c1': 0.5, 'c2': 0.5, 'w': 0.9}  # cognitive, social, inertia
         particles = 40  # number of particles in system
         iters = 100
-        local_steps = 250
+        local_steps = 200
 
         cell_perturb = False
         if cell_perturb:
