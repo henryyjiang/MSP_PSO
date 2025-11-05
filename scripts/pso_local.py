@@ -109,6 +109,7 @@ class PSO():
         os.makedirs("plots", exist_ok=True)
         os.makedirs("matches", exist_ok=True)
         os.makedirs("fails", exist_ok=True)
+        os.makedirs("lower_energy", exist_ok=True)
 
         matcher = StructureMatcher(ltol=0.3, stol=0.5, angle_tol=8)
 
