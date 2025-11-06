@@ -288,12 +288,12 @@ class PSO():
                 except Exception:
                     distance = np.linalg.norm(optimized_structure.frac_coords - ground_truth.frac_coords).mean()
 
-                if optimized_energy - ground_truth_energy < 0:
-                    result_type = "lower_energy"
-                    print(f"Lower energy for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
-                elif distance < distance_threshold and energy_diff <= energy_tolerance:
+                if distance < distance_threshold and energy_diff <= energy_tolerance:
                     result_type = "match"
                     print(f"Matched for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
+                elif optimized_energy - ground_truth_energy < 0:
+                    result_type = "lower_energy"
+                    print(f"Lower energy for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
                 else:
                     result_type = "fail"
                     print(f"No match for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
