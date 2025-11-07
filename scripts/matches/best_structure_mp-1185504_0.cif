@@ -1,0 +1,27 @@
+data_image0
+_chemical_formula_structural       LuTe
+_chemical_formula_sum              "Lu1 Te1"
+_cell_length_a       3.9852805728481515
+_cell_length_b       4.010562603512393
+_cell_length_c       4.006833916113634
+_cell_angle_alpha    120.05072868740656
+_cell_angle_beta     89.96567251140078
+_cell_angle_gamma    90.07636850516893
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Lu  Lu1       1.0  0.08504593191986853  0.3285485236814764  0.4056514288478833  1.0000
+  Te  Te1       1.0  0.585002744446792  0.9954230999835972  0.7392275565843828  1.0000
