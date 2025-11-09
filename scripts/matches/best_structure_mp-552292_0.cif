@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       SmBi2IO4
+_chemical_formula_sum              "Sm1 Bi2 I1 O4"
+_cell_length_a       3.9950621919860274
+_cell_length_b       5.644514604739943
+_cell_length_c       15.993208993599785
+_cell_angle_alpha    135.1734115497885
+_cell_angle_beta     138.61126688448388
+_cell_angle_gamma    44.98300805277346
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Sm  Sm1       1.0  0.6029457433583718  0.8263479429481713  0.40307339523110947  1.0000
+  Bi  Bi1       1.0  0.09073044162342193  0.06552302691446125  0.14559775325316276  1.0000
+  Bi  Bi2       1.0  0.1163621544718918  0.5866261894719886  0.6604248712677434  1.0000
+  I   I1        1.0  0.6085105393163266  0.32458420811288025  0.9025828467839722  1.0000
+  O   O1        1.0  0.812029331403779  0.6788686714726291  0.256966945749085  1.0000
+  O   O2        1.0  0.39435590405418575  0.9727207034292765  0.5486774418866306  1.0000
+  O   O3        1.0  0.8130443191382055  0.1776163409964594  0.2567513801703391  1.0000
+  O   O4        1.0  0.39451267045650895  0.4739315470992371  0.5490638959506833  1.0000
