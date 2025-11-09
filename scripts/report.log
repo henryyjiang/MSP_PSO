@@ -25862,3 +25862,52 @@ Detected KeyboardInterrupt, attempting graceful shutdown ...
 2025-11-08 06:56:08,706 - root - INFO - Dataset length: ('train', 22209)
 2025-11-08 06:56:08,707 - root - INFO - Dataset length: ('val', 1233)
 2025-11-08 06:56:08,707 - root - INFO - Dataset length: ('test', 1233)
+2025-11-09 14:06:59,782 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-11-09 14:07:34,457 - root - INFO - Using PyTorch automatic mixed-precision
+2025-11-09 14:07:34,457 - root - INFO - GPU is available: False, Quantity: None
+2025-11-09 14:07:34,457 - root - INFO - Dataset(s) used:
+2025-11-09 14:07:34,457 - root - INFO - Dataset length: ('full', 24677)
+2025-11-09 14:07:34,457 - root - INFO - Dataset length: ('train', 22209)
+2025-11-09 14:07:34,458 - root - INFO - Dataset length: ('val', 1233)
+2025-11-09 14:07:34,458 - root - INFO - Dataset length: ('test', 1233)
+2025-11-09 14:38:47,520 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-11-09 14:39:05,152 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-11-09 14:39:36,930 - root - INFO - Using PyTorch automatic mixed-precision
+2025-11-09 14:39:36,930 - root - INFO - GPU is available: False, Quantity: None
+2025-11-09 14:39:36,931 - root - INFO - Dataset(s) used:
+2025-11-09 14:39:36,931 - root - INFO - Dataset length: ('full', 24677)
+2025-11-09 14:39:36,931 - root - INFO - Dataset length: ('train', 22209)
+2025-11-09 14:39:36,931 - root - INFO - Dataset length: ('val', 1233)
+2025-11-09 14:39:36,931 - root - INFO - Dataset length: ('test', 1233)
+2025-11-09 14:59:37,303 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-11-09 15:00:09,513 - root - INFO - Using PyTorch automatic mixed-precision
+2025-11-09 15:00:09,514 - root - INFO - GPU is available: False, Quantity: None
+2025-11-09 15:00:09,514 - root - INFO - Dataset(s) used:
+2025-11-09 15:00:09,514 - root - INFO - Dataset length: ('full', 24677)
+2025-11-09 15:00:09,514 - root - INFO - Dataset length: ('train', 22209)
+2025-11-09 15:00:09,515 - root - INFO - Dataset length: ('val', 1233)
+2025-11-09 15:00:09,515 - root - INFO - Dataset length: ('test', 1233)
+2025-11-09 15:09:59,048 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-11-09 15:10:32,184 - root - INFO - Using PyTorch automatic mixed-precision
+2025-11-09 15:10:32,185 - root - INFO - GPU is available: False, Quantity: None
+2025-11-09 15:10:32,185 - root - INFO - Dataset(s) used:
+2025-11-09 15:10:32,185 - root - INFO - Dataset length: ('full', 24677)
+2025-11-09 15:10:32,185 - root - INFO - Dataset length: ('train', 22209)
+2025-11-09 15:10:32,186 - root - INFO - Dataset length: ('val', 1233)
+2025-11-09 15:10:32,186 - root - INFO - Dataset length: ('test', 1233)
+2025-11-09 15:18:55,615 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-11-09 15:19:28,626 - root - INFO - Using PyTorch automatic mixed-precision
+2025-11-09 15:19:28,626 - root - INFO - GPU is available: False, Quantity: None
+2025-11-09 15:19:28,627 - root - INFO - Dataset(s) used:
+2025-11-09 15:19:28,627 - root - INFO - Dataset length: ('full', 24677)
+2025-11-09 15:19:28,627 - root - INFO - Dataset length: ('train', 22209)
+2025-11-09 15:19:28,627 - root - INFO - Dataset length: ('val', 1233)
+2025-11-09 15:19:28,627 - root - INFO - Dataset length: ('test', 1233)
+2025-11-09 15:25:10,904 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-11-09 15:25:42,979 - root - INFO - Using PyTorch automatic mixed-precision
+2025-11-09 15:25:42,981 - root - INFO - GPU is available: False, Quantity: None
+2025-11-09 15:25:42,981 - root - INFO - Dataset(s) used:
+2025-11-09 15:25:42,981 - root - INFO - Dataset length: ('full', 24677)
+2025-11-09 15:25:42,981 - root - INFO - Dataset length: ('train', 22209)
+2025-11-09 15:25:42,982 - root - INFO - Dataset length: ('val', 1233)
+2025-11-09 15:25:42,982 - root - INFO - Dataset length: ('test', 1233)
