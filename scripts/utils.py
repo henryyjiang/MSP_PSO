@@ -183,7 +183,7 @@ def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=3):
     indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
 
     if len(distances) > 0 and np.min(distances) < min_dist:
-        print("reject1")
+        #print("reject1")
         return False
 
     return True
@@ -197,7 +197,7 @@ def validate_structure_distances(atoms, min_dist=1.0):
 
     min_d = np.min(distances)
     if min_d < min_dist:
-        print("reject2")
+        #print("reject2")
         return False
 
     return True
