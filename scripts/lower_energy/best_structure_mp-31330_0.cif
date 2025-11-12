@@ -1,0 +1,34 @@
+data_image0
+_chemical_formula_structural       Nd3In3Rh3
+_chemical_formula_sum              "Nd3 In3 Rh3"
+_cell_length_a       5.629558438858562
+_cell_length_b       6.952935050411926
+_cell_length_c       10.768809139967091
+_cell_angle_alpha    146.81169335269234
+_cell_angle_beta     92.386836586207
+_cell_angle_gamma    96.48928222238051
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Nd  Nd1       1.0  0.821511142440694  0.42727628042362914  0.04730078394478368  1.0000
+  Nd  Nd2       1.0  0.7802596501335208  0.1993920039509096  0.913231203574789  1.0000
+  Nd  Nd3       1.0  0.256429376210736  0.16301289495513882  0.3522743769458835  1.0000
+  In  In1       1.0  0.9484690932520803  0.30484522130604075  0.989143025466617  1.0000
+  In  In2       1.0  0.6819388279649959  0.29398796805866906  0.9132347156844981  1.0000
+  In  In3       1.0  0.1725642097676956  0.3416923940765788  0.6397339716466124  1.0000
+  Rh  Rh1       1.0  0.5371303009464932  0.7942912398961037  0.6189768789862499  1.0000
+  Rh  Rh2       1.0  0.05732455287413309  0.9549150991344315  0.8852850699717522  1.0000
+  Rh  Rh3       1.0  0.9087319791654529  0.6812798582544  0.5122351877567097  1.0000
