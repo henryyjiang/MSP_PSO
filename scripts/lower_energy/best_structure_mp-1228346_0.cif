@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Ba2Si3Au
+_chemical_formula_sum              "Ba2 Si3 Au1"
+_cell_length_a       6.663087969401354
+_cell_length_b       6.651554584552864
+_cell_length_c       10.210947792623685
+_cell_angle_alpha    40.039950210019526
+_cell_angle_beta     39.91864707490984
+_cell_angle_gamma    67.84106452051543
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ba  Ba1       1.0  0.1079826606956098  0.5289742283639658  0.9898442832759199  1.0000
+  Ba  Ba2       1.0  0.1073367590329809  0.5292598707392708  0.4848738676524851  1.0000
+  Si  Si1       1.0  0.44659139359798505  0.1874118732169784  0.7383096402489959  1.0000
+  Si  Si2       1.0  0.43877162821745297  0.19995444249536998  0.23554661780512615  1.0000
+  Si  Si3       1.0  0.7714438741385851  0.8668137593959503  0.7378540468729129  1.0000
+  Au  Au1       1.0  0.771292295946268  0.8614575274966176  0.2392640255929111  1.0000
