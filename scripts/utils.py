@@ -6,6 +6,8 @@ from ase import Atoms
 from ase.data import covalent_radii
 from ase.neighborlist import neighbor_list
 from pymatgen.core import Structure
+from pathlib import Path
+from pymatgen.io.ase import AseAtomsAdaptor
 
 def extract_cell(cif_path):
     structure = Structure.from_file(cif_path)
@@ -109,36 +111,69 @@ def atoms_to_dimensions(atoms, cell_perturb):
 
     return np.array(pos)
 
-
-def separate_close_atoms(atoms, min_dist=1.0):
-    indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=3.0)
-
-    if len(distances) == 0:
-        return True
-
-    min_d = np.min(distances)
-    if min_d >= min_dist:
-        return True
-
-    moved = False
-    for i, j, d in zip(indices_i, indices_j, distances):
-        if d < min_dist:
-            # Vector from i to j
-            vec = atoms.positions[j] - atoms.positions[i]
-            if np.all(vec == 0):
-                vec = np.random.rand(3) * 1e-3
-            vec /= np.linalg.norm(vec)
-            shift = 0.5 * (min_dist - d) * vec
-            atoms.positions[i] -= shift
-            atoms.positions[j] += shift
-            moved = True
-    if moved:
-        print("atoms too close together")
-    return moved
+def lj_repulsion_pymatgen(structure, scale = 40, buffer = 0.85):
+  lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
+                             delimiter=",")
+  repulsions = []
+  for i in range(len(structure)):
+    for j in range(i, len(structure)):
+      rmin = lj_rmins[get_z(structure.sites[i]) - 1, get_z(
+        structure.sites[j]) - 1] * buffer
+      r = np.min([structure.lattice.a, structure.lattice.b,
+        structure.lattice.c]) if i == j else structure.sites[i].distance(
+        structure.sites[j])
+      repulsions.append(max(0, (rmin / r) ** 12 - 1))
+  return np.mean(repulsions) / scale
 
 
-def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=3):
-    cutoff = 3.0  # Use same cutoff throughout
+def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0):
+    positions = atoms.get_positions()
+    cell = atoms.get_cell()
+    atomic_numbers = atoms.get_atomic_numbers()
+    n_atoms = len(atoms)
+    forces = np.zeros((n_atoms, 3))
+
+    for i in range(n_atoms):
+        for j in range(i + 1, n_atoms):
+            z_i = atomic_numbers[i] - 1
+            z_j = atomic_numbers[j] - 1
+            rmin = lj_rmins[z_i, z_j]
+
+            delta = positions[j] - positions[i]
+            delta = delta - np.round(delta @ np.linalg.inv(cell)) @ cell
+            r = np.linalg.norm(delta)
+
+            if r < rmin * cutoff_factor and r > 0.1:
+                force_magnitude = 12 * epsilon * (rmin ** 12) / (r ** 13)
+                force_vector = force_magnitude * (delta / r)
+
+                forces[i] -= force_vector
+                forces[j] += force_vector
+
+    return forces
+
+
+def separate_close_atoms(atoms, lj_rmins, max_iters=50, tol=0.01):
+    structure = AseAtomsAdaptor.get_structure(atoms)
+
+    for iteration in range(max_iters):
+        repulsion = lj_repulsion_pymatgen(structure, scale=40, buffer=0.85)
+
+        if repulsion < tol:
+            break
+
+        positions = atoms.get_positions()
+        forces = calculate_lj_forces(atoms, lj_rmins)
+        positions += 0.01 * forces
+        atoms.set_positions(positions)
+
+        structure = AseAtomsAdaptor.get_structure(atoms)
+
+    return atoms
+
+
+def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=5):
+    cutoff = 4.0
 
     for iteration in range(max_iterations):
         indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
@@ -176,7 +211,7 @@ def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=3):
 
             vec = vec / vec_norm
 
-            shift = 0.5 * (target - d) * vec
+            shift = 0.3 * (target - d) * vec
             atoms.positions[i] -= shift
             atoms.positions[j] += shift
 

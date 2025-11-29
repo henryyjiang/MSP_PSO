@@ -148,9 +148,9 @@ class PSO():
                     init_pos = [float(i) for l in init_atoms.positions for i in l]
                 init_positions[i] = np.array(init_pos)
 
-            self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options,
-                                                     init_pos=init_positions)
-            # self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions, oh_strategy={'w':'exp_decay'})
+            #self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options,
+            #                                         init_pos=init_positions)
+            self.optimizer = ps.single.GlobalBestPSO(n_particles=particles, dimensions=dimensions, options=options, init_pos=init_positions, oh_strategy={'w':'exp_decay'})
 
             # cost, pos = self.optimizer.optimize(self.f, iters=10)
 
@@ -186,8 +186,8 @@ class PSO():
 
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
-                lower_bound = np.full(self.optimizer.swarm.position.shape[1], -5)
-                upper_bound = np.full(self.optimizer.swarm.position.shape[1], 5)
+                lower_bound = np.full(self.optimizer.swarm.position.shape[1], -10)
+                upper_bound = np.full(self.optimizer.swarm.position.shape[1], 10)
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
 
@@ -215,7 +215,7 @@ class PSO():
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
                         atoms.set_cell(cell, scale_atoms=True)
 
-                    separate_close_atoms2(atoms)
+                    separate_close_atoms(atoms)
 
                     if not np.all(np.isfinite(atoms.get_forces())):
                         # print("forces are infinite")
@@ -365,10 +365,10 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
 
-        options = {'c1': 1.5, 'c2': 1.5, 'w': 0.5}  # cognitive, social, inertia
-        particles = 30  # number of particles in system
+        options = {'c1': 1.2, 'c2': 1.8, 'w': 0.7}  # cognitive, social, inertia
+        particles = 40  # number of particles in system
         iters = 100
-        local_steps = 100
+        local_steps = 50
 
         cell_perturb = False
         if cell_perturb:
