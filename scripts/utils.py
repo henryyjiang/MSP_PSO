@@ -115,9 +115,14 @@ def lj_repulsion_pymatgen(structure, scale = 40, buffer = 0.85):
   lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
                              delimiter=",")
   repulsions = []
+
+  def get_z_site(site):
+      el_symbols = np.array([periodictable.elements[i].symbol for i in range(95)])
+      return np.argmax(el_symbols == site.species.elements[0].symbol)
+
   for i in range(len(structure)):
     for j in range(i, len(structure)):
-      rmin = lj_rmins[get_z(structure.sites[i]) - 1, get_z(
+      rmin = lj_rmins[get_z_site(structure.sites[i]) - 1, get_z_site(
         structure.sites[j]) - 1] * buffer
       r = np.min([structure.lattice.a, structure.lattice.b,
         structure.lattice.c]) if i == j else structure.sites[i].distance(
