@@ -153,7 +153,9 @@ def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0):
     return forces
 
 
-def separate_close_atoms(atoms, lj_rmins, max_iters=50, tol=0.01):
+def separate_close_atoms(atoms, max_iters=50, tol=0.01):
+    lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
+                             delimiter=",")
     structure = AseAtomsAdaptor.get_structure(atoms)
 
     for iteration in range(max_iters):
