@@ -131,7 +131,7 @@ def lj_repulsion_pymatgen(structure, scale = 40, buffer = 0.85):
   return np.mean(repulsions) / scale
 
 
-def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0):
+def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_distance=0.5):
     positions = atoms.get_positions()
     cell = atoms.get_cell()
     atomic_numbers = atoms.get_atomic_numbers()
@@ -142,14 +142,24 @@ def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0):
         for j in range(i + 1, n_atoms):
             z_i = atomic_numbers[i] - 1
             z_j = atomic_numbers[j] - 1
-            rmin = lj_rmins[z_i, z_j]
+            sigma = lj_rmins[z_i, z_j]  # Use as sigma parameter
 
             delta = positions[j] - positions[i]
             delta = delta - np.round(delta @ np.linalg.inv(cell)) @ cell
             r = np.linalg.norm(delta)
 
-            if r < rmin * cutoff_factor and r > 0.1:
-                force_magnitude = 12 * epsilon * (rmin ** 12) / (r ** 13)
+            r = max(r, min_distance)
+
+            if r < sigma * cutoff_factor:
+                # Full LJ force: F = 24ε/r * [2(σ/r)^12 - (σ/r)^6]
+                sr6 = (sigma / r) ** 6
+                sr12 = sr6 ** 2
+                force_magnitude = 24 * epsilon * (2 * sr12 - sr6) / r
+
+                # Cap extreme forces
+                max_force = 50.0
+                force_magnitude = np.clip(force_magnitude, -max_force, max_force)
+
                 force_vector = force_magnitude * (delta / r)
 
                 forces[i] -= force_vector
@@ -158,10 +168,12 @@ def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0):
     return forces
 
 
-def separate_close_atoms(atoms, max_iters=50, tol=0.01):
+def separate_close_atoms(atoms, max_iters=50, tol=0.01, damping=0.8):
     lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
                              delimiter=",")
     structure = AseAtomsAdaptor.get_structure(atoms)
+
+    velocity = np.zeros_like(atoms.get_positions())  # Add velocity tracking
 
     for iteration in range(max_iters):
         repulsion = lj_repulsion_pymatgen(structure, scale=40, buffer=0.85)
@@ -171,9 +183,16 @@ def separate_close_atoms(atoms, max_iters=50, tol=0.01):
 
         positions = atoms.get_positions()
         forces = calculate_lj_forces(atoms, lj_rmins)
-        positions += 0.01 * forces
-        atoms.set_positions(positions)
 
+        # Velocity Verlet-like update with damping
+        velocity = damping * velocity + forces * 0.01  # Add damping
+        positions += velocity
+
+        if np.any(~np.isfinite(positions)):
+            print(f"Warning: Non-finite positions detected at iteration {iteration}")
+            break
+
+        atoms.set_positions(positions)
         structure = AseAtomsAdaptor.get_structure(atoms)
 
     return atoms

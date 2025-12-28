@@ -215,7 +215,7 @@ class PSO():
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
                         atoms.set_cell(cell, scale_atoms=True)
 
-                    separate_close_atoms(atoms)
+                    separate_close_atoms2(atoms)
 
                     if not np.all(np.isfinite(atoms.get_forces())):
                         # print("forces are infinite")
@@ -365,7 +365,7 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
 
-        options = {'c1': 1.2, 'c2': 1.8, 'w': 0.7}  # cognitive, social, inertia
+        options = {'c1': 1.0, 'c2': 1.5, 'w': 0.6}  # cognitive, social, inertia
         particles = 40  # number of particles in system
         iters = 100
         local_steps = 50
