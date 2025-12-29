@@ -86,11 +86,6 @@ class PSO():
 
         loss = atoms.get_potential_energy()
 
-        structure = AseAtomsAdaptor.get_structure(atoms)
-        density_penalty = abs(structure.density - self.target_density) * 10
-
-        loss = loss + density_penalty
-
         if loss < self.best_loss:
             self.best_loss = loss
 
