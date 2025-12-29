@@ -87,8 +87,10 @@ def initialize_atoms(el_symbols, lj_rmins, zs, zcounts, possible_sgs, sg_probs, 
 
 def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
     if not cell_perturb:
-        positions = params.reshape(-1, 3)
-        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True), positions=positions)
+        frac_positions = params.reshape(-1, 3)
+        frac_positions = frac_positions % 1.0
+        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
+                      scaled_positions=frac_positions)
     else:
         cell = params[:9].reshape(-1, 3)
         positions = params[9:].reshape(-1, 3)

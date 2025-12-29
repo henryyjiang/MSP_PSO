@@ -84,8 +84,12 @@ class PSO():
     def obj_func(self, params, i):
         atoms = dimensions_to_atoms(params, i, self.composition, self.cell, self.calculator, self.cell_perturb)
 
-        atoms.calc = self.calculator
         loss = atoms.get_potential_energy()
+
+        structure = AseAtomsAdaptor.get_structure(atoms)
+        density_penalty = abs(structure.density - self.target_density) * 10
+
+        loss = loss + density_penalty
 
         if loss < self.best_loss:
             self.best_loss = loss
@@ -178,10 +182,27 @@ class PSO():
                 social_component = options["c2"] * r2 * (self.optimizer.swarm.best_pos - self.optimizer.swarm.position)
                 self.optimizer.swarm.velocity = options["w"] * self.optimizer.swarm.velocity + cognitive_component + social_component
 
+                if i > 0 and i % 20 == 0:
+                    diversity = np.std(self.optimizer.swarm.position, axis=0).mean()
+                    if diversity < 0.1:
+                        worst_indices = np.argsort(self.optimizer.swarm.pbest_cost)[-int(0.3 * particles):]
+                        for idx in worst_indices:
+                            init_atoms = initialize_atoms(self.el_symbols, self.lj_rmins,
+                                                          self.zs, self.zcounts,
+                                                          self.possible_sgs, self.sg_probs)
+                            self.optimizer.swarm.position[idx] = atoms_to_dimensions(init_atoms, self.cell_perturb)
+                            self.optimizer.swarm.pbest_cost[idx] = np.inf
+
+
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
-                lower_bound = np.full(self.optimizer.swarm.position.shape[1], -5)
-                upper_bound = np.full(self.optimizer.swarm.position.shape[1], 5)
+                if self.cell_perturb:
+                    lower_bound = np.concatenate([np.full(9, 2.0), np.full(dimensions - 9, -20)])
+                    upper_bound = np.concatenate([np.full(9, 50.0), np.full(dimensions - 9, 20)])
+                else:
+                    max_cell_dim = np.max(np.linalg.norm(self.cell[0], axis=1))
+                    lower_bound = np.full(dimensions, -max_cell_dim * 1.5)
+                    upper_bound = np.full(dimensions, max_cell_dim * 1.5)
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
 
