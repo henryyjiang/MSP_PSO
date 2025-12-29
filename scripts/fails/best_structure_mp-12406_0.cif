@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       U2S6
+_chemical_formula_sum              "U2 S6"
+_cell_length_a       9.908528190676236
+_cell_length_b       3.93928968126784
+_cell_length_c       15.282934023024639
+_cell_angle_alpha    108.30642153556185
+_cell_angle_beta     98.6167641520449
+_cell_angle_gamma    53.50047479182692
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  U   U1        1.0  0.043837695271195715  0.3714532753837191  0.2643826813239622  1.0000
+  U   U2        1.0  0.6545034274401551  0.3062992690552404  0.14420009088980762  1.0000
+  S   S1        1.0  0.3545946274293625  0.8573774606708953  0.2287667220604984  1.0000
+  S   S2        1.0  0.0005921224012013281  0.7909594953417594  0.14533826908443934  1.0000
+  S   S3        1.0  0.736595847507906  0.5252917369469727  0.013413460787997178  1.0000
+  S   S4        1.0  0.05209368038493423  0.9979734700065166  0.3776431349884094  1.0000
+  S   S5        1.0  0.48599441080554506  0.9500733106383104  0.055522155717432846  1.0000
+  S   S6        1.0  0.7122978754272316  0.8654705635833011  0.2640405329347037  1.0000
