@@ -1,0 +1,32 @@
+data_image0
+_chemical_formula_structural       NdIn5Rh
+_chemical_formula_sum              "Nd1 In5 Rh1"
+_cell_length_a       6.63884762241966
+_cell_length_b       10.62535658105669
+_cell_length_c       9.510866755955638
+_cell_angle_alpha    37.305878466262755
+_cell_angle_beta     118.01489725359293
+_cell_angle_gamma    141.94438268856413
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Nd  Nd1       1.0  0.3704208779593467  0.8531890257584555  0.839540650925428  1.0000
+  In  In1       1.0  0.8937214893354818  0.2166380083112472  0.9782702180381475  1.0000
+  In  In2       1.0  0.6832346349864278  0.12208399398424863  0.378793909537397  1.0000
+  In  In3       1.0  0.4180108342015061  0.4735704996488306  0.4099738287799063  1.0000
+  In  In4       1.0  0.036104611674175446  0.024173115817476054  0.42039319306555045  1.0000
+  In  In5       1.0  0.11066013816879189  0.6407693163227047  0.3437298367456959  1.0000
+  Rh  Rh1       1.0  0.9728726605653063  0.663334163739897  0.5441430597726324  1.0000

@@ -26352,3 +26352,75 @@ Detected KeyboardInterrupt, attempting graceful shutdown ...
 2025-12-29 21:49:46,888 - root - INFO - Dataset length: ('train', 22209)
 2025-12-29 21:49:46,888 - root - INFO - Dataset length: ('val', 1233)
 2025-12-29 21:49:46,889 - root - INFO - Dataset length: ('test', 1233)
+2025-12-30 01:44:19,562 - numexpr.utils - INFO - Note: NumExpr detected 24 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2025-12-30 01:44:19,563 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-12-30 01:44:49,656 - root - INFO - Using PyTorch automatic mixed-precision
+2025-12-30 01:44:49,657 - root - INFO - GPU is available: True, Quantity: None
+2025-12-30 01:44:49,658 - root - INFO - Dataset(s) used:
+2025-12-30 01:44:49,658 - root - INFO - Dataset length: ('full', 24677)
+2025-12-30 01:44:49,658 - root - INFO - Dataset length: ('train', 22209)
+2025-12-30 01:44:49,659 - root - INFO - Dataset length: ('val', 1233)
+2025-12-30 01:44:49,659 - root - INFO - Dataset length: ('test', 1233)
+2025-12-30 02:36:39,436 - root - INFO - Using PyTorch automatic mixed-precision
+2025-12-30 02:36:39,437 - root - INFO - GPU is available: True, Quantity: None
+2025-12-30 02:36:39,437 - root - INFO - Dataset(s) used:
+2025-12-30 02:36:39,438 - root - INFO - Dataset length: ('full', 24677)
+2025-12-30 02:36:39,438 - root - INFO - Dataset length: ('train', 22209)
+2025-12-30 02:36:39,439 - root - INFO - Dataset length: ('val', 1233)
+2025-12-30 02:36:39,439 - root - INFO - Dataset length: ('test', 1233)
+2025-12-30 03:32:58,467 - root - INFO - Using PyTorch automatic mixed-precision
+2025-12-30 03:32:58,467 - root - INFO - GPU is available: True, Quantity: None
+2025-12-30 03:32:58,468 - root - INFO - Dataset(s) used:
+2025-12-30 03:32:58,468 - root - INFO - Dataset length: ('full', 24677)
+2025-12-30 03:32:58,469 - root - INFO - Dataset length: ('train', 22209)
+2025-12-30 03:32:58,469 - root - INFO - Dataset length: ('val', 1233)
+2025-12-30 03:32:58,469 - root - INFO - Dataset length: ('test', 1233)
+2025-12-30 04:22:30,475 - root - INFO - Using PyTorch automatic mixed-precision
+2025-12-30 04:22:30,476 - root - INFO - GPU is available: True, Quantity: None
+2025-12-30 04:22:30,477 - root - INFO - Dataset(s) used:
+2025-12-30 04:22:30,477 - root - INFO - Dataset length: ('full', 24677)
+2025-12-30 04:22:30,477 - root - INFO - Dataset length: ('train', 22209)
+2025-12-30 04:22:30,478 - root - INFO - Dataset length: ('val', 1233)
+2025-12-30 04:22:30,478 - root - INFO - Dataset length: ('test', 1233)
+2025-12-30 05:13:03,328 - root - INFO - Using PyTorch automatic mixed-precision
+2025-12-30 05:13:03,329 - root - INFO - GPU is available: True, Quantity: None
+2025-12-30 05:13:03,330 - root - INFO - Dataset(s) used:
+2025-12-30 05:13:03,330 - root - INFO - Dataset length: ('full', 24677)
+2025-12-30 05:13:03,330 - root - INFO - Dataset length: ('train', 22209)
+2025-12-30 05:13:03,331 - root - INFO - Dataset length: ('val', 1233)
+2025-12-30 05:13:03,331 - root - INFO - Dataset length: ('test', 1233)
+2025-12-30 06:07:52,409 - root - INFO - Using PyTorch automatic mixed-precision
+2025-12-30 06:07:52,409 - root - INFO - GPU is available: True, Quantity: None
+2025-12-30 06:07:52,410 - root - INFO - Dataset(s) used:
+2025-12-30 06:07:52,410 - root - INFO - Dataset length: ('full', 24677)
+2025-12-30 06:07:52,411 - root - INFO - Dataset length: ('train', 22209)
+2025-12-30 06:07:52,411 - root - INFO - Dataset length: ('val', 1233)
+2025-12-30 06:07:52,412 - root - INFO - Dataset length: ('test', 1233)
+2025-12-30 06:59:20,831 - root - INFO - Using PyTorch automatic mixed-precision
+2025-12-30 06:59:20,831 - root - INFO - GPU is available: True, Quantity: None
+2025-12-30 06:59:20,832 - root - INFO - Dataset(s) used:
+2025-12-30 06:59:20,832 - root - INFO - Dataset length: ('full', 24677)
+2025-12-30 06:59:20,832 - root - INFO - Dataset length: ('train', 22209)
+2025-12-30 06:59:20,833 - root - INFO - Dataset length: ('val', 1233)
+2025-12-30 06:59:20,833 - root - INFO - Dataset length: ('test', 1233)
+2025-12-30 08:33:46,539 - root - INFO - Using PyTorch automatic mixed-precision
+2025-12-30 08:33:46,540 - root - INFO - GPU is available: True, Quantity: None
+2025-12-30 08:33:46,540 - root - INFO - Dataset(s) used:
+2025-12-30 08:33:46,541 - root - INFO - Dataset length: ('full', 24677)
+2025-12-30 08:33:46,541 - root - INFO - Dataset length: ('train', 22209)
+2025-12-30 08:33:46,542 - root - INFO - Dataset length: ('val', 1233)
+2025-12-30 08:33:46,542 - root - INFO - Dataset length: ('test', 1233)
+2025-12-30 09:26:14,091 - root - INFO - Using PyTorch automatic mixed-precision
+2025-12-30 09:26:14,092 - root - INFO - GPU is available: True, Quantity: None
+2025-12-30 09:26:14,092 - root - INFO - Dataset(s) used:
+2025-12-30 09:26:14,093 - root - INFO - Dataset length: ('full', 24677)
+2025-12-30 09:26:14,093 - root - INFO - Dataset length: ('train', 22209)
+2025-12-30 09:26:14,094 - root - INFO - Dataset length: ('val', 1233)
+2025-12-30 09:26:14,094 - root - INFO - Dataset length: ('test', 1233)
+2025-12-30 10:23:09,819 - root - INFO - Using PyTorch automatic mixed-precision
+2025-12-30 10:23:09,820 - root - INFO - GPU is available: True, Quantity: None
+2025-12-30 10:23:09,821 - root - INFO - Dataset(s) used:
+2025-12-30 10:23:09,821 - root - INFO - Dataset length: ('full', 24677)
+2025-12-30 10:23:09,821 - root - INFO - Dataset length: ('train', 22209)
+2025-12-30 10:23:09,822 - root - INFO - Dataset length: ('val', 1233)
+2025-12-30 10:23:09,822 - root - INFO - Dataset length: ('test', 1233)
