@@ -339,7 +339,7 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
 
-        options = {'c1': 1.5, 'c2': 1.5, 'w': 0.5}  # cognitive, social, inertia
+        options = {'c1': 1.2, 'c2': 1.8, 'w': 0.7}  # cognitive, social, inertia
         particles = 40  # number of particles in system
         iters = 100
         local_steps = 50
