@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       MgMnTe2
+_chemical_formula_sum              "Mg1 Mn1 Te2"
+_cell_length_a       4.592641525444597
+_cell_length_b       10.386175420359232
+_cell_length_c       7.84592403072763
+_cell_angle_alpha    58.57246360240239
+_cell_angle_beta     126.0017173119776
+_cell_angle_gamma    153.9668368433326
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Mg  Mg1       1.0  0.3988994666403856  0.9193517611987816  0.6162994279863605  1.0000
+  Mn  Mn1       1.0  0.4215150530931939  0.4289743453182366  0.11835918610184686  1.0000
+  Te  Te1       1.0  0.6742631171229428  0.4268376027434517  0.8785841008840423  1.0000
+  Te  Te2       1.0  0.6721902321005697  0.9347770718265338  0.35894288790300755  1.0000
