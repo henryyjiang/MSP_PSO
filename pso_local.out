@@ -1,9 +1,0 @@
----------------------------------------
-Begin Slurm Prolog: Dec-31-2025 14:10:14
-Job ID:    3120598
-User ID:   hjiang378
-Account:   gts-vfung3
-Job name:  pso_local
-Partition: gpu-v100
-QOS:       inferno
----------------------------------------

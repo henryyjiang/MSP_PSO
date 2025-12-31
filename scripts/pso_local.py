@@ -207,7 +207,7 @@ class PSO():
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
                         atoms.set_cell(cell, scale_atoms=True)
 
-                    #separate_close_atoms(atoms)
+                    #separate_close_atoms2(atoms)
 
                     if not np.all(np.isfinite(atoms.get_forces())):
                         #print("forces are infinite")
@@ -225,8 +225,6 @@ class PSO():
                 for atom in optimized_atoms:
                     atom.calc = self.calculator
                     separate_close_atoms(atom)
-                    if not validate_structure_distances(atom, min_dist=1.0):
-                        print(f"Warning: LJ correction failed to fix close contacts")
 
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
