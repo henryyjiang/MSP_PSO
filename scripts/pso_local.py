@@ -1,15 +1,11 @@
-from ase.neighborlist import neighbor_list
-from ase.filters import ExpCellFilter, UnitCellFilter, FrechetCellFilter
 from ase.geometry import cell_to_cellpar, cellpar_to_cell
 import ase
-import numpy as np
 import pyswarms as ps
 import matplotlib.pyplot as plt
 # from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
 # from mattertune import configs as MC
 from mattersim.forcefield.potential import Potential, MatterSimCalculator
 from mace.calculators import mace_mp
-from ase.optimize import BFGS, FIRE
 import torch
 import torch_sim as ts
 from torch_sim.models.mace import MaceModel
@@ -20,13 +16,13 @@ import logging
 import sys
 import os
 import time
+import gc
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname("../.."))))
 #from matdeeplearn.common.ase_utils import MDLCalculator
 from msp.utils.objectives import Energy
 from msp.forcefield import MDL_FF
-from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.analysis.structure_matcher import StructureMatcher
-from pathlib import Path
 
 from utils import *
 
@@ -224,6 +220,11 @@ class PSO():
                     atom.calc = self.calculator
                     separate_close_atoms(atom)
 
+                if i % 10 == 0:
+                    gc.collect()
+                    if torch.cuda.is_available():
+                        torch.cuda.empty_cache()
+
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
 
@@ -336,7 +337,7 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 1.2, 'c2': 1.8, 'w': 0.7}  # cognitive, social, inertia
-        particles = 40  # number of particles in system
+        particles = 30  # number of particles in system
         iters = 100
         local_steps = 50
 

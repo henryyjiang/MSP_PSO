@@ -170,24 +170,20 @@ def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_dis
     return forces
 
 
-def separate_close_atoms(atoms, max_iters=50, tol=0.01, damping=0.8):
+def separate_close_atoms(atoms, max_iters=10, tol=0.01, damping=0.8):
     lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
                              delimiter=",")
-    structure = AseAtomsAdaptor.get_structure(atoms)
 
-    velocity = np.zeros_like(atoms.get_positions())  # Add velocity tracking
+    velocity = np.zeros_like(atoms.get_positions())
 
     for iteration in range(max_iters):
-        repulsion = lj_repulsion_pymatgen(structure, scale=40, buffer=0.85)
-
-        if repulsion < tol:
-            break
-
         positions = atoms.get_positions()
         forces = calculate_lj_forces(atoms, lj_rmins)
 
-        # Velocity Verlet-like update with damping
-        velocity = damping * velocity + forces * 0.01  # Add damping
+        force_magnitude = np.linalg.norm(forces)
+        if force_magnitude < tol:
+            break
+        velocity = damping * velocity + forces * 0.01
         positions += velocity
 
         if np.any(~np.isfinite(positions)):
@@ -195,8 +191,6 @@ def separate_close_atoms(atoms, max_iters=50, tol=0.01, damping=0.8):
             break
 
         atoms.set_positions(positions)
-        structure = AseAtomsAdaptor.get_structure(atoms)
-
     return atoms
 
 
