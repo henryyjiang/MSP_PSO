@@ -190,8 +190,6 @@ class PSO():
 
                 sanitized_atoms = []
                 for atoms in new_atoms:
-                    atoms.calc = self.calculator
-
                     cellpar = cell_to_cellpar(atoms.cell)
                     cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
 
