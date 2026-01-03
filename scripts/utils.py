@@ -313,29 +313,40 @@ def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
 
     return True
 
-def separate_close_atoms_batch(atoms, min_dist=1.0):
-    i, j, d, D = neighbor_list('ijdD', atoms, cutoff=min_dist)
 
-    mask = (i < j) & (d < min_dist) & (d > 1e-9)
+def separate_close_atoms_batch(atoms, min_dist=1.0, max_iterations=10):
+    # Use a slightly larger cutoff to catch atoms that might become
+    # close after the first few moves
+    cutoff = 4.0
 
-    if not np.any(mask):
-        return
+    for _ in range(max_iterations):
+        i, j, d, D = neighbor_list('ijdD', atoms, cutoff=cutoff)
 
-    idx_i = i[mask]
-    idx_j = j[mask]
-    dist_val = d[mask]
-    vecs = D[mask]
+        if len(d) == 0:
+            break
+        radii_sum = covalent_radii[atoms.numbers[i]] + covalent_radii[atoms.numbers[j]]
+        min_allowed = np.maximum(0.75 * radii_sum, min_dist)
 
-    unit_vecs = vecs / dist_val[:, np.newaxis]
-    shift_magnitude = 0.3 * (min_dist - dist_val)
-    shift_vectors = shift_magnitude[:, np.newaxis] * unit_vecs
+        mask = (i < j) & (d < min_allowed) & (d > 1e-9)
 
-    pos_delta = np.zeros_like(atoms.positions)
+        if not np.any(mask):
+            return True
 
-    np.add.at(pos_delta, idx_i, -shift_vectors)
-    np.add.at(pos_delta, idx_j, shift_vectors)
+        idx_i, idx_j = i[mask], j[mask]
+        actual_dist = d[mask][:, np.newaxis]
+        unit_vecs = D[mask] / actual_dist
+        target_dist = min_allowed[mask][:, np.newaxis]
+        shift_mag = 0.3 * (target_dist - actual_dist)
+        shift_vecs = shift_mag * unit_vecs
 
-    atoms.positions += pos_delta
+        pos_delta = np.zeros_like(atoms.positions)
+        np.add.at(pos_delta, idx_i, -shift_vecs)
+        np.add.at(pos_delta, idx_j, shift_vecs)
+
+        atoms.positions += pos_delta
+
+    final_i, final_j, final_d = neighbor_list('ijd', atoms, cutoff=min_dist)
+    return not (len(final_d) > 0 and np.min(final_d) < min_dist)
 
 
 def validate_structure_distances(atoms, min_dist=1.0):
