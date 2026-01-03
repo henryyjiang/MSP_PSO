@@ -61,6 +61,7 @@ class PSO():
         self.forcefield = MDL_FF(train_config, my_dataset)
         self.energy = Energy(normalize=True, ljr_ratio=1)
 
+        # PLACEHOLDER OPTIMIZER
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
         self.model = model
 
@@ -175,8 +176,19 @@ class PSO():
 
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
-                lower_bound = np.full(self.optimizer.swarm.position.shape[1], -10)
-                upper_bound = np.full(self.optimizer.swarm.position.shape[1], 10)
+                if not self.cell_perturb:
+                    lower_bound = np.full(self.optimizer.swarm.position.shape[1], -0.5)
+                    upper_bound = np.full(self.optimizer.swarm.position.shape[1], 1.5)
+                else:
+                    cell_dims = 9
+                    lower_bound = np.concatenate([
+                        np.full(cell_dims, 2.0),
+                        np.full(dimensions - cell_dims, -10)
+                    ])
+                    upper_bound = np.concatenate([
+                        np.full(cell_dims, 20.0),
+                        np.full(dimensions - cell_dims, 10)
+                    ])
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
 

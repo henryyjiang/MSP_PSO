@@ -37,6 +37,8 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 class PSO():
     def __init__(self, cif_name, model, composition, cell, calc, options, particles, iters, local_steps, cell_perturb=True):
+        self.device = device
+
         self.cif_name = cif_name
         self.cell_perturb = cell_perturb
         self.composition = composition
@@ -107,25 +109,36 @@ class PSO():
         return energies
 
     def batch_get_energies(self, atoms_list):
-        """
-        Batch energy calculation - optimized version
-        """
-        # The ASE calculator is already set, so we can just call it
-        # But we can optimize by avoiding repeated calc assignments
-        energies = []
+        from torch_geometric.data import Batch
 
-        for atoms in atoms_list:
-            # Calculator already assigned in dimensions_to_atoms
-            try:
-                energy = atoms.get_potential_energy()
-                energies.append(energy)
-            except Exception as e:
-                print(f"Energy calculation failed: {e}")
-                # Return high penalty energy
-                energies.append(1e6)
+        graphs = []
 
-        return np.array(energies)
+        try:
+            with torch.no_grad():
+                for atoms in atoms_list:
+                    graph = self.calculator.potential.graph_builder.build(atoms)
+                    graphs.append(graph)
 
+                batch = Batch.from_data_list(graphs).to(self.device)
+
+                model = self.calculator.potential.model
+                output = model(batch)
+
+                energies = output["total_energy"]
+
+                return energies.detach().cpu().numpy()
+
+        except Exception as e:
+            print(f"[Batch failed → fallback] {e}")
+
+            energies = []
+            for atoms in atoms_list:
+                try:
+                    energies.append(atoms.get_potential_energy())
+                except Exception:
+                    energies.append(1e6)
+
+            return np.array(energies)
 
     def run(self):
         costs = []
@@ -142,7 +155,9 @@ class PSO():
         original_cif = os.path.join("cifs", self.cif_name + ".cif")
         ground_truth = Structure.from_file(original_cif)
 
-        ground_truth_energy = ground_truth.get_potential_energy()
+        atoms_gt = AseAtomsAdaptor.get_atoms(ground_truth)
+        atoms_gt.calc = self.calculator
+        ground_truth_energy = atoms_gt.get_potential_energy()
 
         for iteration in range(1):
             self.best_losses = []
@@ -204,8 +219,19 @@ class PSO():
 
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
-                lower_bound = np.full(self.optimizer.swarm.position.shape[1], -10)
-                upper_bound = np.full(self.optimizer.swarm.position.shape[1], 10)
+                if not self.cell_perturb:
+                    lower_bound = np.full(self.optimizer.swarm.position.shape[1], -0.5)
+                    upper_bound = np.full(self.optimizer.swarm.position.shape[1], 1.5)
+                else:
+                    cell_dims = 9
+                    lower_bound = np.concatenate([
+                        np.full(cell_dims, 2.0),
+                        np.full(dimensions - cell_dims, -10)
+                    ])
+                    upper_bound = np.concatenate([
+                        np.full(cell_dims, 20.0),
+                        np.full(dimensions - cell_dims, 10)
+                    ])
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
 
@@ -215,8 +241,6 @@ class PSO():
 
                 sanitized_atoms = []
                 for atoms in new_atoms:
-                    atoms.calc = self.calculator
-
                     cellpar = cell_to_cellpar(atoms.cell)
                     if np.any(cellpar[3:] < 30.0) or np.any(cellpar[3:] > 150.0):
                         cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
@@ -247,8 +271,7 @@ class PSO():
                         autobatcher=False,
                         max_steps =self.local_steps)
                 optimized_atoms = optimized_state.to_atoms()
-                for atom in optimized_atoms:
-                    atom.calc = self.calculator
+                #for atom in optimized_atoms:
                     # separate_close_atoms(atom)
 
                 if not self.cell_perturb:
@@ -361,7 +384,7 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 1.5, 'c2': 1.5, 'w': 0.5}  # cognitive, social, inertia
-        particles = 40  # number of particles in system
+        particles = 30  # number of particles in system
         iters = 100
         local_steps = 50
 
