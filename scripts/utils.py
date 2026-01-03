@@ -183,140 +183,105 @@ def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_dis
     return forces
 
 
-def separate_close_atoms(atoms, max_iters=10, min_dist=1.0, step_scale=0.1):
-    from ase.neighborlist import neighbor_list
-
+def separate_close_atoms(atoms, max_iters=20, min_dist=1.0, step_scale=0.2):
     lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
                              delimiter=",")
 
+    n_atoms = len(atoms)
+    numbers = atoms.numbers - 1
+
     for iteration in range(max_iters):
-        atomic_numbers = atoms.get_atomic_numbers()
-        n_atoms = len(atoms)
+        i, j, dists, vecs = neighbor_list('ijdD', atoms, cutoff=4.0)
 
-        try:
-            indices_i, indices_j, distances, vecs = neighbor_list(
-                'ijdD', atoms, cutoff=min_dist * 2.0
-            )
-        except Exception as e:
-            print(f"Neighbor list failed: {e}")
+        if len(dists) == 0:
             break
 
-        if len(distances) == 0:
+        sigmas = lj_rmins[numbers[i], numbers[j]]
+        targets = np.maximum(sigmas, min_dist)
+        mask = (i < j) & (dists < targets)
+        if not np.any(mask):
             break
 
-        forces = np.zeros((n_atoms, 3))
-        max_violation = 0.0
+        idx_i, idx_j = i[mask], j[mask]
+        r = dists[mask][:, np.newaxis]
+        delta = vecs[mask]
+        target_r = targets[mask][:, np.newaxis]
 
-        # Process each neighbor pair
-        for idx in range(len(distances)):
-            i = indices_i[idx]
-            j = indices_j[idx]
-            r = distances[idx]
-            delta = vecs[idx]
+        repulsion_mag = (target_r / (r + 1e-6)) ** 2 - 1.0
+        repulsion_mag = np.minimum(repulsion_mag, 5.0)
 
-            if i == j:
-                continue
+        force_vecs = repulsion_mag * (delta / r)
 
-            # Safety check
-            if r < 0.01 or not np.isfinite(r):
-                # Emergency separation
-                rand_dir = np.random.randn(3)
-                rand_dir /= np.linalg.norm(rand_dir)
-                forces[i] -= 10.0 * rand_dir
-                forces[j] += 10.0 * rand_dir
-                max_violation = max(max_violation, 5.0)
-                continue
+        total_forces = np.zeros((n_atoms, 3))
+        np.add.at(total_forces, idx_i, -force_vecs)
+        np.add.at(total_forces, idx_j, force_vecs)
 
-            z_i = atomic_numbers[i] - 1
-            z_j = atomic_numbers[j] - 1
-            sigma = lj_rmins[z_i, z_j]
-            target_dist = max(sigma, min_dist)
+        critical = (dists < 0.1) & (i < j)
+        if np.any(critical):
+            rand_kicks = np.random.randn(len(i[critical]), 3) * 0.5
+            np.add.at(total_forces, i[critical], -rand_kicks)
+            np.add.at(total_forces, j[critical], rand_kicks)
 
-            if r < target_dist:
-                violation = target_dist - r
-                max_violation = max(max_violation, violation)
 
-                force_magnitude = min(violation / r, 10.0)
-                direction = delta / r
-                force_vector = force_magnitude * direction
-
-                forces[i] -= force_vector
-                forces[j] += force_vector
-
-        if max_violation < 0.01:
-            break
-
-        total_force = np.linalg.norm(forces)
-        if total_force > 0:
-            step_size = min(step_scale, step_scale * 10.0 / (total_force + 1.0))
-        else:
-            break
-
-        new_positions = atoms.get_positions() + step_size * forces
-
-        if np.any(~np.isfinite(new_positions)):
-            print(f"Warning: Non-finite positions at iteration {iteration}")
-            break
-
-        atoms.set_positions(new_positions)
+        atoms.positions += step_scale * total_forces
+        atoms.wrap()
 
     return atoms
 
+
+# def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
+#     cutoff = 4.0
+#
+#     for iteration in range(max_iterations):
+#         indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
+#
+#         if len(distances) == 0:
+#             return True
+#
+#         min_d = np.min(distances)
+#         if min_d >= min_dist:
+#             return True
+#
+#         elem_nums_i = atoms.numbers[indices_i]
+#         elem_nums_j = atoms.numbers[indices_j]
+#         min_allowed = 0.75 * (covalent_radii[elem_nums_i] + covalent_radii[elem_nums_j])
+#
+#         min_allowed = np.maximum(min_allowed, min_dist)
+#
+#         needs_adjustment = distances < min_allowed
+#
+#         if not np.any(needs_adjustment):
+#             return True
+#
+#         for idx in np.where(needs_adjustment)[0]:
+#             i = indices_i[idx]
+#             j = indices_j[idx]
+#             d = distances[idx]
+#             target = min_allowed[idx]
+#
+#             vec = atoms.positions[j] - atoms.positions[i]
+#             vec_norm = np.linalg.norm(vec)
+#
+#             if vec_norm < 1e-6:
+#                 vec = np.random.randn(3)
+#                 vec_norm = np.linalg.norm(vec)
+#
+#             vec = vec / vec_norm
+#
+#             shift = 0.3 * (target - d) * vec
+#             atoms.positions[i] -= shift
+#             atoms.positions[j] += shift
+#
+#     indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
+#
+#     if len(distances) > 0 and np.min(distances) < min_dist:
+#         print("reject1")
+#         return False
+#
+#     return True
+
+
 def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
-    cutoff = 4.0
-
-    for iteration in range(max_iterations):
-        indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
-
-        if len(distances) == 0:
-            return True
-
-        min_d = np.min(distances)
-        if min_d >= min_dist:
-            return True
-
-        elem_nums_i = atoms.numbers[indices_i]
-        elem_nums_j = atoms.numbers[indices_j]
-        min_allowed = 0.75 * (covalent_radii[elem_nums_i] + covalent_radii[elem_nums_j])
-
-        min_allowed = np.maximum(min_allowed, min_dist)
-
-        needs_adjustment = distances < min_allowed
-
-        if not np.any(needs_adjustment):
-            return True
-
-        for idx in np.where(needs_adjustment)[0]:
-            i = indices_i[idx]
-            j = indices_j[idx]
-            d = distances[idx]
-            target = min_allowed[idx]
-
-            vec = atoms.positions[j] - atoms.positions[i]
-            vec_norm = np.linalg.norm(vec)
-
-            if vec_norm < 1e-6:
-                vec = np.random.randn(3)
-                vec_norm = np.linalg.norm(vec)
-
-            vec = vec / vec_norm
-
-            shift = 0.3 * (target - d) * vec
-            atoms.positions[i] -= shift
-            atoms.positions[j] += shift
-
-    indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
-
-    if len(distances) > 0 and np.min(distances) < min_dist:
-        print("reject1")
-        return False
-
-    return True
-
-
-def separate_close_atoms_batch(atoms, min_dist=1.0, max_iterations=10):
-    # Use a slightly larger cutoff to catch atoms that might become
-    # close after the first few moves
     cutoff = 4.0
 
     for _ in range(max_iterations):
