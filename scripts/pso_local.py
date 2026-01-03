@@ -220,7 +220,7 @@ class PSO():
                     atom.calc = self.calculator
                     separate_close_atoms(atom)
 
-                if i % 10 == 0:
+                if i % 5 == 0:
                     gc.collect()
                     if torch.cuda.is_available():
                         torch.cuda.empty_cache()

@@ -105,10 +105,10 @@ class PSO():
         matches = []
         dist_energy = []
 
-        os.makedirs("plots", exist_ok=True)
-        os.makedirs("matches", exist_ok=True)
-        os.makedirs("fails", exist_ok=True)
-        os.makedirs("lower_energy", exist_ok=True)
+        os.makedirs("plots2", exist_ok=True)
+        os.makedirs("matches2", exist_ok=True)
+        os.makedirs("fails2", exist_ok=True)
+        os.makedirs("lower_energy2", exist_ok=True)
 
         matcher = StructureMatcher(ltol=0.3, stol=0.5, angle_tol=8)
 
@@ -242,14 +242,14 @@ class PSO():
             plt.xlabel('Iteration')
             plt.ylabel('Best Loss')
             plt.title('Best Losses')
-            plt.savefig(f'plots/best_losses_{self.cif_name}_{iteration}.png')
+            plt.savefig(f'plots2/best_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
             plt.plot(self.avg_losses)
             plt.xlabel('Iteration')
             plt.ylabel('Average Loss')
             plt.title('Average Losses')
-            plt.savefig(f'plots/avg_losses_{self.cif_name}_{iteration}.png')
+            plt.savefig(f'plots2/avg_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
             final_atoms = final_dimensions(pos, self.best_cell, self.composition)
@@ -282,11 +282,11 @@ class PSO():
 
                 # Save CIF accordingly
                 if result_type == "match":
-                    out_dir = "matches"
+                    out_dir = "matches2"
                 elif result_type == "lower_energy":
-                    out_dir = "lower_energy"
+                    out_dir = "lower_energy2"
                 else:
-                    out_dir = "fails"
+                    out_dir = "fails2"
 
                 filename = os.path.join(out_dir, f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
@@ -298,10 +298,10 @@ class PSO():
             except ValueError:
                 print(f"{self.cif_name}: invalid structure, cannot match")
                 matches.append(False)
-                filename = os.path.join("fails", f"best_structure_{self.cif_name}_{iteration}.cif")
+                filename = os.path.join("fails2", f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
 
-        costs_filename = f"plots/{self.cif_name}_costs.txt"
+        costs_filename = f"plots2/{self.cif_name}_costs.txt"
         with open(costs_filename, "w") as f:
             f.write(f"Ground Truth: {ground_truth_energy}\n")
             for cost in costs:

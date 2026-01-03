@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Sr4GaSi3
+_chemical_formula_sum              "Sr4 Ga1 Si3"
+_cell_length_a       6.902255500561806
+_cell_length_b       6.902255500561806
+_cell_length_c       6.902255500561806
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Sr  Sr1       1.0  0.5179228671971957  0.00914400938753494  0.5733284490283808  1.0000
+  Sr  Sr2       1.0  0.5905552414563058  0.5292929772999317  0.022093026184667647  1.0000
+  Sr  Sr3       1.0  0.04632853877882917  0.5235754034370179  0.5097887910573076  1.0000
+  Sr  Sr4       1.0  0.04708829996320829  0.0353914917305408  0.07336150668960366  1.0000
+  Ga  Ga1       1.0  0.0775440247776882  0.0009063731316149338  0.5565363125812252  1.0000
+  Si  Si1       1.0  0.09095561201986106  0.5802499930331271  0.013610882768024355  1.0000
+  Si  Si2       1.0  0.5781395755183217  0.02683827742540924  0.05287656068994347  1.0000
+  Si  Si3       1.0  0.5462982434123844  0.5645999613658742  0.5883131777359514  1.0000
