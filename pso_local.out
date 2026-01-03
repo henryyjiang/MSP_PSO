@@ -1,0 +1,685 @@
+---------------------------------------
+Begin Slurm Prolog: Jan-03-2026 10:19:26
+Job ID:    3140735
+User ID:   hjiang378
+Account:   gts-vfung3
+Job name:  pso_local
+Partition: gpu-v100
+QOS:       inferno
+---------------------------------------
+2026-01-03 10:19:37,402 - numexpr.utils - INFO - Note: NumExpr detected 24 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2026-01-03 10:19:37,403 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/e3nn/o3/_wigner.py:10: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd, _W3j_flat, _W3j_indices = torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/pso_local_batching.py:346: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location=device)
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/core/structure.py:2872: EncodingWarning: We strongly encourage explicit `encoding`, and we would use UTF-8 by default as per PEP 686
+  with zopen(filename, "rt", errors="replace") as f:
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/torch_geometric/nn/conv/message_passing.py:1032: UserWarning: 'NeighborEmbedding.jittable' is deprecated and a no-op. Please remove its usage.
+  warnings.warn(f"'{self.__class__.__name__}.jittable' is deprecated "
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/torch_geometric/nn/conv/message_passing.py:1032: UserWarning: 'EquivariantMultiHeadAttention.jittable' is deprecated and a no-op. Please remove its usage.
+  warnings.warn(f"'{self.__class__.__name__}.jittable' is deprecated "
+2026-01-03 10:20:07,678 - root - INFO - Using PyTorch automatic mixed-precision
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/matdeeplearn/trainers/base_trainer.py:84: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = GradScaler(enabled=self.use_amp and self.device.type == "cuda")
+2026-01-03 10:20:07,679 - root - INFO - GPU is available: True, Quantity: None
+2026-01-03 10:20:07,679 - root - INFO - Dataset(s) used:
+2026-01-03 10:20:07,680 - root - INFO - Dataset length: ('full', 24677)
+2026-01-03 10:20:07,680 - root - INFO - Dataset length: ('train', 22209)
+2026-01-03 10:20:07,681 - root - INFO - Dataset length: ('val', 1233)
+2026-01-03 10:20:07,681 - root - INFO - Dataset length: ('test', 1233)
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/msp/forcefield/mdl_ff.py:525: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(model_path, map_location=torch.device(self.trainer.rank))
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/pso_local_batching.py:74: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location=device)
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/core/structure.py:2872: EncodingWarning: We strongly encourage explicit `encoding`, and we would use UTF-8 by default as per PEP 686
+  with zopen(filename, "rt", errors="replace") as f:
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/utils.py:100: FutureWarning: Please use atoms.calc = calc
+  atoms.set_calculator(calculator)
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/pso_local_batching.py:243: UserWarning: Optimize has reached max steps: 26
+  optimized_state = ts.optimize(
+2026-01-03 10:26:04,471 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-03 10:26:04,472 - root - INFO - GPU is available: True, Quantity: None
+2026-01-03 10:26:04,472 - root - INFO - Dataset(s) used:
+2026-01-03 10:26:04,473 - root - INFO - Dataset length: ('full', 24677)
+2026-01-03 10:26:04,473 - root - INFO - Dataset length: ('train', 22209)
+2026-01-03 10:26:04,473 - root - INFO - Dataset length: ('val', 1233)
+2026-01-03 10:26:04,474 - root - INFO - Dataset length: ('test', 1233)
+2026-01-03 10:40:27,302 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-03 10:40:27,303 - root - INFO - GPU is available: True, Quantity: None
+2026-01-03 10:40:27,303 - root - INFO - Dataset(s) used:
+2026-01-03 10:40:27,303 - root - INFO - Dataset length: ('full', 24677)
+2026-01-03 10:40:27,304 - root - INFO - Dataset length: ('train', 22209)
+2026-01-03 10:40:27,304 - root - INFO - Dataset length: ('val', 1233)
+2026-01-03 10:40:27,305 - root - INFO - Dataset length: ('test', 1233)
+2026-01-03 10:45:36,378 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-03 10:45:36,379 - root - INFO - GPU is available: True, Quantity: None
+2026-01-03 10:45:36,380 - root - INFO - Dataset(s) used:
+2026-01-03 10:45:36,380 - root - INFO - Dataset length: ('full', 24677)
+2026-01-03 10:45:36,381 - root - INFO - Dataset length: ('train', 22209)
+2026-01-03 10:45:36,381 - root - INFO - Dataset length: ('val', 1233)
+2026-01-03 10:45:36,382 - root - INFO - Dataset length: ('test', 1233)
+2026-01-03 10:50:25,615 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-03 10:50:25,616 - root - INFO - GPU is available: True, Quantity: None
+2026-01-03 10:50:25,616 - root - INFO - Dataset(s) used:
+2026-01-03 10:50:25,617 - root - INFO - Dataset length: ('full', 24677)
+2026-01-03 10:50:25,617 - root - INFO - Dataset length: ('train', 22209)
+2026-01-03 10:50:25,618 - root - INFO - Dataset length: ('val', 1233)
+2026-01-03 10:50:25,618 - root - INFO - Dataset length: ('test', 1233)
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/io/cif.py:1221: UserWarning: Issues encountered while parsing CIF: 18 fractional coordinates rounded to ideal values to avoid issues with finite precision.
+  warnings.warn("Issues encountered while parsing CIF: " + "\n".join(self.warnings))
+2026-01-03 10:56:19,032 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-03 10:56:19,032 - root - INFO - GPU is available: True, Quantity: None
+2026-01-03 10:56:19,033 - root - INFO - Dataset(s) used:
+2026-01-03 10:56:19,033 - root - INFO - Dataset length: ('full', 24677)
+2026-01-03 10:56:19,034 - root - INFO - Dataset length: ('train', 22209)
+2026-01-03 10:56:19,034 - root - INFO - Dataset length: ('val', 1233)
+2026-01-03 10:56:19,035 - root - INFO - Dataset length: ('test', 1233)
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/io/cif.py:1221: UserWarning: Issues encountered while parsing CIF: 8 fractional coordinates rounded to ideal values to avoid issues with finite precision.
+  warnings.warn("Issues encountered while parsing CIF: " + "\n".join(self.warnings))
+2026-01-03 11:01:06,166 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-03 11:01:06,166 - root - INFO - GPU is available: True, Quantity: None
+2026-01-03 11:01:06,167 - root - INFO - Dataset(s) used:
+2026-01-03 11:01:06,167 - root - INFO - Dataset length: ('full', 24677)
+2026-01-03 11:01:06,168 - root - INFO - Dataset length: ('train', 22209)
+2026-01-03 11:01:06,168 - root - INFO - Dataset length: ('val', 1233)
+2026-01-03 11:01:06,169 - root - INFO - Dataset length: ('test', 1233)
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+Iteration 1: Ground Truth: -84.43333435058594, Best Cost = -70.98130798339844, Time Taken: 6.82 s
+Iteration 2: Ground Truth: -84.43333435058594, Best Cost = -74.72196197509766, Time Taken: 5.13 s
+Iteration 3: Ground Truth: -84.43333435058594, Best Cost = -78.96250915527344, Time Taken: 5.08 s
+Iteration 4: Ground Truth: -84.43333435058594, Best Cost = -80.98185729980469, Time Taken: 5.06 s
+Iteration 5: Ground Truth: -84.43333435058594, Best Cost = -81.22972869873047, Time Taken: 5.01 s
+Iteration 6: Ground Truth: -84.43333435058594, Best Cost = -81.30326080322266, Time Taken: 4.99 s
+Iteration 7: Ground Truth: -84.43333435058594, Best Cost = -81.62471771240234, Time Taken: 4.99 s
+Iteration 8: Ground Truth: -84.43333435058594, Best Cost = -82.01182556152344, Time Taken: 5.00 s
+Iteration 9: Ground Truth: -84.43333435058594, Best Cost = -82.20233154296875, Time Taken: 5.00 s
+Iteration 10: Ground Truth: -84.43333435058594, Best Cost = -82.45266723632812, Time Taken: 4.94 s
+Iteration 11: Ground Truth: -84.43333435058594, Best Cost = -82.61781311035156, Time Taken: 4.80 s
+Iteration 12: Ground Truth: -84.43333435058594, Best Cost = -82.61995697021484, Time Taken: 4.77 s
+Iteration 13: Ground Truth: -84.43333435058594, Best Cost = -82.62151336669922, Time Taken: 4.79 s
+Iteration 14: Ground Truth: -84.43333435058594, Best Cost = -82.62278747558594, Time Taken: 4.79 s
+Iteration 15: Ground Truth: -84.43333435058594, Best Cost = -82.62388610839844, Time Taken: 4.77 s
+Iteration 16: Ground Truth: -84.43333435058594, Best Cost = -82.6248550415039, Time Taken: 4.77 s
+Iteration 17: Ground Truth: -84.43333435058594, Best Cost = -82.62578582763672, Time Taken: 4.78 s
+Iteration 18: Ground Truth: -84.43333435058594, Best Cost = -82.62663269042969, Time Taken: 4.79 s
+Iteration 19: Ground Truth: -84.43333435058594, Best Cost = -82.62745666503906, Time Taken: 4.78 s
+Iteration 20: Ground Truth: -84.43333435058594, Best Cost = -82.6282730102539, Time Taken: 4.79 s
+Iteration 21: Ground Truth: -84.43333435058594, Best Cost = -82.6290283203125, Time Taken: 4.78 s
+Iteration 22: Ground Truth: -84.43333435058594, Best Cost = -82.6297836303711, Time Taken: 4.75 s
+Iteration 23: Ground Truth: -84.43333435058594, Best Cost = -82.63050079345703, Time Taken: 4.71 s
+Iteration 24: Ground Truth: -84.43333435058594, Best Cost = -82.63118743896484, Time Taken: 4.72 s
+Iteration 25: Ground Truth: -84.43333435058594, Best Cost = -82.63182830810547, Time Taken: 4.69 s
+Iteration 26: Ground Truth: -84.43333435058594, Best Cost = -82.63246154785156, Time Taken: 4.69 s
+Iteration 27: Ground Truth: -84.43333435058594, Best Cost = -82.6330337524414, Time Taken: 4.70 s
+Iteration 28: Ground Truth: -84.43333435058594, Best Cost = -82.63358306884766, Time Taken: 4.69 s
+Iteration 29: Ground Truth: -84.43333435058594, Best Cost = -82.63411712646484, Time Taken: 4.69 s
+Iteration 30: Ground Truth: -84.43333435058594, Best Cost = -82.63461303710938, Time Taken: 4.68 s
+Iteration 31: Ground Truth: -84.43333435058594, Best Cost = -82.63507080078125, Time Taken: 4.70 s
+Iteration 32: Ground Truth: -84.43333435058594, Best Cost = -82.63552856445312, Time Taken: 4.69 s
+Iteration 33: Ground Truth: -84.43333435058594, Best Cost = -82.63597106933594, Time Taken: 4.71 s
+Iteration 34: Ground Truth: -84.43333435058594, Best Cost = -82.63638305664062, Time Taken: 4.72 s
+Iteration 35: Ground Truth: -84.43333435058594, Best Cost = -82.63679504394531, Time Taken: 4.69 s
+Iteration 36: Ground Truth: -84.43333435058594, Best Cost = -82.63717651367188, Time Taken: 4.66 s
+Iteration 37: Ground Truth: -84.43333435058594, Best Cost = -82.63755798339844, Time Taken: 4.67 s
+Iteration 38: Ground Truth: -84.43333435058594, Best Cost = -82.637939453125, Time Taken: 4.67 s
+Iteration 39: Ground Truth: -84.43333435058594, Best Cost = -82.63829803466797, Time Taken: 4.67 s
+Iteration 40: Ground Truth: -84.43333435058594, Best Cost = -82.63866424560547, Time Taken: 4.69 s
+Iteration 41: Ground Truth: -84.43333435058594, Best Cost = -82.63900756835938, Time Taken: 4.70 s
+Iteration 42: Ground Truth: -84.43333435058594, Best Cost = -82.63935852050781, Time Taken: 4.70 s
+Iteration 43: Ground Truth: -84.43333435058594, Best Cost = -82.63968658447266, Time Taken: 4.69 s
+Iteration 44: Ground Truth: -84.43333435058594, Best Cost = -82.64002227783203, Time Taken: 4.69 s
+Iteration 45: Ground Truth: -84.43333435058594, Best Cost = -82.64033508300781, Time Taken: 4.70 s
+Iteration 46: Ground Truth: -84.43333435058594, Best Cost = -82.64066314697266, Time Taken: 4.70 s
+Iteration 47: Ground Truth: -84.43333435058594, Best Cost = -82.64097595214844, Time Taken: 4.68 s
+Iteration 48: Ground Truth: -84.43333435058594, Best Cost = -82.64128112792969, Time Taken: 4.67 s
+Iteration 49: Ground Truth: -84.43333435058594, Best Cost = -82.64156341552734, Time Taken: 4.67 s
+Iteration 50: Ground Truth: -84.43333435058594, Best Cost = -82.6418685913086, Time Taken: 4.68 s
+No match for mp-1186168: RMSD = 2.903, ΔE = 1.791 eV
+mp-1186168 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+Iteration 1: Ground Truth: -506.90875244140625, Best Cost = 200.00912475585938, Time Taken: 8.23 s
+Iteration 2: Ground Truth: -506.90875244140625, Best Cost = -348.5582580566406, Time Taken: 8.31 s
+Iteration 3: Ground Truth: -506.90875244140625, Best Cost = -364.9204406738281, Time Taken: 7.50 s
+Iteration 4: Ground Truth: -506.90875244140625, Best Cost = -394.1407775878906, Time Taken: 6.42 s
+Iteration 5: Ground Truth: -506.90875244140625, Best Cost = -417.59173583984375, Time Taken: 6.06 s
+Iteration 6: Ground Truth: -506.90875244140625, Best Cost = -445.3502197265625, Time Taken: 6.07 s
+Iteration 7: Ground Truth: -506.90875244140625, Best Cost = -462.821044921875, Time Taken: 6.07 s
+Iteration 8: Ground Truth: -506.90875244140625, Best Cost = -471.6361389160156, Time Taken: 6.19 s
+Iteration 9: Ground Truth: -506.90875244140625, Best Cost = -475.273193359375, Time Taken: 6.25 s
+Iteration 10: Ground Truth: -506.90875244140625, Best Cost = -478.54388427734375, Time Taken: 6.42 s
+Iteration 11: Ground Truth: -506.90875244140625, Best Cost = -480.56488037109375, Time Taken: 6.51 s
+Iteration 12: Ground Truth: -506.90875244140625, Best Cost = -481.66925048828125, Time Taken: 6.59 s
+Iteration 13: Ground Truth: -506.90875244140625, Best Cost = -482.2429504394531, Time Taken: 6.48 s
+Iteration 14: Ground Truth: -506.90875244140625, Best Cost = -482.954345703125, Time Taken: 6.61 s
+Iteration 15: Ground Truth: -506.90875244140625, Best Cost = -483.4061584472656, Time Taken: 6.53 s
+Iteration 16: Ground Truth: -506.90875244140625, Best Cost = -484.5752258300781, Time Taken: 6.51 s
+Iteration 17: Ground Truth: -506.90875244140625, Best Cost = -485.47210693359375, Time Taken: 6.47 s
+Iteration 18: Ground Truth: -506.90875244140625, Best Cost = -486.9078369140625, Time Taken: 6.40 s
+Iteration 19: Ground Truth: -506.90875244140625, Best Cost = -487.657958984375, Time Taken: 6.35 s
+Iteration 20: Ground Truth: -506.90875244140625, Best Cost = -488.3536376953125, Time Taken: 6.67 s
+Iteration 21: Ground Truth: -506.90875244140625, Best Cost = -488.6499328613281, Time Taken: 6.46 s
+Iteration 22: Ground Truth: -506.90875244140625, Best Cost = -488.94012451171875, Time Taken: 6.03 s
+Iteration 23: Ground Truth: -506.90875244140625, Best Cost = -488.94775390625, Time Taken: 6.34 s
+Iteration 24: Ground Truth: -506.90875244140625, Best Cost = -489.0761413574219, Time Taken: 5.98 s
+Iteration 25: Ground Truth: -506.90875244140625, Best Cost = -489.0932922363281, Time Taken: 5.97 s
+Iteration 26: Ground Truth: -506.90875244140625, Best Cost = -489.0986328125, Time Taken: 5.98 s
+Iteration 27: Ground Truth: -506.90875244140625, Best Cost = -489.1028137207031, Time Taken: 6.36 s
+Iteration 28: Ground Truth: -506.90875244140625, Best Cost = -489.2203369140625, Time Taken: 6.03 s
+Iteration 29: Ground Truth: -506.90875244140625, Best Cost = -489.2227478027344, Time Taken: 6.05 s
+Iteration 30: Ground Truth: -506.90875244140625, Best Cost = -489.224365234375, Time Taken: 5.91 s
+Iteration 31: Ground Truth: -506.90875244140625, Best Cost = -489.22576904296875, Time Taken: 5.97 s
+Iteration 32: Ground Truth: -506.90875244140625, Best Cost = -489.226806640625, Time Taken: 6.10 s
+Iteration 33: Ground Truth: -506.90875244140625, Best Cost = -489.2279357910156, Time Taken: 5.96 s
+Iteration 34: Ground Truth: -506.90875244140625, Best Cost = -489.2288818359375, Time Taken: 5.87 s
+Iteration 35: Ground Truth: -506.90875244140625, Best Cost = -489.2300109863281, Time Taken: 5.96 s
+Iteration 36: Ground Truth: -506.90875244140625, Best Cost = -489.2309265136719, Time Taken: 5.88 s
+Iteration 37: Ground Truth: -506.90875244140625, Best Cost = -489.2316589355469, Time Taken: 5.97 s
+Iteration 38: Ground Truth: -506.90875244140625, Best Cost = -489.2325439453125, Time Taken: 5.86 s
+Iteration 39: Ground Truth: -506.90875244140625, Best Cost = -489.2333679199219, Time Taken: 5.77 s
+Iteration 40: Ground Truth: -506.90875244140625, Best Cost = -489.2342224121094, Time Taken: 5.81 s
+Iteration 41: Ground Truth: -506.90875244140625, Best Cost = -489.23492431640625, Time Taken: 5.71 s
+Iteration 42: Ground Truth: -506.90875244140625, Best Cost = -489.2357177734375, Time Taken: 5.62 s
+Iteration 43: Ground Truth: -506.90875244140625, Best Cost = -489.2364501953125, Time Taken: 5.60 s
+Iteration 44: Ground Truth: -506.90875244140625, Best Cost = -489.2372131347656, Time Taken: 5.66 s
+Iteration 45: Ground Truth: -506.90875244140625, Best Cost = -489.2378234863281, Time Taken: 5.60 s
+Iteration 46: Ground Truth: -506.90875244140625, Best Cost = -489.2386474609375, Time Taken: 5.56 s
+Iteration 47: Ground Truth: -506.90875244140625, Best Cost = -489.2391357421875, Time Taken: 5.57 s
+Iteration 48: Ground Truth: -506.90875244140625, Best Cost = -489.23992919921875, Time Taken: 5.60 s
+Iteration 49: Ground Truth: -506.90875244140625, Best Cost = -489.24066162109375, Time Taken: 5.61 s
+Iteration 50: Ground Truth: -506.90875244140625, Best Cost = -489.2412109375, Time Taken: 5.59 s
+No match for mp-1205354: RMSD = 6.338, ΔE = 17.668 eV
+mp-1205354 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+Iteration 1: Ground Truth: -49.025245666503906, Best Cost = 83.7073974609375, Time Taken: 5.22 s
+Iteration 2: Ground Truth: -49.025245666503906, Best Cost = -42.7316780090332, Time Taken: 5.09 s
+Iteration 3: Ground Truth: -49.025245666503906, Best Cost = -42.7316780090332, Time Taken: 5.03 s
+Iteration 4: Ground Truth: -49.025245666503906, Best Cost = -43.861412048339844, Time Taken: 5.01 s
+Iteration 5: Ground Truth: -49.025245666503906, Best Cost = -43.861412048339844, Time Taken: 4.99 s
+Iteration 6: Ground Truth: -49.025245666503906, Best Cost = -43.861412048339844, Time Taken: 5.00 s
+Iteration 7: Ground Truth: -49.025245666503906, Best Cost = -43.861412048339844, Time Taken: 5.07 s
+Iteration 8: Ground Truth: -49.025245666503906, Best Cost = -44.29674530029297, Time Taken: 5.04 s
+Iteration 9: Ground Truth: -49.025245666503906, Best Cost = -44.29674530029297, Time Taken: 5.04 s
+Iteration 10: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.04 s
+Iteration 11: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.11 s
+Iteration 12: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.10 s
+Iteration 13: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.11 s
+Iteration 14: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.12 s
+Iteration 15: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.12 s
+Iteration 16: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.09 s
+Iteration 17: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.10 s
+Iteration 18: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.03 s
+Iteration 19: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.05 s
+Iteration 20: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.09 s
+Iteration 21: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.06 s
+Iteration 22: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.11 s
+Iteration 23: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.06 s
+Iteration 24: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.07 s
+Iteration 25: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.05 s
+Iteration 26: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.04 s
+Iteration 27: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.06 s
+Iteration 28: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.05 s
+Iteration 29: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.08 s
+Iteration 30: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.08 s
+Iteration 31: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.05 s
+Iteration 32: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.06 s
+Iteration 33: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.02 s
+Iteration 34: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.05 s
+Iteration 35: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.06 s
+Iteration 36: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.07 s
+Iteration 37: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.06 s
+Iteration 38: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.06 s
+Iteration 39: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.10 s
+Iteration 40: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.07 s
+Iteration 41: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.05 s
+Iteration 42: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.04 s
+Iteration 43: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.05 s
+Iteration 44: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.16 s
+Iteration 45: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.08 s
+Iteration 46: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.05 s
+Iteration 47: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.04 s
+Iteration 48: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.05 s
+Iteration 49: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.06 s
+Iteration 50: Ground Truth: -49.025245666503906, Best Cost = -44.830772399902344, Time Taken: 5.08 s
+No match for mp-1206867: RMSD = 2.810, ΔE = 4.194 eV
+mp-1206867 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+Iteration 1: Ground Truth: -71.64606475830078, Best Cost = -37.9776496887207, Time Taken: 5.43 s
+Iteration 2: Ground Truth: -71.64606475830078, Best Cost = -61.46731185913086, Time Taken: 5.21 s
+Iteration 3: Ground Truth: -71.64606475830078, Best Cost = -62.15564727783203, Time Taken: 5.06 s
+Iteration 4: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 5.02 s
+Iteration 5: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 5.03 s
+Iteration 6: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.99 s
+Iteration 7: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 5.01 s
+Iteration 8: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 5.02 s
+Iteration 9: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 5.01 s
+Iteration 10: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 5.03 s
+Iteration 11: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 12: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 5.00 s
+Iteration 13: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 5.02 s
+Iteration 14: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.96 s
+Iteration 15: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 16: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 5.00 s
+Iteration 17: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.99 s
+Iteration 18: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.97 s
+Iteration 19: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 20: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.97 s
+Iteration 21: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 22: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 23: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.99 s
+Iteration 24: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 25: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 26: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 27: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 5.00 s
+Iteration 28: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.97 s
+Iteration 29: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.97 s
+Iteration 30: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.96 s
+Iteration 31: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 32: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.95 s
+Iteration 33: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.95 s
+Iteration 34: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.96 s
+Iteration 35: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 36: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 37: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.99 s
+Iteration 38: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.93 s
+Iteration 39: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.96 s
+Iteration 40: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.99 s
+Iteration 41: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 42: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.98 s
+Iteration 43: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.97 s
+Iteration 44: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.95 s
+Iteration 45: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.99 s
+Iteration 46: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.95 s
+Iteration 47: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.94 s
+Iteration 48: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.93 s
+Iteration 49: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.96 s
+Iteration 50: Ground Truth: -71.64606475830078, Best Cost = -63.39266586303711, Time Taken: 4.96 s
+No match for mp-1217272: RMSD = 2.732, ΔE = 8.253 eV
+mp-1217272 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+Iteration 1: Ground Truth: -321.1590576171875, Best Cost = 1364.0252685546875, Time Taken: 8.11 s
+Iteration 2: Ground Truth: -321.1590576171875, Best Cost = -247.1377410888672, Time Taken: 6.64 s
+Iteration 3: Ground Truth: -321.1590576171875, Best Cost = -247.1377410888672, Time Taken: 6.02 s
+Iteration 4: Ground Truth: -321.1590576171875, Best Cost = -253.57080078125, Time Taken: 5.68 s
+Iteration 5: Ground Truth: -321.1590576171875, Best Cost = -254.24188232421875, Time Taken: 5.60 s
+Iteration 6: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.49 s
+Iteration 7: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.61 s
+Iteration 8: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.66 s
+Iteration 9: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.81 s
+Iteration 10: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.96 s
+Iteration 11: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.83 s
+Iteration 12: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.83 s
+Iteration 13: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.77 s
+Iteration 14: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.80 s
+Iteration 15: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.81 s
+Iteration 16: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.68 s
+Iteration 17: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.80 s
+Iteration 18: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.85 s
+Iteration 19: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.78 s
+Iteration 20: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.76 s
+Iteration 21: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.75 s
+Iteration 22: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.84 s
+Iteration 23: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.67 s
+Iteration 24: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.56 s2026-01-03 11:06:08,286 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-03 11:06:08,287 - root - INFO - GPU is available: True, Quantity: None
+2026-01-03 11:06:08,287 - root - INFO - Dataset(s) used:
+2026-01-03 11:06:08,287 - root - INFO - Dataset length: ('full', 24677)
+2026-01-03 11:06:08,288 - root - INFO - Dataset length: ('train', 22209)
+2026-01-03 11:06:08,288 - root - INFO - Dataset length: ('val', 1233)
+2026-01-03 11:06:08,289 - root - INFO - Dataset length: ('test', 1233)
+2026-01-03 11:11:13,443 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-03 11:11:13,443 - root - INFO - GPU is available: True, Quantity: None
+2026-01-03 11:11:13,444 - root - INFO - Dataset(s) used:
+2026-01-03 11:11:13,444 - root - INFO - Dataset length: ('full', 24677)
+2026-01-03 11:11:13,445 - root - INFO - Dataset length: ('train', 22209)
+2026-01-03 11:11:13,445 - root - INFO - Dataset length: ('val', 1233)
+2026-01-03 11:11:13,445 - root - INFO - Dataset length: ('test', 1233)
+2026-01-03 11:16:11,298 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-03 11:16:11,298 - root - INFO - GPU is available: True, Quantity: None
+2026-01-03 11:16:11,299 - root - INFO - Dataset(s) used:
+2026-01-03 11:16:11,299 - root - INFO - Dataset length: ('full', 24677)
+2026-01-03 11:16:11,300 - root - INFO - Dataset length: ('train', 22209)
+2026-01-03 11:16:11,300 - root - INFO - Dataset length: ('val', 1233)
+2026-01-03 11:16:11,301 - root - INFO - Dataset length: ('test', 1233)
+
+Iteration 25: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.63 s
+Iteration 26: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.66 s
+Iteration 27: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.65 s
+Iteration 28: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.66 s
+Iteration 29: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.63 s
+Iteration 30: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.67 s
+Iteration 31: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.60 s
+Iteration 32: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.45 s
+Iteration 33: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.49 s
+Iteration 34: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.56 s
+Iteration 35: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.56 s
+Iteration 36: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.49 s
+Iteration 37: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.60 s
+Iteration 38: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.45 s
+Iteration 39: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.57 s
+Iteration 40: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.58 s
+Iteration 41: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.54 s
+Iteration 42: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.48 s
+Iteration 43: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.52 s
+Iteration 44: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.62 s
+Iteration 45: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.63 s
+Iteration 46: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.46 s
+Iteration 47: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.36 s
+Iteration 48: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.54 s
+Iteration 49: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.54 s
+Iteration 50: Ground Truth: -321.1590576171875, Best Cost = -260.9270935058594, Time Taken: 5.55 s
+No match for mp-1218577: RMSD = 4.294, ΔE = 60.232 eV
+mp-1218577 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = 528.9310913085938, Time Taken: 8.89 s
+Iteration 2: Ground Truth: -112.48075866699219, Best Cost = -92.02852630615234, Time Taken: 5.76 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -92.02852630615234, Time Taken: 5.44 s
+Iteration 4: Ground Truth: -112.48075866699219, Best Cost = -92.02852630615234, Time Taken: 5.19 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -94.44126892089844, Time Taken: 5.12 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -94.44126892089844, Time Taken: 5.10 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -94.44126892089844, Time Taken: 5.09 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -94.44126892089844, Time Taken: 5.13 s
+Iteration 9: Ground Truth: -112.48075866699219, Best Cost = -94.44126892089844, Time Taken: 5.12 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -94.44126892089844, Time Taken: 5.16 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.06 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.07 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.13 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.12 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.12 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.16 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.10 s
+Iteration 18: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.11 s
+Iteration 19: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.07 s
+Iteration 20: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.16 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.08 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.09 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.07 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.08 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.09 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.05 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.07 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.06 s
+Iteration 29: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.07 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.10 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.09 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.10 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.07 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.08 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.04 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.08 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.07 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.09 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.10 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.12 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.06 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.07 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.10 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.08 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.15176391601562, Time Taken: 5.08 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.84335327148438, Time Taken: 4.99 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.84335327148438, Time Taken: 5.00 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.84335327148438, Time Taken: 5.05 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.84335327148438, Time Taken: 5.05 s
+Iteration 3: Ground Truth: -112.48075866699219, Best Cost = -95.84335327148438, Time Taken: 5.06 s
+No match for mp-1224327: RMSD = 3.173, ΔE = 16.637 eV
+mp-1224327 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+Iteration 1: Ground Truth: -90.94084930419922, Best Cost = -58.111324310302734, Time Taken: 5.39 s
+Iteration 2: Ground Truth: -90.94084930419922, Best Cost = -75.88982391357422, Time Taken: 5.21 s
+Iteration 3: Ground Truth: -90.94084930419922, Best Cost = -79.08627319335938, Time Taken: 5.17 s
+Iteration 4: Ground Truth: -90.94084930419922, Best Cost = -79.08627319335938, Time Taken: 5.16 s
+Iteration 5: Ground Truth: -90.94084930419922, Best Cost = -79.95361328125, Time Taken: 5.14 s
+Iteration 6: Ground Truth: -90.94084930419922, Best Cost = -80.7204818725586, Time Taken: 5.11 s
+Iteration 7: Ground Truth: -90.94084930419922, Best Cost = -81.10951232910156, Time Taken: 5.14 s
+Iteration 8: Ground Truth: -90.94084930419922, Best Cost = -83.80452728271484, Time Taken: 5.16 s
+Iteration 9: Ground Truth: -90.94084930419922, Best Cost = -84.05902099609375, Time Taken: 5.22 s
+Iteration 10: Ground Truth: -90.94084930419922, Best Cost = -84.05902099609375, Time Taken: 5.19 s
+Iteration 11: Ground Truth: -90.94084930419922, Best Cost = -84.05902099609375, Time Taken: 5.23 s
+Iteration 12: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.17 s
+Iteration 13: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.25 s
+Iteration 14: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.21 s
+Iteration 15: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.20 s
+Iteration 16: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.25 s
+Iteration 17: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.23 s
+Iteration 18: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.20 s
+Iteration 19: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.21 s
+Iteration 20: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.19 s
+Iteration 21: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.17 s
+Iteration 22: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.18 s
+Iteration 23: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.14 s
+Iteration 24: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.17 s
+Iteration 25: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.20 s
+Iteration 26: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.18 s
+Iteration 27: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.14 s
+Iteration 28: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.17 s
+Iteration 29: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.25 s
+Iteration 30: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.20 s
+Iteration 31: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.20 s
+Iteration 32: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.22 s
+Iteration 33: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.17 s
+Iteration 34: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.18 s
+Iteration 35: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.20 s
+Iteration 36: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.17 s
+Iteration 37: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.20 s
+Iteration 38: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.22 s
+Iteration 39: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.19 s
+Iteration 40: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.27 s
+Iteration 41: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.24 s
+Iteration 42: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.20 s
+Iteration 43: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.20 s
+Iteration 44: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.28 s
+Iteration 45: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.20 s
+Iteration 46: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.15 s
+Iteration 47: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.23 s
+Iteration 48: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.15 s
+Iteration 49: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.16 s
+Iteration 50: Ground Truth: -90.94084930419922, Best Cost = -85.52806854248047, Time Taken: 5.25 s
+No match for mp-19725: RMSD = 2.567, ΔE = 5.413 eV
+mp-19725 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+Iteration 1: Ground Truth: -59.4832649230957, Best Cost = 45.88953399658203, Time Taken: 5.43 s
+Iteration 2: Ground Truth: -59.4832649230957, Best Cost = -49.731197357177734, Time Taken: 5.21 s
+Iteration 3: Ground Truth: -59.4832649230957, Best Cost = -50.72560119628906, Time Taken: 5.17 s
+Iteration 4: Ground Truth: -59.4832649230957, Best Cost = -52.61455535888672, Time Taken: 5.09 s
+Iteration 5: Ground Truth: -59.4832649230957, Best Cost = -52.61455535888672, Time Taken: 5.08 s
+Iteration 6: Ground Truth: -59.4832649230957, Best Cost = -52.61455535888672, Time Taken: 5.06 s
+Iteration 7: Ground Truth: -59.4832649230957, Best Cost = -52.61455535888672, Time Taken: 5.11 s
+Iteration 8: Ground Truth: -59.4832649230957, Best Cost = -52.688026428222656, Time Taken: 5.12 s
+Iteration 9: Ground Truth: -59.4832649230957, Best Cost = -52.70137023925781, Time Taken: 5.07 s
+Iteration 10: Ground Truth: -59.4832649230957, Best Cost = -53.5764045715332, Time Taken: 5.04 s
+Iteration 11: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.10 s
+Iteration 12: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.08 s
+Iteration 13: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.05 s
+Iteration 14: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.08 s
+Iteration 15: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.07 s
+Iteration 16: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.06 s
+Iteration 17: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.06 s
+Iteration 18: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.09 s
+Iteration 19: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.08 s
+Iteration 20: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.02 s
+Iteration 21: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.02 s
+Iteration 22: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.04 s
+Iteration 23: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.06 s
+Iteration 24: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.05 s
+Iteration 25: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.09 s
+Iteration 26: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.03 s
+Iteration 27: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.08 s
+Iteration 28: Ground Truth: -59.4832649230957, Best Cost = -54.38615798950195, Time Taken: 5.02 s
+Iteration 29: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.01 s
+Iteration 30: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.02 s
+Iteration 31: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.07 s
+Iteration 32: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.04 s
+Iteration 33: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.05 s
+Iteration 34: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.08 s
+Iteration 35: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.03 s
+Iteration 36: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.05 s
+Iteration 37: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.11 s
+Iteration 38: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.05 s
+Iteration 39: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 4.99 s
+Iteration 40: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.04 s
+Iteration 41: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.03 s
+Iteration 42: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.04 s
+Iteration 43: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 4.99 s
+Iteration 44: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.03 s
+Iteration 45: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.02 s
+Iteration 46: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.09 s
+Iteration 47: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 5.06 s
+Iteration 48: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 4.99 s
+Iteration 49: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 4.99 s
+Iteration 50: Ground Truth: -59.4832649230957, Best Cost = -54.85988998413086, Time Taken: 4.99 s
+No match for mp-20836: RMSD = 2.726, ΔE = 4.623 eV
+mp-20836 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+Iteration 1: Ground Truth: -65.81556701660156, Best Cost = 64.20565795898438, Time Taken: 7.78 s
+Iteration 2: Ground Truth: -65.81556701660156, Best Cost = -41.69194412231445, Time Taken: 5.75 s
+Iteration 3: Ground Truth: -65.81556701660156, Best Cost = -53.26821517944336, Time Taken: 5.44 s
+Iteration 4: Ground Truth: -65.81556701660156, Best Cost = -53.26821517944336, Time Taken: 5.21 s
+Iteration 5: Ground Truth: -65.81556701660156, Best Cost = -55.81455993652344, Time Taken: 5.17 s
+Iteration 6: Ground Truth: -65.81556701660156, Best Cost = -55.81455993652344, Time Taken: 5.10 s
+Iteration 7: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 5.02 s
+Iteration 8: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 5.01 s
+Iteration 9: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 5.01 s
+Iteration 10: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 5.02 s
+Iteration 11: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.99 s
+Iteration 12: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.99 s
+Iteration 13: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.95 s
+Iteration 14: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.96 s
+Iteration 15: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.93 s
+Iteration 16: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.84 s
+Iteration 17: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.91 s
+Iteration 18: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.90 s
+Iteration 19: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.88 s
+Iteration 20: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.89 s
+Iteration 21: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.85 s
+Iteration 22: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.89 s
+Iteration 23: Ground Truth: -65.81556701660156, Best Cost = -56.23142623901367, Time Taken: 4.87 s
+Iteration 24: Ground Truth: -65.81556701660156, Best Cost = -56.49699783325195, Time Taken: 4.86 s
+Iteration 25: Ground Truth: -65.81556701660156, Best Cost = -56.49699783325195, Time Taken: 4.89 s
+Iteration 26: Ground Truth: -65.81556701660156, Best Cost = -56.49699783325195, Time Taken: 4.81 s
+Iteration 27: Ground Truth: -65.81556701660156, Best Cost = -56.73051071166992, Time Taken: 4.81 s
+Iteration 28: Ground Truth: -65.81556701660156, Best Cost = -56.73051071166992, Time Taken: 4.85 s
+Iteration 29: Ground Truth: -65.81556701660156, Best Cost = -56.73051071166992, Time Taken: 4.87 s
+Iteration 30: Ground Truth: -65.81556701660156, Best Cost = -56.73051071166992, Time Taken: 4.89 s
+Iteration 31: Ground Truth: -65.81556701660156, Best Cost = -56.73051071166992, Time Taken: 4.84 s
+Iteration 32: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.86 s
+Iteration 33: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.85 s
+Iteration 34: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.83 s
+Iteration 35: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.84 s
+Iteration 36: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.84 s
+Iteration 37: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.84 s
+Iteration 38: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.83 s
+Iteration 39: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.85 s
+Iteration 40: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.84 s
+Iteration 41: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.83 s
+Iteration 42: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.79 s
+Iteration 43: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.81 s
+Iteration 44: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.82 s
+Iteration 45: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.75 s
+Iteration 46: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.83 s
+Iteration 47: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.78 s
+Iteration 48: Ground Truth: -65.81556701660156, Best Cost = -56.867061614990234, Time Taken: 4.81 s
+Iteration 49: Ground Truth: -65.81556701660156, Best Cost = -56.94628143310547, Time Taken: 4.78 s
+Iteration 50: Ground Truth: -65.81556701660156, Best Cost = -56.94628143310547, Time Taken: 4.79 s
+No match for mp-28368: RMSD = 2.660, ΔE = 8.869 eV
+mp-28368 match: [False]
+Attempting to load checkpoint...
+model loaded successfully
+loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
+Recent checkpoint loaded successfully.
+Iteration 1: Ground Truth: -70.01416015625, Best Cost = -35.11312484741211, Time Taken: 5.35 s
+Iteration 2: Ground Truth: -70.01416015625, Best Cost = -52.95195770263672, Time Taken: 6.17 s
+Iteration 3: Ground Truth: -70.01416015625, Best Cost = -56.9437141418457, Time Taken: 5.14 s
+Iteration 4: Ground Truth: -70.01416015625, Best Cost = -56.9437141418457, Time Taken: 5.03 s
+Iteration 5: Ground Truth: -70.01416015625, Best Cost = -58.8873405456543, Time Taken: 4.95 s
+Iteration 6: Ground Truth: -70.01416015625, Best Cost = -58.8873405456543, Time Taken: 4.93 s
+Iteration 7: Ground Truth: -70.01416015625, Best Cost = -58.8873405456543, Time Taken: 4.89 s
+Iteration 8: Ground Truth: -70.01416015625, Best Cost = -58.8873405456543, Time Taken: 4.93 s
+Iteration 9: Ground Truth: -70.01416015625, Best Cost = -59.06403350830078, Time Taken: 4.88 s
+Iteration 10: Ground Truth: -70.01416015625, Best Cost = -59.06403350830078, Time Taken: 4.87 s
+Iteration 11: Ground Truth: -70.01416015625, Best Cost = -59.06403350830078, Time Taken: 4.89 s
+Iteration 12: Ground Truth: -70.01416015625, Best Cost = -59.06403350830078, Time Taken: 4.86 s
+Iteration 13: Ground Truth: -70.01416015625, Best Cost = -59.96256637573242, Time Taken: 4.83 s
+Iteration 14: Ground Truth: -70.01416015625, Best Cost = -59.96256637573242, Time Taken: 4.79 s
+Iteration 15: Ground Truth: -70.01416015625, Best Cost = -59.96256637573242, Time Taken: 4.81 s
+Iteration 16: Ground Truth: -70.01416015625, Best Cost = -59.96256637573242, Time Taken: 4.85 s
+Iteration 17: Ground Truth: -70.01416015625, Best Cost = -59.96256637573242, Time Taken: 4.85 s
+Iteration 18: Ground Truth: -70.01416015625, Best Cost = -59.96256637573242, Time Taken: 4.79 s
+Iteration 19: Ground Truth: -70.01416015625, Best Cost = -59.96256637573242, Time Taken: 4.79 s
+Iteration 20: Ground Truth: -70.01416015625, Best Cost = -59.96256637573242, Time Taken: 4.81 s
+Iteration 21: Ground Truth: -70.01416015625, Best Cost = -60.041996002197266, Time Taken: 4.80 s
+Iteration 22: Ground Truth: -70.01416015625, Best Cost = -60.041996002197266, Time Taken: 4.75 s
+Iteration 23: Ground Truth: -70.01416015625, Best Cost = -60.041996002197266, Time Taken: 4.87 s
+Iteration 24: Ground Truth: -70.01416015625, Best Cost = -60.041996002197266, Time Taken: 4.86 s
+Iteration 25: Ground Truth: -70.01416015625, Best Cost = -60.041996002197266, Time Taken: 4.88 s
+Iteration 26: Ground Truth: -70.01416015625, Best Cost = -60.041996002197266, Time Taken: 4.86 s
+Iteration 27: Ground Truth: -70.01416015625, Best Cost = -60.041996002197266, Time Taken: 4.83 s
+Iteration 28: Ground Truth: -70.01416015625, Best Cost = -60.041996002197266, Time Taken: 4.80 s
+Iteration 29: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.75 s
+Iteration 30: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.77 s
+Iteration 31: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.75 s
+Iteration 32: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.79 s
+Iteration 33: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.77 s
+Iteration 34: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.75 s
+Iteration 35: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.72 s
+Iteration 36: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.78 s
+Iteration 37: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.79 s
+Iteration 38: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.77 s
+Iteration 39: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.79 s
+Iteration 40: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.76 s
+Iteration 41: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.78 s
+Iteration 42: Ground Truth: -70.01416015625, Best Cost = -62.14339065551758, Time Taken: 4.74 s
+Iteration 43: Ground Truth: -70.01416015625, Best Cost = -62.39594268798828, Time Taken: 4.74 s
+Iteration 44: Ground Truth: -70.01416015625, Best Cost = -63.711090087890625, Time Taken: 4.80 s
+Iteration 45: Ground Truth: -70.01416015625, Best Cost = -64.07469177246094, Time Taken: 4.79 s
+Iteration 46: Ground Truth: -70.01416015625, Best Cost = -64.17586517333984, Time Taken: 4.80 s
+Iteration 47: Ground Truth: -70.01416015625, Best Cost = -64.33023071289062, Time Taken: 4.70 s
+Iteration 48: Ground Truth: -70.01416015625, Best Cost = -64.33023071289062, Time Taken: 4.82 s
+Iteration 49: Ground Truth: -70.01416015625, Best Cost = -64.49174499511719, Time Taken: 4.62 s
+Iteration 50: Ground Truth: -70.01416015625, Best Cost = -64.49174499511719, Time Taken: 4.63 s
+No match for mp-541013: RMSD = 2.874, ΔE = 5.522 eV
+mp-541013 match: [False]
+Distance and Energy Differences:
+[(2.9032488166840418, 1.7914658), (6.33771808178074, 17.667542), (2.8101161120375107, 4.1944733), (2.7321062189854586, 8.253407), (4.293636004594901, 60.231995), (3.173280006461674, 16.637405), (2.566843106647172, 5.412781), (2.7255242415737486, 4.623375), (2.660149478988357, 8.869286), (2.87371740259977, 5.522415)]
+
+Matched 0/10 structures.
+Match ratio: 0.00
+---------------------------------------
+Begin Slurm Epilog: Jan-03-2026 11:20:27
+Job ID:        3140735
+User ID:       hjiang378
+Account:       gts-vfung3
+Job name:      pso_local
+Resources:     cpu=12,gres/gpu:v100=1,mem=48G,node=1
+Rsrc Used:     cput=12:12:00,vmem=0,walltime=01:01:00,mem=2272012K,energy_used=0
+Partition:     gpu-v100
+QOS:           inferno
+Nodes:         atl1-1-02-009-34-0
+---------------------------------------
