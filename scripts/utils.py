@@ -100,10 +100,19 @@ def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
         atoms.set_calculator(calculator)
     return atoms
 
-def final_dimensions(params, best_cell, composition):
-    frac_positions = params.reshape(-1, 3)
-    atoms = Atoms(composition, cell=best_cell, pbc=(True, True, True),
-                 scaled_positions=frac_positions)
+
+def final_dimensions(params, best_cell, composition, cell_perturb=True):
+    if cell_perturb:
+        actual_cell = params[:9].reshape(3, 3)
+        coords = params[9:].reshape(-1, 3)
+    else:
+        actual_cell = best_cell
+        coords = params.reshape(-1, 3)
+
+    atoms = Atoms(composition,
+                  cell=actual_cell,
+                  pbc=(True, True, True),
+                  scaled_positions=coords)
     return atoms
 
 
