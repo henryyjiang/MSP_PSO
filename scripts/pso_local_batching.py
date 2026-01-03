@@ -99,38 +99,14 @@ class PSO():
                                           self.calculator, self.cell_perturb)
                       for i in range(n_particles)]
 
-        # Batch calculate energies using the ML model directly
         energies = self.batch_get_energies(atoms_list)
 
-        self.best_loss = np.min(energies)
         self.best_losses.append(self.best_loss)
         self.avg_losses.append(np.mean(energies))
 
         return energies
 
     def batch_get_energies(self, atoms_list):
-        from torch_geometric.data import Batch
-
-        graphs = []
-
-        try:
-            with torch.no_grad():
-                for atoms in atoms_list:
-                    graph = self.calculator.potential.graph_builder.build(atoms)
-                    graphs.append(graph)
-
-                batch = Batch.from_data_list(graphs).to(self.device)
-
-                model = self.calculator.potential.model
-                output = model(batch)
-
-                energies = output["total_energy"]
-
-                return energies.detach().cpu().numpy()
-
-        except Exception as e:
-            print(f"[Batch failed → fallback] {e}")
-
             energies = []
             for atoms in atoms_list:
                 try:
@@ -229,7 +205,7 @@ class PSO():
                         np.full(dimensions - cell_dims, -10)
                     ])
                     upper_bound = np.concatenate([
-                        np.full(cell_dims, 20.0),
+                        np.full(cell_dims,30.0),
                         np.full(dimensions - cell_dims, 10)
                     ])
 
@@ -271,7 +247,8 @@ class PSO():
                         autobatcher=False,
                         max_steps =self.local_steps)
                 optimized_atoms = optimized_state.to_atoms()
-                #for atom in optimized_atoms:
+                for atom in optimized_atoms:
+                    atom.calc = self.calculator
                     # separate_close_atoms(atom)
 
                 if not self.cell_perturb:
@@ -304,7 +281,9 @@ class PSO():
             try:
                 optimized_structure = AseAtomsAdaptor.get_structure(final_atoms)
 
-                optimized_energy = final_atoms.get_potential_energy()
+                atoms_opt = AseAtomsAdaptor.get_atoms(optimized_structure)
+                atoms_opt.calc = self.calculator
+                optimized_energy = atoms_opt.get_potential_energy()
 
                 energy_tolerance = 0.05
                 distance_threshold = 0.25
