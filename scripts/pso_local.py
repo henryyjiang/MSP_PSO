@@ -16,7 +16,6 @@ import logging
 import sys
 import os
 import time
-import gc
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname("../.."))))
 #from matdeeplearn.common.ase_utils import MDLCalculator
@@ -35,6 +34,8 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 class PSO():
     def __init__(self, cif_name, model, composition, cell, calc, options, particles, iters, local_steps, cell_perturb=True):
+        self.device = device
+
         self.cif_name = cif_name
         self.cell_perturb = cell_perturb
         self.composition = composition
@@ -61,7 +62,6 @@ class PSO():
         self.forcefield = MDL_FF(train_config, my_dataset)
         self.energy = Energy(normalize=True, ljr_ratio=1)
 
-        # PLACEHOLDER OPTIMIZER
         self.optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=54, options={'c1': 0.5, 'c2': 0.3, 'w':0.9})
         self.model = model
 
@@ -90,22 +90,38 @@ class PSO():
 
     def f(self, x):
         n_particles = x.shape[0]
-        j = [self.obj_func(x[i], i) for i in range(n_particles)]
+
+        # Create all atoms objects
+        atoms_list = [dimensions_to_atoms(x[i], i, self.composition, self.cell,
+                                          self.calculator, self.cell_perturb)
+                      for i in range(n_particles)]
+
+        energies = self.batch_get_energies(atoms_list)
 
         self.best_losses.append(self.best_loss)
-        self.avg_losses.append(np.mean(j))
+        self.avg_losses.append(np.mean(energies))
 
-        return np.array(j)
+        return energies
+
+    def batch_get_energies(self, atoms_list):
+            energies = []
+            for atoms in atoms_list:
+                try:
+                    energies.append(atoms.get_potential_energy())
+                except Exception:
+                    energies.append(1e6)
+
+            return np.array(energies)
 
     def run(self):
         costs = []
         matches = []
         dist_energy = []
 
-        os.makedirs("plots", exist_ok=True)
-        os.makedirs("matches", exist_ok=True)
-        os.makedirs("fails", exist_ok=True)
-        os.makedirs("lower_energy", exist_ok=True)
+        os.makedirs("plots2", exist_ok=True)
+        os.makedirs("matches2", exist_ok=True)
+        os.makedirs("fails2", exist_ok=True)
+        os.makedirs("lower_energy2", exist_ok=True)
 
         matcher = StructureMatcher(ltol=0.3, stol=0.5, angle_tol=8)
 
@@ -186,7 +202,7 @@ class PSO():
                         np.full(dimensions - cell_dims, -10)
                     ])
                     upper_bound = np.concatenate([
-                        np.full(cell_dims, 20.0),
+                        np.full(cell_dims,30.0),
                         np.full(dimensions - cell_dims, 10)
                     ])
 
@@ -199,9 +215,9 @@ class PSO():
                 sanitized_atoms = []
                 for atoms in new_atoms:
                     cellpar = cell_to_cellpar(atoms.cell)
-                    cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
-
-                    atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
+                    if np.any(cellpar[3:] < 30.0) or np.any(cellpar[3:] > 150.0):
+                        cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
+                        atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
 
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
@@ -213,7 +229,7 @@ class PSO():
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
                         atoms.set_cell(cell, scale_atoms=True)
 
-                    #separate_close_atoms2(atoms)
+                    separate_close_atoms2(atoms)
 
                     if not np.all(np.isfinite(atoms.get_forces())):
                         #print("forces are infinite")
@@ -230,12 +246,7 @@ class PSO():
                 optimized_atoms = optimized_state.to_atoms()
                 for atom in optimized_atoms:
                     atom.calc = self.calculator
-                    separate_close_atoms(atom)
-
-                if i % 5 == 0:
-                    gc.collect()
-                    if torch.cuda.is_available():
-                        torch.cuda.empty_cache()
+                    # separate_close_atoms(atom)
 
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
@@ -253,14 +264,14 @@ class PSO():
             plt.xlabel('Iteration')
             plt.ylabel('Best Loss')
             plt.title('Best Losses')
-            plt.savefig(f'plots/best_losses_{self.cif_name}_{iteration}.png')
+            plt.savefig(f'plots2/best_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
             plt.plot(self.avg_losses)
             plt.xlabel('Iteration')
             plt.ylabel('Average Loss')
             plt.title('Average Losses')
-            plt.savefig(f'plots/avg_losses_{self.cif_name}_{iteration}.png')
+            plt.savefig(f'plots2/avg_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
             final_atoms = final_dimensions(pos, self.best_cell, self.composition)
@@ -293,11 +304,11 @@ class PSO():
 
                 # Save CIF accordingly
                 if result_type == "match":
-                    out_dir = "matches"
+                    out_dir = "matches2"
                 elif result_type == "lower_energy":
-                    out_dir = "lower_energy"
+                    out_dir = "lower_energy2"
                 else:
-                    out_dir = "fails"
+                    out_dir = "fails2"
 
                 filename = os.path.join(out_dir, f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
@@ -309,10 +320,10 @@ class PSO():
             except ValueError:
                 print(f"{self.cif_name}: invalid structure, cannot match")
                 matches.append(False)
-                filename = os.path.join("fails", f"best_structure_{self.cif_name}_{iteration}.cif")
+                filename = os.path.join("fails2", f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
 
-        costs_filename = f"plots/{self.cif_name}_costs.txt"
+        costs_filename = f"plots2/{self.cif_name}_costs.txt"
         with open(costs_filename, "w") as f:
             f.write(f"Ground Truth: {ground_truth_energy}\n")
             for cost in costs:
@@ -348,12 +359,12 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
 
-        options = {'c1': 1.2, 'c2': 1.8, 'w': 0.7}  # cognitive, social, inertia
-        particles = 30  # number of particles in system
-        iters = 100
-        local_steps = 50
+        options = {'c1': 1.5, 'c2': 1.5, 'w': 0.5}  # cognitive, social, inertia
+        particles = 10  # number of particles in system
+        iters = 50
+        local_steps = 25
 
-        cell_perturb = False
+        cell_perturb = True
         if cell_perturb:
                 pso = PSO(cif_name, model, composition, None, calc, options, particles, iters, local_steps, cell_perturb)
         else:

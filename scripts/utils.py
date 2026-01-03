@@ -174,7 +174,7 @@ def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_dis
     return forces
 
 
-def separate_close_atoms(atoms, max_iters=5, min_dist=1.0, step_scale=0.1):
+def separate_close_atoms(atoms, max_iters=10, min_dist=1.0, step_scale=0.1):
     from ase.neighborlist import neighbor_list
 
     lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
@@ -253,7 +253,7 @@ def separate_close_atoms(atoms, max_iters=5, min_dist=1.0, step_scale=0.1):
 
     return atoms
 
-def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=5):
+def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
     cutoff = 4.0
 
     for iteration in range(max_iterations):
@@ -299,7 +299,7 @@ def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=5):
     indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
 
     if len(distances) > 0 and np.min(distances) < min_dist:
-        #print("reject1")
+        print("reject1")
         return False
 
     return True
