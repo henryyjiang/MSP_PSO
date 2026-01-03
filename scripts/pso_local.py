@@ -217,7 +217,7 @@ class PSO():
                     cellpar = cell_to_cellpar(atoms.cell)
                     if np.any(cellpar[3:] < 30.0) or np.any(cellpar[3:] > 150.0):
                         cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
-                        atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
+                        atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=False)
 
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
@@ -227,9 +227,10 @@ class PSO():
                         cell = atoms.get_cell()
                         for i in range(3):
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
-                        atoms.set_cell(cell, scale_atoms=True)
+                        atoms.set_cell(cell, scale_atoms=False)
 
-                    separate_close_atoms2(atoms)
+                    separate_close_atoms_batch(atoms)
+                    #separate_close_atoms2(atoms)
 
                     if not np.all(np.isfinite(atoms.get_forces())):
                         #print("forces are infinite")

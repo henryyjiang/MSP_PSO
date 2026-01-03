@@ -217,17 +217,18 @@ class PSO():
                     cellpar = cell_to_cellpar(atoms.cell)
                     if np.any(cellpar[3:] < 30.0) or np.any(cellpar[3:] > 150.0):
                         cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
-                        atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
+                        atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=False)
 
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
+
                     if np.any(lengths < 3.0) or np.any(lengths > 150.0):
                         #print("cell lengths out of bounds")
                         lengths = np.clip(lengths, 3.0, 150.0)
                         cell = atoms.get_cell()
                         for i in range(3):
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
-                        atoms.set_cell(cell, scale_atoms=True)
+                        atoms.set_cell(cell, scale_atoms=False)
 
                     # separate_close_atoms2(atoms)
 
