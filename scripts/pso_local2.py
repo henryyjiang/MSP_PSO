@@ -179,8 +179,8 @@ class PSO():
 
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
-                lower_bound = np.full(self.optimizer.swarm.position.shape[1], -5)
-                upper_bound = np.full(self.optimizer.swarm.position.shape[1], 5)
+                lower_bound = np.full(self.optimizer.swarm.position.shape[1], -10)
+                upper_bound = np.full(self.optimizer.swarm.position.shape[1], 10)
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
 

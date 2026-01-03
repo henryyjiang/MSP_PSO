@@ -170,29 +170,64 @@ def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_dis
     return forces
 
 
-def separate_close_atoms(atoms, max_iters=10, tol=0.01, damping=0.8):
+def separate_close_atoms(atoms, max_iters=10, min_dist=1.0, step_scale=0.1):
     lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
                              delimiter=",")
 
-    velocity = np.zeros_like(atoms.get_positions())
-
     for iteration in range(max_iters):
         positions = atoms.get_positions()
-        forces = calculate_lj_forces(atoms, lj_rmins)
+        cell = atoms.get_cell()
+        atomic_numbers = atoms.get_atomic_numbers()
+        n_atoms = len(atoms)
 
-        force_magnitude = np.linalg.norm(forces)
-        if force_magnitude < tol:
+        forces = np.zeros((n_atoms, 3))
+        max_violation = 0.0
+
+        for i in range(n_atoms):
+            for j in range(i + 1, n_atoms):
+                z_i = atomic_numbers[i] - 1
+                z_j = atomic_numbers[j] - 1
+                sigma = lj_rmins[z_i, z_j]
+
+                delta = positions[j] - positions[i]
+                delta = delta - np.round(delta @ np.linalg.inv(cell)) @ cell
+                r = np.linalg.norm(delta)
+
+                r = max(r, 0.1)
+                target_dist = max(sigma, min_dist)
+
+                if r < target_dist:
+                    violation = target_dist - r
+                    max_violation = max(max_violation, violation)
+
+
+                    force_magnitude = violation / r
+                    force_magnitude = min(force_magnitude, 10.0)
+
+                    direction = delta / r
+                    force_vector = force_magnitude * direction
+
+                    forces[i] -= force_vector
+                    forces[j] += force_vector
+
+        if max_violation < 0.01:
             break
-        velocity = damping * velocity + forces * 0.01
-        positions += velocity
 
-        if np.any(~np.isfinite(positions)):
-            print(f"Warning: Non-finite positions detected at iteration {iteration}")
+        total_force = np.linalg.norm(forces)
+        if total_force > 0:
+            step_size = min(step_scale, step_scale * 10.0 / (total_force + 1.0))
+        else:
             break
 
-        atoms.set_positions(positions)
+        new_positions = positions + step_size * forces
+
+        if np.any(~np.isfinite(new_positions)):
+            print(f"Warning: Non-finite positions at iteration {iteration}")
+            break
+
+        atoms.set_positions(new_positions)
+
     return atoms
-
 
 def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=5):
     cutoff = 4.0
