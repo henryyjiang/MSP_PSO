@@ -96,7 +96,8 @@ def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
         positions = params[9:].reshape(-1, 3)
         atoms = Atoms(composition, cell=cell, pbc=(True, True, True), positions=positions)
 
-    atoms.set_calculator(calculator)
+    if not hasattr(atoms, 'calc') or atoms.calc is None:
+        atoms.set_calculator(calculator)
     return atoms
 
 def final_dimensions(params, best_cell, composition):
@@ -299,6 +300,33 @@ def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=5):
         return False
 
     return True
+
+
+def separate_close_atoms_batch(atoms_list, min_dist=1.0):
+    """Vectorized version for multiple structures"""
+    # Process all at once using numpy broadcasting
+    for atoms in atoms_list:  # Still sequential but optimized
+        # Use faster neighbor list
+        from matscipy.neighbours import neighbour_list
+        i, j, d = neighbour_list('ijd', atoms, cutoff=4.0)
+
+        # Vectorized distance checks
+        mask = d < min_dist
+        if not np.any(mask):
+            continue
+
+        # Vectorized position adjustments
+        vecs = atoms.positions[j[mask]] - atoms.positions[i[mask]]
+        vecs /= np.linalg.norm(vecs, axis=1, keepdims=True)
+
+        shift = 0.3 * (min_dist - d[mask])[:, None] * vecs
+
+        # Update positions (use bincount for multiple atoms)
+        pos_delta = np.zeros_like(atoms.positions)
+        np.add.at(pos_delta, i[mask], -shift)
+        np.add.at(pos_delta, j[mask], shift)
+
+        atoms.positions += pos_delta
 
 
 def validate_structure_distances(atoms, min_dist=1.0):
