@@ -313,32 +313,29 @@ def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
 
     return True
 
+def separate_close_atoms_batch(atoms, min_dist=1.0):
+    i, j, d, D = neighbor_list('ijdD', atoms, cutoff=min_dist)
 
-def separate_close_atoms_batch(atoms_list, min_dist=1.0):
-    """Vectorized version for multiple structures"""
-    # Process all at once using numpy broadcasting
-    for atoms in atoms_list:  # Still sequential but optimized
-        # Use faster neighbor list
-        from matscipy.neighbours import neighbour_list
-        i, j, d = neighbour_list('ijd', atoms, cutoff=4.0)
+    mask = (i < j) & (d < min_dist) & (d > 1e-9)
 
-        # Vectorized distance checks
-        mask = d < min_dist
-        if not np.any(mask):
-            continue
+    if not np.any(mask):
+        return
 
-        # Vectorized position adjustments
-        vecs = atoms.positions[j[mask]] - atoms.positions[i[mask]]
-        vecs /= np.linalg.norm(vecs, axis=1, keepdims=True)
+    idx_i = i[mask]
+    idx_j = j[mask]
+    dist_val = d[mask]
+    vecs = D[mask]
 
-        shift = 0.3 * (min_dist - d[mask])[:, None] * vecs
+    unit_vecs = vecs / dist_val[:, np.newaxis]
+    shift_magnitude = 0.3 * (min_dist - dist_val)
+    shift_vectors = shift_magnitude[:, np.newaxis] * unit_vecs
 
-        # Update positions (use bincount for multiple atoms)
-        pos_delta = np.zeros_like(atoms.positions)
-        np.add.at(pos_delta, i[mask], -shift)
-        np.add.at(pos_delta, j[mask], shift)
+    pos_delta = np.zeros_like(atoms.positions)
 
-        atoms.positions += pos_delta
+    np.add.at(pos_delta, idx_i, -shift_vectors)
+    np.add.at(pos_delta, idx_j, shift_vectors)
+
+    atoms.positions += pos_delta
 
 
 def validate_structure_distances(atoms, min_dist=1.0):
