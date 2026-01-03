@@ -170,45 +170,65 @@ def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_dis
     return forces
 
 
-def separate_close_atoms(atoms, max_iters=10, min_dist=1.0, step_scale=0.1):
+def separate_close_atoms(atoms, max_iters=5, min_dist=1.0, step_scale=0.1):
+    from ase.neighborlist import neighbor_list
+
     lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
                              delimiter=",")
 
     for iteration in range(max_iters):
-        positions = atoms.get_positions()
-        cell = atoms.get_cell()
         atomic_numbers = atoms.get_atomic_numbers()
         n_atoms = len(atoms)
+
+        try:
+            indices_i, indices_j, distances, vecs = neighbor_list(
+                'ijdD', atoms, cutoff=min_dist * 2.0
+            )
+        except Exception as e:
+            print(f"Neighbor list failed: {e}")
+            break
+
+        if len(distances) == 0:
+            break
 
         forces = np.zeros((n_atoms, 3))
         max_violation = 0.0
 
-        for i in range(n_atoms):
-            for j in range(i + 1, n_atoms):
-                z_i = atomic_numbers[i] - 1
-                z_j = atomic_numbers[j] - 1
-                sigma = lj_rmins[z_i, z_j]
+        # Process each neighbor pair
+        for idx in range(len(distances)):
+            i = indices_i[idx]
+            j = indices_j[idx]
+            r = distances[idx]
+            delta = vecs[idx]
 
-                delta = positions[j] - positions[i]
-                delta = delta - np.round(delta @ np.linalg.inv(cell)) @ cell
-                r = np.linalg.norm(delta)
+            if i == j:
+                continue
 
-                r = max(r, 0.1)
-                target_dist = max(sigma, min_dist)
+            # Safety check
+            if r < 0.01 or not np.isfinite(r):
+                # Emergency separation
+                rand_dir = np.random.randn(3)
+                rand_dir /= np.linalg.norm(rand_dir)
+                forces[i] -= 10.0 * rand_dir
+                forces[j] += 10.0 * rand_dir
+                max_violation = max(max_violation, 5.0)
+                continue
 
-                if r < target_dist:
-                    violation = target_dist - r
-                    max_violation = max(max_violation, violation)
+            z_i = atomic_numbers[i] - 1
+            z_j = atomic_numbers[j] - 1
+            sigma = lj_rmins[z_i, z_j]
+            target_dist = max(sigma, min_dist)
 
+            if r < target_dist:
+                violation = target_dist - r
+                max_violation = max(max_violation, violation)
 
-                    force_magnitude = violation / r
-                    force_magnitude = min(force_magnitude, 10.0)
+                force_magnitude = min(violation / r, 10.0)
+                direction = delta / r
+                force_vector = force_magnitude * direction
 
-                    direction = delta / r
-                    force_vector = force_magnitude * direction
-
-                    forces[i] -= force_vector
-                    forces[j] += force_vector
+                forces[i] -= force_vector
+                forces[j] += force_vector
 
         if max_violation < 0.01:
             break
@@ -219,7 +239,7 @@ def separate_close_atoms(atoms, max_iters=10, min_dist=1.0, step_scale=0.1):
         else:
             break
 
-        new_positions = positions + step_size * forces
+        new_positions = atoms.get_positions() + step_size * forces
 
         if np.any(~np.isfinite(new_positions)):
             print(f"Warning: Non-finite positions at iteration {iteration}")
