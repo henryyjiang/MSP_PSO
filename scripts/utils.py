@@ -66,48 +66,47 @@ def lj_reject(el_symbols, lj_rmins, structure):
                 return True
     return False
 
-def initialize_atoms(el_symbols, lj_rmins, zs, zcounts, possible_sgs, sg_probs, density=0.2):
-    seed = 0
-    rng = np.random.default_rng(seed)
-    rejected = True
-    while rejected:
-        try:
-            xtal = pyxtal()
-            xtal.from_random(3, np.random.choice(possible_sgs,
-                                                 p=sg_probs), zs, zcounts, random_state=rng)
-            new_structure = xtal.to_pymatgen()
-            rejected = lj_reject(el_symbols, lj_rmins, new_structure)
-        except:
-            rejected = True
-
-    atoms = xtal.to_ase()
-    return atoms
-
 def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
     if not cell_perturb:
-        positions = params.reshape(-1, 3)
-        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True), positions=positions)
+        frac_positions = params.reshape(-1, 3)
+        frac_positions = frac_positions % 1.0
+        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
+                      scaled_positions=frac_positions)
     else:
         cell = params[:9].reshape(-1, 3)
         positions = params[9:].reshape(-1, 3)
         atoms = Atoms(composition, cell=cell, pbc=(True, True, True), positions=positions)
 
-    atoms.set_calculator(calculator)
+    if not hasattr(atoms, 'calc') or atoms.calc is None:
+        atoms.set_calculator(calculator)
     return atoms
 
-def final_dimensions(params, best_cell, composition):
-    positions = params.reshape(-1, 3)
-    atoms = Atoms(composition, cell=best_cell, pbc=(True, True, True), positions=positions)
-
-    return atoms
 
 def atoms_to_dimensions(atoms, cell_perturb):
     if not cell_perturb:
-        pos = [float(i) for l in atoms.positions for i in l]
+        pos = atoms.get_scaled_positions().flatten()
     else:
-        pos = [float(i) for l in atoms.cell for i in l][:9] + [float(i) for l in atoms.positions for i in l]
+        cell_flat = atoms.cell.array.flatten()[:9]
+        pos_flat = atoms.positions.flatten()
+        pos = np.concatenate([cell_flat, pos_flat])
 
-    return np.array(pos)
+    return pos
+
+
+def final_dimensions(params, best_cell, composition, cell_perturb=True):
+    if cell_perturb:
+        actual_cell = params[:9].reshape(3, 3)
+        coords = params[9:].reshape(-1, 3)
+    else:
+        actual_cell = best_cell
+        coords = params.reshape(-1, 3)
+
+    atoms = Atoms(composition,
+                  cell=actual_cell,
+                  pbc=(True, True, True),
+                  scaled_positions=coords)
+    return atoms
+
 
 
 def separate_close_atoms(atoms, min_dist=1.0):
@@ -135,6 +134,96 @@ def separate_close_atoms(atoms, min_dist=1.0):
     if moved:
         print("atoms too close together")
     return moved
+
+
+def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_distance=0.5, step_scale=0.1):
+    positions = atoms.get_positions()
+    cell = atoms.get_cell()
+    inv_cell = np.linalg.inv(cell)
+    atomic_numbers = atoms.get_atomic_numbers()
+    n_atoms = len(atoms)
+    forces = np.zeros((n_atoms, 3))
+
+    for i in range(n_atoms):
+        for j in range(i + 1, n_atoms):
+            z_i = atomic_numbers[i] - 1
+            z_j = atomic_numbers[j] - 1
+            sigma = lj_rmins[z_i, z_j]
+
+            delta = positions[j] - positions[i]
+            delta = delta - np.round(delta @ inv_cell) @ cell
+            r = np.linalg.norm(delta)
+
+            r = max(r, min_distance)
+
+            if r < sigma * cutoff_factor:
+                sr6 = (sigma / r) ** 6
+                sr12 = sr6 ** 2
+                force_magnitude = 24 * epsilon * (2 * sr12 - sr6) / r
+
+                max_force = 50.0
+                force_magnitude = np.clip(force_magnitude, -max_force, max_force)
+
+                force_vector = force_magnitude * (delta / r)
+
+                forces[i] -= force_vector
+                forces[j] += force_vector
+
+    atoms.positions += step_scale * forces
+    atoms.wrap()
+
+    return atoms
+
+
+def separate_close_atoms(atoms, lj_rmins, max_iters=10, min_dist=1.0, step_scale=0.2):
+    epsilon = 1.0
+
+    numbers = atoms.numbers - 1
+
+    for iteration in range(max_iters):
+        i, j, dists, vecs = neighbor_list('ijdD', atoms, cutoff=4.0)
+
+        if len(dists) == 0:
+            break
+
+        sigmas = lj_rmins[numbers[i], numbers[j]]
+        targets = np.maximum(sigmas, min_dist)
+        mask = (i < j) & (dists < targets)
+        if not np.any(mask):
+            break
+
+        idx_i, idx_j = i[mask], j[mask]
+        r = dists[mask][:, np.newaxis]
+        delta = vecs[mask]
+        target_r = targets[mask][:, np.newaxis]
+
+        # sr6 = (target_r / (r + 1e-9)) ** 6
+        # sr12 = sr6 ** 2
+        # repulsion_mag = (24 * epsilon * sr12) / (r + 1e-9)
+        #
+        # max_f = 50.0
+        # repulsion_mag = np.clip(repulsion_mag, 0, max_f)
+
+
+        repulsion_mag = (target_r / (r + 1e-6)) ** 2 - 1.0
+        repulsion_mag = np.minimum(repulsion_mag, 5.0)
+
+        force_vecs = repulsion_mag * (delta / r)
+
+        total_forces = np.zeros((len(atoms), 3))
+        np.add.at(total_forces, idx_i, -force_vecs)
+        np.add.at(total_forces, idx_j, force_vecs)
+
+        critical = (dists < 0.1) & (i < j)
+        if np.any(critical):
+            rand_kicks = np.random.randn(len(i[critical]), 3) * 0.5
+            np.add.at(total_forces, i[critical], -rand_kicks)
+            np.add.at(total_forces, j[critical], rand_kicks)
+
+        atoms.positions += step_scale * total_forces
+        atoms.wrap()
+
+    return atoms
 
 
 def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=3):
