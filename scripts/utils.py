@@ -188,51 +188,7 @@ def calculate_lj_forces(atoms, cutoff_factor=1.5, epsilon=1.0, min_distance=0.5,
     return atoms
 
 
-# def separate_close_atoms(atoms, max_iters=20, min_dist=1.0, step_scale=0.2):
-#     lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
-#                              delimiter=",")
-#
-#     numbers = atoms.numbers - 1
-#
-#     for iteration in range(max_iters):
-#         i, j, dists, vecs = neighbor_list('ijdD', atoms, cutoff=4.0)
-#
-#         if len(dists) == 0:
-#             break
-#
-#         sigmas = lj_rmins[numbers[i], numbers[j]]
-#         targets = np.maximum(sigmas, min_dist)
-#         mask = (i < j) & (dists < targets)
-#         if not np.any(mask):
-#             break
-#
-#         idx_i, idx_j = i[mask], j[mask]
-#         r = dists[mask][:, np.newaxis]
-#         delta = vecs[mask]
-#         target_r = targets[mask][:, np.newaxis]
-#
-#         repulsion_mag = (target_r / (r + 1e-6)) ** 2 - 1.0
-#         repulsion_mag = np.minimum(repulsion_mag, 5.0)
-#
-#         force_vecs = repulsion_mag * (delta / r)
-#
-#         total_forces = np.zeros((len(atoms), 3))
-#         np.add.at(total_forces, idx_i, -force_vecs)
-#         np.add.at(total_forces, idx_j, force_vecs)
-#
-#         critical = (dists < 0.1) & (i < j)
-#         if np.any(critical):
-#             rand_kicks = np.random.randn(len(i[critical]), 3) * 0.5
-#             np.add.at(total_forces, i[critical], -rand_kicks)
-#             np.add.at(total_forces, j[critical], rand_kicks)
-#
-#         atoms.positions += step_scale * total_forces
-#         atoms.wrap()
-#
-#     return atoms
-
-
-def separate_close_atoms(atoms, max_iters=20, min_dist=1.0, step_scale=0.2, epsilon=1.0):
+def separate_close_atoms(atoms, max_iters=20, min_dist=1.0, step_scale=0.2):
     lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
                              delimiter=",")
 
@@ -253,24 +209,30 @@ def separate_close_atoms(atoms, max_iters=20, min_dist=1.0, step_scale=0.2, epsi
         idx_i, idx_j = i[mask], j[mask]
         r = dists[mask][:, np.newaxis]
         delta = vecs[mask]
+        target_r = targets[mask][:, np.newaxis]
+
         sigma_val = sigmas[mask][:, np.newaxis]
 
         sr6 = (sigma_val / (r + 1e-9)) ** 6
         sr12 = sr6 ** 2
-        force_magnitude = (48 * epsilon * sr12) / (r + 1e-9)
+        repulsion_mag = (48 * epsilon * sr12) / (r + 1e-9)
 
         max_f = 50.0
-        force_magnitude = np.clip(force_magnitude, 0, max_f)
+        repulsion_mag = np.clip(repulsion_mag, 0, max_f)
 
-        force_vecs = force_magnitude * (delta / r)
+
+        # repulsion_mag = (target_r / (r + 1e-6)) ** 2 - 1.0
+        # repulsion_mag = np.minimum(repulsion_mag, 5.0)
+
+        force_vecs = repulsion_mag * (delta / r)
 
         total_forces = np.zeros((len(atoms), 3))
         np.add.at(total_forces, idx_i, -force_vecs)
         np.add.at(total_forces, idx_j, force_vecs)
 
-        critical = (dists < 0.05) & (i < j)
+        critical = (dists < 0.1) & (i < j)
         if np.any(critical):
-            rand_kicks = np.random.randn(len(i[critical]), 3) * 1.0
+            rand_kicks = np.random.randn(len(i[critical]), 3) * 0.5
             np.add.at(total_forces, i[critical], -rand_kicks)
             np.add.at(total_forces, j[critical], rand_kicks)
 
