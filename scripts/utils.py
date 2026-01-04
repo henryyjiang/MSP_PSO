@@ -3,6 +3,8 @@ from collections import Counter
 from pyxtal import pyxtal
 import periodictable
 from ase import Atoms
+from ase.data import covalent_radii
+from ase.neighborlist import neighbor_list
 from pymatgen.core import Structure
 
 def extract_cell(cif_path):
@@ -106,3 +108,96 @@ def atoms_to_dimensions(atoms, cell_perturb):
         pos = [float(i) for l in atoms.cell for i in l][:9] + [float(i) for l in atoms.positions for i in l]
 
     return np.array(pos)
+
+
+def separate_close_atoms(atoms, min_dist=1.0):
+    indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=3.0)
+
+    if len(distances) == 0:
+        return True
+
+    min_d = np.min(distances)
+    if min_d >= min_dist:
+        return True
+
+    moved = False
+    for i, j, d in zip(indices_i, indices_j, distances):
+        if d < min_dist:
+            # Vector from i to j
+            vec = atoms.positions[j] - atoms.positions[i]
+            if np.all(vec == 0):
+                vec = np.random.rand(3) * 1e-3
+            vec /= np.linalg.norm(vec)
+            shift = 0.5 * (min_dist - d) * vec
+            atoms.positions[i] -= shift
+            atoms.positions[j] += shift
+            moved = True
+    if moved:
+        print("atoms too close together")
+    return moved
+
+
+def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=3):
+    cutoff = 3.0  # Use same cutoff throughout
+
+    for iteration in range(max_iterations):
+        indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
+
+        if len(distances) == 0:
+            return True
+
+        min_d = np.min(distances)
+        if min_d >= min_dist:
+            return True
+
+        elem_nums_i = atoms.numbers[indices_i]
+        elem_nums_j = atoms.numbers[indices_j]
+        min_allowed = 0.75 * (covalent_radii[elem_nums_i] + covalent_radii[elem_nums_j])
+
+        min_allowed = np.maximum(min_allowed, min_dist)
+
+        needs_adjustment = distances < min_allowed
+
+        if not np.any(needs_adjustment):
+            return True
+
+        for idx in np.where(needs_adjustment)[0]:
+            i = indices_i[idx]
+            j = indices_j[idx]
+            d = distances[idx]
+            target = min_allowed[idx]
+
+            vec = atoms.positions[j] - atoms.positions[i]
+            vec_norm = np.linalg.norm(vec)
+
+            if vec_norm < 1e-6:
+                vec = np.random.randn(3)
+                vec_norm = np.linalg.norm(vec)
+
+            vec = vec / vec_norm
+
+            shift = 0.5 * (target - d) * vec
+            atoms.positions[i] -= shift
+            atoms.positions[j] += shift
+
+    indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
+
+    if len(distances) > 0 and np.min(distances) < min_dist:
+        print("reject1")
+        return False
+
+    return True
+
+
+def validate_structure_distances(atoms, min_dist=1.0):
+    cutoff = 3.0
+    indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
+    if len(distances) == 0:
+        return True
+
+    min_d = np.min(distances)
+    if min_d < min_dist:
+        print("reject2")
+        return False
+
+    return True

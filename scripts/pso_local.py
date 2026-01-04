@@ -189,24 +189,6 @@ class PSO():
                 positions = self.optimizer.swarm.position
                 new_atoms = [dimensions_to_atoms(positions[i], i, self.composition, self.cell, self.calculator, self.cell_perturb) for i in range(len(positions))]
 
-                def separate_close_atoms(atoms, min_dist=1.0):
-                    indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=3.0)
-
-                    moved = False
-                    for i, j, d in zip(indices_i, indices_j, distances):
-                        if d < min_dist:
-                            # Vector from i to j
-                            vec = atoms.positions[j] - atoms.positions[i]
-                            if np.all(vec == 0):
-                                vec = np.random.rand(3) * 1e-3
-                            vec /= np.linalg.norm(vec)
-                            shift = 0.5 * (min_dist - d) * vec
-                            atoms.positions[i] -= shift
-                            atoms.positions[j] += shift
-                            moved = True
-                            #print("atoms too close together")
-                    return moved
-
                 sanitized_atoms = []
                 for atoms in new_atoms:
                     atoms.calc = self.calculator
@@ -226,7 +208,7 @@ class PSO():
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
                         atoms.set_cell(cell, scale_atoms=True)
 
-                    separate_close_atoms(atoms)
+                    separate_close_atoms2(atoms)
 
                     if not np.all(np.isfinite(atoms.get_forces())):
                         #print("forces are infinite")
@@ -355,7 +337,7 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
 
-        options = {'c1': 0.5, 'c2': 0.5, 'w': 0.9}  # cognitive, social, inertia
+        options = {'c1': 1.5, 'c2': 1.5, 'w': 0.5}  # cognitive, social, inertia
         particles = 10  # number of particles in system
         iters = 50
         local_steps = 25
