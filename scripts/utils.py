@@ -146,9 +146,13 @@ def lj_repulsion_pymatgen(structure, scale = 40, buffer = 0.85):
   return np.mean(repulsions) / scale
 
 
-def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_distance=0.5):
+def calculate_lj_forces(atoms, cutoff_factor=1.5, epsilon=1.0, min_distance=0.5, step_scale=0.1):
+    lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
+                             delimiter=",")
+
     positions = atoms.get_positions()
     cell = atoms.get_cell()
+    inv_cell = np.linalg.inv(cell)
     atomic_numbers = atoms.get_atomic_numbers()
     n_atoms = len(atoms)
     forces = np.zeros((n_atoms, 3))
@@ -157,21 +161,19 @@ def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_dis
         for j in range(i + 1, n_atoms):
             z_i = atomic_numbers[i] - 1
             z_j = atomic_numbers[j] - 1
-            sigma = lj_rmins[z_i, z_j]  # Use as sigma parameter
+            sigma = lj_rmins[z_i, z_j]
 
             delta = positions[j] - positions[i]
-            delta = delta - np.round(delta @ np.linalg.inv(cell)) @ cell
+            delta = delta - np.round(delta @ inv_cell) @ cell
             r = np.linalg.norm(delta)
 
             r = max(r, min_distance)
 
             if r < sigma * cutoff_factor:
-                # Full LJ force: F = 24ε/r * [2(σ/r)^12 - (σ/r)^6]
                 sr6 = (sigma / r) ** 6
                 sr12 = sr6 ** 2
                 force_magnitude = 24 * epsilon * (2 * sr12 - sr6) / r
 
-                # Cap extreme forces
                 max_force = 50.0
                 force_magnitude = np.clip(force_magnitude, -max_force, max_force)
 
@@ -180,14 +182,16 @@ def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_dis
                 forces[i] -= force_vector
                 forces[j] += force_vector
 
-    return forces
+    atoms.positions += step_scale * forces
+    atoms.wrap()
+
+    return atoms
 
 
 def separate_close_atoms(atoms, max_iters=20, min_dist=1.0, step_scale=0.2):
     lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
                              delimiter=",")
 
-    n_atoms = len(atoms)
     numbers = atoms.numbers - 1
 
     for iteration in range(max_iters):
@@ -212,7 +216,7 @@ def separate_close_atoms(atoms, max_iters=20, min_dist=1.0, step_scale=0.2):
 
         force_vecs = repulsion_mag * (delta / r)
 
-        total_forces = np.zeros((n_atoms, 3))
+        total_forces = np.zeros((len(atoms), 3))
         np.add.at(total_forces, idx_i, -force_vecs)
         np.add.at(total_forces, idx_j, force_vecs)
 
@@ -222,63 +226,10 @@ def separate_close_atoms(atoms, max_iters=20, min_dist=1.0, step_scale=0.2):
             np.add.at(total_forces, i[critical], -rand_kicks)
             np.add.at(total_forces, j[critical], rand_kicks)
 
-
         atoms.positions += step_scale * total_forces
         atoms.wrap()
 
     return atoms
-
-
-# def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
-#     cutoff = 4.0
-#
-#     for iteration in range(max_iterations):
-#         indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
-#
-#         if len(distances) == 0:
-#             return True
-#
-#         min_d = np.min(distances)
-#         if min_d >= min_dist:
-#             return True
-#
-#         elem_nums_i = atoms.numbers[indices_i]
-#         elem_nums_j = atoms.numbers[indices_j]
-#         min_allowed = 0.75 * (covalent_radii[elem_nums_i] + covalent_radii[elem_nums_j])
-#
-#         min_allowed = np.maximum(min_allowed, min_dist)
-#
-#         needs_adjustment = distances < min_allowed
-#
-#         if not np.any(needs_adjustment):
-#             return True
-#
-#         for idx in np.where(needs_adjustment)[0]:
-#             i = indices_i[idx]
-#             j = indices_j[idx]
-#             d = distances[idx]
-#             target = min_allowed[idx]
-#
-#             vec = atoms.positions[j] - atoms.positions[i]
-#             vec_norm = np.linalg.norm(vec)
-#
-#             if vec_norm < 1e-6:
-#                 vec = np.random.randn(3)
-#                 vec_norm = np.linalg.norm(vec)
-#
-#             vec = vec / vec_norm
-#
-#             shift = 0.3 * (target - d) * vec
-#             atoms.positions[i] -= shift
-#             atoms.positions[j] += shift
-#
-#     indices_i, indices_j, distances = neighbor_list('ijd', atoms, cutoff=cutoff)
-#
-#     if len(distances) > 0 and np.min(distances) < min_dist:
-#         print("reject1")
-#         return False
-#
-#     return True
 
 
 def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):

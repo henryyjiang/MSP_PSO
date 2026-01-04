@@ -245,9 +245,10 @@ class PSO():
                         autobatcher=False,
                         max_steps =self.local_steps)
                 optimized_atoms = optimized_state.to_atoms()
-                for atom in optimized_atoms:
-                    atom.calc = self.calculator
-                    separate_close_atoms(atom)
+                for atoms in optimized_atoms:
+                    atoms.calc = self.calculator
+                    calculate_lj_forces(atoms)
+                    # separate_close_atoms(atoms)
 
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
