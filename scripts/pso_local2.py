@@ -192,7 +192,7 @@ class PSO():
                         np.full(dimensions - cell_dims, -20)
                     ])
                     upper_bound = np.concatenate([
-                        np.full(cell_dims, 100.0),
+                        np.full(cell_dims, 30.0),
                         np.full(dimensions - cell_dims, 20)
                     ])
 
@@ -212,9 +212,9 @@ class PSO():
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
 
-                    if np.any(lengths < 3.0) or np.any(lengths > 100.0):
+                    if np.any(lengths < 3.0) or np.any(lengths > 30.0):
                         #print("cell lengths out of bounds")
-                        lengths = np.clip(lengths, 3.0, 100.0)
+                        lengths = np.clip(lengths, 3.0, 30.0)
                         cell = atoms.get_cell()
                         for i in range(3):
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
@@ -245,11 +245,14 @@ class PSO():
                 for i, atoms in enumerate(optimized_atoms):
                     atoms.calc = self.calculator
                     atoms = separate_close_atoms(atoms, self.lj_rmins)
+                    # atoms = calculate_lj_forces(atoms, self.lj_rmins)
 
                     if validate_structure_distances(atoms):
                         final_atoms.append(atoms)
                     else:
-                        final_atoms.append(sanitized_atoms[i].copy())
+                        atoms = sanitized_atoms[i].copy()
+                        atoms.calc = self.calculator
+                        final_atoms.append(atoms)
 
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in final_atoms]
