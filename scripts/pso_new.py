@@ -277,7 +277,7 @@ class PSO():
             plt.savefig(f'plots/avg_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
-            final_atoms = final_dimensions(pos, self.best_cell, self.composition)
+            final_atoms = final_dimensions(pos, self.best_cell, self.composition, self.cell_perturb)
             try:
                 optimized_structure = AseAtomsAdaptor.get_structure(final_atoms)
 
