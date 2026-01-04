@@ -247,8 +247,8 @@ class PSO():
                 optimized_atoms = optimized_state.to_atoms()
                 for atoms in optimized_atoms:
                     atoms.calc = self.calculator
-                    calculate_lj_forces(atoms)
-                    # separate_close_atoms(atoms)
+                    # calculate_lj_forces(atoms)
+                    separate_close_atoms(atoms)
 
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
