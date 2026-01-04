@@ -66,6 +66,23 @@ def lj_reject(el_symbols, lj_rmins, structure):
                 return True
     return False
 
+def initialize_atoms(el_symbols, lj_rmins, zs, zcounts, possible_sgs, sg_probs, density=0.2):
+    seed = 0
+    rng = np.random.default_rng(seed)
+    rejected = True
+    while rejected:
+        try:
+            xtal = pyxtal()
+            xtal.from_random(3, np.random.choice(possible_sgs,
+                                                 p=sg_probs), zs, zcounts, random_state=rng)
+            new_structure = xtal.to_pymatgen()
+            rejected = lj_reject(el_symbols, lj_rmins, new_structure)
+        except:
+            rejected = True
+
+    atoms = xtal.to_ase()
+    return atoms
+
 def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
     if not cell_perturb:
         frac_positions = params.reshape(-1, 3)
@@ -106,7 +123,6 @@ def final_dimensions(params, best_cell, composition, cell_perturb=True):
                   pbc=(True, True, True),
                   scaled_positions=coords)
     return atoms
-
 
 
 def separate_close_atoms(atoms, min_dist=1.0):
