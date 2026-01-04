@@ -238,15 +238,23 @@ class PSO():
                         autobatcher=False,
                         max_steps =self.local_steps)
                 optimized_atoms = optimized_state.to_atoms()
-                for atoms in optimized_atoms:
+
+                final_atoms = []
+                for i, atoms in enumerate(optimized_atoms):
                     atoms.calc = self.calculator
-                    # separate_close_atoms(atoms, self.lj_rmins)
+                    # atoms = separate_close_atoms(atoms, self.lj_rmins)
+
+                    if validate_structure_distances(atoms):
+                        final_atoms.append(atoms)
+                    else:
+                        print("rejected structure")
+                        final_atoms.append(sanitized_atoms[i].copy())
 
                 if not self.cell_perturb:
-                    self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
+                    self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in final_atoms]
 
-                self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
-                self.optimizer.swarm.position = np.array([atoms_to_dimensions(optimized_atoms[i], self.cell_perturb) for i in range(len(optimized_atoms))])
+                self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in final_atoms])
+                self.optimizer.swarm.position = np.array([atoms_to_dimensions(final_atoms[i], self.cell_perturb) for i in range(len(final_atoms))])
 
                 print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Current Cost = {self.optimizer.swarm.current_cost[0]}, Time Taken: {(time.time() - start_time):.2f} s")
 
