@@ -342,7 +342,7 @@ if __name__ == "__main__":
         iters = 100
         local_steps = 25
 
-        cell_perturb = False
+        cell_perturb = True
         if cell_perturb:
                 pso = PSO(cif_name, model, composition, None, calc, options, particles, iters, local_steps, cell_perturb)
         else:

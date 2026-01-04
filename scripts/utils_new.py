@@ -218,7 +218,7 @@ def separate_close_atoms(atoms, lj_rmins, max_iters=10, min_dist=1.0, step_scale
 
 
 def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
-    cutoff = 4.0
+    cutoff = 3.0
 
     for _ in range(max_iterations):
         i, j, d, D = neighbor_list('ijdD', atoms, cutoff=cutoff)
@@ -237,7 +237,7 @@ def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
         actual_dist = d[mask][:, np.newaxis]
         unit_vecs = D[mask] / actual_dist
         target_dist = min_allowed[mask][:, np.newaxis]
-        shift_mag = 0.3 * (target_dist - actual_dist)
+        shift_mag = 0.5 * (target_dist - actual_dist)
         shift_vecs = shift_mag * unit_vecs
 
         pos_delta = np.zeros_like(atoms.positions)

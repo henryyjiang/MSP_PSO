@@ -1,6 +1,5 @@
 from ase.geometry import cell_to_cellpar, cellpar_to_cell
 import ase
-import numpy as np
 import pyswarms as ps
 import matplotlib.pyplot as plt
 # from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
@@ -22,9 +21,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname("../.."))))
 #from matdeeplearn.common.ase_utils import MDLCalculator
 from msp.utils.objectives import Energy
 from msp.forcefield import MDL_FF
-from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.analysis.structure_matcher import StructureMatcher
-from pathlib import Path
 
 from utils import *
 
@@ -81,35 +78,40 @@ class PSO():
         #self.calculator = MDLCalculator(config=train_config)
 
 
-    def obj_func(self, params, i):
-        atoms = dimensions_to_atoms(params, i, self.composition, self.cell, self.calculator, self.cell_perturb)
+    def obj_func(self, params):
+        energies = []
+        for atoms in params:
+            try:
+                energies.append(atoms.get_potential_energy())
+            except Exception:
+                energies.append(1e6)
 
-        atoms.calc = self.calculator
-        loss = atoms.get_potential_energy()
-
-        if loss < self.best_loss:
-            self.best_loss = loss
-
-        return loss
+        return np.array(energies)
 
     def f(self, x):
         n_particles = x.shape[0]
-        j = [self.obj_func(x[i], i) for i in range(n_particles)]
+
+        # Create all atoms objects
+        params = [dimensions_to_atoms(x[i], i, self.composition, self.cell,
+                                          self.calculator, self.cell_perturb)
+                      for i in range(n_particles)]
+
+        energies = self.obj_func(params)
 
         self.best_losses.append(self.best_loss)
-        self.avg_losses.append(np.mean(j))
+        self.avg_losses.append(np.mean(energies))
 
-        return np.array(j)
+        return energies
 
     def run(self):
         costs = []
         matches = []
         dist_energy = []
 
-        os.makedirs("plots", exist_ok=True)
-        os.makedirs("matches", exist_ok=True)
-        os.makedirs("fails", exist_ok=True)
-        os.makedirs("lower_energy", exist_ok=True)
+        os.makedirs("plots2", exist_ok=True)
+        os.makedirs("matches2", exist_ok=True)
+        os.makedirs("fails2", exist_ok=True)
+        os.makedirs("lower_energy2", exist_ok=True)
 
         matcher = StructureMatcher(ltol=0.3, stol=0.5, angle_tol=8)
 
@@ -187,11 +189,11 @@ class PSO():
                     cell_dims = 9
                     lower_bound = np.concatenate([
                         np.full(cell_dims, 2.0),
-                        np.full(dimensions - cell_dims, -10)
+                        np.full(dimensions - cell_dims, -20)
                     ])
                     upper_bound = np.concatenate([
                         np.full(cell_dims, 30.0),
-                        np.full(dimensions - cell_dims, 10)
+                        np.full(dimensions - cell_dims, 20)
                     ])
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
@@ -203,11 +205,13 @@ class PSO():
                 sanitized_atoms = []
                 for atoms in new_atoms:
                     cellpar = cell_to_cellpar(atoms.cell)
-                    cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
-                    atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
+                    if np.any(cellpar[3:] < 30.0) or np.any(cellpar[3:] > 150.0):
+                        cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
+                        atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
 
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
+
                     if np.any(lengths < 3.0) or np.any(lengths > 30.0):
                         #print("cell lengths out of bounds")
                         lengths = np.clip(lengths, 3.0, 30.0)
@@ -216,7 +220,7 @@ class PSO():
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
                         atoms.set_cell(cell, scale_atoms=True)
 
-                    separate_close_atoms2(atoms)
+                    # separate_close_atoms2(atoms)
 
                     try:
                         forces = atoms.get_forces()
@@ -240,13 +244,12 @@ class PSO():
                 final_atoms = []
                 for i, atoms in enumerate(optimized_atoms):
                     atoms.calc = self.calculator
-                    # atoms = separate_close_atoms(atoms, self.lj_rmins)
+                    atoms = separate_close_atoms(atoms, self.lj_rmins)
                     # atoms = calculate_lj_forces(atoms, self.lj_rmins)
 
                     if validate_structure_distances(atoms):
                         final_atoms.append(atoms)
                     else:
-                        print("rejected structure")
                         atoms = sanitized_atoms[i].copy()
                         atoms.calc = self.calculator
                         final_atoms.append(atoms)
@@ -267,14 +270,14 @@ class PSO():
             plt.xlabel('Iteration')
             plt.ylabel('Best Loss')
             plt.title('Best Losses')
-            plt.savefig(f'plots/best_losses_{self.cif_name}_{iteration}.png')
+            plt.savefig(f'plots2/best_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
             plt.plot(self.avg_losses)
             plt.xlabel('Iteration')
             plt.ylabel('Average Loss')
             plt.title('Average Losses')
-            plt.savefig(f'plots/avg_losses_{self.cif_name}_{iteration}.png')
+            plt.savefig(f'plots2/avg_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
             final_atoms = final_dimensions(pos, self.best_cell, self.composition)
@@ -307,11 +310,11 @@ class PSO():
 
                 # Save CIF accordingly
                 if result_type == "match":
-                    out_dir = "matches"
+                    out_dir = "matches2"
                 elif result_type == "lower_energy":
-                    out_dir = "lower_energy"
+                    out_dir = "lower_energy2"
                 else:
-                    out_dir = "fails"
+                    out_dir = "fails2"
 
                 filename = os.path.join(out_dir, f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
@@ -323,10 +326,10 @@ class PSO():
             except ValueError:
                 print(f"{self.cif_name}: invalid structure, cannot match")
                 matches.append(False)
-                filename = os.path.join("fails", f"best_structure_{self.cif_name}_{iteration}.cif")
+                filename = os.path.join("fails2", f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
 
-        costs_filename = f"plots/{self.cif_name}_costs.txt"
+        costs_filename = f"plots2/{self.cif_name}_costs.txt"
         with open(costs_filename, "w") as f:
             f.write(f"Ground Truth: {ground_truth_energy}\n")
             for cost in costs:
@@ -363,8 +366,8 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 1.5, 'c2': 1.5, 'w': 0.5}  # cognitive, social, inertia
-        particles = 20  # number of particles in system
-        iters = 100
+        particles = 10  # number of particles in system
+        iters = 50
         local_steps = 25
 
         cell_perturb = True
