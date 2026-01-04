@@ -206,7 +206,7 @@ class PSO():
                     cellpar = cell_to_cellpar(atoms.cell)
                     if np.any(cellpar[3:] < 30.0) or np.any(cellpar[3:] > 150.0):
                         cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
-                        atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=False)
+                        atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
 
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
