@@ -101,6 +101,17 @@ def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
     return atoms
 
 
+def atoms_to_dimensions(atoms, cell_perturb):
+    if not cell_perturb:
+        pos = atoms.get_scaled_positions().flatten()
+    else:
+        cell_flat = atoms.cell.array.flatten()[:9]
+        pos_flat = atoms.positions.flatten()
+        pos = np.concatenate([cell_flat, pos_flat])
+
+    return pos
+
+
 def final_dimensions(params, best_cell, composition, cell_perturb=True):
     if cell_perturb:
         actual_cell = params[:9].reshape(3, 3)
@@ -114,36 +125,6 @@ def final_dimensions(params, best_cell, composition, cell_perturb=True):
                   pbc=(True, True, True),
                   scaled_positions=coords)
     return atoms
-
-
-def atoms_to_dimensions(atoms, cell_perturb):
-    if not cell_perturb:
-        pos = atoms.get_scaled_positions().flatten()
-    else:
-        cell_flat = atoms.cell.array.flatten()[:9]
-        pos_flat = atoms.positions.flatten()
-        pos = np.concatenate([cell_flat, pos_flat])
-
-    return pos
-
-def lj_repulsion_pymatgen(structure, scale = 40, buffer = 0.85):
-  lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
-                             delimiter=",")
-  repulsions = []
-
-  def get_z_site(site):
-      el_symbols = np.array([periodictable.elements[i].symbol for i in range(95)])
-      return np.argmax(el_symbols == site.species.elements[0].symbol)
-
-  for i in range(len(structure)):
-    for j in range(i, len(structure)):
-      rmin = lj_rmins[get_z_site(structure.sites[i]) - 1, get_z_site(
-        structure.sites[j]) - 1] * buffer
-      r = np.min([structure.lattice.a, structure.lattice.b,
-        structure.lattice.c]) if i == j else structure.sites[i].distance(
-        structure.sites[j])
-      repulsions.append(max(0, (rmin / r) ** 12 - 1))
-  return np.mean(repulsions) / scale
 
 
 def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_distance=0.5, step_scale=0.1):
@@ -207,18 +188,16 @@ def separate_close_atoms(atoms, lj_rmins, max_iters=10, min_dist=1.0, step_scale
         delta = vecs[mask]
         target_r = targets[mask][:, np.newaxis]
 
-        sigma_val = sigmas[mask][:, np.newaxis]
-
-        sr6 = (sigma_val / (r + 1e-9)) ** 6
-        sr12 = sr6 ** 2
-        repulsion_mag = (24 * epsilon * sr12) / (r + 1e-9)
-
-        max_f = 50.0
-        repulsion_mag = np.clip(repulsion_mag, 0, max_f)
+        # sr6 = (target_r / (r + 1e-9)) ** 6
+        # sr12 = sr6 ** 2
+        # repulsion_mag = (24 * epsilon * sr12) / (r + 1e-9)
+        #
+        # max_f = 50.0
+        # repulsion_mag = np.clip(repulsion_mag, 0, max_f)
 
 
-        # repulsion_mag = (target_r / (r + 1e-6)) ** 2 - 1.0
-        # repulsion_mag = np.minimum(repulsion_mag, 5.0)
+        repulsion_mag = (target_r / (r + 1e-6)) ** 2 - 1.0
+        repulsion_mag = np.minimum(repulsion_mag, 5.0)
 
         force_vecs = repulsion_mag * (delta / r)
 
