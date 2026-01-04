@@ -146,10 +146,7 @@ def lj_repulsion_pymatgen(structure, scale = 40, buffer = 0.85):
   return np.mean(repulsions) / scale
 
 
-def calculate_lj_forces(atoms, cutoff_factor=1.5, epsilon=1.0, min_distance=0.5, step_scale=0.1):
-    lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
-                             delimiter=",")
-
+def calculate_lj_forces(atoms, lj_rmins, cutoff_factor=1.5, epsilon=1.0, min_distance=0.5, step_scale=0.1):
     positions = atoms.get_positions()
     cell = atoms.get_cell()
     inv_cell = np.linalg.inv(cell)
@@ -188,9 +185,8 @@ def calculate_lj_forces(atoms, cutoff_factor=1.5, epsilon=1.0, min_distance=0.5,
     return atoms
 
 
-def separate_close_atoms(atoms, max_iters=20, min_dist=1.0, step_scale=0.2):
-    lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
-                             delimiter=",")
+def separate_close_atoms(atoms, lj_rmins, max_iters=10, min_dist=1.0, step_scale=0.2):
+    epsilon = 1.0
 
     numbers = atoms.numbers - 1
 
@@ -215,7 +211,7 @@ def separate_close_atoms(atoms, max_iters=20, min_dist=1.0, step_scale=0.2):
 
         sr6 = (sigma_val / (r + 1e-9)) ** 6
         sr12 = sr6 ** 2
-        repulsion_mag = (48 * epsilon * sr12) / (r + 1e-9)
+        repulsion_mag = (24 * epsilon * sr12) / (r + 1e-9)
 
         max_f = 50.0
         repulsion_mag = np.clip(repulsion_mag, 0, max_f)

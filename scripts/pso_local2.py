@@ -78,40 +78,30 @@ class PSO():
         #self.calculator = MDLCalculator(config=train_config)
 
 
-    def obj_func(self, params, i):
-        atoms = dimensions_to_atoms(params, i, self.composition, self.cell, self.calculator, self.cell_perturb)
+    def obj_func(self, params):
+        energies = []
+        for atoms in params:
+            try:
+                energies.append(atoms.get_potential_energy())
+            except Exception:
+                energies.append(1e6)
 
-        loss = atoms.get_potential_energy()
-
-        if loss < self.best_loss:
-            self.best_loss = loss
-
-        return loss
+        return np.array(energies)
 
     def f(self, x):
         n_particles = x.shape[0]
 
         # Create all atoms objects
-        atoms_list = [dimensions_to_atoms(x[i], i, self.composition, self.cell,
+        params = [dimensions_to_atoms(x[i], i, self.composition, self.cell,
                                           self.calculator, self.cell_perturb)
                       for i in range(n_particles)]
 
-        energies = self.batch_get_energies(atoms_list)
+        energies = self.obj_func(params)
 
         self.best_losses.append(self.best_loss)
         self.avg_losses.append(np.mean(energies))
 
         return energies
-
-    def batch_get_energies(self, atoms_list):
-            energies = []
-            for atoms in atoms_list:
-                try:
-                    energies.append(atoms.get_potential_energy())
-                except Exception:
-                    energies.append(1e6)
-
-            return np.array(energies)
 
     def run(self):
         costs = []
@@ -186,9 +176,9 @@ class PSO():
                 #compute velocity
                 n_particles, dimensions = self.optimizer.swarm.position.shape
                 r1, r2 = np.random.rand(n_particles, dimensions), np.random.rand(n_particles,dimensions)
-                cognitive_component = options["c1"] * r1 * (self.optimizer.swarm.pbest_pos - self.optimizer.swarm.position)
-                social_component = options["c2"] * r2 * (self.optimizer.swarm.best_pos - self.optimizer.swarm.position)
-                self.optimizer.swarm.velocity = options["w"] * self.optimizer.swarm.velocity + cognitive_component + social_component
+                cognitive = options["c1"] * r1 * (self.optimizer.swarm.pbest_pos - self.optimizer.swarm.position)
+                social = options["c2"] * r2 * (self.optimizer.swarm.best_pos - self.optimizer.swarm.position)
+                self.optimizer.swarm.velocity = options["w"] * self.optimizer.swarm.velocity + cognitive + social
 
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
@@ -199,11 +189,11 @@ class PSO():
                     cell_dims = 9
                     lower_bound = np.concatenate([
                         np.full(cell_dims, 2.0),
-                        np.full(dimensions - cell_dims, -10)
+                        np.full(dimensions - cell_dims, -20)
                     ])
                     upper_bound = np.concatenate([
-                        np.full(cell_dims,30.0),
-                        np.full(dimensions - cell_dims, 10)
+                        np.full(cell_dims, 100.0),
+                        np.full(dimensions - cell_dims, 20)
                     ])
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
@@ -222,13 +212,13 @@ class PSO():
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
 
-                    if np.any(lengths < 3.0) or np.any(lengths > 150.0):
+                    if np.any(lengths < 3.0) or np.any(lengths > 100.0):
                         #print("cell lengths out of bounds")
-                        lengths = np.clip(lengths, 3.0, 150.0)
+                        lengths = np.clip(lengths, 3.0, 100.0)
                         cell = atoms.get_cell()
                         for i in range(3):
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
-                        atoms.set_cell(cell, scale_atoms=False)
+                        atoms.set_cell(cell, scale_atoms=True)
 
                     # separate_close_atoms2(atoms)
 
@@ -237,10 +227,9 @@ class PSO():
                         if not np.all(np.isfinite(forces)):
                             atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
                     except np.linalg.LinAlgError:
-                        print("---------------------Trigger----------------------------")
                         current_cell = atoms.get_cell()
                         new_cell = current_cell + 0.1 * np.eye(3)
-                        atoms.set_cell(new_cell, scale_atoms=False)
+                        atoms.set_cell(new_cell, scale_atoms=True)
 
                     sanitized_atoms.append(atoms)
 
@@ -253,8 +242,8 @@ class PSO():
                 optimized_atoms = optimized_state.to_atoms()
                 for atoms in optimized_atoms:
                     atoms.calc = self.calculator
-                    # calculate_lj_forces(atoms)
-                    separate_close_atoms(atoms)
+                    # calculate_lj_forces(atoms, self.lj_rmins)
+                    separate_close_atoms(atoms, self.lj_rmins)
 
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
@@ -262,7 +251,7 @@ class PSO():
                 self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
                 self.optimizer.swarm.position = np.array([atoms_to_dimensions(optimized_atoms[i], self.cell_perturb) for i in range(len(optimized_atoms))])
 
-                print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Time Taken: {(time.time() - start_time):.2f} s")
+                print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Current Cost = {self.optimizer.swarm.current_cost[0]}, Time Taken: {(time.time() - start_time):.2f} s")
 
             cost = self.optimizer.swarm.best_cost
             costs.append(cost)

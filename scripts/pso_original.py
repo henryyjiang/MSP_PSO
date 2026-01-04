@@ -1,11 +1,15 @@
+from ase.neighborlist import neighbor_list
+from ase.filters import ExpCellFilter, UnitCellFilter, FrechetCellFilter
 from ase.geometry import cell_to_cellpar, cellpar_to_cell
 import ase
+import numpy as np
 import pyswarms as ps
 import matplotlib.pyplot as plt
 # from mattertune.backbones import MatterSimM3GNetBackboneModule, MatterSimBackboneConfig
 # from mattertune import configs as MC
 from mattersim.forcefield.potential import Potential, MatterSimCalculator
 from mace.calculators import mace_mp
+from ase.optimize import BFGS, FIRE
 import torch
 import torch_sim as ts
 from torch_sim.models.mace import MaceModel
@@ -16,12 +20,13 @@ import logging
 import sys
 import os
 import time
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname("../.."))))
 #from matdeeplearn.common.ase_utils import MDLCalculator
 from msp.utils.objectives import Energy
 from msp.forcefield import MDL_FF
+from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.analysis.structure_matcher import StructureMatcher
+from pathlib import Path
 
 from utils import *
 
@@ -34,8 +39,6 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 class PSO():
     def __init__(self, cif_name, model, composition, cell, calc, options, particles, iters, local_steps, cell_perturb=True):
-        self.device = device
-
         self.cif_name = cif_name
         self.cell_perturb = cell_perturb
         self.composition = composition
@@ -78,29 +81,25 @@ class PSO():
         #self.calculator = MDLCalculator(config=train_config)
 
 
-    def obj_func(self, params):
-        energies = []
-        for atoms in params:
-            try:
-                energies.append(atoms.get_potential_energy())
-            except Exception:
-                energies.append(1e6)
+    def obj_func(self, params, i):
+        atoms = dimensions_to_atoms(params, i, self.composition, self.cell, self.calculator, self.cell_perturb)
 
-        return np.array(energies)
+        atoms.calc = self.calculator
+        loss = atoms.get_potential_energy()
+
+        if loss < self.best_loss:
+            self.best_loss = loss
+
+        return loss
 
     def f(self, x):
         n_particles = x.shape[0]
-
-        params = [dimensions_to_atoms(x[i], i, self.composition, self.cell,
-                                          self.calculator, self.cell_perturb)
-                      for i in range(n_particles)]
-
-        energies = self.obj_func(params)
+        j = [self.obj_func(x[i], i) for i in range(n_particles)]
 
         self.best_losses.append(self.best_loss)
-        self.avg_losses.append(np.mean(energies))
+        self.avg_losses.append(np.mean(j))
 
-        return energies
+        return np.array(j)
 
     def run(self):
         costs = []
@@ -175,25 +174,14 @@ class PSO():
                 #compute velocity
                 n_particles, dimensions = self.optimizer.swarm.position.shape
                 r1, r2 = np.random.rand(n_particles, dimensions), np.random.rand(n_particles,dimensions)
-                cognitive = options["c1"] * r1 * (self.optimizer.swarm.pbest_pos - self.optimizer.swarm.position)
-                social = options["c2"] * r2 * (self.optimizer.swarm.best_pos - self.optimizer.swarm.position)
-                self.optimizer.swarm.velocity = options["w"] * self.optimizer.swarm.velocity + cognitive + social
+                cognitive_component = options["c1"] * r1 * (self.optimizer.swarm.pbest_pos - self.optimizer.swarm.position)
+                social_component = options["c2"] * r2 * (self.optimizer.swarm.best_pos - self.optimizer.swarm.position)
+                self.optimizer.swarm.velocity = options["w"] * self.optimizer.swarm.velocity + cognitive_component + social_component
 
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
-                if not self.cell_perturb:
-                    lower_bound = np.full(self.optimizer.swarm.position.shape[1], -0.5)
-                    upper_bound = np.full(self.optimizer.swarm.position.shape[1], 1.5)
-                else:
-                    cell_dims = 9
-                    lower_bound = np.concatenate([
-                        np.full(cell_dims, 2.0),
-                        np.full(dimensions - cell_dims, -20)
-                    ])
-                    upper_bound = np.concatenate([
-                        np.full(cell_dims, 100.0),
-                        np.full(dimensions - cell_dims, 20)
-                    ])
+                lower_bound = np.full(self.optimizer.swarm.position.shape[1], -5)
+                upper_bound = np.full(self.optimizer.swarm.position.shape[1], 5)
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
 
@@ -203,31 +191,28 @@ class PSO():
 
                 sanitized_atoms = []
                 for atoms in new_atoms:
+                    atoms.calc = self.calculator
+
                     cellpar = cell_to_cellpar(atoms.cell)
-                    if np.any(cellpar[3:] < 30.0) or np.any(cellpar[3:] > 150.0):
-                        cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
-                        atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=False)
+                    cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
+
+                    atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
 
                     cell = atoms.get_cell().array
                     lengths = np.linalg.norm(cell, axis=1)
-                    if np.any(lengths < 3.0) or np.any(lengths > 100.0):
+                    if np.any(lengths < 3.0) or np.any(lengths > 150.0):
                         #print("cell lengths out of bounds")
-                        lengths = np.clip(lengths, 3.0, 100.0)
+                        lengths = np.clip(lengths, 3.0, 150.0)
                         cell = atoms.get_cell()
                         for i in range(3):
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
                         atoms.set_cell(cell, scale_atoms=True)
 
-                    separate_close_atoms2(atoms)
+                    separate_close_atoms(atoms)
 
-                    try:
-                        forces = atoms.get_forces()
-                        if not np.all(np.isfinite(forces)):
-                            atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
-                    except np.linalg.LinAlgError:
-                        current_cell = atoms.get_cell()
-                        new_cell = current_cell + 0.1 * np.eye(3)
-                        atoms.set_cell(new_cell, scale_atoms=True)
+                    if not np.all(np.isfinite(atoms.get_forces())):
+                        #print("forces are infinite")
+                        atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
 
                     sanitized_atoms.append(atoms)
 
@@ -238,9 +223,8 @@ class PSO():
                         autobatcher=False,
                         max_steps =self.local_steps)
                 optimized_atoms = optimized_state.to_atoms()
-                for atoms in optimized_atoms:
-                    atoms.calc = self.calculator
-                    # separate_close_atoms(atoms, self.lj_rmins)
+                for atom in optimized_atoms:
+                    atom.calc = self.calculator
 
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
@@ -248,7 +232,7 @@ class PSO():
                 self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
                 self.optimizer.swarm.position = np.array([atoms_to_dimensions(optimized_atoms[i], self.cell_perturb) for i in range(len(optimized_atoms))])
 
-                print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Current Cost = {self.optimizer.swarm.current_cost[0]}, Time Taken: {(time.time() - start_time):.2f} s")
+                print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Time Taken: {(time.time() - start_time):.2f} s")
 
             cost = self.optimizer.swarm.best_cost
             costs.append(cost)
@@ -268,7 +252,7 @@ class PSO():
             plt.savefig(f'plots/avg_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
-            final_atoms = final_dimensions(pos, self.best_cell, self.composition, self.cell_perturb)
+            final_atoms = final_dimensions(pos, self.best_cell, self.composition)
             try:
                 optimized_structure = AseAtomsAdaptor.get_structure(final_atoms)
 
@@ -288,13 +272,13 @@ class PSO():
 
                 if distance < distance_threshold and energy_diff <= energy_tolerance:
                     result_type = "match"
-                    print(f"Matched for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
+                    print(f"Matched for {self.cif_name}: RMSD = {distance:.3f}, Î”E = {energy_diff:.3f} eV")
                 elif optimized_energy - ground_truth_energy < 0:
                     result_type = "lower_energy"
-                    print(f"Lower energy for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
+                    print(f"Lower energy for {self.cif_name}: RMSD = {distance:.3f}, Î”E = {energy_diff:.3f} eV")
                 else:
                     result_type = "fail"
-                    print(f"No match for {self.cif_name}: RMSD = {distance:.3f}, ΔE = {energy_diff:.3f} eV")
+                    print(f"No match for {self.cif_name}: RMSD = {distance:.3f}, Î”E = {energy_diff:.3f} eV")
 
                 # Save CIF accordingly
                 if result_type == "match":
@@ -353,12 +337,12 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
 
-        options = {'c1': 0.7, 'c2': 1.0, 'w': 0.5}  # cognitive, social, inertia
-        particles = 10  # number of particles in system
-        iters = 50
-        local_steps = 25
+        options = {'c1': 1.5, 'c2': 1.5, 'w': 0.5}  # cognitive, social, inertia
+        particles = 30  # number of particles in system
+        iters = 100
+        local_steps = 100
 
-        cell_perturb = True
+        cell_perturb = False
         if cell_perturb:
                 pso = PSO(cif_name, model, composition, None, calc, options, particles, iters, local_steps, cell_perturb)
         else:
