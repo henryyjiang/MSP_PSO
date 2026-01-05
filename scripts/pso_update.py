@@ -206,8 +206,8 @@ class PSO():
                 for atoms in new_atoms:
                     try:
                         cellpar = cell_to_cellpar(atoms.cell)
-                        cellpar[:3] = np.clip(cellpar[:3], 3.0, 30.0)
-                        cellpar[3:] = np.clip(cellpar[3:], 60.0, 120.0)
+                        cellpar[:3] = np.clip(cellpar[:3], 3.0, 20.0)
+                        cellpar[3:] = np.clip(cellpar[3:], 10.0, 170.0)
                         cell = cellpar_to_cell(cellpar)
 
                         atoms.set_cell(cell, scale_atoms=True)
@@ -221,7 +221,7 @@ class PSO():
                     except Exception as e:
                         current_cell = atoms.get_cell().array
                         lengths = np.linalg.norm(current_cell, axis=1)
-                        lengths = np.clip(lengths, 3.0, 30.0)
+                        lengths = np.clip(lengths, 3.0, 20.0)
                         safe_cell = np.diag(lengths)
                         atoms.set_cell(safe_cell, scale_atoms=True)
 
