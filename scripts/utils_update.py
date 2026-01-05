@@ -108,7 +108,7 @@ def atoms_to_dimensions(atoms, cell_perturb):
     else:
         pos = [float(i) for l in atoms.cell for i in l][:9] + [float(i) for l in atoms.positions for i in l]
 
-    return pos
+    return np.array(pos)
 
 
 def final_dimensions(params, best_cell, composition, cell_perturb=True):
