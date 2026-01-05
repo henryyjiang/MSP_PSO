@@ -181,8 +181,10 @@ class PSO():
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
                 if not self.cell_perturb:
-                    lower_bound = np.full(self.optimizer.swarm.position.shape[1], -0.5)
-                    upper_bound = np.full(self.optimizer.swarm.position.shape[1], 1.5)
+                    # lower_bound = np.full(self.optimizer.swarm.position.shape[1], -0.5)
+                    # upper_bound = np.full(self.optimizer.swarm.position.shape[1], 1.5)
+                    lower_bound = np.full(self.optimizer.swarm.position.shape[1], -5)
+                    upper_bound = np.full(self.optimizer.swarm.position.shape[1], 5)
                 else:
                     cell_dims = 9
                     lower_bound = np.concatenate([
