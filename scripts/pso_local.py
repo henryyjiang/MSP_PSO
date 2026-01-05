@@ -225,7 +225,7 @@ class PSO():
 
                         atoms.set_cell(cell, scale_atoms=True)
 
-                        # separate_close_atoms2(atoms)
+                        separate_close_atoms2(atoms)
 
                         if not np.all(np.isfinite(atoms.get_forces())):
                             atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
@@ -248,7 +248,6 @@ class PSO():
                         if validate_structure_distances(atoms):
                             final_atoms.append(atoms)
                         else:
-                            # print("rejected structure")
                             separate_close_atoms2(atoms)
                             # separate_close_atoms(atoms, self.lj_rmins)
                             final_atoms.append(atoms)
@@ -367,9 +366,9 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 1.5, 'c2': 1.5, 'w': 0.5}  # cognitive, social, inertia
-        particles = 10  # number of particles in system
-        iters = 50
-        local_steps = 25
+        particles = 30  # number of particles in system
+        iters = 100
+        local_steps = 50
 
         cell_perturb = False
         if cell_perturb:
