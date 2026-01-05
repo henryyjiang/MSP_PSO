@@ -202,50 +202,55 @@ class PSO():
 
                 sanitized_atoms = []
                 for atoms in new_atoms:
-                    cellpar = cell_to_cellpar(atoms.cell)
-                    cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
-                    cell = cellpar_to_cell(cellpar)
+                    try:
+                        cellpar = cell_to_cellpar(atoms.cell)
+                        cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
+                        cell = cellpar_to_cell(cellpar)
 
-                    lengths = np.linalg.norm(cell, axis=1)
-                    if np.any(lengths < 3.0) or np.any(lengths > 200.0):
-                        lengths = np.clip(lengths, 3.0, 200.0)
-                        for i in range(3):
-                            cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
+                        lengths = np.linalg.norm(cell, axis=1)
+                        if np.any(lengths < 3.0) or np.any(lengths > 200.0):
+                            lengths = np.clip(lengths, 3.0, 200.0)
+                            for i in range(3):
+                                cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
 
-                    atoms.set_cell(cell, scale_atoms=True)
+                        atoms.set_cell(cell, scale_atoms=True)
 
-                    separate_close_atoms2(atoms)
-
-                    if not np.all(np.isfinite(atoms.get_forces())):
-                        atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
-
-                    sanitized_atoms.append(atoms)
-
-                optimized_state = ts.optimize(
-                    system=sanitized_atoms,
-                    model=self.model,
-                    optimizer=ts.frechet_cell_fire,
-                    autobatcher=False,
-                    max_steps=self.local_steps)
-                optimized_atoms = optimized_state.to_atoms()
-
-                final_atoms = []
-                for i, atoms in enumerate(optimized_atoms):
-                    atoms.calc = self.calculator
-                    if validate_structure_distances(atoms):
-                        final_atoms.append(atoms)
-                    else:
-                        print("rejected structure")
                         separate_close_atoms2(atoms)
-                        # separate_close_atoms(atoms, self.lj_rmins)
-                        # calculate_lj_forces(atoms, self.lj_rmins)
-                        final_atoms.append(atoms)
+
+                        if not np.all(np.isfinite(atoms.get_forces())):
+                            atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
+
+                        sanitized_atoms.append(atoms)
+                    except Exception as e:
+                        sanitized_atoms.append(atoms)
+                try:
+                    optimized_state = ts.optimize(
+                        system=sanitized_atoms,
+                        model=self.model,
+                        optimizer=ts.frechet_cell_fire,
+                        autobatcher=False,
+                        max_steps=self.local_steps)
+                    optimized_atoms = optimized_state.to_atoms()
+
+                    final_atoms = []
+                    for i, atoms in enumerate(optimized_atoms):
+                        atoms.calc = self.calculator
+                        if validate_structure_distances(atoms):
+                            final_atoms.append(atoms)
+                        else:
+                            # print("rejected structure")
+                            separate_close_atoms2(atoms)
+                            # separate_close_atoms(atoms, self.lj_rmins)
+                            # calculate_lj_forces(atoms, self.lj_rmins)
+                            final_atoms.append(atoms)
+                except Exception as e:
+                    final_atoms = sanitized_atoms
 
                 if not self.cell_perturb:
-                    self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
+                    self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in final_atoms]
 
-                self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
-                self.optimizer.swarm.position = np.array([atoms_to_dimensions(optimized_atoms[i], self.cell_perturb) for i in range(len(optimized_atoms))])
+                self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in final_atoms])
+                self.optimizer.swarm.position = np.array([atoms_to_dimensions(final_atoms[i], self.cell_perturb) for i in range(len(final_atoms))])
 
                 print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Current Cost = {self.optimizer.swarm.current_cost[0]}, Time Taken: {(time.time() - start_time):.2f} s")
 
