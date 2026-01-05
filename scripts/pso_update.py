@@ -28,7 +28,7 @@ from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.analysis.structure_matcher import StructureMatcher
 from pathlib import Path
 
-from utils import *
+from utils_update import *
 
 logging.getLogger("mattertune").setLevel(logging.CRITICAL)
 logging.getLogger("lightning.pytorch").setLevel(logging.CRITICAL)
@@ -174,14 +174,25 @@ class PSO():
                 #compute velocity
                 n_particles, dimensions = self.optimizer.swarm.position.shape
                 r1, r2 = np.random.rand(n_particles, dimensions), np.random.rand(n_particles,dimensions)
-                cognitive_component = options["c1"] * r1 * (self.optimizer.swarm.pbest_pos - self.optimizer.swarm.position)
-                social_component = options["c2"] * r2 * (self.optimizer.swarm.best_pos - self.optimizer.swarm.position)
-                self.optimizer.swarm.velocity = options["w"] * self.optimizer.swarm.velocity + cognitive_component + social_component
+                cognitive = options["c1"] * r1 * (self.optimizer.swarm.pbest_pos - self.optimizer.swarm.position)
+                social = options["c2"] * r2 * (self.optimizer.swarm.best_pos - self.optimizer.swarm.position)
+                self.optimizer.swarm.velocity = options["w"] * self.optimizer.swarm.velocity + cognitive + social
 
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
-                lower_bound = np.full(self.optimizer.swarm.position.shape[1], -5)
-                upper_bound = np.full(self.optimizer.swarm.position.shape[1], 5)
+                if not self.cell_perturb:
+                    lower_bound = np.full(self.optimizer.swarm.position.shape[1], -0.5)
+                    upper_bound = np.full(self.optimizer.swarm.position.shape[1], 1.5)
+                else:
+                    cell_dims = 9
+                    lower_bound = np.concatenate([
+                        np.full(cell_dims, 2.0),
+                        np.full(dimensions - cell_dims, -10)
+                    ])
+                    upper_bound = np.concatenate([
+                        np.full(cell_dims, 30.0),
+                        np.full(dimensions - cell_dims, 10)
+                    ])
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
 
@@ -191,8 +202,6 @@ class PSO():
 
                 sanitized_atoms = []
                 for atoms in new_atoms:
-                    atoms.calc = self.calculator
-
                     cellpar = cell_to_cellpar(atoms.cell)
                     cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
 
@@ -217,14 +226,26 @@ class PSO():
                     sanitized_atoms.append(atoms)
 
                 optimized_state = ts.optimize(
-                        system=sanitized_atoms,
-                        model=self.model,
-                        optimizer=ts.frechet_cell_fire,
-                        autobatcher=False,
-                        max_steps =self.local_steps)
+                    system=sanitized_atoms,
+                    model=self.model,
+                    optimizer=ts.frechet_cell_fire,
+                    autobatcher=False,
+                    max_steps=self.local_steps)
                 optimized_atoms = optimized_state.to_atoms()
-                for atom in optimized_atoms:
-                    atom.calc = self.calculator
+
+                final_atoms = []
+                for i, atoms in enumerate(optimized_atoms):
+                    atoms.calc = self.calculator
+                    # atoms = separate_close_atoms(atoms, self.lj_rmins)
+                    # atoms = calculate_lj_forces(atoms, self.lj_rmins)
+
+                    if validate_structure_distances(atoms):
+                        final_atoms.append(atoms)
+                    else:
+                        print("rejected structure")
+                        atoms = sanitized_atoms[i].copy()
+                        atoms.calc = self.calculator
+                        final_atoms.append(atoms)
 
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in optimized_atoms]
@@ -232,7 +253,7 @@ class PSO():
                 self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in optimized_atoms])
                 self.optimizer.swarm.position = np.array([atoms_to_dimensions(optimized_atoms[i], self.cell_perturb) for i in range(len(optimized_atoms))])
 
-                print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Time Taken: {(time.time() - start_time):.2f} s")
+                print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Current Cost = {self.optimizer.swarm.current_cost[0]}, Time Taken: {(time.time() - start_time):.2f} s")
 
             cost = self.optimizer.swarm.best_cost
             costs.append(cost)
@@ -252,7 +273,7 @@ class PSO():
             plt.savefig(f'plots/avg_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
-            final_atoms = final_dimensions(pos, self.best_cell, self.composition)
+            final_atoms = final_dimensions(pos, self.best_cell, self.composition, self.cell_perturb)
             try:
                 optimized_structure = AseAtomsAdaptor.get_structure(final_atoms)
 
@@ -338,9 +359,9 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 1.5, 'c2': 1.5, 'w': 0.5}  # cognitive, social, inertia
-        particles = 30  # number of particles in system
+        particles = 20  # number of particles in system
         iters = 100
-        local_steps = 50
+        local_steps = 25
 
         cell_perturb = False
         if cell_perturb:
