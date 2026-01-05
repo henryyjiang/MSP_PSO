@@ -207,7 +207,7 @@ class PSO():
                     try:
                         cellpar = cell_to_cellpar(atoms.cell)
                         cellpar[:3] = np.clip(cellpar[:3], 3.0, 30.0)
-                        cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
+                        cellpar[3:] = np.clip(cellpar[3:], 60.0, 120.0)
                         cell = cellpar_to_cell(cellpar)
 
                         atoms.set_cell(cell, scale_atoms=True)
@@ -218,7 +218,7 @@ class PSO():
                         if not np.all(np.isfinite(forces)):
                             atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
 
-                    except (AssertionError, np.linalg.LinAlgError, ValueError) as e:
+                    except Exception as e:
                         current_cell = atoms.get_cell().array
                         lengths = np.linalg.norm(current_cell, axis=1)
                         lengths = np.clip(lengths, 3.0, 30.0)
