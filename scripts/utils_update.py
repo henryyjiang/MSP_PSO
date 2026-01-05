@@ -88,9 +88,9 @@ def initialize_atoms(el_symbols, lj_rmins, zs, zcounts, possible_sgs, sg_probs, 
 def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
     if not cell_perturb:
         frac_positions = params.reshape(-1, 3)
-        frac_positions = frac_positions % 1.0
-        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
-                      scaled_positions=frac_positions)
+        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True), positions=frac_positions)
+        # frac_positions = frac_positions % 1.0
+        # atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True), scaled_positions=frac_positions)
     else:
         cell = params[:9].reshape(-1, 3)
         positions = params[9:].reshape(-1, 3)
@@ -103,11 +103,10 @@ def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
 
 def atoms_to_dimensions(atoms, cell_perturb):
     if not cell_perturb:
-        pos = atoms.get_scaled_positions().flatten()
+        pos = [float(i) for l in atoms.positions for i in l]
+        # pos = atoms.get_scaled_positions().flatten()
     else:
-        cell_flat = atoms.cell.array.flatten()[:9]
-        pos_flat = atoms.positions.flatten()
-        pos = np.concatenate([cell_flat, pos_flat])
+        pos = [float(i) for l in atoms.cell for i in l][:9] + [float(i) for l in atoms.positions for i in l]
 
     return pos
 
@@ -116,14 +115,14 @@ def final_dimensions(params, best_cell, composition, cell_perturb=True):
     if cell_perturb:
         actual_cell = params[:9].reshape(3, 3)
         coords = params[9:].reshape(-1, 3)
+        atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True), positions=coords)
+
     else:
         actual_cell = best_cell
         coords = params.reshape(-1, 3)
 
-    atoms = Atoms(composition,
-                  cell=actual_cell,
-                  pbc=(True, True, True),
-                  scaled_positions=coords)
+        # atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True), scaled_positions=coords)
+        atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True), positions=coords)
     return atoms
 
 

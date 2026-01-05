@@ -187,11 +187,11 @@ class PSO():
                     cell_dims = 9
                     lower_bound = np.concatenate([
                         np.full(cell_dims, 2.0),
-                        np.full(dimensions - cell_dims, -10)
+                        np.full(dimensions - cell_dims, -5)
                     ])
                     upper_bound = np.concatenate([
-                        np.full(cell_dims, 30.0),
-                        np.full(dimensions - cell_dims, 10)
+                        np.full(cell_dims, 10.0),
+                        np.full(dimensions - cell_dims, 5)
                     ])
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
@@ -219,9 +219,14 @@ class PSO():
 
                     separate_close_atoms2(atoms)
 
-                    if not np.all(np.isfinite(atoms.get_forces())):
-                        #print("forces are infinite")
-                        atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
+                    try:
+                        forces = atoms.get_forces()
+                        if not np.all(np.isfinite(forces)):
+                            atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
+                    except np.linalg.LinAlgError:
+                        current_cell = atoms.get_cell()
+                        new_cell = current_cell + 0.1 * np.eye(3)
+                        atoms.set_cell(new_cell, scale_atoms=True)
 
                     sanitized_atoms.append(atoms)
 
@@ -363,7 +368,7 @@ if __name__ == "__main__":
         iters = 100
         local_steps = 25
 
-        cell_perturb = False
+        cell_perturb = True
         if cell_perturb:
                 pso = PSO(cif_name, model, composition, None, calc, options, particles, iters, local_steps, cell_perturb)
         else:
