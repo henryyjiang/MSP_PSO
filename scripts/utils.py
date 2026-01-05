@@ -183,15 +183,15 @@ def separate_close_atoms(atoms, lj_rmins, max_iters=10, min_dist=1.0, step_scale
         delta = vecs[mask]
         target_r = targets[mask][:, np.newaxis]
 
-        # sr6 = (target_r / (r + 1e-9)) ** 6
-        # sr12 = sr6 ** 2
-        # repulsion_mag = (24 * epsilon * sr12) / (r + 1e-9)
-        #
-        # max_f = 50.0
-        # repulsion_mag = np.clip(repulsion_mag, 0, max_f)
+        sr6 = (target_r / (r + 1e-9)) ** 6
+        sr12 = sr6 ** 2
+        repulsion_mag = (24 * epsilon * sr12) / (r + 1e-9)
 
-        repulsion_mag = (target_r / (r + 1e-6)) ** 2 - 1.0
-        repulsion_mag = np.minimum(repulsion_mag, 5.0)
+        max_f = 50.0
+        repulsion_mag = np.clip(repulsion_mag, 0, max_f)
+
+        # repulsion_mag = (target_r / (r + 1e-6)) ** 2 - 1.0
+        # repulsion_mag = np.minimum(repulsion_mag, 5.0)
 
         force_vecs = repulsion_mag * (delta / r)
 
