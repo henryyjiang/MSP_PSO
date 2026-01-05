@@ -181,19 +181,17 @@ class PSO():
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
                 if not self.cell_perturb:
-                    # lower_bound = np.full(self.optimizer.swarm.position.shape[1], -0.5)
-                    # upper_bound = np.full(self.optimizer.swarm.position.shape[1], 1.5)
                     lower_bound = np.full(self.optimizer.swarm.position.shape[1], -10)
                     upper_bound = np.full(self.optimizer.swarm.position.shape[1], 10)
                 else:
                     cell_dims = 9
                     lower_bound = np.concatenate([
                         np.full(cell_dims, 2.0),
-                        np.full(dimensions - cell_dims, -5)
+                        np.full(dimensions - cell_dims, -10)
                     ])
                     upper_bound = np.concatenate([
-                        np.full(cell_dims, 40.0),
-                        np.full(dimensions - cell_dims, 5)
+                        np.full(cell_dims, 200.0),
+                        np.full(dimensions - cell_dims, 10)
                     ])
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
@@ -205,13 +203,12 @@ class PSO():
                 sanitized_atoms = []
                 for atoms in new_atoms:
                     cellpar = cell_to_cellpar(atoms.cell)
-                    cellpar[:3] = np.clip(cellpar[:3], 3.0, 100.0)
                     cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
                     cell = cellpar_to_cell(cellpar)
 
                     lengths = np.linalg.norm(cell, axis=1)
-                    if np.any(lengths < 3.0) or np.any(lengths > 100.0):
-                        lengths = np.clip(lengths, 3.0, 100.0)
+                    if np.any(lengths < 3.0) or np.any(lengths > 200.0):
+                        lengths = np.clip(lengths, 3.0, 200.0)
                         for i in range(3):
                             cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
 
@@ -219,8 +216,7 @@ class PSO():
 
                     separate_close_atoms2(atoms)
 
-                    forces = atoms.get_forces()
-                    if not np.all(np.isfinite(forces)):
+                    if not np.all(np.isfinite(atoms.get_forces())):
                         atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
 
                     sanitized_atoms.append(atoms)
@@ -236,15 +232,13 @@ class PSO():
                 final_atoms = []
                 for i, atoms in enumerate(optimized_atoms):
                     atoms.calc = self.calculator
-                    # atoms = separate_close_atoms(atoms, self.lj_rmins)
-                    # atoms = calculate_lj_forces(atoms, self.lj_rmins)
-
                     if validate_structure_distances(atoms):
                         final_atoms.append(atoms)
                     else:
                         print("rejected structure")
                         separate_close_atoms2(atoms)
-                        atoms.calc = self.calculator
+                        # separate_close_atoms(atoms, self.lj_rmins)
+                        # calculate_lj_forces(atoms, self.lj_rmins)
                         final_atoms.append(atoms)
 
                 if not self.cell_perturb:
@@ -363,7 +357,7 @@ if __name__ == "__main__":
         iters = 100
         local_steps = 25
 
-        cell_perturb = True
+        cell_perturb = False
         if cell_perturb:
                 pso = PSO(cif_name, model, composition, None, calc, options, particles, iters, local_steps, cell_perturb)
         else:
