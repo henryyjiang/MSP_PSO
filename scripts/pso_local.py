@@ -28,7 +28,7 @@ from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.analysis.structure_matcher import StructureMatcher
 from pathlib import Path
 
-from utils_update import *
+from utils import *
 
 logging.getLogger("mattertune").setLevel(logging.CRITICAL)
 logging.getLogger("lightning.pytorch").setLevel(logging.CRITICAL)
@@ -215,7 +215,7 @@ class PSO():
 
                         atoms.set_cell(cell, scale_atoms=True)
 
-                        separate_close_atoms2(atoms)
+                        # separate_close_atoms2(atoms)
 
                         if not np.all(np.isfinite(atoms.get_forces())):
                             atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
@@ -239,8 +239,8 @@ class PSO():
                             final_atoms.append(atoms)
                         else:
                             # print("rejected structure")
-                            separate_close_atoms2(atoms)
-                            # separate_close_atoms(atoms, self.lj_rmins)
+                            # separate_close_atoms2(atoms)
+                            separate_close_atoms(atoms, self.lj_rmins)
                             # calculate_lj_forces(atoms, self.lj_rmins)
                             final_atoms.append(atoms)
                 except Exception as e:
