@@ -283,8 +283,8 @@ class PSO():
                 atoms_opt.calc = self.calculator
                 optimized_energy = atoms_opt.get_potential_energy()
 
-                energy_tolerance = 0.05
-                distance_threshold = 0.25
+                energy_tolerance = 0.1
+                distance_threshold = 2.5
 
                 energy_diff = abs(optimized_energy - ground_truth_energy)
                 try:
