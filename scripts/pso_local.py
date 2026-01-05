@@ -54,7 +54,7 @@ class PSO():
         self.possible_sgs, self.sg_probs = generate_sgs(self.zs, self.zcounts)
         self.el_symbols = np.array([periodictable.elements[i].symbol for i in range(95)])
         self.lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
-                                      delimiter=",") * 0.85
+                                      delimiter=",")
 
         self.best_losses = []
         self.best_loss = float('inf')
@@ -181,17 +181,27 @@ class PSO():
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
                 if not self.cell_perturb:
-                    lower_bound = np.full(self.optimizer.swarm.position.shape[1], -10)
-                    upper_bound = np.full(self.optimizer.swarm.position.shape[1], 10)
+                    # lower_bound = np.full(self.optimizer.swarm.position.shape[1], -100)
+                    # upper_bound = np.full(self.optimizer.swarm.position.shape[1], 100)
+                    lower_bound = np.full(self.optimizer.swarm.position.shape[1], 0.0)
+                    upper_bound = np.full(self.optimizer.swarm.position.shape[1], 1.0)
                 else:
                     cell_dims = 9
+                    # lower_bound = np.concatenate([
+                    #     np.full(cell_dims, 2.0),
+                    #     np.full(dimensions - cell_dims, -100)
+                    # ])
+                    # upper_bound = np.concatenate([
+                    #     np.full(cell_dims, 200.0),
+                    #     np.full(dimensions - cell_dims, 100)
+                    # ])
                     lower_bound = np.concatenate([
                         np.full(cell_dims, 2.0),
-                        np.full(dimensions - cell_dims, -10)
+                        np.full(dimensions - cell_dims, 0.0)
                     ])
                     upper_bound = np.concatenate([
                         np.full(cell_dims, 200.0),
-                        np.full(dimensions - cell_dims, 10)
+                        np.full(dimensions - cell_dims, 1.0)
                     ])
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
@@ -239,9 +249,8 @@ class PSO():
                             final_atoms.append(atoms)
                         else:
                             # print("rejected structure")
-                            # separate_close_atoms2(atoms)
+                            separate_close_atoms2(atoms)
                             # separate_close_atoms(atoms, self.lj_rmins)
-                            calculate_lj_forces(atoms, self.lj_rmins)
                             final_atoms.append(atoms)
                 except Exception as e:
                     final_atoms = sanitized_atoms

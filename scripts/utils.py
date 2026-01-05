@@ -87,12 +87,20 @@ def initialize_atoms(el_symbols, lj_rmins, zs, zcounts, possible_sgs, sg_probs, 
 
 def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
     if not cell_perturb:
-        positions = params.reshape(-1, 3)
-        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True), positions=positions)
+        # positions = params.reshape(-1, 3)
+        # atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True), positions=positions)
+        frac_positions = params.reshape(-1, 3)
+        frac_positions = frac_positions % 1.0  # Wrap to [0, 1]
+        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
+                      scaled_positions=frac_positions)
     else:
         cell = params[:9].reshape(-1, 3)
-        positions = params[9:].reshape(-1, 3)
-        atoms = Atoms(composition, cell=cell, pbc=(True, True, True), positions=positions)
+        # positions = params[9:].reshape(-1, 3)
+        # atoms = Atoms(composition, cell=cell, pbc=(True, True, True), positions=positions)
+        frac_positions = params[9:].reshape(-1, 3)
+        frac_positions = frac_positions % 1.0
+        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
+                      scaled_positions=frac_positions)
 
     if not hasattr(atoms, 'calc') or atoms.calc is None:
         atoms.set_calculator(calculator)
@@ -101,9 +109,13 @@ def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
 
 def atoms_to_dimensions(atoms, cell_perturb):
     if not cell_perturb:
-        pos = [float(i) for l in atoms.positions for i in l]
+        # pos = [float(i) for l in atoms.positions for i in l]
+        pos = atoms.get_scaled_positions().flatten().tolist()
     else:
-        pos = [float(i) for l in atoms.cell for i in l][:9] + [float(i) for l in atoms.positions for i in l]
+        # pos = [float(i) for l in atoms.cell for i in l][:9] + [float(i) for l in atoms.positions for i in l]
+        cell_flat = atoms.cell.array.flatten()[:9].tolist()
+        pos_flat = atoms.get_scaled_positions().flatten().tolist()
+        pos = cell_flat + pos_flat
 
     return np.array(pos)
 
@@ -111,14 +123,20 @@ def atoms_to_dimensions(atoms, cell_perturb):
 def final_dimensions(params, best_cell, composition, cell_perturb=True):
     if cell_perturb:
         actual_cell = params[:9].reshape(3, 3)
-        coords = params[9:].reshape(-1, 3)
-        atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True), positions=coords)
+        # coords = params[9:].reshape(-1, 3)
+        # atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True), positions=coords)
+        frac_coords = params[9:].reshape(-1, 3)
+        frac_coords = frac_coords % 1.0
+        atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True),
+                      scaled_positions=frac_coords)
 
     else:
-        actual_cell = best_cell
-        coords = params.reshape(-1, 3)
-
-        atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True), positions=coords)
+        # coords = params.reshape(-1, 3)
+        # atoms = Atoms(composition, cell=best_cell, pbc=(True, True, True), positions=coords)
+        frac_coords = params.reshape(-1, 3)
+        frac_coords = frac_coords % 1.0
+        atoms = Atoms(composition, cell=best_cell, pbc=(True, True, True),
+                      scaled_positions=frac_coords)
     return atoms
 
 
@@ -190,9 +208,6 @@ def separate_close_atoms(atoms, lj_rmins, max_iters=10, min_dist=1.0, step_scale
         max_f = 50.0
         repulsion_mag = np.clip(repulsion_mag, 0, max_f)
 
-        # repulsion_mag = (target_r / (r + 1e-6)) ** 2 - 1.0
-        # repulsion_mag = np.minimum(repulsion_mag, 5.0)
-
         force_vecs = repulsion_mag * (delta / r)
 
         total_forces = np.zeros((len(atoms), 3))
@@ -220,7 +235,7 @@ def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
         if len(d) == 0:
             break
         radii_sum = covalent_radii[atoms.numbers[i]] + covalent_radii[atoms.numbers[j]]
-        min_allowed = np.maximum(0.85 * radii_sum, min_dist)
+        min_allowed = np.maximum(0.8 * radii_sum, min_dist)
 
         mask = (i < j) & (d < min_allowed) & (d > 1e-9)
 
