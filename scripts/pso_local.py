@@ -240,8 +240,8 @@ class PSO():
                         else:
                             # print("rejected structure")
                             # separate_close_atoms2(atoms)
-                            separate_close_atoms(atoms, self.lj_rmins)
-                            # calculate_lj_forces(atoms, self.lj_rmins)
+                            # separate_close_atoms(atoms, self.lj_rmins)
+                            calculate_lj_forces(atoms, self.lj_rmins)
                             final_atoms.append(atoms)
                 except Exception as e:
                     final_atoms = sanitized_atoms
