@@ -204,27 +204,25 @@ class PSO():
 
                 sanitized_atoms = []
                 for atoms in new_atoms:
-                    cellpar = cell_to_cellpar(atoms.cell)
-                    cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
-
-                    atoms.set_cell(cellpar_to_cell(cellpar), scale_atoms=True)
-
-                    cell = atoms.get_cell().array
-                    lengths = np.linalg.norm(cell, axis=1)
-                    if np.any(lengths < 3.0) or np.any(lengths > 150.0):
-                        #print("cell lengths out of bounds")
-                        lengths = np.clip(lengths, 3.0, 150.0)
-                        cell = atoms.get_cell()
-                        for i in range(3):
-                            cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
-                        atoms.set_cell(cell, scale_atoms=True)
-
-                    separate_close_atoms2(atoms)
-
                     try:
+                        cellpar = cell_to_cellpar(atoms.cell)
+                        cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
+
+                        cell = cellpar_to_cell(cellpar).array
+                        lengths = np.linalg.norm(cell, axis=1)
+                        if np.any(lengths < 3.0) or np.any(lengths > 30.0):
+                            #print("cell lengths out of bounds")
+                            lengths = np.clip(lengths, 3.0, 30.0)
+                            for i in range(3):
+                                cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
+                            atoms.set_cell(cell, scale_atoms=True)
+
+                        separate_close_atoms2(atoms)
+
                         forces = atoms.get_forces()
                         if not np.all(np.isfinite(forces)):
                             atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
+
                     except np.linalg.LinAlgError:
                         current_cell = atoms.get_cell()
                         new_cell = current_cell + 0.1 * np.eye(3)
