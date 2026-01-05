@@ -1,0 +1,34 @@
+data_image0
+_chemical_formula_structural       Ti3Co3Ge3
+_chemical_formula_sum              "Ti3 Co3 Ge3"
+_cell_length_a       6.710546016694264
+_cell_length_b       6.710559404325561
+_cell_length_c       3.1736683848331926
+_cell_angle_alpha    90.00036613320876
+_cell_angle_beta     89.99923152189199
+_cell_angle_gamma    120.00004219054146
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ti  Ti1       1.0  0.12727271392667672  0.1154097581889855  0.7955852924940625  1.0000
+  Ti  Ti2       1.0  0.3623881107584099  0.7329692141847084  0.7957257855898537  1.0000
+  Ti  Ti3       1.0  0.7448364922740253  0.49785224408503675  0.795717246779334  1.0000
+  Co  Co1       1.0  0.7448253908322062  0.11539762555700576  0.7956661745588123  1.0000
+  Co  Co2       1.0  0.07815209040032653  0.7820706438276179  0.29563247862520287  1.0000
+  Co  Co3       1.0  0.4114989597484985  0.44875558305804375  0.2956252869217729  1.0000
+  Ge  Ge1       1.0  0.46325315902100495  0.11541806875486244  0.2956934892235013  1.0000
+  Ge  Ge2       1.0  0.026382160551665552  0.39694812168848154  0.29570103377302953  1.0000
+  Ge  Ge3       1.0  0.744837508253765  0.8338581078352305  0.29569942266180643  1.0000

@@ -1,14 +1,14 @@
 ---------------------------------------
-Begin Slurm Prolog: Jan-05-2026 12:30:35
-Job ID:    3160166
+Begin Slurm Prolog: Jan-05-2026 13:20:28
+Job ID:    3160466
 User ID:   hjiang378
 Account:   gts-vfung3
 Job name:  pso_local
 Partition: gpu-v100
 QOS:       inferno
 ---------------------------------------
-2026-01-05 12:30:46,622 - numexpr.utils - INFO - Note: NumExpr detected 24 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
-2026-01-05 12:30:46,622 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2026-01-05 13:20:39,528 - numexpr.utils - INFO - Note: NumExpr detected 24 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+2026-01-05 13:20:39,528 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
 /storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/e3nn/o3/_wigner.py:10: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
   _Jd, _W3j_flat, _W3j_indices = torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
 /storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/pso_local.py:341: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
@@ -21,15 +21,15 @@ QOS:       inferno
   warnings.warn(f"'{self.__class__.__name__}.jittable' is deprecated "
 /storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/torch_geometric/nn/conv/message_passing.py:1032: UserWarning: 'EquivariantMultiHeadAttention.jittable' is deprecated and a no-op. Please remove its usage.
   warnings.warn(f"'{self.__class__.__name__}.jittable' is deprecated "
-2026-01-05 12:31:09,518 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-05 13:21:02,097 - root - INFO - Using PyTorch automatic mixed-precision
 /storage/home/hcoda1/7/hjiang378/MSP_PSO/matdeeplearn/trainers/base_trainer.py:84: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
   self.scaler = GradScaler(enabled=self.use_amp and self.device.type == "cuda")
-2026-01-05 12:31:09,518 - root - INFO - GPU is available: True, Quantity: None
-2026-01-05 12:31:09,519 - root - INFO - Dataset(s) used:
-2026-01-05 12:31:09,519 - root - INFO - Dataset length: ('full', 24677)
-2026-01-05 12:31:09,520 - root - INFO - Dataset length: ('train', 22209)
-2026-01-05 12:31:09,520 - root - INFO - Dataset length: ('val', 1233)
-2026-01-05 12:31:09,521 - root - INFO - Dataset length: ('test', 1233)
+2026-01-05 13:21:02,097 - root - INFO - GPU is available: True, Quantity: None
+2026-01-05 13:21:02,098 - root - INFO - Dataset(s) used:
+2026-01-05 13:21:02,098 - root - INFO - Dataset length: ('full', 24677)
+2026-01-05 13:21:02,099 - root - INFO - Dataset length: ('train', 22209)
+2026-01-05 13:21:02,099 - root - INFO - Dataset length: ('val', 1233)
+2026-01-05 13:21:02,099 - root - INFO - Dataset length: ('test', 1233)
 /storage/home/hcoda1/7/hjiang378/MSP_PSO/msp/forcefield/mdl_ff.py:525: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
   checkpoint = torch.load(model_path, map_location=torch.device(self.trainer.rank))
 /storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/pso_local.py:74: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
@@ -42,645 +42,645 @@ QOS:       inferno
   atoms.set_calculator(calculator)
 /storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/pso_local.py:227: UserWarning: Optimize has reached max steps: 26
   optimized_state = ts.optimize(
-2026-01-05 12:35:59,526 - root - INFO - Using PyTorch automatic mixed-precision
-2026-01-05 12:35:59,527 - root - INFO - GPU is available: True, Quantity: None
-2026-01-05 12:35:59,527 - root - INFO - Dataset(s) used:
-2026-01-05 12:35:59,528 - root - INFO - Dataset length: ('full', 24677)
-2026-01-05 12:35:59,528 - root - INFO - Dataset length: ('train', 22209)
-2026-01-05 12:35:59,529 - root - INFO - Dataset length: ('val', 1233)
-2026-01-05 12:35:59,529 - root - INFO - Dataset length: ('test', 1233)
+2026-01-05 13:25:44,778 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-05 13:25:44,779 - root - INFO - GPU is available: True, Quantity: None
+2026-01-05 13:25:44,779 - root - INFO - Dataset(s) used:
+2026-01-05 13:25:44,780 - root - INFO - Dataset length: ('full', 24677)
+2026-01-05 13:25:44,780 - root - INFO - Dataset length: ('train', 22209)
+2026-01-05 13:25:44,781 - root - INFO - Dataset length: ('val', 1233)
+2026-01-05 13:25:44,781 - root - INFO - Dataset length: ('test', 1233)
 /storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/io/cif.py:1221: UserWarning: Issues encountered while parsing CIF: 4 fractional coordinates rounded to ideal values to avoid issues with finite precision.
   warnings.warn("Issues encountered while parsing CIF: " + "\n".join(self.warnings))
-2026-01-05 12:40:51,183 - root - INFO - Using PyTorch automatic mixed-precision
-2026-01-05 12:40:51,184 - root - INFO - GPU is available: True, Quantity: None
-2026-01-05 12:40:51,184 - root - INFO - Dataset(s) used:
-2026-01-05 12:40:51,185 - root - INFO - Dataset length: ('full', 24677)
-2026-01-05 12:40:51,185 - root - INFO - Dataset length: ('train', 22209)
-2026-01-05 12:40:51,186 - root - INFO - Dataset length: ('val', 1233)
-2026-01-05 12:40:51,186 - root - INFO - Dataset length: ('test', 1233)
-2026-01-05 12:44:30,056 - root - INFO - Using PyTorch automatic mixed-precision
-2026-01-05 12:44:30,057 - root - INFO - GPU is available: True, Quantity: None
-2026-01-05 12:44:30,057 - root - INFO - Dataset(s) used:
-2026-01-05 12:44:30,058 - root - INFO - Dataset length: ('full', 24677)
-2026-01-05 12:44:30,058 - root - INFO - Dataset length: ('train', 22209)
-2026-01-05 12:44:30,059 - root - INFO - Dataset length: ('val', 1233)
-2026-01-05 12:44:30,059 - root - INFO - Dataset length: ('test', 1233)
-2026-01-05 12:48:45,116 - root - INFO - Using PyTorch automatic mixed-precision
-2026-01-05 12:48:45,116 - root - INFO - GPU is available: True, Quantity: None
-2026-01-05 12:48:45,117 - root - INFO - Dataset(s) used:
-2026-01-05 12:48:45,117 - root - INFO - Dataset length: ('full', 24677)
-2026-01-05 12:48:45,118 - root - INFO - Dataset length: ('train', 22209)
-2026-01-05 12:48:45,118 - root - INFO - Dataset length: ('val', 1233)
-2026-01-05 12:48:45,118 - root - INFO - Dataset length: ('test', 1233)
+2026-01-05 13:30:23,036 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-05 13:30:23,037 - root - INFO - GPU is available: True, Quantity: None
+2026-01-05 13:30:23,038 - root - INFO - Dataset(s) used:
+2026-01-05 13:30:23,038 - root - INFO - Dataset length: ('full', 24677)
+2026-01-05 13:30:23,039 - root - INFO - Dataset length: ('train', 22209)
+2026-01-05 13:30:23,039 - root - INFO - Dataset length: ('val', 1233)
+2026-01-05 13:30:23,039 - root - INFO - Dataset length: ('test', 1233)
+2026-01-05 13:34:45,435 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-05 13:34:45,436 - root - INFO - GPU is available: True, Quantity: None
+2026-01-05 13:34:45,436 - root - INFO - Dataset(s) used:
+2026-01-05 13:34:45,436 - root - INFO - Dataset length: ('full', 24677)
+2026-01-05 13:34:45,437 - root - INFO - Dataset length: ('train', 22209)
+2026-01-05 13:34:45,438 - root - INFO - Dataset length: ('val', 1233)
+2026-01-05 13:34:45,438 - root - INFO - Dataset length: ('test', 1233)
+2026-01-05 13:38:33,451 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-05 13:38:33,452 - root - INFO - GPU is available: True, Quantity: None
+2026-01-05 13:38:33,452 - root - INFO - Dataset(s) used:
+2026-01-05 13:38:33,453 - root - INFO - Dataset length: ('full', 24677)
+2026-01-05 13:38:33,453 - root - INFO - Dataset length: ('train', 22209)
+2026-01-05 13:38:33,454 - root - INFO - Dataset length: ('val', 1233)
+2026-01-05 13:38:33,454 - root - INFO - Dataset length: ('test', 1233)
 cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
 Attempting to load checkpoint...
 model loaded successfully
 loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
 Recent checkpoint loaded successfully.
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -66.06046295166016, Current Cost = -66.74299621582031, Time Taken: 6.80 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -66.74299621582031, Current Cost = -66.31450653076172, Time Taken: 5.10 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -66.74299621582031, Current Cost = -68.28258514404297, Time Taken: 5.18 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -68.28258514404297, Current Cost = -61.607879638671875, Time Taken: 5.09 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -68.28258514404297, Current Cost = -68.94221496582031, Time Taken: 5.03 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -68.94221496582031, Current Cost = -71.63716125488281, Time Taken: 5.08 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -71.63716125488281, Current Cost = -71.78491973876953, Time Taken: 5.10 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -71.78491973876953, Current Cost = -73.22212219238281, Time Taken: 5.04 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -73.22212219238281, Current Cost = -74.20177459716797, Time Taken: 5.03 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -74.20177459716797, Current Cost = -74.63567352294922, Time Taken: 5.04 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -74.63567352294922, Current Cost = -75.07650756835938, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.0765151977539, Current Cost = -75.2421875, Time Taken: 5.01 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.2421875, Current Cost = -75.30175018310547, Time Taken: 4.98 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30175018310547, Current Cost = -75.302490234375, Time Taken: 4.78 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.302490234375, Current Cost = -75.30329895019531, Time Taken: 4.82 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30329895019531, Current Cost = -75.30386352539062, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30386352539062, Current Cost = -75.30441284179688, Time Taken: 4.78 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30441284179688, Current Cost = -75.3049087524414, Time Taken: 4.86 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.3049087524414, Current Cost = -75.30537414550781, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30537414550781, Current Cost = -75.30583190917969, Time Taken: 4.81 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30583190917969, Current Cost = -75.3062515258789, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30624389648438, Current Cost = -75.30667114257812, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30667114257812, Current Cost = -75.30708312988281, Time Taken: 4.73 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30708312988281, Current Cost = -75.30747985839844, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30747985839844, Current Cost = -75.3078842163086, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.3078842163086, Current Cost = -75.30828857421875, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30828857421875, Current Cost = -75.30865478515625, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30865478515625, Current Cost = -75.30903625488281, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30903625488281, Current Cost = -75.3094253540039, Time Taken: 4.79 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.3094253540039, Current Cost = -75.30978393554688, Time Taken: 4.74 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.30978393554688, Current Cost = -75.31016540527344, Time Taken: 4.76 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.31016540527344, Current Cost = -75.31053161621094, Time Taken: 4.78 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.31053161621094, Current Cost = -75.31089782714844, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.31089782714844, Current Cost = -75.31126403808594, Time Taken: 4.76 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.31126403808594, Current Cost = -75.3116455078125, Time Taken: 4.83 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.3116455078125, Current Cost = -75.31200408935547, Time Taken: 4.76 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.31200408935547, Current Cost = -75.31237030029297, Time Taken: 4.82 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.31237030029297, Current Cost = -75.312744140625, Time Taken: 4.75 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.312744140625, Current Cost = -75.31311798095703, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.31311798095703, Current Cost = -75.3134994506836, Time Taken: 4.76 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.3134994506836, Current Cost = -75.3138656616211, Time Taken: 4.74 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.3138656616211, Current Cost = -75.31423950195312, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.3174819946289, Current Cost = -75.24281311035156, Time Taken: 4.97 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.3174819946289, Current Cost = -75.28936767578125, Time Taken: 4.87 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.34918212890625, Current Cost = -75.23341369628906, Time Taken: 5.08 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.77852630615234, Current Cost = -75.4273681640625, Time Taken: 5.03 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -76.13610076904297, Current Cost = -75.76883697509766, Time Taken: 5.03 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -77.83934783935547, Current Cost = -76.00712585449219, Time Taken: 5.02 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.39591979980469, Current Cost = -75.58677673339844, Time Taken: 5.02 s
-Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.84060668945312, Current Cost = -76.17694854736328, Time Taken: 5.01 s
-No match for mp-1209526: RMSD = 2.905, ΔE = 2.795 eV
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -66.51408386230469, Current Cost = 653.2158203125, Time Taken: 6.57 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -72.91419982910156, Current Cost = -62.98974609375, Time Taken: 5.11 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -74.7484359741211, Current Cost = -61.759037017822266, Time Taken: 5.04 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -75.54474639892578, Current Cost = 224.57215881347656, Time Taken: 5.00 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -76.14247131347656, Current Cost = -64.22522735595703, Time Taken: 5.08 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -77.78178405761719, Current Cost = -62.379581451416016, Time Taken: 5.06 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53242492675781, Current Cost = -65.76846313476562, Time Taken: 4.83 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53488159179688, Current Cost = -61.90332794189453, Time Taken: 4.72 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53618621826172, Current Cost = -59.84819793701172, Time Taken: 4.69 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53694915771484, Current Cost = -64.9344711303711, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53759002685547, Current Cost = -63.306907653808594, Time Taken: 4.82 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.5380859375, Current Cost = 738.9669189453125, Time Taken: 4.64 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53850555419922, Current Cost = -56.99730682373047, Time Taken: 4.83 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53886413574219, Current Cost = -58.860267639160156, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53919219970703, Current Cost = -62.1064453125, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53945922851562, Current Cost = -62.26216125488281, Time Taken: 4.77 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53971099853516, Current Cost = -60.23710250854492, Time Taken: 4.70 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.53993225097656, Current Cost = -64.72628784179688, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.5401382446289, Current Cost = -65.1645278930664, Time Taken: 4.72 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54032897949219, Current Cost = -66.19906616210938, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54049682617188, Current Cost = -64.44757843017578, Time Taken: 4.58 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54065704345703, Current Cost = -58.27109146118164, Time Taken: 4.68 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54080963134766, Current Cost = 232.7725830078125, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54094696044922, Current Cost = 14.75323486328125, Time Taken: 4.69 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54109191894531, Current Cost = -53.761661529541016, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54121398925781, Current Cost = -58.95705032348633, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54133605957031, Current Cost = -42.341766357421875, Time Taken: 4.63 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54144287109375, Current Cost = -58.439823150634766, Time Taken: 4.64 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54154968261719, Current Cost = -50.28532409667969, Time Taken: 4.78 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.5416488647461, Current Cost = -63.544071197509766, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.541748046875, Current Cost = -66.700439453125, Time Taken: 4.76 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54183959960938, Current Cost = -67.8521957397461, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54193115234375, Current Cost = -64.20864868164062, Time Taken: 4.76 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.5420150756836, Current Cost = -64.87059783935547, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.5420913696289, Current Cost = -67.50473022460938, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54216766357422, Current Cost = -58.14982223510742, Time Taken: 4.68 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54224395751953, Current Cost = -63.66754913330078, Time Taken: 4.70 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54231262207031, Current Cost = -59.723548889160156, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.5423812866211, Current Cost = -64.14997863769531, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54244232177734, Current Cost = -63.07085037231445, Time Taken: 4.46 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54251098632812, Current Cost = -62.577667236328125, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54254913330078, Current Cost = -60.1738166809082, Time Taken: 4.72 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54261016845703, Current Cost = -58.986968994140625, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54266357421875, Current Cost = -63.04721450805664, Time Taken: 4.79 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54270935058594, Current Cost = -60.23720932006836, Time Taken: 4.76 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54276275634766, Current Cost = -57.7857666015625, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54280853271484, Current Cost = 74.96902465820312, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54286193847656, Current Cost = -55.122657775878906, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54289245605469, Current Cost = -52.13541030883789, Time Taken: 4.70 s
+Iteration 10: Ground Truth: -81.63607788085938, Best Cost = -78.54293823242188, Current Cost = -66.6190185546875, Time Taken: 4.79 s
+No match for mp-1209526: RMSD = 2.456, ΔE = 3.093 eV
 mp-1209526 match: [False]
 Attempting to load checkpoint...
 model loaded successfully
 loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
 Recent checkpoint loaded successfully.
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -114.35026550292969, Current Cost = -117.60069274902344, Time Taken: 5.59 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -125.68002319335938, Current Cost = -114.58125305175781, Time Taken: 5.45 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -133.63531494140625, Current Cost = -119.17180633544922, Time Taken: 5.43 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -134.68020629882812, Current Cost = -118.04985809326172, Time Taken: 5.40 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.79066467285156, Current Cost = -125.72859191894531, Time Taken: 5.31 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.87088012695312, Current Cost = -120.13639831542969, Time Taken: 5.09 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.8721923828125, Current Cost = -121.02531433105469, Time Taken: 5.10 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.87460327148438, Current Cost = -120.36158752441406, Time Taken: 5.06 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.876220703125, Current Cost = -118.52059936523438, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.87757873535156, Current Cost = -119.55089569091797, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.87875366210938, Current Cost = -121.6200180053711, Time Taken: 5.01 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.87977600097656, Current Cost = -122.57028198242188, Time Taken: 5.06 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.88075256347656, Current Cost = -118.33183288574219, Time Taken: 5.05 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.88162231445312, Current Cost = -121.02742767333984, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.88246154785156, Current Cost = -126.16905212402344, Time Taken: 5.04 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.8832550048828, Current Cost = -128.0777130126953, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.884033203125, Current Cost = -122.47996520996094, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.884765625, Current Cost = -118.24341583251953, Time Taken: 5.10 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.8854522705078, Current Cost = -116.91482543945312, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.88613891601562, Current Cost = -123.24700927734375, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.88682556152344, Current Cost = -117.19232940673828, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.88746643066406, Current Cost = -115.29084777832031, Time Taken: 5.09 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.88812255859375, Current Cost = -114.9902114868164, Time Taken: 5.11 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.88876342773438, Current Cost = -118.01963806152344, Time Taken: 5.08 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.88938903808594, Current Cost = -109.51274108886719, Time Taken: 5.09 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.88998413085938, Current Cost = -118.99396514892578, Time Taken: 5.09 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.890625, Current Cost = -116.82798767089844, Time Taken: 5.12 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.89120483398438, Current Cost = -119.86209106445312, Time Taken: 5.09 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.8917999267578, Current Cost = -108.3674545288086, Time Taken: 5.12 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.8924102783203, Current Cost = -118.41069030761719, Time Taken: 5.10 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.89297485351562, Current Cost = -121.47100830078125, Time Taken: 5.06 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.89356994628906, Current Cost = -122.21675109863281, Time Taken: 5.08 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.8941650390625, Current Cost = -117.75047302246094, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.89476013183594, Current Cost = -113.1590805053711, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.89535522460938, Current Cost = -122.24224853515625, Time Taken: 5.05 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.8959197998047, Current Cost = -122.946533203125, Time Taken: 5.05 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.8965301513672, Current Cost = -129.62156677246094, Time Taken: 5.11 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.89715576171875, Current Cost = -129.4849395751953, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.8977813720703, Current Cost = -131.68894958496094, Time Taken: 5.11 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.89840698242188, Current Cost = -131.29043579101562, Time Taken: 5.08 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -135.8990478515625, Current Cost = -125.8036117553711, Time Taken: 5.13 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.75350952148438, Current Cost = -127.98680114746094, Time Taken: 5.34 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -137.90664672851562, Current Cost = -126.7156982421875, Time Taken: 5.34 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -138.0101318359375, Current Cost = -131.17752075195312, Time Taken: 5.34 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -138.2227325439453, Current Cost = -129.9365692138672, Time Taken: 5.37 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -138.3671112060547, Current Cost = -126.81746673583984, Time Taken: 5.35 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -138.4458465576172, Current Cost = -124.3017807006836, Time Taken: 5.12 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -138.44601440429688, Current Cost = -123.9909896850586, Time Taken: 5.32 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -138.6484375, Current Cost = -127.93106842041016, Time Taken: 5.31 s
-Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -138.7745819091797, Current Cost = -130.04396057128906, Time Taken: 5.07 s
-No match for mp-1223335: RMSD = 3.386, ΔE = 3.833 eV
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -111.40847778320312, Current Cost = -125.02020263671875, Time Taken: 5.63 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -125.02020263671875, Current Cost = -131.04881286621094, Time Taken: 5.55 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -131.048828125, Current Cost = -133.7456512451172, Time Taken: 5.54 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -133.7456512451172, Current Cost = -134.96047973632812, Time Taken: 5.53 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -134.96047973632812, Current Cost = -136.0211639404297, Time Taken: 5.46 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.0211639404297, Current Cost = -136.37496948242188, Time Taken: 5.40 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.37496948242188, Current Cost = -136.39866638183594, Time Taken: 5.29 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.39866638183594, Current Cost = -136.39907836914062, Time Taken: 5.13 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.39907836914062, Current Cost = -136.39926147460938, Time Taken: 5.11 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.39926147460938, Current Cost = -136.3994140625, Time Taken: 5.12 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.3994140625, Current Cost = -136.39956665039062, Time Taken: 5.09 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.39956665039062, Current Cost = -136.399658203125, Time Taken: 5.09 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.399658203125, Current Cost = -136.39974975585938, Time Taken: 5.07 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.3997344970703, Current Cost = -136.39984130859375, Time Taken: 5.04 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.39984130859375, Current Cost = -136.39990234375, Time Taken: 5.07 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.39990234375, Current Cost = -136.39999389648438, Time Taken: 5.03 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.39999389648438, Current Cost = -136.4001007080078, Time Taken: 5.01 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.4001007080078, Current Cost = -136.40016174316406, Time Taken: 4.96 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40016174316406, Current Cost = -136.40025329589844, Time Taken: 4.96 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40025329589844, Current Cost = -136.40032958984375, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40032958984375, Current Cost = -136.40040588378906, Time Taken: 4.99 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40040588378906, Current Cost = -136.40049743652344, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40049743652344, Current Cost = -136.40057373046875, Time Taken: 4.97 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40057373046875, Current Cost = -136.40065002441406, Time Taken: 4.99 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40065002441406, Current Cost = -136.40074157714844, Time Taken: 4.93 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40074157714844, Current Cost = -136.40086364746094, Time Taken: 4.94 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40084838867188, Current Cost = -136.4009246826172, Time Taken: 4.97 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.4009246826172, Current Cost = -136.40103149414062, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40103149414062, Current Cost = -136.40110778808594, Time Taken: 5.00 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40110778808594, Current Cost = -136.40121459960938, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40121459960938, Current Cost = -136.4013214111328, Time Taken: 5.01 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40133666992188, Current Cost = -136.4014434814453, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.4014434814453, Current Cost = -136.4015655517578, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.4015655517578, Current Cost = -136.4016876220703, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.4016876220703, Current Cost = -136.40182495117188, Time Taken: 4.96 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40182495117188, Current Cost = -136.40199279785156, Time Taken: 4.99 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40199279785156, Current Cost = -136.4021453857422, Time Taken: 5.00 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.4021453857422, Current Cost = -136.4022979736328, Time Taken: 4.99 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.4022979736328, Current Cost = -136.40249633789062, Time Taken: 4.99 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40249633789062, Current Cost = -136.40269470214844, Time Taken: 5.01 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.4027099609375, Current Cost = -136.40289306640625, Time Taken: 5.00 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40289306640625, Current Cost = -136.40310668945312, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40310668945312, Current Cost = -136.40338134765625, Time Taken: 4.99 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40338134765625, Current Cost = -136.40367126464844, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40367126464844, Current Cost = -136.40396118164062, Time Taken: 5.00 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40396118164062, Current Cost = -136.404296875, Time Taken: 4.97 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.404296875, Current Cost = -136.40469360351562, Time Taken: 4.99 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40469360351562, Current Cost = -136.4050750732422, Time Taken: 4.99 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.4050750732422, Current Cost = -136.4055633544922, Time Taken: 4.97 s
+Iteration 10: Ground Truth: -142.60801696777344, Best Cost = -136.40554809570312, Current Cost = -136.4060821533203, Time Taken: 5.00 s
+No match for mp-1223335: RMSD = 3.383, ΔE = 6.202 eV
 mp-1223335 match: [False]
 Attempting to load checkpoint...
 model loaded successfully
 loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
 Recent checkpoint loaded successfully.
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -27.665010452270508, Current Cost = -26.831077575683594, Time Taken: 4.78 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.118349075317383, Current Cost = -28.11227798461914, Time Taken: 4.87 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.11880874633789, Current Cost = -28.11548614501953, Time Taken: 4.60 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.11984634399414, Current Cost = -28.11313247680664, Time Taken: 4.49 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119892120361328, Current Cost = -28.11034393310547, Time Taken: 4.48 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119895935058594, Current Cost = -28.11892318725586, Time Taken: 4.59 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119932174682617, Current Cost = -28.11475944519043, Time Taken: 3.96 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.11998176574707, Current Cost = -28.11764907836914, Time Taken: 3.88 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120031356811523, Current Cost = -28.114154815673828, Time Taken: 4.10 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120071411132812, Current Cost = -28.115314483642578, Time Taken: 4.42 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120105743408203, Current Cost = -28.119291305541992, Time Taken: 4.30 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12013053894043, Current Cost = -28.11943244934082, Time Taken: 4.39 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120149612426758, Current Cost = -28.117576599121094, Time Taken: 3.88 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120162963867188, Current Cost = -28.118803024291992, Time Taken: 3.84 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120174407958984, Current Cost = -28.119915008544922, Time Taken: 3.90 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120180130004883, Current Cost = -28.117965698242188, Time Taken: 3.56 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12018585205078, Current Cost = -28.118724822998047, Time Taken: 3.94 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120189666748047, Current Cost = -28.11731719970703, Time Taken: 3.78 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120193481445312, Current Cost = -28.119220733642578, Time Taken: 3.77 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120195388793945, Current Cost = -28.118854522705078, Time Taken: 3.87 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.120197296142578, Current Cost = -28.118106842041016, Time Taken: 3.55 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.117408752441406, Time Taken: 4.17 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.11962127685547, Time Taken: 3.79 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.120094299316406, Time Taken: 3.79 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.120088577270508, Time Taken: 3.83 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.11996078491211, Time Taken: 3.84 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.119733810424805, Time Taken: 3.84 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.120094299316406, Time Taken: 3.76 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.118459701538086, Time Taken: 4.07 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.120086669921875, Time Taken: 3.75 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.118629455566406, Time Taken: 3.74 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.120025634765625, Time Taken: 3.80 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.11982536315918, Time Taken: 3.89 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.11771583557129, Time Taken: 3.74 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.120044708251953, Time Taken: 3.75 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.11916160583496, Time Taken: 3.99 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.11793327331543, Time Taken: 3.99 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.119915008544922, Time Taken: 3.57 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.11983299255371, Time Taken: 4.20 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.11977195739746, Time Taken: 3.98 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.119312286376953, Time Taken: 3.90 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.118003845214844, Time Taken: 3.91 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.12013053894043, Time Taken: 4.23 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.11725425720215, Time Taken: 3.82 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.117660522460938, Time Taken: 4.01 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.118927001953125, Time Taken: 3.86 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.118799209594727, Time Taken: 4.04 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.11836814880371, Time Taken: 3.76 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.120071411132812, Time Taken: 3.89 s
-Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.12019920349121, Current Cost = -28.120004653930664, Time Taken: 4.01 s
-Matched for mp-155: RMSD = 0.991, ΔE = 0.001 eV
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -27.699947357177734, Current Cost = -25.7210636138916, Time Taken: 5.26 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.113452911376953, Current Cost = -27.991344451904297, Time Taken: 5.12 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.117816925048828, Current Cost = -27.89321517944336, Time Taken: 5.37 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -27.948190689086914, Time Taken: 5.28 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.044124603271484, Time Taken: 5.48 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.915884017944336, Time Taken: 5.24 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -27.659135818481445, Time Taken: 5.27 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.246185302734375, Time Taken: 5.29 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.311351776123047, Time Taken: 5.33 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.25767707824707, Time Taken: 5.35 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.314525604248047, Time Taken: 5.35 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.306488037109375, Time Taken: 5.34 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -25.76376724243164, Time Taken: 5.33 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.312305450439453, Time Taken: 5.10 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -25.844642639160156, Time Taken: 5.26 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.266067504882812, Time Taken: 5.42 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -25.094026565551758, Time Taken: 5.36 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -23.117042541503906, Time Taken: 5.34 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -23.544971466064453, Time Taken: 5.40 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -23.547256469726562, Time Taken: 5.11 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.884153366088867, Time Taken: 4.85 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.881200790405273, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.65964126586914, Time Taken: 5.00 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -23.536590576171875, Time Taken: 4.67 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.8841552734375, Time Taken: 4.85 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.884004592895508, Time Taken: 4.77 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.79849624633789, Time Taken: 4.97 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.798847198486328, Time Taken: 5.16 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.884098052978516, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.882301330566406, Time Taken: 4.44 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.798458099365234, Time Taken: 3.96 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.65964126586914, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.79801368713379, Time Taken: 4.92 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.88418960571289, Time Taken: 4.72 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.959918975830078, Time Taken: 4.47 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -23.11543083190918, Time Taken: 4.58 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -24.407155990600586, Time Taken: 4.62 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.884017944335938, Time Taken: 4.45 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -22.88210678100586, Time Taken: 4.53 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.500234603881836, Time Taken: 4.40 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -27.5506534576416, Time Taken: 4.59 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.3123779296875, Time Taken: 4.14 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.31304168701172, Time Taken: 4.26 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -27.593402862548828, Time Taken: 4.48 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -25.094989776611328, Time Taken: 4.47 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -24.740360260009766, Time Taken: 4.47 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.303144454956055, Time Taken: 4.19 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.312694549560547, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -26.30935287475586, Time Taken: 4.45 s
+Iteration 10: Ground Truth: -28.119577407836914, Best Cost = -28.119617462158203, Current Cost = -25.099748611450195, Time Taken: 4.34 s
+Matched for mp-155: RMSD = 0.967, ΔE = 0.000 eV
 mp-155 match: [True]
 Attempting to load checkpoint...
 model loaded successfully
 loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
 Recent checkpoint loaded successfully.
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -47.24171829223633, Current Cost = -41.327964782714844, Time Taken: 5.13 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.47883605957031, Current Cost = -44.292259216308594, Time Taken: 4.97 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.48847579956055, Current Cost = -41.10758590698242, Time Taken: 4.83 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.48847579956055, Current Cost = -38.7088737487793, Time Taken: 4.87 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.491973876953125, Current Cost = -39.31553649902344, Time Taken: 4.82 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.491973876953125, Current Cost = -44.440303802490234, Time Taken: 4.84 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.491973876953125, Current Cost = -45.751380920410156, Time Taken: 4.82 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.494544982910156, Current Cost = -41.02513122558594, Time Taken: 4.87 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.4968147277832, Current Cost = -39.2021598815918, Time Taken: 4.83 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.498226165771484, Current Cost = -38.60071563720703, Time Taken: 4.79 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.499332427978516, Current Cost = -42.5643196105957, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.571319580078125, Current Cost = -40.296321868896484, Time Taken: 4.93 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -51.69188690185547, Current Cost = -39.94648742675781, Time Taken: 5.00 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.90162658691406, Current Cost = -36.4617805480957, Time Taken: 5.08 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.92813491821289, Current Cost = -40.92504119873047, Time Taken: 4.82 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.944969177246094, Current Cost = -41.878536224365234, Time Taken: 4.89 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.948909759521484, Current Cost = -38.82382583618164, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.948909759521484, Current Cost = -41.395050048828125, Time Taken: 4.74 s2026-01-05 12:53:31,356 - root - INFO - Using PyTorch automatic mixed-precision
-2026-01-05 12:53:31,357 - root - INFO - GPU is available: True, Quantity: None
-2026-01-05 12:53:31,357 - root - INFO - Dataset(s) used:
-2026-01-05 12:53:31,358 - root - INFO - Dataset length: ('full', 24677)
-2026-01-05 12:53:31,358 - root - INFO - Dataset length: ('train', 22209)
-2026-01-05 12:53:31,359 - root - INFO - Dataset length: ('val', 1233)
-2026-01-05 12:53:31,359 - root - INFO - Dataset length: ('test', 1233)
-2026-01-05 12:57:56,932 - root - INFO - Using PyTorch automatic mixed-precision
-2026-01-05 12:57:56,933 - root - INFO - GPU is available: True, Quantity: None
-2026-01-05 12:57:56,933 - root - INFO - Dataset(s) used:
-2026-01-05 12:57:56,934 - root - INFO - Dataset length: ('full', 24677)
-2026-01-05 12:57:56,934 - root - INFO - Dataset length: ('train', 22209)
-2026-01-05 12:57:56,934 - root - INFO - Dataset length: ('val', 1233)
-2026-01-05 12:57:56,935 - root - INFO - Dataset length: ('test', 1233)
-2026-01-05 13:02:54,430 - root - INFO - Using PyTorch automatic mixed-precision
-2026-01-05 13:02:54,431 - root - INFO - GPU is available: True, Quantity: None
-2026-01-05 13:02:54,432 - root - INFO - Dataset(s) used:
-2026-01-05 13:02:54,432 - root - INFO - Dataset length: ('full', 24677)
-2026-01-05 13:02:54,432 - root - INFO - Dataset length: ('train', 22209)
-2026-01-05 13:02:54,433 - root - INFO - Dataset length: ('val', 1233)
-2026-01-05 13:02:54,434 - root - INFO - Dataset length: ('test', 1233)
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.49070739746094, Current Cost = -43.95391845703125, Time Taken: 5.17 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.947052001953125, Current Cost = -44.35761642456055, Time Taken: 4.99 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.947052001953125, Current Cost = -42.54856491088867, Time Taken: 5.03 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.94861602783203, Current Cost = -41.97065353393555, Time Taken: 4.80 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.94861602783203, Current Cost = -41.03041076660156, Time Taken: 4.77 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.94861602783203, Current Cost = -43.696258544921875, Time Taken: 4.87 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.949466705322266, Current Cost = -44.86482238769531, Time Taken: 4.56 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.949466705322266, Current Cost = -46.80055236816406, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.94955825805664, Current Cost = -48.8513298034668, Time Taken: 4.60 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.9497184753418, Current Cost = -49.715232849121094, Time Taken: 4.67 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.950157165527344, Current Cost = -50.0854606628418, Time Taken: 4.70 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95027542114258, Current Cost = -50.14530944824219, Time Taken: 4.63 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95030212402344, Current Cost = -50.151771545410156, Time Taken: 4.42 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95030975341797, Current Cost = -50.168087005615234, Time Taken: 4.44 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95032501220703, Current Cost = -50.16801071166992, Time Taken: 4.34 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.9503288269043, Current Cost = -50.1693115234375, Time Taken: 4.34 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -50.168880462646484, Time Taken: 4.31 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -50.16912841796875, Time Taken: 4.28 s2026-01-05 13:43:01,816 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-05 13:43:01,817 - root - INFO - GPU is available: True, Quantity: None
+2026-01-05 13:43:01,818 - root - INFO - Dataset(s) used:
+2026-01-05 13:43:01,819 - root - INFO - Dataset length: ('full', 24677)
+2026-01-05 13:43:01,820 - root - INFO - Dataset length: ('train', 22209)
+2026-01-05 13:43:01,820 - root - INFO - Dataset length: ('val', 1233)
+2026-01-05 13:43:01,821 - root - INFO - Dataset length: ('test', 1233)
+2026-01-05 13:47:21,029 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-05 13:47:21,030 - root - INFO - GPU is available: True, Quantity: None
+2026-01-05 13:47:21,031 - root - INFO - Dataset(s) used:
+2026-01-05 13:47:21,031 - root - INFO - Dataset length: ('full', 24677)
+2026-01-05 13:47:21,032 - root - INFO - Dataset length: ('train', 22209)
+2026-01-05 13:47:21,032 - root - INFO - Dataset length: ('val', 1233)
+2026-01-05 13:47:21,032 - root - INFO - Dataset length: ('test', 1233)
+2026-01-05 13:52:18,789 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-05 13:52:18,790 - root - INFO - GPU is available: True, Quantity: None
+2026-01-05 13:52:18,790 - root - INFO - Dataset(s) used:
+2026-01-05 13:52:18,791 - root - INFO - Dataset length: ('full', 24677)
+2026-01-05 13:52:18,791 - root - INFO - Dataset length: ('train', 22209)
+2026-01-05 13:52:18,791 - root - INFO - Dataset length: ('val', 1233)
+2026-01-05 13:52:18,792 - root - INFO - Dataset length: ('test', 1233)
 
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.94951629638672, Current Cost = -38.45459747314453, Time Taken: 4.75 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.94997787475586, Current Cost = -44.73497772216797, Time Taken: 4.72 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95011901855469, Current Cost = -42.52814865112305, Time Taken: 4.72 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.950225830078125, Current Cost = -42.81475067138672, Time Taken: 4.73 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.950279235839844, Current Cost = -42.68179702758789, Time Taken: 4.67 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.9503059387207, Current Cost = -40.021339416503906, Time Taken: 4.74 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.950313568115234, Current Cost = -37.99705505371094, Time Taken: 4.74 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95032501220703, Current Cost = -40.79758834838867, Time Taken: 4.76 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95032501220703, Current Cost = -39.843231201171875, Time Taken: 4.82 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.9503288269043, Current Cost = -41.05133056640625, Time Taken: 4.74 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.9503288269043, Current Cost = -41.20936965942383, Time Taken: 4.75 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -46.279632568359375, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = 20.192516326904297, Time Taken: 4.75 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -42.675228118896484, Time Taken: 4.75 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -44.4976921081543, Time Taken: 4.72 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -44.12354278564453, Time Taken: 4.68 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -41.647621154785156, Time Taken: 4.68 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -37.2263069152832, Time Taken: 4.68 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -43.43370819091797, Time Taken: 4.64 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -42.684993743896484, Time Taken: 4.70 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -42.52500915527344, Time Taken: 4.64 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -40.60432052612305, Time Taken: 4.54 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -41.61733627319336, Time Taken: 4.60 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -41.11564254760742, Time Taken: 4.58 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -37.837764739990234, Time Taken: 4.56 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -41.677093505859375, Time Taken: 4.58 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -41.90428161621094, Time Taken: 4.56 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -42.96544647216797, Time Taken: 4.53 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -41.99979782104492, Time Taken: 4.58 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -40.016448974609375, Time Taken: 4.49 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -46.63385772705078, Time Taken: 4.52 s
-Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -45.34614562988281, Time Taken: 4.51 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -50.16952896118164, Time Taken: 4.22 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -50.16913986206055, Time Taken: 4.16 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -50.16923522949219, Time Taken: 4.10 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -50.169036865234375, Time Taken: 3.99 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -50.169212341308594, Time Taken: 4.02 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -50.16917419433594, Time Taken: 3.93 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033264160156, Current Cost = -50.16950225830078, Time Taken: 3.99 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16961669921875, Time Taken: 3.89 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16177749633789, Time Taken: 3.90 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16941452026367, Time Taken: 3.87 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16908645629883, Time Taken: 3.99 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.169342041015625, Time Taken: 3.94 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16909408569336, Time Taken: 3.95 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16925811767578, Time Taken: 3.89 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16919708251953, Time Taken: 3.99 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16920852661133, Time Taken: 3.95 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16607666015625, Time Taken: 3.89 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16930389404297, Time Taken: 3.95 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.15924072265625, Time Taken: 3.86 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.1694221496582, Time Taken: 3.92 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.15789031982422, Time Taken: 4.16 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.152565002441406, Time Taken: 3.82 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16935729980469, Time Taken: 3.90 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16851043701172, Time Taken: 3.95 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.169151306152344, Time Taken: 3.91 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.169315338134766, Time Taken: 3.91 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16909408569336, Time Taken: 3.96 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.1692008972168, Time Taken: 3.94 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.168312072753906, Time Taken: 3.88 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16774368286133, Time Taken: 3.89 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16720962524414, Time Taken: 3.89 s
+Iteration 10: Ground Truth: -52.94993591308594, Best Cost = -52.95033645629883, Current Cost = -50.16665267944336, Time Taken: 3.87 s
 Matched for mp-2014: RMSD = 0.000, ΔE = 0.000 eV
 mp-2014 match: [True]
 Attempting to load checkpoint...
 model loaded successfully
 loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
 Recent checkpoint loaded successfully.
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -50.98732376098633, Current Cost = -50.691925048828125, Time Taken: 4.99 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -56.48680877685547, Current Cost = -51.48460388183594, Time Taken: 5.02 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -56.48680877685547, Current Cost = -57.57501983642578, Time Taken: 5.05 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -57.57501983642578, Current Cost = -54.31095504760742, Time Taken: 5.06 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -58.626338958740234, Current Cost = -56.95256042480469, Time Taken: 5.01 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -58.626338958740234, Current Cost = -56.32550811767578, Time Taken: 5.03 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -60.015464782714844, Current Cost = -57.427955627441406, Time Taken: 5.09 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -60.015464782714844, Current Cost = -57.57738494873047, Time Taken: 5.04 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -60.956565856933594, Current Cost = -57.57892608642578, Time Taken: 5.02 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -60.956565856933594, Current Cost = -56.94039535522461, Time Taken: 5.05 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -61.86394119262695, Current Cost = -54.962425231933594, Time Taken: 5.03 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.23092269897461, Current Cost = -53.54745101928711, Time Taken: 4.95 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.26764678955078, Current Cost = -52.34666442871094, Time Taken: 5.00 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.30426025390625, Current Cost = -53.83921432495117, Time Taken: 4.79 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.30476379394531, Current Cost = -57.0357780456543, Time Taken: 4.82 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.30743408203125, Current Cost = -59.10934066772461, Time Taken: 4.83 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.307861328125, Current Cost = -57.451568603515625, Time Taken: 4.83 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.308528900146484, Current Cost = -57.30488204956055, Time Taken: 4.86 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.30890655517578, Current Cost = -54.1583251953125, Time Taken: 4.83 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.30922317504883, Current Cost = -53.23904800415039, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.309444427490234, Current Cost = -56.86297607421875, Time Taken: 4.85 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.30961227416992, Current Cost = -57.353431701660156, Time Taken: 4.84 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.30973815917969, Current Cost = -54.5785026550293, Time Taken: 4.82 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.309837341308594, Current Cost = -55.665550231933594, Time Taken: 4.81 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.3099250793457, Current Cost = -56.174659729003906, Time Taken: 4.83 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.30998611450195, Current Cost = -55.9659423828125, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31004333496094, Current Cost = -56.46407699584961, Time Taken: 4.84 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.310089111328125, Current Cost = -57.04066467285156, Time Taken: 4.78 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31011962890625, Current Cost = -58.52061080932617, Time Taken: 4.82 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.310157775878906, Current Cost = -54.6517333984375, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.3101692199707, Current Cost = -56.1777458190918, Time Taken: 4.81 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31019973754883, Current Cost = -56.91029357910156, Time Taken: 4.79 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.310211181640625, Current Cost = -58.19212341308594, Time Taken: 4.79 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31022644042969, Current Cost = -53.74699401855469, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.310245513916016, Current Cost = -55.43995666503906, Time Taken: 4.81 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31024932861328, Current Cost = -50.537166595458984, Time Taken: 4.83 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31024932861328, Current Cost = -54.9620361328125, Time Taken: 4.75 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31025695800781, Current Cost = -55.1673698425293, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.310264587402344, Current Cost = -53.227760314941406, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31026840209961, Current Cost = -55.139190673828125, Time Taken: 4.74 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.310272216796875, Current Cost = -48.11526870727539, Time Taken: 4.76 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.310279846191406, Current Cost = -54.597373962402344, Time Taken: 4.79 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31028366088867, Current Cost = -50.96310043334961, Time Taken: 4.78 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31028366088867, Current Cost = -53.33954620361328, Time Taken: 4.78 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31028366088867, Current Cost = -54.09959411621094, Time Taken: 4.78 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31028366088867, Current Cost = -55.3821907043457, Time Taken: 4.79 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31028366088867, Current Cost = -56.5272216796875, Time Taken: 4.74 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31028366088867, Current Cost = -53.77251434326172, Time Taken: 4.75 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31028366088867, Current Cost = -56.13005065917969, Time Taken: 4.75 s
-Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -62.31028366088867, Current Cost = -57.89253234863281, Time Taken: 4.79 s
-No match for mp-22769: RMSD = 3.659, ΔE = 1.672 eV
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -48.98335647583008, Current Cost = -55.15321350097656, Time Taken: 5.23 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -59.742919921875, Current Cost = -56.847564697265625, Time Taken: 5.25 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -61.559173583984375, Current Cost = -59.53517150878906, Time Taken: 5.20 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.24110412597656, Current Cost = -57.00908279418945, Time Taken: 5.29 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67158889770508, Current Cost = -63.46977233886719, Time Taken: 5.01 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67234802246094, Current Cost = -61.41157531738281, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.673927307128906, Current Cost = -63.5255241394043, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67424774169922, Current Cost = -63.63934326171875, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.674522399902344, Current Cost = -63.635379791259766, Time Taken: 4.90 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.674659729003906, Current Cost = -63.664764404296875, Time Taken: 4.86 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67475509643555, Current Cost = -63.67053985595703, Time Taken: 4.85 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67481231689453, Current Cost = -63.670867919921875, Time Taken: 4.83 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67485427856445, Current Cost = -63.669151306152344, Time Taken: 4.72 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67488479614258, Current Cost = -63.6715202331543, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67491149902344, Current Cost = -63.672332763671875, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67493438720703, Current Cost = -63.67323303222656, Time Taken: 4.78 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.674949645996094, Current Cost = -63.67367172241211, Time Taken: 4.79 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67497253417969, Current Cost = -63.67396926879883, Time Taken: 4.80 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67498016357422, Current Cost = -63.674171447753906, Time Taken: 4.60 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67498779296875, Current Cost = -63.674312591552734, Time Taken: 4.50 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67499542236328, Current Cost = -63.67439270019531, Time Taken: 4.63 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67500305175781, Current Cost = -63.67448425292969, Time Taken: 4.49 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67500686645508, Current Cost = -63.6745719909668, Time Taken: 4.55 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67501449584961, Current Cost = -63.67463302612305, Time Taken: 4.55 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67502212524414, Current Cost = -63.67469024658203, Time Taken: 4.51 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675025939941406, Current Cost = -63.67472457885742, Time Taken: 4.48 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675025939941406, Current Cost = -63.67475891113281, Time Taken: 4.50 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675025939941406, Current Cost = -63.67479705810547, Time Taken: 4.47 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675025939941406, Current Cost = -63.674835205078125, Time Taken: 4.47 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675025939941406, Current Cost = -63.674842834472656, Time Taken: 4.48 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67502975463867, Current Cost = -63.67487335205078, Time Taken: 4.53 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67503356933594, Current Cost = -63.67489242553711, Time Taken: 4.50 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67503356933594, Current Cost = -63.67490768432617, Time Taken: 4.46 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67503356933594, Current Cost = -63.67491912841797, Time Taken: 4.45 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67503356933594, Current Cost = -63.67493438720703, Time Taken: 4.44 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67504119873047, Current Cost = -63.67495346069336, Time Taken: 4.48 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67504119873047, Current Cost = -63.67496871948242, Time Taken: 4.45 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67504119873047, Current Cost = -63.67497634887695, Time Taken: 4.39 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67504119873047, Current Cost = -63.67498016357422, Time Taken: 4.42 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.67504119873047, Current Cost = -63.674983978271484, Time Taken: 4.41 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675045013427734, Current Cost = -63.67499542236328, Time Taken: 4.31 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675045013427734, Current Cost = -63.67499542236328, Time Taken: 4.23 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675045013427734, Current Cost = -63.675010681152344, Time Taken: 4.22 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675045013427734, Current Cost = -63.67500305175781, Time Taken: 4.20 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675045013427734, Current Cost = -63.675018310546875, Time Taken: 4.20 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675045013427734, Current Cost = -63.675018310546875, Time Taken: 4.19 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675048828125, Current Cost = -63.67502212524414, Time Taken: 4.19 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675048828125, Current Cost = -63.67502212524414, Time Taken: 4.20 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675048828125, Current Cost = -63.675018310546875, Time Taken: 4.21 s
+Iteration 10: Ground Truth: -63.982723236083984, Best Cost = -63.675048828125, Current Cost = -63.675025939941406, Time Taken: 4.19 s
+No match for mp-22769: RMSD = 0.378, ΔE = 0.308 eV
 mp-22769 match: [False]
 Attempting to load checkpoint...
 model loaded successfully
 loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
 Recent checkpoint loaded successfully.
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -87.7293930053711, Current Cost = 45.360286712646484, Time Taken: 4.79 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -93.1273422241211, Current Cost = -82.22649383544922, Time Taken: 4.90 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -94.43726348876953, Current Cost = -85.56910705566406, Time Taken: 4.93 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -96.52837371826172, Current Cost = -81.85797119140625, Time Taken: 4.90 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -97.73792266845703, Current Cost = -78.36532592773438, Time Taken: 4.86 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.40739440917969, Current Cost = -81.27229309082031, Time Taken: 4.66 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41021728515625, Current Cost = -82.1119155883789, Time Taken: 4.66 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41168212890625, Current Cost = -80.84564208984375, Time Taken: 4.66 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41226196289062, Current Cost = -82.61481475830078, Time Taken: 4.67 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41268920898438, Current Cost = -80.52983856201172, Time Taken: 4.64 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41294860839844, Current Cost = -84.81396484375, Time Taken: 4.66 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41313171386719, Current Cost = -83.4251708984375, Time Taken: 4.65 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41326904296875, Current Cost = -85.31591033935547, Time Taken: 4.70 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41339111328125, Current Cost = -73.94329833984375, Time Taken: 4.67 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.4134521484375, Current Cost = -79.54307556152344, Time Taken: 4.68 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41351318359375, Current Cost = -78.76761627197266, Time Taken: 4.66 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41356658935547, Current Cost = -81.8983383178711, Time Taken: 4.67 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41361236572266, Current Cost = -82.5108642578125, Time Taken: 4.66 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41363525390625, Current Cost = -81.67373657226562, Time Taken: 4.65 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41366577148438, Current Cost = -84.9684066772461, Time Taken: 4.65 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.4136734008789, Current Cost = -78.79363250732422, Time Taken: 4.53 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.4137191772461, Current Cost = -85.14196014404297, Time Taken: 4.58 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41374206542969, Current Cost = -82.97233581542969, Time Taken: 4.54 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41375732421875, Current Cost = -80.48507690429688, Time Taken: 4.56 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41377258300781, Current Cost = -81.3919906616211, Time Taken: 4.48 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41378784179688, Current Cost = -82.84784698486328, Time Taken: 4.56 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.4142837524414, Current Cost = -79.69588470458984, Time Taken: 4.48 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.4142837524414, Current Cost = -82.02359008789062, Time Taken: 4.51 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.4142837524414, Current Cost = -83.54232025146484, Time Taken: 4.46 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.4142837524414, Current Cost = -81.76571655273438, Time Taken: 4.39 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41436767578125, Current Cost = -75.88887786865234, Time Taken: 4.40 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41484069824219, Current Cost = -78.45991516113281, Time Taken: 4.34 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41532897949219, Current Cost = -80.34294128417969, Time Taken: 4.35 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41552734375, Current Cost = -79.7519302368164, Time Taken: 4.35 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41568756103516, Current Cost = -76.82384490966797, Time Taken: 4.26 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41582489013672, Current Cost = -79.25508880615234, Time Taken: 4.25 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41594696044922, Current Cost = -73.80310821533203, Time Taken: 4.26 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41604614257812, Current Cost = -78.93444061279297, Time Taken: 4.26 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41614532470703, Current Cost = -79.50214385986328, Time Taken: 4.25 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41627502441406, Current Cost = -80.03681182861328, Time Taken: 4.25 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41639709472656, Current Cost = -74.03762817382812, Time Taken: 4.30 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41650390625, Current Cost = -73.37680053710938, Time Taken: 4.29 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41661834716797, Current Cost = -80.18285369873047, Time Taken: 4.25 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.4167251586914, Current Cost = -78.7333984375, Time Taken: 4.23 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41683959960938, Current Cost = -77.95072174072266, Time Taken: 4.25 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41697692871094, Current Cost = -81.08399200439453, Time Taken: 4.25 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41709899902344, Current Cost = -81.23091888427734, Time Taken: 4.24 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41722869873047, Current Cost = -80.91888427734375, Time Taken: 4.25 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41735076904297, Current Cost = -78.8800048828125, Time Taken: 4.25 s
-Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41748046875, Current Cost = 311.89984130859375, Time Taken: 4.24 s
-No match for mp-4283: RMSD = 3.283, ΔE = 5.474 eV
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -83.64872741699219, Current Cost = -85.34770965576172, Time Taken: 5.03 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -94.20751190185547, Current Cost = -86.35750579833984, Time Taken: 4.78 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -94.7194595336914, Current Cost = -79.96849822998047, Time Taken: 5.03 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -95.89028930664062, Current Cost = -82.39459991455078, Time Taken: 5.01 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -97.21186828613281, Current Cost = -80.43547821044922, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -97.68072509765625, Current Cost = -85.29027557373047, Time Taken: 5.01 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.40914916992188, Current Cost = -81.36709594726562, Time Taken: 4.79 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.40924835205078, Current Cost = -82.18462371826172, Time Taken: 4.67 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41117858886719, Current Cost = 314.351806640625, Time Taken: 4.65 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41214752197266, Current Cost = 249.00341796875, Time Taken: 4.72 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41281127929688, Current Cost = -82.21571350097656, Time Taken: 4.59 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41324615478516, Current Cost = -83.90069580078125, Time Taken: 4.70 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41358184814453, Current Cost = -76.47921752929688, Time Taken: 4.59 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41381072998047, Current Cost = -75.51649475097656, Time Taken: 4.57 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41397857666016, Current Cost = -80.88036346435547, Time Taken: 4.58 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41410827636719, Current Cost = -81.38370513916016, Time Taken: 4.54 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41421508789062, Current Cost = -79.63713836669922, Time Taken: 4.51 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.414306640625, Current Cost = -82.36534881591797, Time Taken: 4.51 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41436767578125, Current Cost = -81.72767639160156, Time Taken: 4.46 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41444396972656, Current Cost = -81.06822204589844, Time Taken: 4.45 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41450500488281, Current Cost = -81.4073257446289, Time Taken: 4.43 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41454315185547, Current Cost = -81.24159240722656, Time Taken: 4.33 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41461181640625, Current Cost = -86.941650390625, Time Taken: 4.33 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41465759277344, Current Cost = -80.77103424072266, Time Taken: 4.26 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41470336914062, Current Cost = -81.22731018066406, Time Taken: 4.14 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41475677490234, Current Cost = -82.83079528808594, Time Taken: 4.23 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41480255126953, Current Cost = -84.65131378173828, Time Taken: 4.22 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41487121582031, Current Cost = -86.34207916259766, Time Taken: 4.17 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41490936279297, Current Cost = -85.31735229492188, Time Taken: 4.14 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41495513916016, Current Cost = -87.51954650878906, Time Taken: 4.13 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41502380371094, Current Cost = -80.68199157714844, Time Taken: 4.15 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41507720947266, Current Cost = -81.02643585205078, Time Taken: 4.13 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41513061523438, Current Cost = -78.12464904785156, Time Taken: 4.14 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41519165039062, Current Cost = -80.04033660888672, Time Taken: 4.15 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41525268554688, Current Cost = -84.4714584350586, Time Taken: 4.16 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41531372070312, Current Cost = -84.00711059570312, Time Taken: 4.15 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41535949707031, Current Cost = -85.15269470214844, Time Taken: 4.14 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41543579101562, Current Cost = -80.78790283203125, Time Taken: 4.14 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41551971435547, Current Cost = -85.28850555419922, Time Taken: 4.13 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41559600830078, Current Cost = -84.23540496826172, Time Taken: 4.15 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.4156494140625, Current Cost = -83.69236755371094, Time Taken: 4.16 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41572570800781, Current Cost = -86.6976547241211, Time Taken: 4.04 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41580200195312, Current Cost = -88.48866271972656, Time Taken: 4.03 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41588592529297, Current Cost = -91.11009216308594, Time Taken: 4.03 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41598510742188, Current Cost = -83.82020568847656, Time Taken: 3.93 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41604614257812, Current Cost = -82.85901641845703, Time Taken: 3.92 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.4161376953125, Current Cost = -88.52786254882812, Time Taken: 3.90 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41622161865234, Current Cost = -89.91494750976562, Time Taken: 4.03 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41632080078125, Current Cost = -83.22319793701172, Time Taken: 3.93 s
+Iteration 10: Ground Truth: -103.89154815673828, Best Cost = -98.41642761230469, Current Cost = -82.96224975585938, Time Taken: 3.93 s
+No match for mp-4283: RMSD = 3.089, ΔE = 5.475 eV
 mp-4283 match: [False]
 Attempting to load checkpoint...
 model loaded successfully
 loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
 Recent checkpoint loaded successfully.
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -138.8025665283203, Current Cost = -147.9895477294922, Time Taken: 5.15 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -147.9895477294922, Current Cost = -148.23915100097656, Time Taken: 5.03 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.23915100097656, Current Cost = -148.28091430664062, Time Taken: 5.04 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.28091430664062, Current Cost = -148.2818603515625, Time Taken: 4.89 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.2818603515625, Current Cost = -148.29298400878906, Time Taken: 4.99 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29298400878906, Current Cost = -148.2936248779297, Time Taken: 4.88 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.2936248779297, Current Cost = -148.29367065429688, Time Taken: 4.84 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29367065429688, Current Cost = -148.29376220703125, Time Taken: 4.85 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29376220703125, Current Cost = -148.29391479492188, Time Taken: 4.86 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29391479492188, Current Cost = -148.29400634765625, Time Taken: 4.82 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29400634765625, Current Cost = -148.2941436767578, Time Taken: 4.84 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.2941436767578, Current Cost = -148.294189453125, Time Taken: 4.86 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.294189453125, Current Cost = -148.2942352294922, Time Taken: 4.79 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.2942352294922, Current Cost = -148.29428100585938, Time Taken: 4.81 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29428100585938, Current Cost = -148.2943115234375, Time Taken: 4.78 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.2943115234375, Current Cost = -148.29434204101562, Time Taken: 4.87 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29434204101562, Current Cost = -148.2943572998047, Time Taken: 4.84 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.2943572998047, Current Cost = -148.2943878173828, Time Taken: 4.81 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.2943878173828, Current Cost = -148.29441833496094, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29441833496094, Current Cost = -148.29443359375, Time Taken: 4.78 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29443359375, Current Cost = -148.29444885253906, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29444885253906, Current Cost = -148.29444885253906, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29444885253906, Current Cost = -148.29446411132812, Time Taken: 4.62 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29446411132812, Current Cost = -148.2944793701172, Time Taken: 4.64 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29446411132812, Current Cost = -148.29449462890625, Time Taken: 4.67 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29449462890625, Current Cost = -148.29449462890625, Time Taken: 4.54 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29449462890625, Current Cost = -148.2945098876953, Time Taken: 4.53 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.2945098876953, Current Cost = -148.2945098876953, Time Taken: 4.60 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.2945098876953, Current Cost = -148.29452514648438, Time Taken: 4.58 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.2945098876953, Time Taken: 4.56 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.2945098876953, Time Taken: 4.54 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.2945098876953, Time Taken: 4.52 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.29449462890625, Time Taken: 4.59 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.2945098876953, Time Taken: 4.55 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.2945098876953, Time Taken: 4.52 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.2945098876953, Time Taken: 4.59 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.29452514648438, Time Taken: 4.56 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.2945098876953, Time Taken: 4.52 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.29452514648438, Time Taken: 4.50 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.2945098876953, Time Taken: 4.52 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.29452514648438, Time Taken: 4.53 s2026-01-05 13:07:32,392 - root - INFO - Using PyTorch automatic mixed-precision
-2026-01-05 13:07:32,392 - root - INFO - GPU is available: True, Quantity: None
-2026-01-05 13:07:32,393 - root - INFO - Dataset(s) used:
-2026-01-05 13:07:32,393 - root - INFO - Dataset length: ('full', 24677)
-2026-01-05 13:07:32,394 - root - INFO - Dataset length: ('train', 22209)
-2026-01-05 13:07:32,394 - root - INFO - Dataset length: ('val', 1233)
-2026-01-05 13:07:32,394 - root - INFO - Dataset length: ('test', 1233)
-2026-01-05 13:12:12,648 - root - INFO - Using PyTorch automatic mixed-precision
-2026-01-05 13:12:12,649 - root - INFO - GPU is available: True, Quantity: None
-2026-01-05 13:12:12,649 - root - INFO - Dataset(s) used:
-2026-01-05 13:12:12,650 - root - INFO - Dataset length: ('full', 24677)
-2026-01-05 13:12:12,650 - root - INFO - Dataset length: ('train', 22209)
-2026-01-05 13:12:12,650 - root - INFO - Dataset length: ('val', 1233)
-2026-01-05 13:12:12,651 - root - INFO - Dataset length: ('test', 1233)
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -117.88699340820312, Current Cost = 261.58795166015625, Time Taken: 5.03 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -127.54605102539062, Current Cost = 1229.7760009765625, Time Taken: 5.00 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -137.02850341796875, Current Cost = 345.3209533691406, Time Taken: 4.93 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -142.22381591796875, Current Cost = -107.8040771484375, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -142.52517700195312, Current Cost = -83.11042022705078, Time Taken: 4.96 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -142.69285583496094, Current Cost = 255.21090698242188, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -142.7435302734375, Current Cost = -106.08744812011719, Time Taken: 4.99 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -142.90542602539062, Current Cost = 1248.185302734375, Time Taken: 4.97 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -142.97547912597656, Current Cost = 2186.56103515625, Time Taken: 5.04 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.09573364257812, Current Cost = 864.719482421875, Time Taken: 4.97 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.31053161621094, Current Cost = 855.1627197265625, Time Taken: 4.97 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.44520568847656, Current Cost = 1100.181640625, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.49766540527344, Current Cost = 933.1821899414062, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.51385498046875, Current Cost = 1708.905517578125, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.5232696533203, Current Cost = 1964.281982421875, Time Taken: 5.02 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.53492736816406, Current Cost = 1153.78173828125, Time Taken: 4.96 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.566650390625, Current Cost = 667.86328125, Time Taken: 5.01 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.63729858398438, Current Cost = 880.794921875, Time Taken: 5.02 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.69154357910156, Current Cost = 702.516845703125, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.71475219726562, Current Cost = 149.8495330810547, Time Taken: 4.88 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.71826171875, Current Cost = 268.47259521484375, Time Taken: 4.91 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7202606201172, Current Cost = 1477.7860107421875, Time Taken: 4.96 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7230987548828, Current Cost = 1091.538818359375, Time Taken: 4.88 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.72775268554688, Current Cost = 2262.00341796875, Time Taken: 4.93 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.72775268554688, Current Cost = 1854.5599365234375, Time Taken: 4.93 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7295684814453, Current Cost = 524.6806030273438, Time Taken: 4.94 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7305450439453, Current Cost = 263.78546142578125, Time Taken: 4.96 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7305450439453, Current Cost = 567.9029541015625, Time Taken: 4.93 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7305450439453, Current Cost = 1029.292236328125, Time Taken: 4.92 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7305450439453, Current Cost = 3726.1826171875, Time Taken: 4.94 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7305450439453, Current Cost = 1764.0726318359375, Time Taken: 4.93 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7318572998047, Current Cost = 1355.24560546875, Time Taken: 4.83 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7325897216797, Current Cost = 162.1877899169922, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7325897216797, Current Cost = 53.45013427734375, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7325897216797, Current Cost = 413.1190185546875, Time Taken: 5.02 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7325897216797, Current Cost = 609.4323120117188, Time Taken: 4.88 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7325897216797, Current Cost = 1632.0697021484375, Time Taken: 4.88 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7325897216797, Current Cost = 2260.452392578125, Time Taken: 4.85 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.7325897216797, Current Cost = 6983.4228515625, Time Taken: 4.84 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 1048.28759765625, Time Taken: 4.81 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 445.85601806640625, Time Taken: 4.76 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 370.4673767089844, Time Taken: 4.84 s2026-01-05 13:57:11,316 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-05 13:57:11,317 - root - INFO - GPU is available: True, Quantity: None
+2026-01-05 13:57:11,317 - root - INFO - Dataset(s) used:
+2026-01-05 13:57:11,318 - root - INFO - Dataset length: ('full', 24677)
+2026-01-05 13:57:11,318 - root - INFO - Dataset length: ('train', 22209)
+2026-01-05 13:57:11,319 - root - INFO - Dataset length: ('val', 1233)
+2026-01-05 13:57:11,319 - root - INFO - Dataset length: ('test', 1233)
+2026-01-05 14:01:39,555 - root - INFO - Using PyTorch automatic mixed-precision
+2026-01-05 14:01:39,556 - root - INFO - GPU is available: True, Quantity: None
+2026-01-05 14:01:39,557 - root - INFO - Dataset(s) used:
+2026-01-05 14:01:39,557 - root - INFO - Dataset length: ('full', 24677)
+2026-01-05 14:01:39,558 - root - INFO - Dataset length: ('train', 22209)
+2026-01-05 14:01:39,558 - root - INFO - Dataset length: ('val', 1233)
+2026-01-05 14:01:39,559 - root - INFO - Dataset length: ('test', 1233)
 
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.29452514648438, Time Taken: 4.47 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.2945098876953, Time Taken: 4.49 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.2945098876953, Time Taken: 4.42 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.29452514648438, Time Taken: 4.47 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.29452514648438, Time Taken: 4.46 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29452514648438, Current Cost = -148.29454040527344, Time Taken: 4.47 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29454040527344, Current Cost = -148.29454040527344, Time Taken: 4.46 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.29454040527344, Current Cost = -148.2945556640625, Time Taken: 4.46 s
-Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -148.2945556640625, Current Cost = -148.2945556640625, Time Taken: 4.47 s
-No match for mp-570606: RMSD = 3.514, ΔE = 4.809 eV
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 440.5497741699219, Time Taken: 4.84 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 464.6402587890625, Time Taken: 4.84 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 1738.8818359375, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 164.6929931640625, Time Taken: 4.78 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 284.3837585449219, Time Taken: 4.77 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 308.14508056640625, Time Taken: 4.81 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 1063.9571533203125, Time Taken: 4.80 s
+Iteration 10: Ground Truth: -153.10362243652344, Best Cost = -143.73341369628906, Current Cost = 2983.10693359375, Time Taken: 4.77 s
+No match for mp-570606: RMSD = 3.605, ΔE = 9.370 eV
 mp-570606 match: [False]
 Attempting to load checkpoint...
 model loaded successfully
 loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
 Recent checkpoint loaded successfully.
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -134.28309631347656, Current Cost = -124.49591064453125, Time Taken: 5.83 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -150.95626831054688, Current Cost = -120.25264739990234, Time Taken: 5.67 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -152.6590118408203, Current Cost = -137.0892333984375, Time Taken: 5.59 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -158.9554901123047, Current Cost = -126.06455993652344, Time Taken: 5.77 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -161.68690490722656, Current Cost = -138.24911499023438, Time Taken: 5.53 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -164.0244903564453, Current Cost = -127.98926544189453, Time Taken: 5.44 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -165.3975067138672, Current Cost = -126.999267578125, Time Taken: 5.38 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -165.7559814453125, Current Cost = -128.8126678466797, Time Taken: 5.37 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -166.51702880859375, Current Cost = -149.41285705566406, Time Taken: 5.33 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -166.9433135986328, Current Cost = -134.283935546875, Time Taken: 5.32 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -167.46417236328125, Current Cost = -142.2748260498047, Time Taken: 5.21 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -167.68899536132812, Current Cost = -147.73866271972656, Time Taken: 5.25 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -167.80653381347656, Current Cost = -151.2019500732422, Time Taken: 5.23 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -167.8817138671875, Current Cost = -155.17349243164062, Time Taken: 5.18 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -167.94810485839844, Current Cost = -157.78501892089844, Time Taken: 5.20 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -167.99705505371094, Current Cost = -154.4325714111328, Time Taken: 5.14 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.02769470214844, Current Cost = -160.95529174804688, Time Taken: 4.96 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0302734375, Current Cost = -164.7504119873047, Time Taken: 4.90 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.03274536132812, Current Cost = -163.7764129638672, Time Taken: 4.90 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.03512573242188, Current Cost = -162.05352783203125, Time Taken: 4.92 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.03736877441406, Current Cost = -164.2998504638672, Time Taken: 4.93 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0395965576172, Current Cost = -163.24765014648438, Time Taken: 4.89 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.041748046875, Current Cost = -164.25489807128906, Time Taken: 4.75 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.04379272460938, Current Cost = -166.18606567382812, Time Taken: 4.84 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.04579162597656, Current Cost = -165.85739135742188, Time Taken: 4.73 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0476837158203, Current Cost = -165.23020935058594, Time Taken: 4.86 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.049560546875, Current Cost = -166.54490661621094, Time Taken: 4.83 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.05136108398438, Current Cost = -166.30340576171875, Time Taken: 4.73 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.05313110351562, Current Cost = -166.40037536621094, Time Taken: 4.59 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.05482482910156, Current Cost = -166.706298828125, Time Taken: 4.68 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0564422607422, Current Cost = -165.80291748046875, Time Taken: 4.98 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.05812072753906, Current Cost = -165.93202209472656, Time Taken: 4.66 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.05967712402344, Current Cost = -166.8603973388672, Time Taken: 4.67 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0612335205078, Current Cost = -166.3497314453125, Time Taken: 4.67 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.062744140625, Current Cost = -166.60667419433594, Time Taken: 4.66 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.06422424316406, Current Cost = -166.77029418945312, Time Taken: 4.66 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0656280517578, Current Cost = -166.86285400390625, Time Taken: 4.65 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.06704711914062, Current Cost = -166.82357788085938, Time Taken: 4.64 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.06838989257812, Current Cost = -166.7691650390625, Time Taken: 4.32 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0697479248047, Current Cost = -166.84564208984375, Time Taken: 4.53 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.07102966308594, Current Cost = -166.7899932861328, Time Taken: 4.53 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0723419189453, Current Cost = -166.6373291015625, Time Taken: 4.54 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.07357788085938, Current Cost = -166.79397583007812, Time Taken: 4.65 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.07479858398438, Current Cost = -166.91094970703125, Time Taken: 4.47 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.07603454589844, Current Cost = -166.95838928222656, Time Taken: 4.46 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0771942138672, Current Cost = -166.87171936035156, Time Taken: 4.63 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0783233642578, Current Cost = -166.90086364746094, Time Taken: 4.63 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.07945251464844, Current Cost = -166.9555206298828, Time Taken: 4.40 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.08055114746094, Current Cost = -166.9219970703125, Time Taken: 4.44 s
-Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -168.0816650390625, Current Cost = -166.88473510742188, Time Taken: 4.73 s
-No match for mp-7094: RMSD = 3.520, ΔE = 1.885 eV
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -104.10384368896484, Current Cost = -118.22422790527344, Time Taken: 6.07 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -141.48904418945312, Current Cost = -115.98745727539062, Time Taken: 5.74 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -148.04248046875, Current Cost = -131.97250366210938, Time Taken: 5.65 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -150.86033630371094, Current Cost = -134.0745086669922, Time Taken: 5.64 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -153.2136688232422, Current Cost = -144.8681640625, Time Taken: 5.65 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -158.18490600585938, Current Cost = -140.34239196777344, Time Taken: 5.56 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -158.92015075683594, Current Cost = -145.15753173828125, Time Taken: 5.47 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.15040588378906, Current Cost = -148.49923706054688, Time Taken: 5.48 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.29840087890625, Current Cost = -153.0608367919922, Time Taken: 5.43 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.3508758544922, Current Cost = -153.0695343017578, Time Taken: 5.35 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.37689208984375, Current Cost = -152.5213623046875, Time Taken: 5.17 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.38270568847656, Current Cost = -155.47938537597656, Time Taken: 5.18 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.38697814941406, Current Cost = -157.4803924560547, Time Taken: 5.18 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.38853454589844, Current Cost = -158.199951171875, Time Taken: 5.14 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.39015197753906, Current Cost = -157.96575927734375, Time Taken: 5.19 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.39175415039062, Current Cost = -157.38583374023438, Time Taken: 5.20 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.39329528808594, Current Cost = -155.33737182617188, Time Taken: 5.11 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.39476013183594, Current Cost = -156.39138793945312, Time Taken: 5.05 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.3961639404297, Current Cost = -157.5462188720703, Time Taken: 5.06 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.3975372314453, Current Cost = -155.06585693359375, Time Taken: 5.08 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.39886474609375, Current Cost = -157.12355041503906, Time Taken: 5.05 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.40013122558594, Current Cost = -157.681640625, Time Taken: 5.03 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.40139770507812, Current Cost = -158.64256286621094, Time Taken: 5.06 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.40257263183594, Current Cost = -158.85369873046875, Time Taken: 5.10 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.40374755859375, Current Cost = -158.24896240234375, Time Taken: 5.06 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.4048614501953, Current Cost = -157.48529052734375, Time Taken: 5.05 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.4059600830078, Current Cost = -159.89430236816406, Time Taken: 5.04 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -159.89431762695312, Current Cost = -155.9336395263672, Time Taken: 5.35 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -160.20933532714844, Current Cost = -159.51255798339844, Time Taken: 5.25 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -160.20933532714844, Current Cost = -159.6458740234375, Time Taken: 5.23 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -160.43701171875, Current Cost = -159.94212341308594, Time Taken: 5.29 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -160.4592742919922, Current Cost = -160.02667236328125, Time Taken: 5.26 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -160.5306854248047, Current Cost = -159.92381286621094, Time Taken: 5.22 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -161.02500915527344, Current Cost = -160.61495971679688, Time Taken: 5.20 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -161.1232147216797, Current Cost = -160.8137969970703, Time Taken: 5.28 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -161.43472290039062, Current Cost = -161.10694885253906, Time Taken: 5.26 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -161.63742065429688, Current Cost = -161.21633911132812, Time Taken: 5.27 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -161.77891540527344, Current Cost = -161.2064208984375, Time Taken: 5.28 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -161.874755859375, Current Cost = -161.32156372070312, Time Taken: 5.24 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -161.95663452148438, Current Cost = -161.34986877441406, Time Taken: 5.28 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -162.04067993164062, Current Cost = -160.82806396484375, Time Taken: 5.29 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -162.11590576171875, Current Cost = -160.51536560058594, Time Taken: 5.25 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -162.19464111328125, Current Cost = -160.22760009765625, Time Taken: 5.23 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -162.3081512451172, Current Cost = -160.49534606933594, Time Taken: 5.22 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -162.5546112060547, Current Cost = -158.49664306640625, Time Taken: 5.28 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -162.75205993652344, Current Cost = -160.73358154296875, Time Taken: 5.18 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -162.75205993652344, Current Cost = -161.5697021484375, Time Taken: 5.22 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -162.75205993652344, Current Cost = -161.3218536376953, Time Taken: 5.20 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -162.75205993652344, Current Cost = -161.87643432617188, Time Taken: 5.21 s
+Iteration 10: Ground Truth: -169.9667510986328, Best Cost = -162.75205993652344, Current Cost = -161.23484802246094, Time Taken: 5.21 s
+No match for mp-7094: RMSD = 3.782, ΔE = 7.215 eV
 mp-7094 match: [False]
 Attempting to load checkpoint...
 model loaded successfully
 loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
 Recent checkpoint loaded successfully.
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -18.248666763305664, Current Cost = -17.705219268798828, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.218421936035156, Current Cost = -13.841703414916992, Time Taken: 4.84 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.223676681518555, Current Cost = -5.648613929748535, Time Taken: 4.36 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.223676681518555, Current Cost = -19.50433349609375, Time Taken: 4.75 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.223676681518555, Current Cost = -17.491806030273438, Time Taken: 4.73 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.22418975830078, Current Cost = -17.398853302001953, Time Taken: 4.71 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.22418975830078, Current Cost = -18.686687469482422, Time Taken: 4.73 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.224794387817383, Current Cost = -18.67446517944336, Time Taken: 4.52 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.224842071533203, Current Cost = -18.42803955078125, Time Taken: 4.65 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.224884033203125, Current Cost = -19.39557647705078, Time Taken: 4.52 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.224945068359375, Current Cost = -19.181121826171875, Time Taken: 4.49 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.29961585998535, Current Cost = -19.64747428894043, Time Taken: 5.12 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.33782958984375, Current Cost = -19.437843322753906, Time Taken: 5.17 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.368593215942383, Current Cost = -18.781219482421875, Time Taken: 5.07 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.368938446044922, Current Cost = -18.355161666870117, Time Taken: 5.02 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.373844146728516, Current Cost = -19.540180206298828, Time Taken: 4.96 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.381378173828125, Current Cost = -19.236825942993164, Time Taken: 4.93 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.381378173828125, Current Cost = -19.679115295410156, Time Taken: 5.19 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.120532989501953, Time Taken: 4.94 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = 503.6820068359375, Time Taken: 5.16 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.803260803222656, Time Taken: 5.02 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.670429229736328, Time Taken: 5.13 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.12211799621582, Time Taken: 5.14 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.97869873046875, Time Taken: 5.46 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -20.052234649658203, Time Taken: 4.80 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -17.911479949951172, Time Taken: 5.11 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.601211547851562, Time Taken: 5.12 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.519811630249023, Time Taken: 4.97 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.745820999145508, Time Taken: 5.14 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.652957916259766, Time Taken: 5.13 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = 115.36875915527344, Time Taken: 5.05 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.52460479736328, Time Taken: 4.86 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.62177085876465, Time Taken: 5.11 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.047155380249023, Time Taken: 5.16 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.13409996032715, Time Taken: 5.16 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -20.251995086669922, Time Taken: 5.05 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.57823371887207, Time Taken: 5.16 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.421772003173828, Time Taken: 5.18 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -13.491447448730469, Time Taken: 4.99 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.58461570739746, Time Taken: 5.13 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -19.78253173828125, Time Taken: 5.15 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -17.725433349609375, Time Taken: 5.12 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.396621704101562, Time Taken: 5.15 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.459796905517578, Time Taken: 5.16 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -17.196887969970703, Time Taken: 5.01 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.78428840637207, Time Taken: 5.16 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.89870834350586, Time Taken: 5.08 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = 22.026845932006836, Time Taken: 5.00 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.650196075439453, Time Taken: 5.06 s
-Iteration 10: Ground Truth: -20.220918655395508, Best Cost = -20.439001083374023, Current Cost = -18.94025993347168, Time Taken: 5.12 s
-Lower energy for mp-862731: RMSD = 1.476, ΔE = 0.218 eV
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -19.45757293701172, Current Cost = 53.26523971557617, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.221853256225586, Current Cost = -18.007658004760742, Time Taken: 5.04 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.221853256225586, Current Cost = -16.80239486694336, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.221853256225586, Current Cost = -16.79457664489746, Time Taken: 4.83 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.24567413330078, Current Cost = -14.940969467163086, Time Taken: 5.08 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.34415054321289, Current Cost = -16.05238914489746, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.3809757232666, Current Cost = -17.645793914794922, Time Taken: 5.05 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.435035705566406, Current Cost = -19.025413513183594, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.442516326904297, Current Cost = -19.290124893188477, Time Taken: 4.97 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443546295166016, Current Cost = -16.541664123535156, Time Taken: 4.98 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443546295166016, Current Cost = -18.036521911621094, Time Taken: 4.95 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.44375228881836, Current Cost = -17.69478416442871, Time Taken: 4.96 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.44375228881836, Current Cost = -18.581825256347656, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443790435791016, Current Cost = -18.275348663330078, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.44381332397461, Current Cost = -16.15945816040039, Time Taken: 4.77 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.44384002685547, Current Cost = -16.941850662231445, Time Taken: 4.94 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.44386100769043, Current Cost = -17.646297454833984, Time Taken: 4.82 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.44387435913086, Current Cost = -18.339353561401367, Time Taken: 5.02 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443885803222656, Current Cost = -14.639039993286133, Time Taken: 4.69 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443891525268555, Current Cost = -19.21848487854004, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443897247314453, Current Cost = -19.765522003173828, Time Taken: 4.93 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.44390106201172, Current Cost = -17.43631362915039, Time Taken: 4.60 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -18.227476119995117, Time Taken: 4.78 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -16.493385314941406, Time Taken: 4.78 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -11.641865730285645, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -16.343902587890625, Time Taken: 4.76 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -18.322486877441406, Time Taken: 4.58 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -18.001670837402344, Time Taken: 4.70 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.687156677246094, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -18.738510131835938, Time Taken: 4.68 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -18.129295349121094, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -18.24010467529297, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -18.90534782409668, Time Taken: 4.43 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -20.12881851196289, Time Taken: 4.76 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.866323471069336, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -18.462669372558594, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.673023223876953, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -18.81320571899414, Time Taken: 4.65 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.678054809570312, Time Taken: 4.59 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.81456756591797, Time Taken: 4.39 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.439809799194336, Time Taken: 4.70 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.817039489746094, Time Taken: 4.77 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.83956527709961, Time Taken: 4.70 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -17.98964500427246, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.760046005249023, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.141948699951172, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.310373306274414, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -17.542720794677734, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -18.062131881713867, Time Taken: 4.55 s
+Iteration 10: Ground Truth: -20.220916748046875, Best Cost = -20.443904876708984, Current Cost = -19.12033462524414, Time Taken: 4.70 s
+Lower energy for mp-862731: RMSD = 0.915, ΔE = 0.223 eV
 mp-862731 match: [True]
 Attempting to load checkpoint...
 model loaded successfully
 loaded from ../ensemble_model/torchmd-1/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-2/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-3/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-4/checkpoint_0/best_checkpoint.pt,../ensemble_model/torchmd-5/checkpoint_0/best_checkpoint.pt
 Recent checkpoint loaded successfully.
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -31.541263580322266, Current Cost = -21.77490234375, Time Taken: 4.97 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.02864074707031, Current Cost = -22.668190002441406, Time Taken: 4.92 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.10459899902344, Current Cost = -25.20110511779785, Time Taken: 4.93 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.339630126953125, Current Cost = -23.88724136352539, Time Taken: 4.77 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.84003448486328, Current Cost = -26.821191787719727, Time Taken: 4.91 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.9163818359375, Current Cost = -28.751358032226562, Time Taken: 4.79 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.92439270019531, Current Cost = -27.84522819519043, Time Taken: 4.84 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.94880676269531, Current Cost = -27.692670822143555, Time Taken: 4.68 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.94880676269531, Current Cost = -27.772327423095703, Time Taken: 4.51 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.949310302734375, Current Cost = -27.584850311279297, Time Taken: 4.34 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.949310302734375, Current Cost = -27.98612403869629, Time Taken: 4.21 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.94947052001953, Current Cost = -23.23101806640625, Time Taken: 4.20 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.949668884277344, Current Cost = -25.153371810913086, Time Taken: 4.22 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.949790954589844, Current Cost = -24.47028923034668, Time Taken: 4.20 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.94989776611328, Current Cost = -25.982145309448242, Time Taken: 4.22 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.94997787475586, Current Cost = -27.750167846679688, Time Taken: 4.16 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.950042724609375, Current Cost = -22.165021896362305, Time Taken: 4.14 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.9500846862793, Current Cost = -22.592670440673828, Time Taken: 4.10 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95012283325195, Current Cost = -26.612104415893555, Time Taken: 4.12 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95015335083008, Current Cost = -27.923686981201172, Time Taken: 4.11 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.9501838684082, Current Cost = -27.211009979248047, Time Taken: 3.93 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.950199127197266, Current Cost = -23.856489181518555, Time Taken: 3.93 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95022201538086, Current Cost = -27.818437576293945, Time Taken: 3.89 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.950233459472656, Current Cost = -28.466184616088867, Time Taken: 3.90 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95024871826172, Current Cost = -27.465120315551758, Time Taken: 3.89 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95026397705078, Current Cost = -26.976482391357422, Time Taken: 3.89 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95027542114258, Current Cost = -27.9835205078125, Time Taken: 3.89 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.950286865234375, Current Cost = -27.082853317260742, Time Taken: 3.89 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95029830932617, Current Cost = -26.092220306396484, Time Taken: 3.89 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95030212402344, Current Cost = -23.21117401123047, Time Taken: 3.83 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.9503173828125, Current Cost = -26.30389976501465, Time Taken: 3.83 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95032501220703, Current Cost = -27.207611083984375, Time Taken: 3.84 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95033264160156, Current Cost = -22.18437957763672, Time Taken: 3.82 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.950340270996094, Current Cost = -25.542583465576172, Time Taken: 3.84 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95034408569336, Current Cost = -20.303434371948242, Time Taken: 3.81 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.950355529785156, Current Cost = -24.164630889892578, Time Taken: 3.79 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95035934448242, Current Cost = -28.078113555908203, Time Taken: 3.82 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95036315917969, Current Cost = -25.327726364135742, Time Taken: 3.80 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95037078857422, Current Cost = -25.267436981201172, Time Taken: 3.81 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.950374603271484, Current Cost = -26.580371856689453, Time Taken: 3.81 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95037841796875, Current Cost = -25.184185028076172, Time Taken: 3.82 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95038604736328, Current Cost = -24.715375900268555, Time Taken: 3.81 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95039367675781, Current Cost = -28.022607803344727, Time Taken: 3.82 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95039367675781, Current Cost = -24.666763305664062, Time Taken: 3.82 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95039749145508, Current Cost = -26.748096466064453, Time Taken: 3.83 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95040512084961, Current Cost = -24.359249114990234, Time Taken: 3.82 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95040512084961, Current Cost = -23.99934959411621, Time Taken: 3.81 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95040512084961, Current Cost = -25.044851303100586, Time Taken: 3.82 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95040512084961, Current Cost = -23.974079132080078, Time Taken: 3.82 s
-Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.95040512084961, Current Cost = -25.93590545654297, Time Taken: 3.81 s
-No match for mp-864753: RMSD = 3.255, ΔE = 0.194 eV
-mp-864753 match: [False]
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -33.28514099121094, Current Cost = -21.9197940826416, Time Taken: 5.03 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.55677032470703, Current Cost = -26.907548904418945, Time Taken: 4.94 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.59819793701172, Current Cost = -26.740135192871094, Time Taken: 4.82 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.60017776489258, Current Cost = -24.611391067504883, Time Taken: 5.03 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.680519104003906, Current Cost = -24.986328125, Time Taken: 4.80 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.6836051940918, Current Cost = -25.394065856933594, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.684452056884766, Current Cost = -24.684860229492188, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.684783935546875, Current Cost = -23.613134384155273, Time Taken: 4.72 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.6853141784668, Current Cost = -21.655990600585938, Time Taken: 4.72 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.68590545654297, Current Cost = -29.015491485595703, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.68647003173828, Current Cost = -25.04376220703125, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.687007904052734, Current Cost = -28.014902114868164, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.6875114440918, Current Cost = -24.855907440185547, Time Taken: 4.72 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.68798828125, Current Cost = -24.207612991333008, Time Taken: 4.73 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.688438415527344, Current Cost = -24.454145431518555, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.688880920410156, Current Cost = -17.36365509033203, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.68929672241211, Current Cost = -25.291244506835938, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.68971252441406, Current Cost = -26.43911361694336, Time Taken: 4.76 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.69011306762695, Current Cost = -23.93027114868164, Time Taken: 4.75 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.69050979614258, Current Cost = -25.203832626342773, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.690887451171875, Current Cost = -19.324804306030273, Time Taken: 4.74 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.7016716003418, Current Cost = -24.50663185119629, Time Taken: 4.87 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.72966766357422, Current Cost = -24.174278259277344, Time Taken: 4.76 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.72966766357422, Current Cost = -24.034093856811523, Time Taken: 4.76 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.75068664550781, Current Cost = -23.856182098388672, Time Taken: 4.91 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.832000732421875, Current Cost = -22.59310531616211, Time Taken: 4.90 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -34.945926666259766, Current Cost = -24.304691314697266, Time Taken: 4.94 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.34865188598633, Current Cost = -25.2155818939209, Time Taken: 4.93 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.71516418457031, Current Cost = -21.598581314086914, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.71701431274414, Current Cost = -18.927799224853516, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.71873092651367, Current Cost = -23.590362548828125, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.72036361694336, Current Cost = -23.637928009033203, Time Taken: 4.72 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.72185516357422, Current Cost = -23.878192901611328, Time Taken: 4.70 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.72318649291992, Current Cost = -20.831130981445312, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.72439193725586, Current Cost = -22.119659423828125, Time Taken: 4.71 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.72549057006836, Current Cost = -18.011302947998047, Time Taken: 4.68 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.72650146484375, Current Cost = -25.96769905090332, Time Taken: 4.54 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.7274284362793, Current Cost = -25.50932502746582, Time Taken: 4.55 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.72829055786133, Current Cost = -20.604583740234375, Time Taken: 4.52 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.73016357421875, Current Cost = -23.8255615234375, Time Taken: 4.56 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.73568344116211, Current Cost = -24.760784149169922, Time Taken: 4.57 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.73579788208008, Current Cost = -20.775163650512695, Time Taken: 4.57 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.73579788208008, Current Cost = -21.385604858398438, Time Taken: 4.55 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.73672103881836, Current Cost = -22.056520462036133, Time Taken: 4.54 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.73825454711914, Current Cost = -22.614944458007812, Time Taken: 4.52 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.73872756958008, Current Cost = -23.45248031616211, Time Taken: 4.48 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.738739013671875, Current Cost = -19.96473503112793, Time Taken: 4.51 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.739013671875, Current Cost = -20.609882354736328, Time Taken: 4.50 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.73934555053711, Current Cost = -23.99022674560547, Time Taken: 4.50 s
+Iteration 10: Ground Truth: -35.14453125, Best Cost = -35.73966979980469, Current Cost = -20.797061920166016, Time Taken: 4.50 s
+Lower energy for mp-864753: RMSD = 3.041, ΔE = 0.595 eV
+mp-864753 match: [True]
 Distance and Energy Differences:
-[(2.904813544902458, 2.7954712), (3.385642227791826, 3.833435), (0.9911298525378616, 0.00062179565), (1.325740351339461e-07, 0.00039672852), (3.65897595406448, 1.6724396), (3.2829443985064874, 5.47406), (3.5142305774383984, 4.809067), (3.5196301859411974, 1.885086), (1.4761402021322552, 0.21808052), (3.2554341672789278, 0.19412613)]
+[(2.4562090914282253, 3.0931396), (3.383244639535668, 6.202469), (0.967292307564005, 4.005432e-05), (1.8325444128950093e-07, 0.0004005432), (0.37845025387809805, 0.30768204), (3.089427039023688, 5.4751205), (3.605089372952143, 9.370209), (3.7817975318431465, 7.214691), (0.9151555466325828, 0.22298813), (3.040939413558913, 0.59513474)]
 
-Matched 3/10 structures.
-Match ratio: 0.30
+Matched 4/10 structures.
+Match ratio: 0.40
 ---------------------------------------
-Begin Slurm Epilog: Jan-05-2026 13:15:45
-Job ID:        3160166
+Begin Slurm Epilog: Jan-05-2026 14:05:43
+Job ID:        3160466
 User ID:       hjiang378
 Account:       gts-vfung3
 Job name:      pso_local
 Resources:     cpu=12,gres/gpu:v100=1,mem=48G,node=1
-Rsrc Used:     cput=09:02:00,vmem=0,walltime=00:45:10,mem=2197940K,energy_used=0
+Rsrc Used:     cput=09:02:48,vmem=0,walltime=00:45:14,mem=2127576K,energy_used=0
 Partition:     gpu-v100
 QOS:           inferno
 Nodes:         atl1-1-02-011-35-0
