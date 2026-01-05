@@ -227,7 +227,7 @@ class PSO():
                     except Exception as e:
                         current_cell = atoms.get_cell().array
                         lengths = np.linalg.norm(current_cell, axis=1)
-                        lengths = np.clip(lengths, 3.0, 20.0)
+                        lengths = np.clip(lengths, 3.0, 30.0)
                         safe_cell = np.diag(lengths)
                         atoms.set_cell(safe_cell, scale_atoms=True)
 

@@ -225,7 +225,7 @@ def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
         if len(d) == 0:
             break
         radii_sum = covalent_radii[atoms.numbers[i]] + covalent_radii[atoms.numbers[j]]
-        min_allowed = np.maximum(0.75 * radii_sum, min_dist)
+        min_allowed = np.maximum(0.8 * radii_sum, min_dist)
 
         mask = (i < j) & (d < min_allowed) & (d > 1e-9)
 
@@ -236,7 +236,7 @@ def separate_close_atoms2(atoms, min_dist=1.0, max_iterations=10):
         actual_dist = d[mask][:, np.newaxis]
         unit_vecs = D[mask] / actual_dist
         target_dist = min_allowed[mask][:, np.newaxis]
-        shift_mag = 0.5 * (target_dist - actual_dist)
+        shift_mag = 0.3 * (target_dist - actual_dist)
         shift_vecs = shift_mag * unit_vecs
 
         pos_delta = np.zeros_like(atoms.positions)
