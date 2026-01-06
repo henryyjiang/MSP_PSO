@@ -267,8 +267,8 @@ class PSO():
                         final_costs.append(self.optimizer.swarm.current_cost[i])
                         final_positions.append(self.optimizer.swarm.position[i])
 
-                self.optimizer.swarm.current_cost = final_costs
-                self.optimizer.swarm.position = final_positions
+                self.optimizer.swarm.current_cost = np.array(final_costs)
+                self.optimizer.swarm.position = np.array(final_positions)
 
 
                 print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Current Cost = {self.optimizer.swarm.current_cost[0]}, Time Taken: {(time.time() - start_time):.2f} s")
