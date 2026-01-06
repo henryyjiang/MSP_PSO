@@ -257,8 +257,19 @@ class PSO():
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in final_atoms]
 
-                self.optimizer.swarm.current_cost = np.array([atoms.get_potential_energy() for atoms in final_atoms])
-                self.optimizer.swarm.position = np.array([atoms_to_dimensions(final_atoms[i], self.cell_perturb) for i in range(len(final_atoms))])
+                final_costs = []
+                final_positions = []
+                for i, atoms in enumerate(final_atoms):
+                    try:
+                        final_costs.append(atoms.get_potential_energy())
+                        final_positions.append(atoms_to_dimensions(final_atoms[i], self.cell_perturb))
+                    except:
+                        final_costs.append(self.optimizer.swarm.current_cost[i])
+                        final_positions.append(self.optimizer.swarm.position[i])
+
+                self.optimizer.swarm.current_cost = final_costs
+                self.optimizer.swarm.position = final_positions
+
 
                 print(f"Iteration {i + 1}: Ground Truth: {ground_truth_energy}, Best Cost = {self.optimizer.swarm.best_cost}, Current Cost = {self.optimizer.swarm.current_cost[0]}, Time Taken: {(time.time() - start_time):.2f} s")
 
