@@ -184,28 +184,28 @@ class PSO():
                 # Update positions
                 self.optimizer.swarm.position += self.optimizer.swarm.velocity
                 if not self.cell_perturb:
-                    lower_bound = np.full(self.optimizer.swarm.position.shape[1], -50)
-                    upper_bound = np.full(self.optimizer.swarm.position.shape[1], 50)
-                    # lower_bound = np.full(self.optimizer.swarm.position.shape[1], 0.0)
-                    # upper_bound = np.full(self.optimizer.swarm.position.shape[1], 1.0)
+                    # lower_bound = np.full(self.optimizer.swarm.position.shape[1], -50)
+                    # upper_bound = np.full(self.optimizer.swarm.position.shape[1], 50)
+                    lower_bound = np.full(self.optimizer.swarm.position.shape[1], 0.0)
+                    upper_bound = np.full(self.optimizer.swarm.position.shape[1], 1.0)
                 else:
                     cell_dims = 9
-                    lower_bound = np.concatenate([
-                        np.full(cell_dims, 2.0),
-                        np.full(dimensions - cell_dims, -50)
-                    ])
-                    upper_bound = np.concatenate([
-                        np.full(cell_dims, 100.0),
-                        np.full(dimensions - cell_dims, 50)
-                    ])
                     # lower_bound = np.concatenate([
                     #     np.full(cell_dims, 2.0),
-                    #     np.full(dimensions - cell_dims, 0.0)
+                    #     np.full(dimensions - cell_dims, -50)
                     # ])
                     # upper_bound = np.concatenate([
                     #     np.full(cell_dims, 100.0),
-                    #     np.full(dimensions - cell_dims, 1.0)
+                    #     np.full(dimensions - cell_dims, 50)
                     # ])
+                    lower_bound = np.concatenate([
+                        np.full(cell_dims, 2.0),
+                        np.full(dimensions - cell_dims, 0.0)
+                    ])
+                    upper_bound = np.concatenate([
+                        np.full(cell_dims, 100.0),
+                        np.full(dimensions - cell_dims, 1.0)
+                    ])
 
                 self.optimizer.swarm.position = np.clip(self.optimizer.swarm.position, lower_bound, upper_bound)
 
