@@ -85,7 +85,10 @@ class PSO():
         atoms = dimensions_to_atoms(params, i, self.composition, self.cell, self.calculator, self.cell_perturb)
 
         atoms.calc = self.calculator
-        loss = atoms.get_potential_energy()
+        try:
+            loss = atoms.get_potential_energy()
+        except:
+            loss = float('inf')
 
         if loss < self.best_loss:
             self.best_loss = loss
