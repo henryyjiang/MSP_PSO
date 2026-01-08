@@ -87,20 +87,20 @@ def initialize_atoms(el_symbols, lj_rmins, zs, zcounts, possible_sgs, sg_probs, 
 
 def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
     if not cell_perturb:
-        # positions = params.reshape(-1, 3)
-        # atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True), positions=positions)
-        frac_positions = params.reshape(-1, 3)
-        frac_positions = frac_positions % 1.0  # Wrap to [0, 1]
-        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
-                      scaled_positions=frac_positions)
+        positions = params.reshape(-1, 3)
+        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True), positions=positions)
+        # frac_positions = params.reshape(-1, 3)
+        # frac_positions = frac_positions % 1.0  # Wrap to [0, 1]
+        # atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
+        #               scaled_positions=frac_positions)
     else:
         cell = params[:9].reshape(-1, 3)
-        # positions = params[9:].reshape(-1, 3)
-        # atoms = Atoms(composition, cell=cell, pbc=(True, True, True), positions=positions)
-        frac_positions = params[9:].reshape(-1, 3)
-        frac_positions = frac_positions % 1.0
-        atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
-                      scaled_positions=frac_positions)
+        positions = params[9:].reshape(-1, 3)
+        atoms = Atoms(composition, cell=cell, pbc=(True, True, True), positions=positions)
+        # frac_positions = params[9:].reshape(-1, 3)
+        # frac_positions = frac_positions % 1.0
+        # atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
+        #               scaled_positions=frac_positions)
 
     if not hasattr(atoms, 'calc') or atoms.calc is None:
         atoms.set_calculator(calculator)
@@ -109,13 +109,13 @@ def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
 
 def atoms_to_dimensions(atoms, cell_perturb):
     if not cell_perturb:
-        # pos = [float(i) for l in atoms.positions for i in l]
-        pos = atoms.get_scaled_positions().flatten().tolist()
+        pos = [float(i) for l in atoms.positions for i in l]
+        # pos = atoms.get_scaled_positions().flatten().tolist()
     else:
-        # pos = [float(i) for l in atoms.cell for i in l][:9] + [float(i) for l in atoms.positions for i in l]
-        cell_flat = atoms.cell.array.flatten()[:9].tolist()
-        pos_flat = atoms.get_scaled_positions().flatten().tolist()
-        pos = cell_flat + pos_flat
+        pos = [float(i) for l in atoms.cell for i in l][:9] + [float(i) for l in atoms.positions for i in l]
+        # cell_flat = atoms.cell.array.flatten()[:9].tolist()
+        # pos_flat = atoms.get_scaled_positions().flatten().tolist()
+        # pos = cell_flat + pos_flat
 
     return np.array(pos)
 
@@ -123,20 +123,20 @@ def atoms_to_dimensions(atoms, cell_perturb):
 def final_dimensions(params, best_cell, composition, cell_perturb=True):
     if cell_perturb:
         actual_cell = params[:9].reshape(3, 3)
-        # coords = params[9:].reshape(-1, 3)
-        # atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True), positions=coords)
-        frac_coords = params[9:].reshape(-1, 3)
-        frac_coords = frac_coords % 1.0
-        atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True),
-                      scaled_positions=frac_coords)
+        coords = params[9:].reshape(-1, 3)
+        atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True), positions=coords)
+        # frac_coords = params[9:].reshape(-1, 3)
+        # frac_coords = frac_coords % 1.0
+        # atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True),
+        #               scaled_positions=frac_coords)
 
     else:
-        # coords = params.reshape(-1, 3)
-        # atoms = Atoms(composition, cell=best_cell, pbc=(True, True, True), positions=coords)
-        frac_coords = params.reshape(-1, 3)
-        frac_coords = frac_coords % 1.0
-        atoms = Atoms(composition, cell=best_cell, pbc=(True, True, True),
-                      scaled_positions=frac_coords)
+        coords = params.reshape(-1, 3)
+        atoms = Atoms(composition, cell=best_cell, pbc=(True, True, True), positions=coords)
+        # frac_coords = params.reshape(-1, 3)
+        # frac_coords = frac_coords % 1.0
+        # atoms = Atoms(composition, cell=best_cell, pbc=(True, True, True),
+        #               scaled_positions=frac_coords)
     return atoms
 
 
