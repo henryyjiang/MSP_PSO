@@ -191,7 +191,7 @@ class PSO():
                 else:
                     cell_dims = 9
                     # lower_bound = np.concatenate([
-                    #     np.full(cell_dims, 2.0),
+                    #     np.full(cell_dims, 3.0),
                     #     np.full(dimensions - cell_dims, -50)
                     # ])
                     # upper_bound = np.concatenate([
@@ -199,7 +199,7 @@ class PSO():
                     #     np.full(dimensions - cell_dims, 50)
                     # ])
                     lower_bound = np.concatenate([
-                        np.full(cell_dims, 2.0),
+                        np.full(cell_dims, 3.0),
                         np.full(dimensions - cell_dims, 0.0)
                     ])
                     upper_bound = np.concatenate([
@@ -228,6 +228,7 @@ class PSO():
 
                         atoms.set_cell(cell, scale_atoms=True)
 
+                        # separate_close_atoms(atoms, self.lj_rmins)
                         separate_close_atoms2(atoms)
 
                         if not np.all(np.isfinite(atoms.get_forces())):
@@ -381,7 +382,7 @@ if __name__ == "__main__":
 
         options = {'c1': 1.5, 'c2': 1.5, 'w': 0.5}  # cognitive, social, inertia
         particles = 40  # number of particles in system
-        iters = 250
+        iters = 200
         local_steps = 50
 
         cell_perturb = True
