@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Dy4P4
+_chemical_formula_sum              "Dy4 P4"
+_cell_length_a       5.6696290969855045
+_cell_length_b       5.66962862015826
+_cell_length_c       5.669632434923934
+_cell_angle_alpha    89.9999776318938
+_cell_angle_beta     90.0002759542233
+_cell_angle_gamma    90.00010095718271
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Dy  Dy1       1.0  0.4865337946384775  0.4938209926094045  0.9759092280043122  1.0000
+  Dy  Dy2       1.0  0.4865651490300028  0.9937316939009543  0.4759115538207939  1.0000
+  Dy  Dy3       1.0  0.9865472186685289  0.4937562761667768  0.4757806298677553  1.0000
+  Dy  Dy4       1.0  0.9865431162739098  0.9938435721451803  0.9757888350801344  1.0000
+  P   P1        1.0  0.4865438262587742  0.4937267140397135  0.4759153097473301  1.0000
+  P   P2        1.0  0.9865697465179679  0.9937528627305221  0.475785452519529  1.0000
+  P   P3        1.0  0.9865336270969637  0.4938469803258933  0.9757765140505964  1.0000
+  P   P4        1.0  0.486542628034444  0.9938233258290337  0.9759128994927145  1.0000

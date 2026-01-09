@@ -1,0 +1,27 @@
+data_image0
+_chemical_formula_structural       Gd2
+_chemical_formula_sum              "Gd2"
+_cell_length_a       3.6264143189903324
+_cell_length_b       3.614927333263644
+_cell_length_c       6.9421720728414735
+_cell_angle_alpha    104.99267157415635
+_cell_angle_beta     121.19582358598248
+_cell_angle_gamma    60.05167158667247
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Gd  Gd1       1.0  0.6300734775281556  0.3041250066824064  0.061450172465866384  1.0000
+  Gd  Gd2       1.0  0.46942769057666006  0.6346458030258945  0.5619877907491937  1.0000
