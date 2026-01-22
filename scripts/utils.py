@@ -89,18 +89,10 @@ def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
     if not cell_perturb:
         positions = params.reshape(-1, 3)
         atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True), positions=positions)
-        # frac_positions = params.reshape(-1, 3)
-        # frac_positions = frac_positions % 1.0  # Wrap to [0, 1]
-        # atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
-        #               scaled_positions=frac_positions)
     else:
         cell = params[:9].reshape(-1, 3)
         positions = params[9:].reshape(-1, 3)
         atoms = Atoms(composition, cell=cell, pbc=(True, True, True), positions=positions)
-        # frac_positions = params[9:].reshape(-1, 3)
-        # frac_positions = frac_positions % 1.0
-        # atoms = Atoms(composition, cell=cell[i], pbc=(True, True, True),
-        #               scaled_positions=frac_positions)
 
     if not hasattr(atoms, 'calc') or atoms.calc is None:
         atoms.set_calculator(calculator)
@@ -110,12 +102,8 @@ def dimensions_to_atoms(params, i, composition, cell, calculator, cell_perturb):
 def atoms_to_dimensions(atoms, cell_perturb):
     if not cell_perturb:
         pos = [float(i) for l in atoms.positions for i in l]
-        # pos = atoms.get_scaled_positions().flatten().tolist()
     else:
         pos = [float(i) for l in atoms.cell for i in l][:9] + [float(i) for l in atoms.positions for i in l]
-        # cell_flat = atoms.cell.array.flatten()[:9].tolist()
-        # pos_flat = atoms.get_scaled_positions().flatten().tolist()
-        # pos = cell_flat + pos_flat
 
     return np.array(pos)
 
@@ -125,18 +113,10 @@ def final_dimensions(params, best_cell, composition, cell_perturb=True):
         actual_cell = params[:9].reshape(3, 3)
         coords = params[9:].reshape(-1, 3)
         atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True), positions=coords)
-        # frac_coords = params[9:].reshape(-1, 3)
-        # frac_coords = frac_coords % 1.0
-        # atoms = Atoms(composition, cell=actual_cell, pbc=(True, True, True),
-        #               scaled_positions=frac_coords)
 
     else:
         coords = params.reshape(-1, 3)
         atoms = Atoms(composition, cell=best_cell, pbc=(True, True, True), positions=coords)
-        # frac_coords = params.reshape(-1, 3)
-        # frac_coords = frac_coords % 1.0
-        # atoms = Atoms(composition, cell=best_cell, pbc=(True, True, True),
-        #               scaled_positions=frac_coords)
     return atoms
 
 
@@ -267,7 +247,42 @@ def validate_structure_distances(atoms, min_dist=1.0):
 
     min_d = np.min(distances)
     if min_d < min_dist:
-        #print("reject2")
         return False
 
     return True
+
+
+
+def fast_rmsd(coords_a, coords_b):
+    """
+    Standard RMSD for two sets of coordinates (N, 3).
+    Assumes atom indexing is identical.
+    """
+    diff = coords_a - coords_b
+    return np.sqrt(np.mean(np.sum(diff ** 2, axis=1)))
+
+def kabsch_rmsd(P, Q):
+    """
+    Calculate RMSD including optimal rotation and translation.
+    P and Q are (N, 3) matrices of coordinates.
+    """
+    # 1. Center the coordinates
+    P_centered = P - np.mean(P, axis=0)
+    Q_centered = Q - np.mean(Q, axis=0)
+
+    # 2. Compute Covariance matrix
+    C = np.dot(P_centered.T, Q_centered)
+
+    # 3. SVD
+    V, S, Wt = np.linalg.svd(C)
+    d = (np.linalg.det(V) * np.linalg.det(Wt)) < 0.0
+    if d:
+        S[-1] = -S[-1]
+        V[:, -1] = -V[:, -1]
+
+    # 4. Rotation matrix
+    U = np.dot(V, Wt)
+
+    # 5. Rotate P and calculate RMSD
+    P_rotated = np.dot(P_centered, U)
+    return fast_rmsd(P_rotated, Q_centered)

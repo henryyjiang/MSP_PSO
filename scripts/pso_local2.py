@@ -79,19 +79,27 @@ class PSO():
             self.calculator = MatterSimCalculator(potential=Potential(m3gnet_model), device=device)
 
         #self.calculator = MDLCalculator(config=train_config)
+        original_cif = os.path.join("cifs", self.cif_name + ".cif")
+        self.ground_truth = Structure.from_file(original_cif)
+        self.gt_frac_coords = self.ground_truth.frac_coords
 
 
     def obj_func(self, params, i):
-        atoms = dimensions_to_atoms(params, i, self.composition, self.cell, self.calculator, self.cell_perturb)
+        if self.cell_perturb:
+            curr_pos = params[9:].reshape(-1, 3)
+            curr_cell = params[:9].reshape(3, 3)
+            inv_cell = np.linalg.inv(curr_cell)
+            curr_frac_coords = np.dot(curr_pos, inv_cell)
+        else:
+            curr_pos = params.reshape(-1, 3)
+            inv_cell = np.linalg.inv(self.cell[i])
+            curr_frac_coords = np.dot(curr_pos, inv_cell)
 
-        atoms.calc = self.calculator
-        try:
-            loss = atoms.get_potential_energy()
-        except:
-            loss = float('inf')
+        diff = curr_frac_coords - self.gt_frac_coords
+        diff = diff - np.round(diff)
 
-        if loss < self.best_loss:
-            self.best_loss = loss
+        diff_cart = np.dot(diff, self.ground_truth.lattice.matrix)
+        loss = np.sqrt(np.mean(np.sum(diff_cart ** 2, axis=1)))
 
         return loss
 
@@ -103,6 +111,7 @@ class PSO():
         self.avg_losses.append(np.mean(j))
 
         return np.array(j)
+
 
     def run(self):
         costs = []
@@ -371,7 +380,7 @@ if __name__ == "__main__":
 
         options = {'c1': 1.2, 'c2': 1.2, 'w': 0.5}  # cognitive, social, inertia
         particles = 10  # number of particles in system
-        iters = 50
+        iters = 10
         local_steps = 25
 
         cell_perturb = True
