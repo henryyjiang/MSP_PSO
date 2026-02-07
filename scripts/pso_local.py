@@ -372,7 +372,7 @@ if __name__ == "__main__":
         options = {'c1': 1.2, 'c2': 1.2, 'w': 0.5}  # cognitive, social, inertia
         particles = 10  # number of particles in system
         iters = 50
-        local_steps = 25
+        local_steps = 0
 
         cell_perturb = True
         if cell_perturb:

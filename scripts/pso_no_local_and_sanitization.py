@@ -109,10 +109,10 @@ class PSO():
         matches = []
         dist_energy = []
 
-        os.makedirs("plots", exist_ok=True)
-        os.makedirs("matches", exist_ok=True)
-        os.makedirs("fails", exist_ok=True)
-        os.makedirs("lower_energy", exist_ok=True)
+        os.makedirs("plots_no_local_sanitization", exist_ok=True)
+        os.makedirs("matches_no_local_sanitization", exist_ok=True)
+        os.makedirs("fails_no_local_sanitization", exist_ok=True)
+        os.makedirs("lower_energy_no_local_sanitization", exist_ok=True)
 
         matcher = StructureMatcher(ltol=0.3, stol=0.5, angle_tol=8)
 
@@ -201,54 +201,54 @@ class PSO():
 
                 #local optimization
                 positions = self.optimizer.swarm.position
-                new_atoms = [dimensions_to_atoms(positions[i], i, self.composition, self.cell, self.calculator, self.cell_perturb) for i in range(len(positions))]
+                final_atoms = [dimensions_to_atoms(positions[i], i, self.composition, self.cell, self.calculator, self.cell_perturb) for i in range(len(positions))]
 
-                sanitized_atoms = []
-                for atoms in new_atoms:
-                    try:
-                        cellpar = cell_to_cellpar(atoms.cell)
-                        cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
-                        cell = cellpar_to_cell(cellpar)
+                # sanitized_atoms = []
+                # for atoms in new_atoms:
+                #     try:
+                #         cellpar = cell_to_cellpar(atoms.cell)
+                #         cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
+                #         cell = cellpar_to_cell(cellpar)
 
-                        lengths = np.linalg.norm(cell, axis=1)
-                        if np.any(lengths < 3.0) or np.any(lengths > 100.0):
-                            lengths = np.clip(lengths, 3.0, 100.0)
-                            for i in range(3):
-                                cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
+                #         lengths = np.linalg.norm(cell, axis=1)
+                #         if np.any(lengths < 3.0) or np.any(lengths > 100.0):
+                #             lengths = np.clip(lengths, 3.0, 100.0)
+                #             for i in range(3):
+                #                 cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
 
-                        atoms.set_cell(cell, scale_atoms=True)
+                #         atoms.set_cell(cell, scale_atoms=True)
 
-                        separate_close_atoms2(atoms)
+                #         separate_close_atoms2(atoms)
 
-                        if not np.all(np.isfinite(atoms.get_forces())):
-                            atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
+                #         if not np.all(np.isfinite(atoms.get_forces())):
+                #             atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
 
-                        sanitized_atoms.append(atoms)
-                    except Exception as e:
-                        sanitized_atoms.append(atoms)
-                try:
-                    optimized_state = ts.optimize(
-                        system=sanitized_atoms,
-                        model=self.model,
-                        optimizer=ts.frechet_cell_fire,
-                        autobatcher=False,
-                        max_steps=self.local_steps)
-                    optimized_atoms = optimized_state.to_atoms()
+                #         sanitized_atoms.append(atoms)
+                #     except Exception as e:
+                #         sanitized_atoms.append(atoms)
+                # try:
+                #     optimized_state = ts.optimize(
+                #         system=sanitized_atoms,
+                #         model=self.model,
+                #         optimizer=ts.frechet_cell_fire,
+                #         autobatcher=False,
+                #         max_steps=self.local_steps)
+                #     optimized_atoms = optimized_state.to_atoms()
 
-                    final_atoms = []
-                    for i, atoms in enumerate(optimized_atoms):
-                        atoms.calc = self.calculator
-                        if validate_structure_distances(atoms):
-                            final_atoms.append(atoms)
-                        else:
-                            separate_close_atoms2(atoms)
-                            # separate_close_atoms(atoms, self.lj_rmins)
-                            final_atoms.append(atoms)
-                except Exception as e:
-                    final_atoms = sanitized_atoms
+                #     final_atoms = []
+                #     for i, atoms in enumerate(optimized_atoms):
+                #         atoms.calc = self.calculator
+                #         if validate_structure_distances(atoms):
+                #             final_atoms.append(atoms)
+                #         else:
+                #             separate_close_atoms2(atoms)
+                #             # separate_close_atoms(atoms, self.lj_rmins)
+                #             final_atoms.append(atoms)
+                # except Exception as e:
+                #     final_atoms = sanitized_atoms
 
-                if not self.cell_perturb:
-                    self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in final_atoms]
+                # if not self.cell_perturb:
+                #     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in final_atoms]
 
                 final_costs = []
                 final_positions = []
@@ -274,14 +274,14 @@ class PSO():
             plt.xlabel('Iteration')
             plt.ylabel('Best Loss')
             plt.title('Best Losses')
-            plt.savefig(f'plots/best_losses_{self.cif_name}_{iteration}.png')
+            plt.savefig(f'plots_no_local_sanitization/best_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
             plt.plot(self.avg_losses)
             plt.xlabel('Iteration')
             plt.ylabel('Average Loss')
             plt.title('Average Losses')
-            plt.savefig(f'plots/avg_losses_{self.cif_name}_{iteration}.png')
+            plt.savefig(f'plots_no_local_sanitization/avg_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
             final_atoms = final_dimensions(pos, self.best_cell, self.composition, self.cell_perturb)
@@ -314,11 +314,11 @@ class PSO():
 
                 # Save CIF accordingly
                 if result_type == "match":
-                    out_dir = "matches"
+                    out_dir = "matches_no_local_sanitization"
                 elif result_type == "lower_energy":
-                    out_dir = "lower_energy"
+                    out_dir = "lower_energy_no_local_sanitization"
                 else:
-                    out_dir = "fails"
+                    out_dir = "fails_no_local_sanitization"
 
                 filename = os.path.join(out_dir, f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
@@ -330,10 +330,10 @@ class PSO():
             except ValueError:
                 print(f"{self.cif_name}: invalid structure, cannot match")
                 matches.append(False)
-                filename = os.path.join("fails", f"best_structure_{self.cif_name}_{iteration}.cif")
+                filename = os.path.join("fails_no_local_sanitization", f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
 
-        costs_filename = f"plots/{self.cif_name}_costs.txt"
+        costs_filename = f"plots_no_local_sanitization/{self.cif_name}_costs.txt"
         with open(costs_filename, "w") as f:
             f.write(f"Ground Truth: {ground_truth_energy}\n")
             for cost in costs:
@@ -372,7 +372,7 @@ if __name__ == "__main__":
         options = {'c1': 1.2, 'c2': 1.2, 'w': 0.5}  # cognitive, social, inertia
         particles = 10  # number of particles in system
         iters = 50
-        local_steps = 25
+        local_steps = 0
 
         cell_perturb = True
         if cell_perturb:

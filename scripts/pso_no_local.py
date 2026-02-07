@@ -109,10 +109,10 @@ class PSO():
         matches = []
         dist_energy = []
 
-        os.makedirs("plots", exist_ok=True)
-        os.makedirs("matches", exist_ok=True)
-        os.makedirs("fails", exist_ok=True)
-        os.makedirs("lower_energy", exist_ok=True)
+        os.makedirs("plots_no_local", exist_ok=True)
+        os.makedirs("matches_no_local", exist_ok=True)
+        os.makedirs("fails_no_local", exist_ok=True)
+        os.makedirs("lower_energy_no_local", exist_ok=True)
 
         matcher = StructureMatcher(ltol=0.3, stol=0.5, angle_tol=8)
 
@@ -227,23 +227,26 @@ class PSO():
                     except Exception as e:
                         sanitized_atoms.append(atoms)
                 try:
-                    optimized_state = ts.optimize(
-                        system=sanitized_atoms,
-                        model=self.model,
-                        optimizer=ts.frechet_cell_fire,
-                        autobatcher=False,
-                        max_steps=self.local_steps)
-                    optimized_atoms = optimized_state.to_atoms()
+                    if self.local_steps > 0:
+                        optimized_state = ts.optimize(
+                            system=sanitized_atoms,
+                            model=self.model,
+                            optimizer=ts.frechet_cell_fire,
+                            autobatcher=False,
+                            max_steps=self.local_steps)
+                        optimized_atoms = optimized_state.to_atoms()
 
-                    final_atoms = []
-                    for i, atoms in enumerate(optimized_atoms):
-                        atoms.calc = self.calculator
-                        if validate_structure_distances(atoms):
-                            final_atoms.append(atoms)
-                        else:
-                            separate_close_atoms2(atoms)
-                            # separate_close_atoms(atoms, self.lj_rmins)
-                            final_atoms.append(atoms)
+                        final_atoms = []
+                        for i, atoms in enumerate(optimized_atoms):
+                            atoms.calc = self.calculator
+                            if validate_structure_distances(atoms):
+                                final_atoms.append(atoms)
+                            else:
+                                separate_close_atoms2(atoms)
+                                # separate_close_atoms(atoms, self.lj_rmins)
+                                final_atoms.append(atoms)
+                    else:
+                        final_atoms = sanitized_atoms
                 except Exception as e:
                     final_atoms = sanitized_atoms
 
@@ -274,14 +277,14 @@ class PSO():
             plt.xlabel('Iteration')
             plt.ylabel('Best Loss')
             plt.title('Best Losses')
-            plt.savefig(f'plots/best_losses_{self.cif_name}_{iteration}.png')
+            plt.savefig(f'plots_no_local/best_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
             plt.plot(self.avg_losses)
             plt.xlabel('Iteration')
             plt.ylabel('Average Loss')
             plt.title('Average Losses')
-            plt.savefig(f'plots/avg_losses_{self.cif_name}_{iteration}.png')
+            plt.savefig(f'plots_no_local/avg_losses_{self.cif_name}_{iteration}.png')
             plt.close()
 
             final_atoms = final_dimensions(pos, self.best_cell, self.composition, self.cell_perturb)
@@ -314,11 +317,11 @@ class PSO():
 
                 # Save CIF accordingly
                 if result_type == "match":
-                    out_dir = "matches"
+                    out_dir = "matches_no_local"
                 elif result_type == "lower_energy":
-                    out_dir = "lower_energy"
+                    out_dir = "lower_energy_no_local"
                 else:
-                    out_dir = "fails"
+                    out_dir = "fails_no_local"
 
                 filename = os.path.join(out_dir, f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
@@ -330,10 +333,10 @@ class PSO():
             except ValueError:
                 print(f"{self.cif_name}: invalid structure, cannot match")
                 matches.append(False)
-                filename = os.path.join("fails", f"best_structure_{self.cif_name}_{iteration}.cif")
+                filename = os.path.join("fails_no_local", f"best_structure_{self.cif_name}_{iteration}.cif")
                 ase.io.write(filename, final_atoms)
 
-        costs_filename = f"plots/{self.cif_name}_costs.txt"
+        costs_filename = f"plots_no_local/{self.cif_name}_costs.txt"
         with open(costs_filename, "w") as f:
             f.write(f"Ground Truth: {ground_truth_energy}\n")
             for cost in costs:
@@ -372,7 +375,7 @@ if __name__ == "__main__":
         options = {'c1': 1.2, 'c2': 1.2, 'w': 0.5}  # cognitive, social, inertia
         particles = 10  # number of particles in system
         iters = 50
-        local_steps = 25
+        local_steps = 0
 
         cell_perturb = True
         if cell_perturb:
