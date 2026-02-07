@@ -43,7 +43,7 @@ class BasinHopping():
         self.temperature = temperature  # for Metropolis acceptance
         
         self.zs, self.zcounts = composition_to_zs(self.composition)
-        self.possible_sgs, self.sg_probs = generate_ss(self.zs, self.zcounts)
+        self.possible_sgs, self.sg_probs = generate_sgs(self.zs, self.zcounts)
         self.el_symbols = np.array([periodictable.elements[i].symbol for i in range(95)])
         self.lj_rmins = np.genfromtxt(str(Path(__file__).parent / "lj_rmins.csv"),
                                       delimiter=",")
