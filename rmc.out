@@ -1,0 +1,1184 @@
+---------------------------------------
+Begin Slurm Prolog: Feb-07-2026 16:19:57
+Job ID:    3800004
+User ID:   hjiang378
+Account:   gts-vfung3
+Job name:  rmc
+Partition: gpu-v100
+QOS:       inferno
+---------------------------------------
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/e3nn/o3/_wigner.py:10: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd, _W3j_flat, _W3j_indices = torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/rmc.py:296: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location=device)
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/core/structure.py:2872: EncodingWarning: We strongly encourage explicit `encoding`, and we would use UTF-8 by default as per PEP 686
+  with zopen(filename, "rt", errors="replace") as f:
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/io/cif.py:1221: UserWarning: Issues encountered while parsing CIF: 18 fractional coordinates rounded to ideal values to avoid issues with finite precision.
+  warnings.warn("Issues encountered while parsing CIF: " + "\n".join(self.warnings))
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/rmc.py:62: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load("mattersim-v1.0.0-5M.pth", map_location=device)
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/core/structure.py:2872: EncodingWarning: We strongly encourage explicit `encoding`, and we would use UTF-8 by default as per PEP 686
+  with zopen(filename, "rt", errors="replace") as f:
+/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/io/cif.py:1221: UserWarning: Issues encountered while parsing CIF: 18 fractional coordinates rounded to ideal values to avoid issues with finite precision.
+  warnings.warn("Issues encountered while parsing CIF: " + "\n".join(self.warnings))
+/storage/home/hcoda1/7/hjiang378/MSP_PSO/scripts/rmc.py:122: UserWarning: Optimize has reached max steps: 26
+  optimized_state = ts.optimize(
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Initial energy: -52.05583953857422
+  *** New best: -55.9936 eV
+Iteration 10/1000: Ground Truth: -61.7105, Best: -55.9936, Current: -54.5931, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -60.4534 eV
+Iteration 20/1000: Ground Truth: -61.7105, Best: -60.4534, Current: -59.6202, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -61.4603 eV
+Iteration 30/1000: Ground Truth: -61.7105, Best: -61.4603, Current: -60.6654, Acceptance: 66.67%, Time: 0.04 s
+  *** New best: -61.5179 eV
+Iteration 40/1000: Ground Truth: -61.7105, Best: -61.5179, Current: -61.1455, Acceptance: 62.50%, Time: 0.04 s
+  *** New best: -61.6268 eV
+Iteration 50/1000: Ground Truth: -61.7105, Best: -61.6268, Current: -59.9139, Acceptance: 64.00%, Time: 0.04 s
+Iteration 60/1000: Ground Truth: -61.7105, Best: -61.6268, Current: -60.8617, Acceptance: 66.67%, Time: 0.04 s
+Iteration 70/1000: Ground Truth: -61.7105, Best: -61.6268, Current: -60.9619, Acceptance: 65.71%, Time: 0.04 s
+  *** New best: -61.6462 eV
+Iteration 80/1000: Ground Truth: -61.7105, Best: -61.6462, Current: -60.5105, Acceptance: 68.75%, Time: 0.04 s
+  *** New best: -61.6587 eV
+Iteration 90/1000: Ground Truth: -61.7105, Best: -61.6587, Current: -60.4649, Acceptance: 71.11%, Time: 0.04 s
+Iteration 100/1000: Ground Truth: -61.7105, Best: -61.6587, Current: -58.7067, Acceptance: 71.00%, Time: 0.04 s
+Iteration 110/1000: Ground Truth: -61.7105, Best: -61.6587, Current: -59.0364, Acceptance: 72.73%, Time: 0.04 s
+Iteration 120/1000: Ground Truth: -61.7105, Best: -61.6587, Current: -58.3707, Acceptance: 72.50%, Time: 0.04 s
+Iteration 130/1000: Ground Truth: -61.7105, Best: -61.6587, Current: -60.5837, Acceptance: 71.54%, Time: 0.04 s
+Iteration 140/1000: Ground Truth: -61.7105, Best: -61.6587, Current: -60.0827, Acceptance: 70.71%, Time: 0.04 s
+Iteration 150/1000: Ground Truth: -61.7105, Best: -61.6587, Current: -60.9208, Acceptance: 71.33%, Time: 0.04 s
+Iteration 160/1000: Ground Truth: -61.7105, Best: -61.6587, Current: -60.4038, Acceptance: 71.88%, Time: 0.04 s
+Iteration 170/1000: Ground Truth: -61.7105, Best: -61.6587, Current: -60.7978, Acceptance: 72.94%, Time: 0.04 s
+  *** New best: -61.6668 eV
+Iteration 180/1000: Ground Truth: -61.7105, Best: -61.6668, Current: -58.9884, Acceptance: 72.22%, Time: 0.04 s
+Iteration 190/1000: Ground Truth: -61.7105, Best: -61.6668, Current: -60.9177, Acceptance: 72.63%, Time: 0.04 s
+Iteration 200/1000: Ground Truth: -61.7105, Best: -61.6668, Current: -61.1094, Acceptance: 72.50%, Time: 0.04 s
+  *** New best: -61.6842 eV
+Iteration 210/1000: Ground Truth: -61.7105, Best: -61.6842, Current: -59.0307, Acceptance: 71.90%, Time: 0.04 s
+Iteration 220/1000: Ground Truth: -61.7105, Best: -61.6842, Current: -59.6241, Acceptance: 72.73%, Time: 0.04 s
+Iteration 230/1000: Ground Truth: -61.7105, Best: -61.6842, Current: -60.4167, Acceptance: 73.04%, Time: 0.04 s
+Iteration 240/1000: Ground Truth: -61.7105, Best: -61.6842, Current: -60.2018, Acceptance: 72.08%, Time: 0.04 s
+  *** New best: -61.6853 eV
+Iteration 250/1000: Ground Truth: -61.7105, Best: -61.6853, Current: -59.4665, Acceptance: 72.00%, Time: 0.04 s
+Iteration 260/1000: Ground Truth: -61.7105, Best: -61.6853, Current: -59.9916, Acceptance: 71.92%, Time: 0.04 s
+Iteration 270/1000: Ground Truth: -61.7105, Best: -61.6853, Current: -59.9027, Acceptance: 72.22%, Time: 0.04 s
+Iteration 280/1000: Ground Truth: -61.7105, Best: -61.6853, Current: -59.3147, Acceptance: 72.50%, Time: 0.04 s
+Iteration 290/1000: Ground Truth: -61.7105, Best: -61.6853, Current: -60.7353, Acceptance: 72.07%, Time: 0.04 s
+Iteration 300/1000: Ground Truth: -61.7105, Best: -61.6853, Current: -60.1235, Acceptance: 71.67%, Time: 0.04 s
+Iteration 310/1000: Ground Truth: -61.7105, Best: -61.6853, Current: -60.5770, Acceptance: 70.65%, Time: 0.04 s
+Iteration 320/1000: Ground Truth: -61.7105, Best: -61.6853, Current: -59.4613, Acceptance: 70.94%, Time: 0.04 s
+Iteration 330/1000: Ground Truth: -61.7105, Best: -61.6853, Current: -61.0896, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -61.6938 eV
+Iteration 340/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -59.1778, Acceptance: 70.00%, Time: 0.04 s
+Iteration 350/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -60.3011, Acceptance: 70.00%, Time: 0.04 s
+Iteration 360/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -59.1639, Acceptance: 70.28%, Time: 0.04 s
+Iteration 370/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -58.2132, Acceptance: 70.00%, Time: 0.04 s
+Iteration 380/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -59.7227, Acceptance: 69.74%, Time: 0.04 s
+Iteration 390/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -60.1304, Acceptance: 70.51%, Time: 0.04 s
+Iteration 400/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -59.0323, Acceptance: 70.75%, Time: 0.04 s
+Iteration 410/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -60.3858, Acceptance: 70.49%, Time: 0.04 s
+Iteration 420/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -60.7695, Acceptance: 70.48%, Time: 0.04 s
+Iteration 430/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -60.9380, Acceptance: 70.47%, Time: 0.04 s
+Iteration 440/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -58.9350, Acceptance: 70.91%, Time: 0.04 s
+Iteration 450/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -58.8966, Acceptance: 71.33%, Time: 0.04 s
+Iteration 460/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -60.3217, Acceptance: 71.52%, Time: 0.04 s
+Iteration 470/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -59.9690, Acceptance: 71.49%, Time: 0.04 s
+Iteration 480/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -61.0726, Acceptance: 71.67%, Time: 0.04 s
+Iteration 490/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -58.2029, Acceptance: 72.04%, Time: 0.04 s
+Iteration 500/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -58.8876, Acceptance: 72.60%, Time: 0.04 s
+Iteration 510/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -59.7243, Acceptance: 72.55%, Time: 0.04 s
+Iteration 520/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -60.6777, Acceptance: 72.50%, Time: 0.04 s
+Iteration 530/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -59.5863, Acceptance: 72.45%, Time: 0.04 s
+Iteration 540/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -59.5042, Acceptance: 72.41%, Time: 0.04 s
+Iteration 550/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -59.3832, Acceptance: 72.73%, Time: 0.04 s
+Iteration 560/1000: Ground Truth: -61.7105, Best: -61.6938, Current: -61.4536, Acceptance: 71.96%, Time: 0.04 s
+  *** New best: -61.6949 eV
+Iteration 570/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -60.0084, Acceptance: 72.11%, Time: 0.04 s
+Iteration 580/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -60.0931, Acceptance: 72.07%, Time: 0.04 s
+Iteration 590/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -59.4047, Acceptance: 72.03%, Time: 0.04 s
+Iteration 600/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -59.8852, Acceptance: 72.00%, Time: 0.04 s
+Iteration 610/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -60.1838, Acceptance: 71.80%, Time: 0.04 s
+Iteration 620/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -59.7005, Acceptance: 71.61%, Time: 0.04 s
+Iteration 630/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -60.5242, Acceptance: 71.59%, Time: 0.04 s
+Iteration 640/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -58.6999, Acceptance: 71.72%, Time: 0.04 s
+Iteration 650/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -59.6886, Acceptance: 72.00%, Time: 0.04 s
+Iteration 660/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -60.8805, Acceptance: 72.12%, Time: 0.04 s
+Iteration 670/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -60.2227, Acceptance: 71.94%, Time: 0.04 s
+Iteration 680/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -60.3885, Acceptance: 71.62%, Time: 0.04 s
+Iteration 690/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -60.7931, Acceptance: 71.74%, Time: 0.04 s
+Iteration 700/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -59.4401, Acceptance: 71.86%, Time: 0.04 s
+Iteration 710/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -61.2670, Acceptance: 71.55%, Time: 0.04 s
+Iteration 720/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -60.2683, Acceptance: 71.67%, Time: 0.04 s
+Iteration 730/1000: Ground Truth: -61.7105, Best: -61.6949, Current: -60.8303, Acceptance: 71.64%, Time: 0.04 s
+  *** New best: -61.7016 eV
+Iteration 740/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.7837, Acceptance: 71.62%, Time: 0.04 s
+Iteration 750/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.7590, Acceptance: 71.73%, Time: 0.04 s
+Iteration 760/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -59.3890, Acceptance: 71.71%, Time: 0.04 s
+Iteration 770/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.5470, Acceptance: 71.82%, Time: 0.04 s
+Iteration 780/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -61.0023, Acceptance: 71.79%, Time: 0.04 s
+Iteration 790/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.6532, Acceptance: 71.90%, Time: 0.04 s
+Iteration 800/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -59.6426, Acceptance: 71.75%, Time: 0.04 s
+Iteration 810/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.5620, Acceptance: 71.73%, Time: 0.04 s
+Iteration 820/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -59.6985, Acceptance: 71.59%, Time: 0.04 s
+Iteration 830/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -59.2873, Acceptance: 71.81%, Time: 0.04 s
+Iteration 840/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.0266, Acceptance: 71.90%, Time: 0.04 s
+Iteration 850/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -58.4819, Acceptance: 72.00%, Time: 0.04 s
+Iteration 860/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.6849, Acceptance: 72.09%, Time: 0.04 s
+Iteration 870/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.7395, Acceptance: 71.72%, Time: 0.04 s
+Iteration 880/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.0266, Acceptance: 71.70%, Time: 0.04 s
+Iteration 890/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.6230, Acceptance: 71.57%, Time: 0.04 s
+Iteration 900/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.0527, Acceptance: 71.22%, Time: 0.04 s
+Iteration 910/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -59.7007, Acceptance: 71.21%, Time: 0.04 s
+Iteration 920/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -59.9518, Acceptance: 71.41%, Time: 0.04 s
+Iteration 930/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.9109, Acceptance: 71.29%, Time: 0.04 s
+Iteration 940/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -59.6019, Acceptance: 71.49%, Time: 0.04 s
+Iteration 950/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.2226, Acceptance: 71.47%, Time: 0.04 s
+Iteration 960/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -58.4007, Acceptance: 71.46%, Time: 0.04 s
+Iteration 970/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -60.4442, Acceptance: 71.34%, Time: 0.04 s
+Iteration 980/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -58.4526, Acceptance: 71.22%, Time: 0.04 s
+Iteration 990/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -58.4781, Acceptance: 71.41%, Time: 0.04 s
+Iteration 1000/1000: Ground Truth: -61.7105, Best: -61.7016, Current: -61.4963, Acceptance: 71.20%, Time: 0.04 s
+No match for mp-10777: RMSD = 3.025, ΔE = 0.009 eV
+mp-10777 match: False
+Initial energy: -129.44985961914062
+  *** New best: -138.9561 eV
+  *** New best: -139.4568 eV
+  *** New best: -139.5508 eV
+Iteration 10/1000: Ground Truth: -181.0849, Best: -139.5508, Current: -138.9427, Acceptance: 90.00%, Time: 0.04 s
+  *** New best: -165.1700 eV
+Iteration 20/1000: Ground Truth: -181.0849, Best: -165.1700, Current: -163.9373, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -166.5130 eV
+Iteration 30/1000: Ground Truth: -181.0849, Best: -166.5130, Current: -163.4404, Acceptance: 73.33%, Time: 0.04 s
+  *** New best: -168.4529 eV
+Iteration 40/1000: Ground Truth: -181.0849, Best: -168.4529, Current: -166.3539, Acceptance: 75.00%, Time: 0.04 s
+  *** New best: -169.0423 eV
+Iteration 50/1000: Ground Truth: -181.0849, Best: -169.0423, Current: -167.8834, Acceptance: 74.00%, Time: 0.04 s
+  *** New best: -169.3623 eV
+Iteration 60/1000: Ground Truth: -181.0849, Best: -169.3623, Current: -166.3628, Acceptance: 76.67%, Time: 0.04 s
+Iteration 70/1000: Ground Truth: -181.0849, Best: -169.3623, Current: -167.8445, Acceptance: 74.29%, Time: 0.04 s
+Iteration 80/1000: Ground Truth: -181.0849, Best: -169.3623, Current: -167.5885, Acceptance: 72.50%, Time: 0.04 s
+Iteration 90/1000: Ground Truth: -181.0849, Best: -169.3623, Current: -168.3922, Acceptance: 71.11%, Time: 0.04 s
+  *** New best: -169.6098 eV
+Iteration 100/1000: Ground Truth: -181.0849, Best: -169.6098, Current: -167.8254, Acceptance: 72.00%, Time: 0.04 s
+  *** New best: -169.6973 eV
+Iteration 110/1000: Ground Truth: -181.0849, Best: -169.6973, Current: -167.9507, Acceptance: 70.91%, Time: 0.04 s
+  *** New best: -169.7118 eV
+Iteration 120/1000: Ground Truth: -181.0849, Best: -169.7118, Current: -167.8794, Acceptance: 71.67%, Time: 0.04 s
+Iteration 130/1000: Ground Truth: -181.0849, Best: -169.7118, Current: -168.2676, Acceptance: 70.77%, Time: 0.04 s
+Iteration 140/1000: Ground Truth: -181.0849, Best: -169.7118, Current: -168.1752, Acceptance: 68.57%, Time: 0.04 s
+Iteration 150/1000: Ground Truth: -181.0849, Best: -169.7118, Current: -168.2812, Acceptance: 68.00%, Time: 0.04 s
+Iteration 160/1000: Ground Truth: -181.0849, Best: -169.7118, Current: -168.4360, Acceptance: 68.12%, Time: 0.04 s
+  *** New best: -169.8093 eV
+Iteration 170/1000: Ground Truth: -181.0849, Best: -169.8093, Current: -166.4007, Acceptance: 69.41%, Time: 0.04 s
+Iteration 180/1000: Ground Truth: -181.0849, Best: -169.8093, Current: -168.1982, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -169.9344 eV
+Iteration 190/1000: Ground Truth: -181.0849, Best: -169.9344, Current: -169.2852, Acceptance: 68.95%, Time: 0.04 s
+  *** New best: -170.0610 eV
+Iteration 200/1000: Ground Truth: -181.0849, Best: -170.0610, Current: -166.9899, Acceptance: 68.50%, Time: 0.04 s
+Iteration 210/1000: Ground Truth: -181.0849, Best: -170.0610, Current: -168.1856, Acceptance: 69.05%, Time: 0.04 s
+Iteration 220/1000: Ground Truth: -181.0849, Best: -170.0610, Current: -167.2501, Acceptance: 69.55%, Time: 0.04 s
+Iteration 230/1000: Ground Truth: -181.0849, Best: -170.0610, Current: -168.1373, Acceptance: 69.57%, Time: 0.04 s
+Iteration 240/1000: Ground Truth: -181.0849, Best: -170.0610, Current: -168.7779, Acceptance: 70.42%, Time: 0.04 s
+Iteration 250/1000: Ground Truth: -181.0849, Best: -170.0610, Current: -169.1446, Acceptance: 70.00%, Time: 0.04 s
+Iteration 260/1000: Ground Truth: -181.0849, Best: -170.0610, Current: -168.9028, Acceptance: 69.62%, Time: 0.04 s
+  *** New best: -170.0658 eV
+Iteration 270/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -169.3391, Acceptance: 68.89%, Time: 0.04 s
+Iteration 280/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.8243, Acceptance: 68.93%, Time: 0.04 s
+Iteration 290/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.9460, Acceptance: 69.66%, Time: 0.04 s
+Iteration 300/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.9945, Acceptance: 69.00%, Time: 0.04 s
+Iteration 310/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -169.3860, Acceptance: 68.39%, Time: 0.04 s
+Iteration 320/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.5566, Acceptance: 68.44%, Time: 0.04 s
+Iteration 330/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -169.1951, Acceptance: 67.58%, Time: 0.04 s
+Iteration 340/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.6093, Acceptance: 67.35%, Time: 0.04 s
+Iteration 350/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.6583, Acceptance: 67.71%, Time: 0.04 s
+Iteration 360/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -167.6573, Acceptance: 67.50%, Time: 0.04 s
+Iteration 370/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -167.9705, Acceptance: 67.57%, Time: 0.04 s
+Iteration 380/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -167.5411, Acceptance: 67.37%, Time: 0.04 s
+Iteration 390/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.4417, Acceptance: 67.18%, Time: 0.04 s
+Iteration 400/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -166.7249, Acceptance: 67.50%, Time: 0.04 s
+Iteration 410/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.8255, Acceptance: 67.07%, Time: 0.04 s
+Iteration 420/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.9631, Acceptance: 66.90%, Time: 0.04 s
+Iteration 430/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.7022, Acceptance: 66.28%, Time: 0.04 s
+Iteration 440/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -167.8385, Acceptance: 66.36%, Time: 0.04 s
+Iteration 450/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -169.2655, Acceptance: 65.78%, Time: 0.04 s
+Iteration 460/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -166.9623, Acceptance: 66.52%, Time: 0.04 s
+Iteration 470/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.0443, Acceptance: 66.38%, Time: 0.04 s
+Iteration 480/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -167.6920, Acceptance: 66.67%, Time: 0.04 s
+Iteration 490/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -166.7083, Acceptance: 66.53%, Time: 0.04 s
+Iteration 500/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -167.8156, Acceptance: 66.80%, Time: 0.04 s
+Iteration 510/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.1873, Acceptance: 67.06%, Time: 0.04 s
+Iteration 520/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.0518, Acceptance: 67.31%, Time: 0.04 s
+Iteration 530/1000: Ground Truth: -181.0849, Best: -170.0658, Current: -168.3133, Acceptance: 67.17%, Time: 0.04 s
+  *** New best: -170.1064 eV
+Iteration 540/1000: Ground Truth: -181.0849, Best: -170.1064, Current: -168.5298, Acceptance: 67.22%, Time: 0.04 s
+Iteration 550/1000: Ground Truth: -181.0849, Best: -170.1064, Current: -169.2588, Acceptance: 66.91%, Time: 0.04 s
+  *** New best: -170.1598 eV
+Iteration 560/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -168.0677, Acceptance: 66.79%, Time: 0.04 s
+Iteration 570/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -168.0365, Acceptance: 66.84%, Time: 0.04 s
+Iteration 580/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -168.5170, Acceptance: 66.72%, Time: 0.04 s
+Iteration 590/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -168.3879, Acceptance: 66.95%, Time: 0.04 s
+Iteration 600/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -169.5074, Acceptance: 66.83%, Time: 0.04 s
+Iteration 610/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -168.4660, Acceptance: 66.72%, Time: 0.04 s
+Iteration 620/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -168.8245, Acceptance: 66.77%, Time: 0.04 s
+Iteration 630/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -169.7356, Acceptance: 66.35%, Time: 0.04 s
+Iteration 640/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -168.6324, Acceptance: 66.56%, Time: 0.04 s
+Iteration 650/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -168.3634, Acceptance: 66.62%, Time: 0.04 s
+Iteration 660/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -167.6844, Acceptance: 66.82%, Time: 0.04 s
+Iteration 670/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -168.5586, Acceptance: 66.57%, Time: 0.04 s
+Iteration 680/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -169.5712, Acceptance: 66.47%, Time: 0.04 s
+Iteration 690/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -169.3294, Acceptance: 66.52%, Time: 0.04 s
+Iteration 700/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -169.4911, Acceptance: 66.43%, Time: 0.04 s
+Iteration 710/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -169.2643, Acceptance: 66.06%, Time: 0.04 s
+Iteration 720/1000: Ground Truth: -181.0849, Best: -170.1598, Current: -169.4546, Acceptance: 65.83%, Time: 0.04 s
+  *** New best: -170.1792 eV
+Iteration 730/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -169.0573, Acceptance: 65.75%, Time: 0.04 s
+Iteration 740/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -169.6212, Acceptance: 65.54%, Time: 0.04 s
+Iteration 750/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -168.9495, Acceptance: 65.47%, Time: 0.04 s
+Iteration 760/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -169.5803, Acceptance: 65.00%, Time: 0.04 s
+Iteration 770/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -168.8878, Acceptance: 65.06%, Time: 0.04 s
+Iteration 780/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -168.1358, Acceptance: 65.38%, Time: 0.04 s
+Iteration 790/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -166.6709, Acceptance: 65.70%, Time: 0.04 s
+Iteration 800/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -169.5283, Acceptance: 65.25%, Time: 0.04 s
+Iteration 810/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -169.3262, Acceptance: 65.19%, Time: 0.04 s
+Iteration 820/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -169.1189, Acceptance: 65.00%, Time: 0.04 s
+Iteration 830/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -167.8723, Acceptance: 65.30%, Time: 0.04 s
+Iteration 840/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -167.7492, Acceptance: 65.36%, Time: 0.04 s
+Iteration 850/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -168.8065, Acceptance: 65.29%, Time: 0.04 s
+Iteration 860/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -168.6744, Acceptance: 65.12%, Time: 0.04 s
+Iteration 870/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -168.4069, Acceptance: 65.29%, Time: 0.04 s
+Iteration 880/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -168.2965, Acceptance: 65.23%, Time: 0.04 s
+Iteration 890/1000: Ground Truth: -181.0849, Best: -170.1792, Current: -169.9200, Acceptance: 64.94%, Time: 0.04 s
+  *** New best: -170.1916 eV
+Iteration 900/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -168.9038, Acceptance: 65.00%, Time: 0.04 s
+Iteration 910/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -167.4213, Acceptance: 65.16%, Time: 0.04 s
+Iteration 920/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -166.0345, Acceptance: 65.33%, Time: 0.04 s
+Iteration 930/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -168.7216, Acceptance: 65.38%, Time: 0.04 s
+Iteration 940/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -167.9950, Acceptance: 65.32%, Time: 0.04 s
+Iteration 950/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -168.6304, Acceptance: 65.37%, Time: 0.04 s
+Iteration 960/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -167.8992, Acceptance: 65.31%, Time: 0.04 s
+Iteration 970/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -168.7320, Acceptance: 65.15%, Time: 0.04 s
+Iteration 980/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -168.4536, Acceptance: 65.20%, Time: 0.04 s
+Iteration 990/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -167.9951, Acceptance: 65.25%, Time: 0.04 s
+Iteration 1000/1000: Ground Truth: -181.0849, Best: -170.1916, Current: -168.8344, Acceptance: 65.20%, Time: 0.04 s
+No match for mp-1111856: RMSD = 4.391, ΔE = 10.893 eV
+mp-1111856 match: False
+Initial energy: -44.119258880615234
+  *** New best: -48.0297 eV
+Iteration 10/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.1368, Acceptance: 60.00%, Time: 0.04 s
+Iteration 20/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.1722, Acceptance: 60.00%, Time: 0.04 s
+Iteration 30/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.9411, Acceptance: 66.67%, Time: 0.04 s
+Iteration 40/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.5068, Acceptance: 65.00%, Time: 0.04 s
+Iteration 50/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.0179, Acceptance: 64.00%, Time: 0.04 s
+Iteration 60/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.7494, Acceptance: 68.33%, Time: 0.04 s
+Iteration 70/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -44.4076, Acceptance: 70.00%, Time: 0.04 s
+Iteration 80/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.8910, Acceptance: 68.75%, Time: 0.04 s
+Iteration 90/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.4872, Acceptance: 70.00%, Time: 0.04 s
+Iteration 100/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.3087, Acceptance: 69.00%, Time: 0.04 s
+Iteration 110/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.8013, Acceptance: 67.27%, Time: 0.04 s
+Iteration 120/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.7914, Acceptance: 68.33%, Time: 0.04 s
+Iteration 130/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.2603, Acceptance: 69.23%, Time: 0.04 s
+Iteration 140/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.4516, Acceptance: 69.29%, Time: 0.04 s
+Iteration 150/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.6375, Acceptance: 69.33%, Time: 0.04 s
+Iteration 160/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.4420, Acceptance: 69.38%, Time: 0.04 s
+Iteration 170/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.9695, Acceptance: 69.41%, Time: 0.04 s
+Iteration 180/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.7564, Acceptance: 69.44%, Time: 0.04 s
+Iteration 190/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.3375, Acceptance: 69.47%, Time: 0.04 s
+Iteration 200/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.0771, Acceptance: 69.50%, Time: 0.04 s
+Iteration 210/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.0023, Acceptance: 70.48%, Time: 0.04 s
+Iteration 220/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -44.3991, Acceptance: 70.45%, Time: 0.04 s
+Iteration 230/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.4801, Acceptance: 70.43%, Time: 0.04 s
+Iteration 240/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.8622, Acceptance: 71.25%, Time: 0.04 s
+Iteration 250/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.6898, Acceptance: 70.80%, Time: 0.04 s
+Iteration 260/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.3427, Acceptance: 70.38%, Time: 0.04 s
+Iteration 270/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.2218, Acceptance: 70.37%, Time: 0.04 s
+Iteration 280/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.4079, Acceptance: 70.36%, Time: 0.04 s
+Iteration 290/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.9319, Acceptance: 69.66%, Time: 0.04 s
+Iteration 300/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.3166, Acceptance: 70.00%, Time: 0.04 s
+Iteration 310/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.8989, Acceptance: 70.32%, Time: 0.04 s
+Iteration 320/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.0398, Acceptance: 69.38%, Time: 0.04 s
+Iteration 330/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.1886, Acceptance: 69.39%, Time: 0.04 s
+Iteration 340/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.6560, Acceptance: 69.71%, Time: 0.04 s
+Iteration 350/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -44.5119, Acceptance: 70.00%, Time: 0.04 s
+Iteration 360/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.2896, Acceptance: 70.28%, Time: 0.04 s
+Iteration 370/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.2021, Acceptance: 70.27%, Time: 0.04 s
+Iteration 380/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.4778, Acceptance: 70.26%, Time: 0.04 s
+Iteration 390/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.7267, Acceptance: 70.77%, Time: 0.04 s
+Iteration 400/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.3002, Acceptance: 70.50%, Time: 0.04 s
+Iteration 410/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.7486, Acceptance: 70.98%, Time: 0.04 s
+Iteration 420/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.6240, Acceptance: 71.19%, Time: 0.04 s
+Iteration 430/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.9654, Acceptance: 71.40%, Time: 0.04 s
+Iteration 440/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.0390, Acceptance: 71.36%, Time: 0.04 s
+Iteration 450/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.8422, Acceptance: 71.56%, Time: 0.04 s
+Iteration 460/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.2027, Acceptance: 71.74%, Time: 0.04 s
+Iteration 470/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -43.6630, Acceptance: 72.13%, Time: 0.04 s
+Iteration 480/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.7860, Acceptance: 72.08%, Time: 0.04 s
+Iteration 490/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.3415, Acceptance: 72.04%, Time: 0.04 s
+Iteration 500/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.2333, Acceptance: 71.80%, Time: 0.04 s
+Iteration 510/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.6398, Acceptance: 71.76%, Time: 0.04 s
+Iteration 520/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.7331, Acceptance: 71.92%, Time: 0.04 s
+Iteration 530/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.8955, Acceptance: 71.70%, Time: 0.04 s
+Iteration 540/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.3352, Acceptance: 71.48%, Time: 0.04 s
+Iteration 550/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.9888, Acceptance: 71.64%, Time: 0.04 s
+Iteration 560/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.2773, Acceptance: 72.14%, Time: 0.04 s
+Iteration 570/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.2493, Acceptance: 72.46%, Time: 0.04 s
+Iteration 580/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.1147, Acceptance: 72.59%, Time: 0.04 s
+Iteration 590/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.7792, Acceptance: 72.37%, Time: 0.04 s
+Iteration 600/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.5153, Acceptance: 72.17%, Time: 0.04 s
+Iteration 610/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.5399, Acceptance: 71.80%, Time: 0.04 s
+Iteration 620/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.2173, Acceptance: 71.45%, Time: 0.04 s
+Iteration 630/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.8079, Acceptance: 71.27%, Time: 0.04 s
+Iteration 640/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.6651, Acceptance: 71.41%, Time: 0.04 s
+Iteration 650/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.1042, Acceptance: 71.69%, Time: 0.04 s
+Iteration 660/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.5028, Acceptance: 71.67%, Time: 0.04 s
+Iteration 670/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.0429, Acceptance: 71.64%, Time: 0.04 s
+Iteration 680/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.0201, Acceptance: 71.47%, Time: 0.04 s
+Iteration 690/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.9382, Acceptance: 71.45%, Time: 0.04 s
+Iteration 700/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.5861, Acceptance: 71.71%, Time: 0.04 s
+Iteration 710/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.4002, Acceptance: 71.83%, Time: 0.04 s
+Iteration 720/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.5471, Acceptance: 71.67%, Time: 0.04 s
+Iteration 730/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.5885, Acceptance: 71.64%, Time: 0.04 s
+Iteration 740/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.2566, Acceptance: 71.89%, Time: 0.04 s
+Iteration 750/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.6557, Acceptance: 72.13%, Time: 0.04 s
+Iteration 760/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.2710, Acceptance: 72.11%, Time: 0.04 s
+Iteration 770/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.6620, Acceptance: 72.21%, Time: 0.04 s
+Iteration 780/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.8962, Acceptance: 71.92%, Time: 0.04 s
+Iteration 790/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.8038, Acceptance: 72.03%, Time: 0.04 s
+Iteration 800/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.9107, Acceptance: 72.12%, Time: 0.04 s
+Iteration 810/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.6025, Acceptance: 72.10%, Time: 0.04 s
+Iteration 820/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.2032, Acceptance: 72.32%, Time: 0.04 s
+Iteration 830/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.8114, Acceptance: 72.29%, Time: 0.04 s
+Iteration 840/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.5360, Acceptance: 72.26%, Time: 0.04 s
+Iteration 850/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -44.3968, Acceptance: 72.12%, Time: 0.04 s
+Iteration 860/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.4604, Acceptance: 72.21%, Time: 0.04 s
+Iteration 870/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.2139, Acceptance: 72.07%, Time: 0.04 s
+Iteration 880/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.0876, Acceptance: 72.16%, Time: 0.04 s
+Iteration 890/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.4153, Acceptance: 71.80%, Time: 0.04 s
+Iteration 900/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.9662, Acceptance: 71.78%, Time: 0.04 s
+Iteration 910/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.4508, Acceptance: 71.98%, Time: 0.04 s
+Iteration 920/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.6589, Acceptance: 71.96%, Time: 0.04 s
+Iteration 930/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.9190, Acceptance: 72.04%, Time: 0.04 s
+Iteration 940/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.9331, Acceptance: 72.23%, Time: 0.04 s
+Iteration 950/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -44.7883, Acceptance: 72.11%, Time: 0.04 s
+Iteration 960/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.5552, Acceptance: 71.88%, Time: 0.04 s
+Iteration 970/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -45.9044, Acceptance: 71.96%, Time: 0.04 s
+Iteration 980/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.0437, Acceptance: 71.84%, Time: 0.04 s
+Iteration 990/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -47.0391, Acceptance: 71.82%, Time: 0.04 s
+Iteration 1000/1000: Ground Truth: -47.9830, Best: -48.0297, Current: -46.3355, Acceptance: 71.90%, Time: 0.04 s
+Lower energy for mp-1186602: RMSD = 2.837, ΔE = 0.047 eV
+mp-1186602 match: True
+Initial energy: -47.29734802246094
+  *** New best: -51.5758 eV
+Iteration 10/1000: Ground Truth: -57.7795, Best: -51.5758, Current: -51.1230, Acceptance: 80.00%, Time: 0.04 s
+  *** New best: -51.5912 eV
+Iteration 20/1000: Ground Truth: -57.7795, Best: -51.5912, Current: -50.6422, Acceptance: 70.00%, Time: 0.04 s
+Iteration 30/1000: Ground Truth: -57.7795, Best: -51.5912, Current: -48.7581, Acceptance: 76.67%, Time: 0.04 s
+  *** New best: -51.9477 eV
+Iteration 40/1000: Ground Truth: -57.7795, Best: -51.9477, Current: -50.2248, Acceptance: 77.50%, Time: 0.04 s
+  *** New best: -56.0744 eV
+Iteration 50/1000: Ground Truth: -57.7795, Best: -56.0744, Current: -54.0736, Acceptance: 80.00%, Time: 0.04 s
+  *** New best: -57.6355 eV
+Iteration 60/1000: Ground Truth: -57.7795, Best: -57.6355, Current: -56.1624, Acceptance: 80.00%, Time: 0.04 s
+  *** New best: -57.7666 eV
+Iteration 70/1000: Ground Truth: -57.7795, Best: -57.7666, Current: -55.9620, Acceptance: 78.57%, Time: 0.04 s
+Iteration 80/1000: Ground Truth: -57.7795, Best: -57.7666, Current: -55.8797, Acceptance: 75.00%, Time: 0.04 s
+Iteration 90/1000: Ground Truth: -57.7795, Best: -57.7666, Current: -56.7094, Acceptance: 73.33%, Time: 0.04 s
+Iteration 100/1000: Ground Truth: -57.7795, Best: -57.7666, Current: -55.4083, Acceptance: 74.00%, Time: 0.04 s
+Iteration 110/1000: Ground Truth: -57.7795, Best: -57.7666, Current: -57.3037, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -57.7720 eV
+Iteration 120/1000: Ground Truth: -57.7795, Best: -57.7720, Current: -54.7593, Acceptance: 70.83%, Time: 0.04 s
+Iteration 130/1000: Ground Truth: -57.7795, Best: -57.7720, Current: -57.5274, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -57.7745 eV
+Iteration 140/1000: Ground Truth: -57.7795, Best: -57.7745, Current: -55.1846, Acceptance: 71.43%, Time: 0.04 s
+Iteration 150/1000: Ground Truth: -57.7795, Best: -57.7745, Current: -56.4185, Acceptance: 72.00%, Time: 0.04 s
+Iteration 160/1000: Ground Truth: -57.7795, Best: -57.7745, Current: -56.6525, Acceptance: 71.25%, Time: 0.04 s
+Iteration 170/1000: Ground Truth: -57.7795, Best: -57.7745, Current: -55.4579, Acceptance: 70.00%, Time: 0.04 s
+Iteration 180/1000: Ground Truth: -57.7795, Best: -57.7745, Current: -57.3961, Acceptance: 68.33%, Time: 0.04 s
+  *** New best: -57.7791 eV
+Iteration 190/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.2158, Acceptance: 66.84%, Time: 0.04 s
+Iteration 200/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.5768, Acceptance: 67.00%, Time: 0.04 s
+Iteration 210/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -54.7228, Acceptance: 68.10%, Time: 0.04 s
+Iteration 220/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.3256, Acceptance: 68.18%, Time: 0.04 s
+Iteration 230/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.7769, Acceptance: 67.83%, Time: 0.04 s
+Iteration 240/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.4622, Acceptance: 67.50%, Time: 0.04 s
+Iteration 250/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.8689, Acceptance: 66.40%, Time: 0.04 s
+Iteration 260/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -53.5594, Acceptance: 66.15%, Time: 0.04 s
+Iteration 270/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.2369, Acceptance: 65.19%, Time: 0.04 s
+Iteration 280/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.5740, Acceptance: 65.00%, Time: 0.04 s
+Iteration 290/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.8721, Acceptance: 64.48%, Time: 0.04 s
+Iteration 300/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -53.2279, Acceptance: 65.67%, Time: 0.04 s
+Iteration 310/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.2928, Acceptance: 64.84%, Time: 0.04 s
+Iteration 320/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.3689, Acceptance: 64.69%, Time: 0.04 s
+Iteration 330/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.5701, Acceptance: 64.24%, Time: 0.04 s
+Iteration 340/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.4401, Acceptance: 64.41%, Time: 0.04 s
+Iteration 350/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.3712, Acceptance: 64.86%, Time: 0.04 s
+Iteration 360/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.2435, Acceptance: 65.28%, Time: 0.04 s
+Iteration 370/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.5150, Acceptance: 65.14%, Time: 0.04 s
+Iteration 380/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.5509, Acceptance: 65.26%, Time: 0.04 s
+Iteration 390/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.1509, Acceptance: 65.13%, Time: 0.04 s
+Iteration 400/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.4376, Acceptance: 65.50%, Time: 0.04 s
+Iteration 410/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.4942, Acceptance: 65.61%, Time: 0.04 s
+Iteration 420/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.4249, Acceptance: 65.48%, Time: 0.04 s
+Iteration 430/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.4622, Acceptance: 65.35%, Time: 0.04 s
+Iteration 440/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -54.4315, Acceptance: 65.91%, Time: 0.04 s
+Iteration 450/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.6656, Acceptance: 65.33%, Time: 0.04 s
+Iteration 460/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.7346, Acceptance: 64.78%, Time: 0.04 s
+Iteration 470/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -54.3894, Acceptance: 65.11%, Time: 0.04 s
+Iteration 480/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.6192, Acceptance: 64.38%, Time: 0.04 s
+Iteration 490/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.8869, Acceptance: 64.08%, Time: 0.04 s
+Iteration 500/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -54.4743, Acceptance: 64.20%, Time: 0.04 s
+Iteration 510/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.6540, Acceptance: 64.31%, Time: 0.04 s
+Iteration 520/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -54.8309, Acceptance: 64.42%, Time: 0.04 s
+Iteration 530/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.5971, Acceptance: 64.34%, Time: 0.04 s
+Iteration 540/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.7722, Acceptance: 64.63%, Time: 0.04 s
+Iteration 550/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.7362, Acceptance: 64.91%, Time: 0.04 s
+Iteration 560/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.5744, Acceptance: 65.00%, Time: 0.04 s
+Iteration 570/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.7161, Acceptance: 64.74%, Time: 0.04 s
+Iteration 580/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.0552, Acceptance: 64.66%, Time: 0.04 s
+Iteration 590/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -54.4148, Acceptance: 64.92%, Time: 0.04 s
+Iteration 600/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.1191, Acceptance: 64.83%, Time: 0.04 s
+Iteration 610/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.1517, Acceptance: 64.75%, Time: 0.04 s
+Iteration 620/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.3643, Acceptance: 65.00%, Time: 0.04 s
+Iteration 630/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.3188, Acceptance: 64.92%, Time: 0.04 s
+Iteration 640/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.8454, Acceptance: 65.00%, Time: 0.04 s
+Iteration 650/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.4454, Acceptance: 65.23%, Time: 0.04 s
+Iteration 660/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.5667, Acceptance: 65.30%, Time: 0.04 s
+Iteration 670/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.2919, Acceptance: 65.07%, Time: 0.04 s
+Iteration 680/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.6513, Acceptance: 65.44%, Time: 0.04 s
+Iteration 690/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.2005, Acceptance: 65.07%, Time: 0.04 s
+Iteration 700/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.2961, Acceptance: 65.14%, Time: 0.04 s
+Iteration 710/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.7578, Acceptance: 65.35%, Time: 0.04 s
+Iteration 720/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.9025, Acceptance: 65.42%, Time: 0.04 s
+Iteration 730/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.6456, Acceptance: 65.62%, Time: 0.04 s
+Iteration 740/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.1015, Acceptance: 65.54%, Time: 0.04 s
+Iteration 750/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.6039, Acceptance: 65.87%, Time: 0.04 s
+Iteration 760/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.1901, Acceptance: 65.79%, Time: 0.04 s
+Iteration 770/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.2984, Acceptance: 65.84%, Time: 0.04 s
+Iteration 780/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.1391, Acceptance: 65.77%, Time: 0.04 s
+Iteration 790/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.7911, Acceptance: 65.95%, Time: 0.04 s
+Iteration 800/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.5123, Acceptance: 66.12%, Time: 0.04 s
+Iteration 810/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -55.3479, Acceptance: 65.93%, Time: 0.04 s
+Iteration 820/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.4927, Acceptance: 65.98%, Time: 0.04 s
+Iteration 830/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -56.7898, Acceptance: 65.90%, Time: 0.04 s
+Iteration 840/1000: Ground Truth: -57.7795, Best: -57.7791, Current: -57.4741, Acceptance: 65.71%, Time: 0.04 s
+  *** New best: -57.7803 eV
+Iteration 850/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -54.7341, Acceptance: 65.76%, Time: 0.04 s
+Iteration 860/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -55.2346, Acceptance: 65.81%, Time: 0.04 s
+Iteration 870/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -56.0401, Acceptance: 65.86%, Time: 0.04 s
+Iteration 880/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -55.5936, Acceptance: 65.91%, Time: 0.04 s
+Iteration 890/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -56.8605, Acceptance: 66.07%, Time: 0.04 s
+Iteration 900/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -54.8172, Acceptance: 66.22%, Time: 0.04 s
+Iteration 910/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -56.4290, Acceptance: 66.04%, Time: 0.04 s
+Iteration 920/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -55.9156, Acceptance: 66.09%, Time: 0.04 s
+Iteration 930/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -55.7534, Acceptance: 65.91%, Time: 0.04 s
+Iteration 940/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -57.2883, Acceptance: 65.74%, Time: 0.04 s
+Iteration 950/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -55.2629, Acceptance: 65.89%, Time: 0.04 s
+Iteration 960/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -55.5880, Acceptance: 65.94%, Time: 0.04 s
+Iteration 970/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -56.9157, Acceptance: 65.77%, Time: 0.04 s
+Iteration 980/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -56.0546, Acceptance: 65.82%, Time: 0.04 s
+Iteration 990/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -54.8853, Acceptance: 65.66%, Time: 0.04 s
+Iteration 1000/1000: Ground Truth: -57.7795, Best: -57.7803, Current: -54.7481, Acceptance: 65.70%, Time: 0.04 s
+Matched for mp-1205496: RMSD = 0.003, ΔE = 0.001 eV
+mp-1205496 match: True
+Initial energy: -56.700286865234375
+  *** New best: -65.1909 eV
+Iteration 10/1000: Ground Truth: -68.2887, Best: -65.1909, Current: -64.6785, Acceptance: 50.00%, Time: 0.04 s
+  *** New best: -66.5838 eV
+Iteration 20/1000: Ground Truth: -68.2887, Best: -66.5838, Current: -63.4487, Acceptance: 45.00%, Time: 0.04 s
+  *** New best: -66.6099 eV
+Iteration 30/1000: Ground Truth: -68.2887, Best: -66.6099, Current: -63.4402, Acceptance: 53.33%, Time: 0.04 s
+Iteration 40/1000: Ground Truth: -68.2887, Best: -66.6099, Current: -63.7447, Acceptance: 60.00%, Time: 0.04 s
+Iteration 50/1000: Ground Truth: -68.2887, Best: -66.6099, Current: -64.2196, Acceptance: 64.00%, Time: 0.04 s
+Iteration 60/1000: Ground Truth: -68.2887, Best: -66.6099, Current: -65.0742, Acceptance: 63.33%, Time: 0.04 s
+  *** New best: -66.6283 eV
+Iteration 70/1000: Ground Truth: -68.2887, Best: -66.6283, Current: -64.5822, Acceptance: 61.43%, Time: 0.04 s
+Iteration 80/1000: Ground Truth: -68.2887, Best: -66.6283, Current: -64.9947, Acceptance: 58.75%, Time: 0.04 s
+  *** New best: -66.6781 eV
+Iteration 90/1000: Ground Truth: -68.2887, Best: -66.6781, Current: -64.4744, Acceptance: 60.00%, Time: 0.04 s
+Iteration 100/1000: Ground Truth: -68.2887, Best: -66.6781, Current: -64.3925, Acceptance: 60.00%, Time: 0.04 s
+Iteration 110/1000: Ground Truth: -68.2887, Best: -66.6781, Current: -61.9975, Acceptance: 60.91%, Time: 0.04 s
+  *** New best: -66.6878 eV
+Iteration 120/1000: Ground Truth: -68.2887, Best: -66.6878, Current: -66.1839, Acceptance: 58.33%, Time: 0.04 s
+  *** New best: -66.7372 eV
+Iteration 130/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.1975, Acceptance: 58.46%, Time: 0.04 s
+Iteration 140/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.3693, Acceptance: 59.29%, Time: 0.04 s
+Iteration 150/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.9124, Acceptance: 59.33%, Time: 0.04 s
+Iteration 160/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -63.0459, Acceptance: 58.75%, Time: 0.04 s
+Iteration 170/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.0926, Acceptance: 58.24%, Time: 0.04 s
+Iteration 180/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -66.0444, Acceptance: 57.22%, Time: 0.04 s
+Iteration 190/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.5059, Acceptance: 57.89%, Time: 0.04 s
+Iteration 200/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.2202, Acceptance: 60.00%, Time: 0.04 s
+Iteration 210/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.5533, Acceptance: 59.05%, Time: 0.04 s
+Iteration 220/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.7009, Acceptance: 57.27%, Time: 0.04 s/storage/home/hcoda1/7/hjiang378/conda_envs/torchsim/lib/python3.11/site-packages/pymatgen/io/cif.py:1221: UserWarning: Issues encountered while parsing CIF: 4 fractional coordinates rounded to ideal values to avoid issues with finite precision.
+  warnings.warn("Issues encountered while parsing CIF: " + "\n".join(self.warnings))
+
+Iteration 230/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.8871, Acceptance: 56.09%, Time: 0.04 s
+Iteration 240/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -63.8150, Acceptance: 57.08%, Time: 0.04 s
+Iteration 250/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -66.0261, Acceptance: 56.80%, Time: 0.04 s
+Iteration 260/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.4986, Acceptance: 55.77%, Time: 0.04 s
+Iteration 270/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -66.1980, Acceptance: 55.19%, Time: 0.04 s
+Iteration 280/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.5342, Acceptance: 55.71%, Time: 0.04 s
+Iteration 290/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.3183, Acceptance: 56.55%, Time: 0.04 s
+Iteration 300/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.2414, Acceptance: 56.67%, Time: 0.04 s
+Iteration 310/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -66.3919, Acceptance: 56.77%, Time: 0.04 s
+Iteration 320/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.1273, Acceptance: 57.50%, Time: 0.04 s
+Iteration 330/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.7965, Acceptance: 56.67%, Time: 0.04 s
+Iteration 340/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -63.6226, Acceptance: 56.76%, Time: 0.04 s
+Iteration 350/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.3132, Acceptance: 56.86%, Time: 0.04 s
+Iteration 360/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.1654, Acceptance: 57.22%, Time: 0.04 s
+Iteration 370/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -66.1658, Acceptance: 57.03%, Time: 0.04 s
+Iteration 380/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.9902, Acceptance: 56.84%, Time: 0.04 s
+Iteration 390/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.9572, Acceptance: 56.92%, Time: 0.04 s
+Iteration 400/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.4370, Acceptance: 56.75%, Time: 0.04 s
+Iteration 410/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.1001, Acceptance: 56.83%, Time: 0.04 s
+Iteration 420/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.5232, Acceptance: 57.14%, Time: 0.04 s
+Iteration 430/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -63.8087, Acceptance: 57.91%, Time: 0.04 s
+Iteration 440/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -66.5139, Acceptance: 57.73%, Time: 0.04 s
+Iteration 450/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.1317, Acceptance: 57.78%, Time: 0.04 s
+Iteration 460/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.3634, Acceptance: 58.04%, Time: 0.04 s
+Iteration 470/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -60.8201, Acceptance: 58.30%, Time: 0.04 s
+Iteration 480/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.8610, Acceptance: 57.92%, Time: 0.04 s
+Iteration 490/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -63.8516, Acceptance: 57.76%, Time: 0.04 s
+Iteration 500/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.8814, Acceptance: 57.60%, Time: 0.04 s
+Iteration 510/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.9774, Acceptance: 57.45%, Time: 0.04 s
+Iteration 520/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.9869, Acceptance: 57.31%, Time: 0.04 s
+Iteration 530/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.7810, Acceptance: 57.17%, Time: 0.04 s
+Iteration 540/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.0290, Acceptance: 57.22%, Time: 0.04 s
+Iteration 550/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.2256, Acceptance: 56.73%, Time: 0.04 s
+Iteration 560/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -66.3878, Acceptance: 56.07%, Time: 0.04 s
+Iteration 570/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.7826, Acceptance: 55.96%, Time: 0.04 s
+Iteration 580/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -62.8252, Acceptance: 56.55%, Time: 0.04 s
+Iteration 590/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -64.3758, Acceptance: 56.27%, Time: 0.04 s
+Iteration 600/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -65.2583, Acceptance: 56.17%, Time: 0.04 s
+Iteration 610/1000: Ground Truth: -68.2887, Best: -66.7372, Current: -66.5362, Acceptance: 56.23%, Time: 0.04 s
+  *** New best: -66.7407 eV
+Iteration 620/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -62.8664, Acceptance: 56.13%, Time: 0.04 s
+Iteration 630/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.3167, Acceptance: 55.56%, Time: 0.04 s
+Iteration 640/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -65.1189, Acceptance: 55.47%, Time: 0.04 s
+Iteration 650/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -61.5691, Acceptance: 55.38%, Time: 0.04 s
+Iteration 660/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -65.0134, Acceptance: 55.30%, Time: 0.04 s
+Iteration 670/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -65.2916, Acceptance: 55.07%, Time: 0.04 s
+Iteration 680/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.3879, Acceptance: 54.71%, Time: 0.04 s
+Iteration 690/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -65.9935, Acceptance: 55.07%, Time: 0.04 s
+Iteration 700/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -64.9253, Acceptance: 55.29%, Time: 0.04 s
+Iteration 710/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -63.3171, Acceptance: 55.49%, Time: 0.04 s
+Iteration 720/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.4049, Acceptance: 55.69%, Time: 0.04 s
+Iteration 730/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -64.2077, Acceptance: 55.75%, Time: 0.04 s
+Iteration 740/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.5653, Acceptance: 55.41%, Time: 0.04 s
+Iteration 750/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.2739, Acceptance: 55.33%, Time: 0.04 s
+Iteration 760/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -64.7262, Acceptance: 55.26%, Time: 0.04 s
+Iteration 770/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -63.0831, Acceptance: 55.58%, Time: 0.04 s
+Iteration 780/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -64.9267, Acceptance: 55.51%, Time: 0.04 s
+Iteration 790/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -63.0588, Acceptance: 55.82%, Time: 0.04 s
+Iteration 800/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -61.9052, Acceptance: 55.75%, Time: 0.04 s
+Iteration 810/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -65.6589, Acceptance: 55.93%, Time: 0.04 s
+Iteration 820/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -65.9346, Acceptance: 55.73%, Time: 0.04 s
+Iteration 830/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -63.4001, Acceptance: 56.02%, Time: 0.04 s
+Iteration 840/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.2305, Acceptance: 55.71%, Time: 0.04 s
+Iteration 850/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -64.6662, Acceptance: 55.65%, Time: 0.04 s
+Iteration 860/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.0258, Acceptance: 55.70%, Time: 0.04 s
+Iteration 870/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -64.1722, Acceptance: 55.52%, Time: 0.04 s
+Iteration 880/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -63.0458, Acceptance: 55.45%, Time: 0.04 s
+Iteration 890/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -63.4392, Acceptance: 55.73%, Time: 0.04 s
+Iteration 900/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -63.5054, Acceptance: 55.89%, Time: 0.04 s
+Iteration 910/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -64.7685, Acceptance: 56.04%, Time: 0.04 s
+Iteration 920/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.0865, Acceptance: 56.20%, Time: 0.04 s
+Iteration 930/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -64.0247, Acceptance: 56.13%, Time: 0.04 s
+Iteration 940/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -64.0943, Acceptance: 56.17%, Time: 0.04 s
+Iteration 950/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.6056, Acceptance: 55.89%, Time: 0.04 s
+Iteration 960/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.3005, Acceptance: 55.52%, Time: 0.04 s
+Iteration 970/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -65.7524, Acceptance: 55.26%, Time: 0.04 s
+Iteration 980/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -64.3877, Acceptance: 55.71%, Time: 0.04 s
+Iteration 990/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.0888, Acceptance: 55.76%, Time: 0.04 s
+Iteration 1000/1000: Ground Truth: -68.2887, Best: -66.7407, Current: -66.3366, Acceptance: 55.60%, Time: 0.04 s
+No match for mp-1216599: RMSD = 2.311, ΔE = 1.548 eV
+mp-1216599 match: False
+Initial energy: -26.868865966796875
+  *** New best: -28.1153 eV
+Iteration 10/1000: Ground Truth: -28.1196, Best: -28.1153, Current: -27.4216, Acceptance: 90.00%, Time: 0.04 s
+Iteration 20/1000: Ground Truth: -28.1196, Best: -28.1153, Current: -26.2328, Acceptance: 90.00%, Time: 0.04 s
+Iteration 30/1000: Ground Truth: -28.1196, Best: -28.1153, Current: -27.4195, Acceptance: 90.00%, Time: 0.04 s
+Iteration 40/1000: Ground Truth: -28.1196, Best: -28.1153, Current: -27.7895, Acceptance: 90.00%, Time: 0.04 s
+Iteration 50/1000: Ground Truth: -28.1196, Best: -28.1153, Current: -27.7255, Acceptance: 90.00%, Time: 0.04 s
+Iteration 60/1000: Ground Truth: -28.1196, Best: -28.1153, Current: -27.9432, Acceptance: 91.67%, Time: 0.04 s
+  *** New best: -28.1154 eV
+Iteration 70/1000: Ground Truth: -28.1196, Best: -28.1154, Current: -27.6787, Acceptance: 91.43%, Time: 0.04 s
+Iteration 80/1000: Ground Truth: -28.1196, Best: -28.1154, Current: -27.3782, Acceptance: 92.50%, Time: 0.04 s
+Iteration 90/1000: Ground Truth: -28.1196, Best: -28.1154, Current: -27.5821, Acceptance: 90.00%, Time: 0.04 s
+Iteration 100/1000: Ground Truth: -28.1196, Best: -28.1154, Current: -27.9154, Acceptance: 90.00%, Time: 0.04 s
+Iteration 110/1000: Ground Truth: -28.1196, Best: -28.1154, Current: -27.7483, Acceptance: 89.09%, Time: 0.04 s
+  *** New best: -28.1159 eV
+  *** New best: -28.1161 eV
+Iteration 120/1000: Ground Truth: -28.1196, Best: -28.1161, Current: -27.5411, Acceptance: 86.67%, Time: 0.04 s
+Iteration 130/1000: Ground Truth: -28.1196, Best: -28.1161, Current: -27.3016, Acceptance: 86.92%, Time: 0.04 s
+Iteration 140/1000: Ground Truth: -28.1196, Best: -28.1161, Current: -27.6767, Acceptance: 87.14%, Time: 0.04 s
+Iteration 150/1000: Ground Truth: -28.1196, Best: -28.1161, Current: -27.1599, Acceptance: 87.33%, Time: 0.04 s
+Iteration 160/1000: Ground Truth: -28.1196, Best: -28.1161, Current: -27.9342, Acceptance: 86.88%, Time: 0.04 s
+Iteration 170/1000: Ground Truth: -28.1196, Best: -28.1161, Current: -26.8563, Acceptance: 87.65%, Time: 0.04 s
+Iteration 180/1000: Ground Truth: -28.1196, Best: -28.1161, Current: -27.8964, Acceptance: 87.78%, Time: 0.04 s
+Iteration 190/1000: Ground Truth: -28.1196, Best: -28.1161, Current: -27.4650, Acceptance: 88.42%, Time: 0.04 s
+Iteration 200/1000: Ground Truth: -28.1196, Best: -28.1161, Current: -27.7987, Acceptance: 88.50%, Time: 0.04 s
+Iteration 210/1000: Ground Truth: -28.1196, Best: -28.1161, Current: -28.0050, Acceptance: 88.57%, Time: 0.04 s
+  *** New best: -28.1185 eV
+Iteration 220/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -28.0042, Acceptance: 88.64%, Time: 0.04 s
+Iteration 230/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.4577, Acceptance: 88.70%, Time: 0.04 s
+Iteration 240/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.0509, Acceptance: 88.33%, Time: 0.04 s
+Iteration 250/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -25.1904, Acceptance: 88.80%, Time: 0.04 s
+Iteration 260/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.6203, Acceptance: 89.23%, Time: 0.04 s
+Iteration 270/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -24.6158, Acceptance: 88.15%, Time: 0.04 s
+Iteration 280/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.4747, Acceptance: 87.50%, Time: 0.04 s
+Iteration 290/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.2461, Acceptance: 87.24%, Time: 0.04 s
+Iteration 300/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.0334, Acceptance: 87.00%, Time: 0.04 s
+Iteration 310/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.4221, Acceptance: 87.10%, Time: 0.04 s
+Iteration 320/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.6969, Acceptance: 86.88%, Time: 0.04 s
+Iteration 330/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.4982, Acceptance: 87.27%, Time: 0.04 s
+Iteration 340/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.4866, Acceptance: 86.76%, Time: 0.04 s
+Iteration 350/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -28.0497, Acceptance: 86.86%, Time: 0.04 s
+Iteration 360/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.9829, Acceptance: 86.67%, Time: 0.04 s
+Iteration 370/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9315, Acceptance: 86.22%, Time: 0.04 s
+Iteration 380/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -28.0358, Acceptance: 86.32%, Time: 0.04 s
+Iteration 390/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.5167, Acceptance: 86.41%, Time: 0.04 s
+Iteration 400/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.6328, Acceptance: 86.25%, Time: 0.04 s
+Iteration 410/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.7088, Acceptance: 86.10%, Time: 0.04 s
+Iteration 420/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9986, Acceptance: 86.43%, Time: 0.04 s
+Iteration 430/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.1193, Acceptance: 86.51%, Time: 0.04 s
+Iteration 440/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9916, Acceptance: 86.82%, Time: 0.04 s
+Iteration 450/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.7796, Acceptance: 86.44%, Time: 0.04 s
+Iteration 460/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.5015, Acceptance: 86.52%, Time: 0.04 s
+Iteration 470/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.0067, Acceptance: 86.81%, Time: 0.04 s
+Iteration 480/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.1725, Acceptance: 86.67%, Time: 0.04 s
+Iteration 490/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.3191, Acceptance: 86.73%, Time: 0.04 s
+Iteration 500/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -28.0565, Acceptance: 86.80%, Time: 0.04 s
+Iteration 510/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9734, Acceptance: 87.06%, Time: 0.04 s
+Iteration 520/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.8966, Acceptance: 86.92%, Time: 0.04 s
+Iteration 530/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.8056, Acceptance: 86.98%, Time: 0.04 s
+Iteration 540/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.9828, Acceptance: 86.85%, Time: 0.00 s
+Iteration 550/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.5872, Acceptance: 87.09%, Time: 0.04 s
+Iteration 560/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.6394, Acceptance: 87.14%, Time: 0.04 s
+Iteration 570/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9364, Acceptance: 87.37%, Time: 0.04 s
+Iteration 580/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.3647, Acceptance: 87.59%, Time: 0.04 s
+Iteration 590/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.7353, Acceptance: 87.29%, Time: 0.04 s
+Iteration 600/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.4665, Acceptance: 87.50%, Time: 0.04 s
+Iteration 610/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.7746, Acceptance: 87.54%, Time: 0.04 s
+Iteration 620/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9614, Acceptance: 87.42%, Time: 0.04 s
+Iteration 630/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -28.0417, Acceptance: 87.46%, Time: 0.04 s
+Iteration 640/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.5687, Acceptance: 87.66%, Time: 0.04 s
+Iteration 650/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.6083, Acceptance: 87.69%, Time: 0.04 s
+Iteration 660/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.5707, Acceptance: 87.42%, Time: 0.04 s
+Iteration 670/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.7285, Acceptance: 87.31%, Time: 0.04 s
+Iteration 680/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -28.0379, Acceptance: 87.35%, Time: 0.04 s
+Iteration 690/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -28.0038, Acceptance: 87.25%, Time: 0.04 s
+Iteration 700/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.5796, Acceptance: 87.43%, Time: 0.04 s
+Iteration 710/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.8086, Acceptance: 87.61%, Time: 0.04 s
+Iteration 720/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.1853, Acceptance: 87.64%, Time: 0.04 s
+Iteration 730/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.2008, Acceptance: 87.53%, Time: 0.04 s
+Iteration 740/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -25.7922, Acceptance: 87.57%, Time: 0.04 s
+Iteration 750/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.4713, Acceptance: 87.07%, Time: 0.04 s
+Iteration 760/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.1885, Acceptance: 87.11%, Time: 0.04 s
+Iteration 770/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.6517, Acceptance: 87.27%, Time: 0.04 s
+Iteration 780/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.9635, Acceptance: 87.44%, Time: 0.04 s
+Iteration 790/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.4736, Acceptance: 87.34%, Time: 0.04 s
+Iteration 800/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.3959, Acceptance: 87.25%, Time: 0.04 s
+Iteration 810/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -25.9955, Acceptance: 87.28%, Time: 0.04 s
+Iteration 820/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.4760, Acceptance: 86.95%, Time: 0.04 s
+Iteration 830/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.0022, Acceptance: 86.87%, Time: 0.04 s
+Iteration 840/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.6292, Acceptance: 86.43%, Time: 0.04 s
+Iteration 850/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.3782, Acceptance: 86.35%, Time: 0.04 s
+Iteration 860/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9386, Acceptance: 86.28%, Time: 0.04 s
+Iteration 870/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9817, Acceptance: 85.86%, Time: 0.04 s
+Iteration 880/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9574, Acceptance: 85.57%, Time: 0.04 s
+Iteration 890/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.6519, Acceptance: 85.17%, Time: 0.04 s
+Iteration 900/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -28.1086, Acceptance: 84.89%, Time: 0.04 s
+Iteration 910/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9068, Acceptance: 84.62%, Time: 0.04 s
+Iteration 920/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.3663, Acceptance: 84.67%, Time: 0.04 s
+Iteration 930/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.7287, Acceptance: 84.62%, Time: 0.04 s
+Iteration 940/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.9318, Acceptance: 84.57%, Time: 0.04 s
+Iteration 950/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.1589, Acceptance: 84.21%, Time: 0.04 s
+Iteration 960/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9502, Acceptance: 83.96%, Time: 0.04 s
+Iteration 970/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -28.1011, Acceptance: 83.51%, Time: 0.04 s
+Iteration 980/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -26.7240, Acceptance: 83.37%, Time: 0.04 s
+Iteration 990/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.6619, Acceptance: 83.33%, Time: 0.04 s
+Iteration 1000/1000: Ground Truth: -28.1196, Best: -28.1185, Current: -27.9266, Acceptance: 83.20%, Time: 0.04 s
+Matched for mp-155: RMSD = 1.071, ΔE = 0.001 eV
+mp-155 match: True
+Initial energy: -46.17086410522461
+  *** New best: -48.6247 eV
+Iteration 10/1000: Ground Truth: -52.9499, Best: -48.6247, Current: -47.5190, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -48.7142 eV
+Iteration 20/1000: Ground Truth: -52.9499, Best: -48.7142, Current: -45.9029, Acceptance: 75.00%, Time: 0.04 s
+Iteration 30/1000: Ground Truth: -52.9499, Best: -48.7142, Current: -46.5641, Acceptance: 73.33%, Time: 0.04 s
+  *** New best: -50.1863 eV
+Iteration 40/1000: Ground Truth: -52.9499, Best: -50.1863, Current: -49.2413, Acceptance: 67.50%, Time: 0.04 s
+  *** New best: -52.7855 eV
+Iteration 50/1000: Ground Truth: -52.9499, Best: -52.7855, Current: -52.2418, Acceptance: 64.00%, Time: 0.04 s
+  *** New best: -52.8784 eV
+Iteration 60/1000: Ground Truth: -52.9499, Best: -52.8784, Current: -52.0908, Acceptance: 63.33%, Time: 0.04 s
+  *** New best: -52.9383 eV
+Iteration 70/1000: Ground Truth: -52.9499, Best: -52.9383, Current: -51.3709, Acceptance: 61.43%, Time: 0.04 s
+Iteration 80/1000: Ground Truth: -52.9499, Best: -52.9383, Current: -52.3754, Acceptance: 60.00%, Time: 0.04 s
+Iteration 90/1000: Ground Truth: -52.9499, Best: -52.9383, Current: -50.0135, Acceptance: 64.44%, Time: 0.04 s
+Iteration 100/1000: Ground Truth: -52.9499, Best: -52.9383, Current: -51.5529, Acceptance: 63.00%, Time: 0.04 s
+Iteration 110/1000: Ground Truth: -52.9499, Best: -52.9383, Current: -51.2892, Acceptance: 62.73%, Time: 0.04 s
+  *** New best: -52.9429 eV
+Iteration 120/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -50.9362, Acceptance: 62.50%, Time: 0.04 s
+Iteration 130/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -51.6232, Acceptance: 60.77%, Time: 0.04 s
+Iteration 140/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -50.2018, Acceptance: 59.29%, Time: 0.04 s
+Iteration 150/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -50.5968, Acceptance: 58.67%, Time: 0.04 s
+Iteration 160/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -51.9532, Acceptance: 59.38%, Time: 0.04 s
+Iteration 170/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -51.1082, Acceptance: 58.24%, Time: 0.04 s
+Iteration 180/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -50.4791, Acceptance: 58.89%, Time: 0.04 s
+Iteration 190/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -51.5427, Acceptance: 58.42%, Time: 0.04 s
+Iteration 200/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -50.9653, Acceptance: 58.00%, Time: 0.04 s
+Iteration 210/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -50.6086, Acceptance: 59.05%, Time: 0.04 s
+Iteration 220/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -50.9698, Acceptance: 59.55%, Time: 0.04 s
+Iteration 230/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -49.0965, Acceptance: 60.00%, Time: 0.04 s
+Iteration 240/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -49.6469, Acceptance: 60.83%, Time: 0.04 s
+Iteration 250/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -50.3590, Acceptance: 61.20%, Time: 0.04 s
+Iteration 260/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -51.2069, Acceptance: 61.15%, Time: 0.04 s
+Iteration 270/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -51.2837, Acceptance: 61.11%, Time: 0.04 s
+Iteration 280/1000: Ground Truth: -52.9499, Best: -52.9429, Current: -50.9534, Acceptance: 61.07%, Time: 0.04 s
+  *** New best: -52.9432 eV
+Iteration 290/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.3125, Acceptance: 61.03%, Time: 0.04 s
+Iteration 300/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.2413, Acceptance: 61.00%, Time: 0.04 s
+Iteration 310/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.0928, Acceptance: 61.61%, Time: 0.04 s
+Iteration 320/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.4567, Acceptance: 61.88%, Time: 0.04 s
+Iteration 330/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.5383, Acceptance: 60.91%, Time: 0.04 s
+Iteration 340/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.3120, Acceptance: 61.47%, Time: 0.04 s
+Iteration 350/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.8155, Acceptance: 61.43%, Time: 0.04 s
+Iteration 360/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.0841, Acceptance: 61.39%, Time: 0.04 s
+Iteration 370/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -44.5072, Acceptance: 62.16%, Time: 0.04 s
+Iteration 380/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.5532, Acceptance: 62.37%, Time: 0.04 s
+Iteration 390/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.1464, Acceptance: 62.56%, Time: 0.04 s
+Iteration 400/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.2138, Acceptance: 62.50%, Time: 0.04 s
+Iteration 410/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.1904, Acceptance: 62.44%, Time: 0.04 s
+Iteration 420/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.6080, Acceptance: 62.62%, Time: 0.04 s
+Iteration 430/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -48.5654, Acceptance: 63.02%, Time: 0.04 s
+Iteration 440/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -49.0073, Acceptance: 63.18%, Time: 0.04 s
+Iteration 450/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.2643, Acceptance: 62.67%, Time: 0.04 s
+Iteration 460/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.9143, Acceptance: 63.04%, Time: 0.04 s
+Iteration 470/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.8084, Acceptance: 62.98%, Time: 0.04 s
+Iteration 480/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -49.6047, Acceptance: 62.71%, Time: 0.04 s
+Iteration 490/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.9591, Acceptance: 62.45%, Time: 0.04 s
+Iteration 500/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.1722, Acceptance: 62.40%, Time: 0.04 s
+Iteration 510/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.3745, Acceptance: 62.35%, Time: 0.04 s
+Iteration 520/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.2320, Acceptance: 62.31%, Time: 0.04 s
+Iteration 530/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.5465, Acceptance: 62.26%, Time: 0.04 s
+Iteration 540/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -49.0908, Acceptance: 62.41%, Time: 0.04 s
+Iteration 550/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.7069, Acceptance: 62.55%, Time: 0.04 s
+Iteration 560/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.4200, Acceptance: 62.68%, Time: 0.04 s
+Iteration 570/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.4862, Acceptance: 62.63%, Time: 0.04 s
+Iteration 580/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.2105, Acceptance: 62.07%, Time: 0.04 s
+Iteration 590/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.7555, Acceptance: 62.20%, Time: 0.04 s
+Iteration 600/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.3118, Acceptance: 62.50%, Time: 0.04 s
+Iteration 610/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.6681, Acceptance: 62.30%, Time: 0.04 s
+Iteration 620/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.4318, Acceptance: 62.10%, Time: 0.04 s
+Iteration 630/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.5077, Acceptance: 61.75%, Time: 0.04 s
+Iteration 640/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.6830, Acceptance: 61.41%, Time: 0.04 s
+Iteration 650/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.2598, Acceptance: 61.69%, Time: 0.04 s
+Iteration 660/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.5476, Acceptance: 61.67%, Time: 0.04 s
+Iteration 670/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.8493, Acceptance: 61.94%, Time: 0.04 s
+Iteration 680/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.4329, Acceptance: 61.62%, Time: 0.04 s
+Iteration 690/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.2978, Acceptance: 61.88%, Time: 0.04 s
+Iteration 700/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.2592, Acceptance: 61.71%, Time: 0.04 s
+Iteration 710/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.3763, Acceptance: 61.55%, Time: 0.04 s
+Iteration 720/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -51.4891, Acceptance: 61.39%, Time: 0.04 s
+Iteration 730/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -50.3543, Acceptance: 61.37%, Time: 0.04 s
+Iteration 740/1000: Ground Truth: -52.9499, Best: -52.9432, Current: -52.7127, Acceptance: 61.08%, Time: 0.04 s
+  *** New best: -52.9440 eV
+Iteration 750/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -51.4137, Acceptance: 61.20%, Time: 0.04 s
+Iteration 760/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -50.2845, Acceptance: 61.32%, Time: 0.04 s
+Iteration 770/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -52.1471, Acceptance: 61.56%, Time: 0.04 s
+Iteration 780/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -52.0051, Acceptance: 61.67%, Time: 0.04 s
+Iteration 790/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -49.9421, Acceptance: 61.65%, Time: 0.04 s
+Iteration 800/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -51.6046, Acceptance: 61.38%, Time: 0.04 s
+Iteration 810/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -51.7381, Acceptance: 61.23%, Time: 0.04 s
+Iteration 820/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -50.7831, Acceptance: 61.10%, Time: 0.04 s
+Iteration 830/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -50.0917, Acceptance: 61.20%, Time: 0.04 s
+Iteration 840/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -51.2769, Acceptance: 61.19%, Time: 0.04 s
+Iteration 850/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -52.2509, Acceptance: 61.29%, Time: 0.04 s
+Iteration 860/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -51.5781, Acceptance: 61.40%, Time: 0.04 s
+Iteration 870/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -48.3154, Acceptance: 61.38%, Time: 0.04 s
+Iteration 880/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -51.1187, Acceptance: 61.59%, Time: 0.04 s
+Iteration 890/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -52.6802, Acceptance: 61.35%, Time: 0.04 s
+Iteration 900/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -49.6111, Acceptance: 61.33%, Time: 0.04 s
+Iteration 910/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -50.0766, Acceptance: 61.43%, Time: 0.04 s
+Iteration 920/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -51.5068, Acceptance: 61.52%, Time: 0.04 s
+Iteration 930/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -48.4513, Acceptance: 61.61%, Time: 0.04 s
+Iteration 940/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -52.4601, Acceptance: 61.60%, Time: 0.04 s
+Iteration 950/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -51.9558, Acceptance: 61.68%, Time: 0.04 s
+Iteration 960/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -52.5716, Acceptance: 61.56%, Time: 0.04 s
+Iteration 970/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -52.5672, Acceptance: 61.75%, Time: 0.04 s
+Iteration 980/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -50.9960, Acceptance: 61.73%, Time: 0.04 s
+Iteration 990/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -52.0072, Acceptance: 61.92%, Time: 0.04 s
+Iteration 1000/1000: Ground Truth: -52.9499, Best: -52.9440, Current: -51.0953, Acceptance: 61.80%, Time: 0.04 s
+Matched for mp-2014: RMSD = 0.001, ΔE = 0.006 eV
+mp-2014 match: True
+Initial energy: -116.76700592041016
+  *** New best: -142.9965 eV
+Iteration 10/1000: Ground Truth: -169.9668, Best: -142.9965, Current: -141.1431, Acceptance: 90.00%, Time: 0.04 s
+  *** New best: -147.7780 eV
+Iteration 20/1000: Ground Truth: -169.9668, Best: -147.7780, Current: -146.2229, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -149.4950 eV
+Iteration 30/1000: Ground Truth: -169.9668, Best: -149.4950, Current: -146.3618, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -149.9507 eV
+Iteration 40/1000: Ground Truth: -169.9668, Best: -149.9507, Current: -149.2375, Acceptance: 65.00%, Time: 0.04 s
+  *** New best: -151.5326 eV
+Iteration 50/1000: Ground Truth: -169.9668, Best: -151.5326, Current: -149.0454, Acceptance: 64.00%, Time: 0.04 s
+  *** New best: -152.8335 eV
+Iteration 60/1000: Ground Truth: -169.9668, Best: -152.8335, Current: -152.2729, Acceptance: 60.00%, Time: 0.04 s
+  *** New best: -153.4505 eV
+Iteration 70/1000: Ground Truth: -169.9668, Best: -153.4505, Current: -151.2969, Acceptance: 57.14%, Time: 0.04 s
+  *** New best: -153.8411 eV
+Iteration 80/1000: Ground Truth: -169.9668, Best: -153.8411, Current: -150.1341, Acceptance: 58.75%, Time: 0.04 s
+  *** New best: -155.6521 eV
+Iteration 90/1000: Ground Truth: -169.9668, Best: -155.6521, Current: -155.5314, Acceptance: 56.67%, Time: 0.04 s
+  *** New best: -157.8969 eV
+Iteration 100/1000: Ground Truth: -169.9668, Best: -157.8969, Current: -153.0708, Acceptance: 58.00%, Time: 0.04 s
+  *** New best: -158.1749 eV
+Iteration 110/1000: Ground Truth: -169.9668, Best: -158.1749, Current: -157.2964, Acceptance: 55.45%, Time: 0.04 s
+  *** New best: -159.9755 eV
+Iteration 120/1000: Ground Truth: -169.9668, Best: -159.9755, Current: -159.6714, Acceptance: 53.33%, Time: 0.04 s
+  *** New best: -160.1068 eV
+Iteration 130/1000: Ground Truth: -169.9668, Best: -160.1068, Current: -158.9389, Acceptance: 52.31%, Time: 0.04 s
+  *** New best: -160.1785 eV
+Iteration 140/1000: Ground Truth: -169.9668, Best: -160.1785, Current: -157.1216, Acceptance: 53.57%, Time: 0.04 s
+Iteration 150/1000: Ground Truth: -169.9668, Best: -160.1785, Current: -156.8916, Acceptance: 53.33%, Time: 0.04 s
+  *** New best: -160.5531 eV
+Iteration 160/1000: Ground Truth: -169.9668, Best: -160.5531, Current: -160.2674, Acceptance: 51.25%, Time: 0.04 s
+Iteration 170/1000: Ground Truth: -169.9668, Best: -160.5531, Current: -159.5143, Acceptance: 51.18%, Time: 0.04 s
+Iteration 180/1000: Ground Truth: -169.9668, Best: -160.5531, Current: -159.7553, Acceptance: 50.56%, Time: 0.04 s
+  *** New best: -160.6255 eV
+Iteration 190/1000: Ground Truth: -169.9668, Best: -160.6255, Current: -154.8395, Acceptance: 50.53%, Time: 0.04 s
+Iteration 200/1000: Ground Truth: -169.9668, Best: -160.6255, Current: -160.4187, Acceptance: 49.50%, Time: 0.04 s
+  *** New best: -160.7037 eV
+Iteration 210/1000: Ground Truth: -169.9668, Best: -160.7037, Current: -159.3269, Acceptance: 50.00%, Time: 0.04 s
+  *** New best: -160.8002 eV
+Iteration 220/1000: Ground Truth: -169.9668, Best: -160.8002, Current: -157.7337, Acceptance: 50.91%, Time: 0.04 s
+Iteration 230/1000: Ground Truth: -169.9668, Best: -160.8002, Current: -160.5843, Acceptance: 50.43%, Time: 0.04 s
+  *** New best: -160.8602 eV
+Iteration 240/1000: Ground Truth: -169.9668, Best: -160.8602, Current: -158.2366, Acceptance: 50.00%, Time: 0.04 s
+Iteration 250/1000: Ground Truth: -169.9668, Best: -160.8602, Current: -158.8962, Acceptance: 49.20%, Time: 0.04 s
+Iteration 260/1000: Ground Truth: -169.9668, Best: -160.8602, Current: -159.0957, Acceptance: 49.23%, Time: 0.04 s
+Iteration 270/1000: Ground Truth: -169.9668, Best: -160.8602, Current: -160.6930, Acceptance: 47.78%, Time: 0.04 s
+Iteration 280/1000: Ground Truth: -169.9668, Best: -160.8602, Current: -157.5736, Acceptance: 48.57%, Time: 0.04 s
+Iteration 290/1000: Ground Truth: -169.9668, Best: -160.8602, Current: -155.4564, Acceptance: 48.97%, Time: 0.04 s
+Iteration 300/1000: Ground Truth: -169.9668, Best: -160.8602, Current: -159.7738, Acceptance: 48.67%, Time: 0.04 s
+Iteration 310/1000: Ground Truth: -169.9668, Best: -160.8602, Current: -158.3257, Acceptance: 48.71%, Time: 0.04 s
+Iteration 320/1000: Ground Truth: -169.9668, Best: -160.8602, Current: -159.9358, Acceptance: 48.75%, Time: 0.04 s
+  *** New best: -160.9016 eV
+Iteration 330/1000: Ground Truth: -169.9668, Best: -160.9016, Current: -157.8101, Acceptance: 49.70%, Time: 0.04 s
+Iteration 340/1000: Ground Truth: -169.9668, Best: -160.9016, Current: -159.4237, Acceptance: 50.00%, Time: 0.04 s
+Iteration 350/1000: Ground Truth: -169.9668, Best: -160.9016, Current: -159.9090, Acceptance: 49.43%, Time: 0.04 s
+Iteration 360/1000: Ground Truth: -169.9668, Best: -160.9016, Current: -156.5540, Acceptance: 50.00%, Time: 0.04 s
+  *** New best: -160.9281 eV
+Iteration 370/1000: Ground Truth: -169.9668, Best: -160.9281, Current: -157.7045, Acceptance: 50.00%, Time: 0.04 s
+Iteration 380/1000: Ground Truth: -169.9668, Best: -160.9281, Current: -158.6402, Acceptance: 49.47%, Time: 0.04 s
+Iteration 390/1000: Ground Truth: -169.9668, Best: -160.9281, Current: -159.3355, Acceptance: 49.23%, Time: 0.04 s
+  *** New best: -161.0413 eV
+Iteration 400/1000: Ground Truth: -169.9668, Best: -161.0413, Current: -159.3827, Acceptance: 49.00%, Time: 0.04 s
+  *** New best: -161.1516 eV
+Iteration 410/1000: Ground Truth: -169.9668, Best: -161.1516, Current: -157.3871, Acceptance: 49.76%, Time: 0.04 s
+  *** New best: -161.1522 eV
+Iteration 420/1000: Ground Truth: -169.9668, Best: -161.1522, Current: -160.8808, Acceptance: 49.52%, Time: 0.04 s
+  *** New best: -161.2778 eV
+Iteration 430/1000: Ground Truth: -169.9668, Best: -161.2778, Current: -158.8565, Acceptance: 49.53%, Time: 0.04 s
+  *** New best: -161.3200 eV
+Iteration 440/1000: Ground Truth: -169.9668, Best: -161.3200, Current: -160.4519, Acceptance: 49.32%, Time: 0.04 s
+  *** New best: -161.3313 eV
+Iteration 450/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -158.7056, Acceptance: 49.56%, Time: 0.04 s
+Iteration 460/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -158.6637, Acceptance: 49.57%, Time: 0.04 s
+Iteration 470/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -160.1736, Acceptance: 49.57%, Time: 0.04 s
+Iteration 480/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -159.1858, Acceptance: 49.58%, Time: 0.04 s
+Iteration 490/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -158.7828, Acceptance: 49.59%, Time: 0.04 s
+Iteration 500/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -159.4269, Acceptance: 49.60%, Time: 0.04 s
+Iteration 510/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -158.9230, Acceptance: 49.22%, Time: 0.04 s
+Iteration 520/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -158.4331, Acceptance: 48.85%, Time: 0.04 s
+Iteration 530/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -157.7698, Acceptance: 49.25%, Time: 0.04 s
+Iteration 540/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -158.9267, Acceptance: 49.44%, Time: 0.04 s
+Iteration 550/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -160.4793, Acceptance: 49.27%, Time: 0.04 s
+Iteration 560/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -161.0450, Acceptance: 49.11%, Time: 0.04 s
+Iteration 570/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -159.7512, Acceptance: 49.12%, Time: 0.04 s
+Iteration 580/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -158.4378, Acceptance: 49.31%, Time: 0.04 s
+Iteration 590/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -157.1810, Acceptance: 49.32%, Time: 0.04 s
+Iteration 600/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -159.4898, Acceptance: 49.00%, Time: 0.04 s
+Iteration 610/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -161.1131, Acceptance: 48.69%, Time: 0.04 s
+Iteration 620/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -159.3719, Acceptance: 48.87%, Time: 0.04 s
+Iteration 630/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -159.7894, Acceptance: 48.89%, Time: 0.04 s
+Iteration 640/1000: Ground Truth: -169.9668, Best: -161.3313, Current: -158.6633, Acceptance: 48.75%, Time: 0.04 s
+  *** New best: -161.3559 eV
+Iteration 650/1000: Ground Truth: -169.9668, Best: -161.3559, Current: -160.7873, Acceptance: 48.46%, Time: 0.04 s
+  *** New best: -161.4171 eV
+Iteration 660/1000: Ground Truth: -169.9668, Best: -161.4171, Current: -160.7165, Acceptance: 48.33%, Time: 0.04 s
+  *** New best: -161.4258 eV
+Iteration 670/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -156.0449, Acceptance: 48.36%, Time: 0.04 s
+Iteration 680/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -159.2971, Acceptance: 48.68%, Time: 0.04 s
+Iteration 690/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.6039, Acceptance: 48.70%, Time: 0.04 s
+Iteration 700/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -161.1199, Acceptance: 48.71%, Time: 0.04 s
+Iteration 710/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -159.0008, Acceptance: 48.59%, Time: 0.04 s
+Iteration 720/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.0684, Acceptance: 48.47%, Time: 0.04 s
+Iteration 730/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -157.3526, Acceptance: 48.77%, Time: 0.04 s
+Iteration 740/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.8204, Acceptance: 48.78%, Time: 0.04 s
+Iteration 750/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.6924, Acceptance: 48.67%, Time: 0.04 s
+Iteration 760/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -159.9160, Acceptance: 48.68%, Time: 0.04 s
+Iteration 770/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.3156, Acceptance: 48.57%, Time: 0.04 s
+Iteration 780/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -158.4098, Acceptance: 48.59%, Time: 0.04 s
+Iteration 790/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -155.0596, Acceptance: 48.73%, Time: 0.04 s
+Iteration 800/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -157.5784, Acceptance: 49.00%, Time: 0.04 s
+Iteration 810/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.5515, Acceptance: 48.77%, Time: 0.04 s
+Iteration 820/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -159.8113, Acceptance: 48.66%, Time: 0.04 s
+Iteration 830/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.7785, Acceptance: 48.67%, Time: 0.04 s
+Iteration 840/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -156.0864, Acceptance: 49.05%, Time: 0.04 s
+Iteration 850/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.5175, Acceptance: 48.94%, Time: 0.04 s
+Iteration 860/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.6053, Acceptance: 48.95%, Time: 0.04 s
+Iteration 870/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -161.1676, Acceptance: 48.74%, Time: 0.04 s
+Iteration 880/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -159.6620, Acceptance: 48.98%, Time: 0.04 s
+Iteration 890/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.4140, Acceptance: 48.88%, Time: 0.04 s
+Iteration 900/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -158.7197, Acceptance: 49.00%, Time: 0.04 s
+Iteration 910/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.7940, Acceptance: 48.79%, Time: 0.04 s
+Iteration 920/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -159.5452, Acceptance: 48.80%, Time: 0.04 s
+Iteration 930/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -161.2327, Acceptance: 48.49%, Time: 0.04 s
+Iteration 940/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -161.1230, Acceptance: 48.51%, Time: 0.04 s
+Iteration 950/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.5634, Acceptance: 48.53%, Time: 0.04 s
+Iteration 960/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -159.2534, Acceptance: 48.54%, Time: 0.04 s
+Iteration 970/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -159.4660, Acceptance: 48.97%, Time: 0.04 s
+Iteration 980/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -160.4503, Acceptance: 48.88%, Time: 0.04 s
+Iteration 990/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -158.3668, Acceptance: 48.99%, Time: 0.04 s
+Iteration 1000/1000: Ground Truth: -169.9668, Best: -161.4258, Current: -161.0615, Acceptance: 48.70%, Time: 0.04 s
+No match for mp-7094: RMSD = 3.513, ΔE = 8.541 eV
+mp-7094 match: False
+Initial energy: -15.234261512756348
+  *** New best: -19.1754 eV
+Iteration 10/1000: Ground Truth: -20.2209, Best: -19.1754, Current: -19.0274, Acceptance: 60.00%, Time: 0.04 s
+  *** New best: -19.9145 eV
+Iteration 20/1000: Ground Truth: -20.2209, Best: -19.9145, Current: -18.0149, Acceptance: 55.00%, Time: 0.04 s
+  *** New best: -20.0638 eV
+Iteration 30/1000: Ground Truth: -20.2209, Best: -20.0638, Current: -19.4934, Acceptance: 63.33%, Time: 0.04 s
+  *** New best: -20.1039 eV
+Iteration 40/1000: Ground Truth: -20.2209, Best: -20.1039, Current: -18.6438, Acceptance: 67.50%, Time: 0.04 s
+Iteration 50/1000: Ground Truth: -20.2209, Best: -20.1039, Current: -19.1915, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -20.1067 eV
+Iteration 60/1000: Ground Truth: -20.2209, Best: -20.1067, Current: -19.7793, Acceptance: 68.33%, Time: 0.04 s
+Iteration 70/1000: Ground Truth: -20.2209, Best: -20.1067, Current: -19.3948, Acceptance: 67.14%, Time: 0.04 s
+Iteration 80/1000: Ground Truth: -20.2209, Best: -20.1067, Current: -18.9225, Acceptance: 70.00%, Time: 0.04 s
+Iteration 90/1000: Ground Truth: -20.2209, Best: -20.1067, Current: -17.1727, Acceptance: 72.22%, Time: 0.04 s
+Iteration 100/1000: Ground Truth: -20.2209, Best: -20.1067, Current: -19.4242, Acceptance: 74.00%, Time: 0.04 s
+Iteration 110/1000: Ground Truth: -20.2209, Best: -20.1067, Current: -19.8431, Acceptance: 72.73%, Time: 0.04 s
+Iteration 120/1000: Ground Truth: -20.2209, Best: -20.1067, Current: -19.1195, Acceptance: 72.50%, Time: 0.04 s
+  *** New best: -20.1402 eV
+Iteration 130/1000: Ground Truth: -20.2209, Best: -20.1402, Current: -19.0222, Acceptance: 72.31%, Time: 0.04 s
+Iteration 140/1000: Ground Truth: -20.2209, Best: -20.1402, Current: -18.9842, Acceptance: 72.14%, Time: 0.04 s
+Iteration 150/1000: Ground Truth: -20.2209, Best: -20.1402, Current: -19.8727, Acceptance: 73.33%, Time: 0.04 s
+Iteration 160/1000: Ground Truth: -20.2209, Best: -20.1402, Current: -19.5588, Acceptance: 73.12%, Time: 0.04 s
+  *** New best: -20.1523 eV
+Iteration 170/1000: Ground Truth: -20.2209, Best: -20.1523, Current: -17.1173, Acceptance: 71.76%, Time: 0.04 s
+Iteration 180/1000: Ground Truth: -20.2209, Best: -20.1523, Current: -18.5242, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -20.1531 eV
+Iteration 190/1000: Ground Truth: -20.2209, Best: -20.1531, Current: -19.7431, Acceptance: 70.00%, Time: 0.04 s
+  *** New best: -20.1605 eV
+Iteration 200/1000: Ground Truth: -20.2209, Best: -20.1605, Current: -19.3037, Acceptance: 71.00%, Time: 0.04 s
+Iteration 210/1000: Ground Truth: -20.2209, Best: -20.1605, Current: -18.4392, Acceptance: 70.95%, Time: 0.04 s
+  *** New best: -20.1632 eV
+Iteration 220/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -18.7852, Acceptance: 70.00%, Time: 0.04 s
+Iteration 230/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -18.5528, Acceptance: 70.87%, Time: 0.04 s
+Iteration 240/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.3728, Acceptance: 70.83%, Time: 0.04 s
+Iteration 250/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.9319, Acceptance: 70.00%, Time: 0.04 s
+Iteration 260/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.5232, Acceptance: 70.00%, Time: 0.04 s
+Iteration 270/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -16.8124, Acceptance: 70.00%, Time: 0.04 s
+Iteration 280/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -18.3950, Acceptance: 71.07%, Time: 0.04 s
+Iteration 290/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -17.9988, Acceptance: 70.34%, Time: 0.04 s
+Iteration 300/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -17.7258, Acceptance: 70.67%, Time: 0.04 s
+Iteration 310/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.3471, Acceptance: 70.97%, Time: 0.04 s
+Iteration 320/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.8560, Acceptance: 70.94%, Time: 0.04 s
+Iteration 330/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -18.1941, Acceptance: 71.52%, Time: 0.04 s
+Iteration 340/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.5670, Acceptance: 72.06%, Time: 0.04 s
+Iteration 350/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -18.8444, Acceptance: 72.29%, Time: 0.04 s
+Iteration 360/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.5193, Acceptance: 71.94%, Time: 0.04 s
+Iteration 370/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.8636, Acceptance: 71.62%, Time: 0.04 s
+Iteration 380/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.5934, Acceptance: 71.58%, Time: 0.04 s
+Iteration 390/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -17.6629, Acceptance: 72.05%, Time: 0.04 s
+Iteration 400/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -18.3847, Acceptance: 72.00%, Time: 0.04 s
+Iteration 410/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.4319, Acceptance: 72.20%, Time: 0.04 s
+Iteration 420/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.0357, Acceptance: 72.62%, Time: 0.04 s
+Iteration 430/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -18.5550, Acceptance: 73.02%, Time: 0.04 s
+Iteration 440/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.8937, Acceptance: 73.18%, Time: 0.04 s
+Iteration 450/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.0323, Acceptance: 73.11%, Time: 0.04 s
+Iteration 460/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.6343, Acceptance: 73.48%, Time: 0.04 s
+Iteration 470/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.3554, Acceptance: 73.40%, Time: 0.04 s
+Iteration 480/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.8191, Acceptance: 73.96%, Time: 0.04 s
+Iteration 490/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.3661, Acceptance: 74.08%, Time: 0.04 s
+Iteration 500/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -18.7513, Acceptance: 74.00%, Time: 0.04 s
+Iteration 510/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.1706, Acceptance: 73.92%, Time: 0.04 s
+Iteration 520/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.6506, Acceptance: 74.04%, Time: 0.04 s
+Iteration 530/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -16.5414, Acceptance: 74.15%, Time: 0.04 s
+Iteration 540/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -18.5063, Acceptance: 74.44%, Time: 0.04 s
+Iteration 550/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.7478, Acceptance: 74.36%, Time: 0.04 s
+Iteration 560/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.3383, Acceptance: 74.29%, Time: 0.04 s
+Iteration 570/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.6592, Acceptance: 74.39%, Time: 0.04 s
+Iteration 580/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -17.6872, Acceptance: 74.48%, Time: 0.04 s
+Iteration 590/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.0427, Acceptance: 73.90%, Time: 0.04 s
+Iteration 600/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.5128, Acceptance: 73.67%, Time: 0.04 s
+Iteration 610/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.9508, Acceptance: 74.10%, Time: 0.04 s
+Iteration 620/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.7060, Acceptance: 74.19%, Time: 0.04 s
+Iteration 630/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -18.5839, Acceptance: 74.13%, Time: 0.04 s
+Iteration 640/1000: Ground Truth: -20.2209, Best: -20.1632, Current: -19.5286, Acceptance: 74.22%, Time: 0.04 s
+  *** New best: -20.1633 eV
+Iteration 650/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.1711, Acceptance: 74.46%, Time: 0.04 s
+Iteration 660/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.5843, Acceptance: 74.39%, Time: 0.04 s
+Iteration 670/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -18.2097, Acceptance: 74.33%, Time: 0.04 s
+Iteration 680/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.9701, Acceptance: 74.41%, Time: 0.04 s
+Iteration 690/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.4254, Acceptance: 74.49%, Time: 0.04 s
+Iteration 700/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -18.6751, Acceptance: 74.71%, Time: 0.04 s
+Iteration 710/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.9024, Acceptance: 74.51%, Time: 0.04 s
+Iteration 720/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -18.8736, Acceptance: 74.72%, Time: 0.04 s
+Iteration 730/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -17.3688, Acceptance: 74.66%, Time: 0.04 s
+Iteration 740/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.3402, Acceptance: 74.73%, Time: 0.04 s
+Iteration 750/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.5101, Acceptance: 74.93%, Time: 0.04 s
+Iteration 760/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -17.9075, Acceptance: 74.74%, Time: 0.04 s
+Iteration 770/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -15.9261, Acceptance: 74.68%, Time: 0.04 s
+Iteration 780/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -18.9195, Acceptance: 74.74%, Time: 0.04 s
+Iteration 790/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -18.9141, Acceptance: 74.81%, Time: 0.04 s
+Iteration 800/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.7465, Acceptance: 75.00%, Time: 0.04 s
+Iteration 810/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.6796, Acceptance: 74.81%, Time: 0.04 s
+Iteration 820/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.0083, Acceptance: 74.63%, Time: 0.04 s
+Iteration 830/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.5951, Acceptance: 74.70%, Time: 0.04 s
+Iteration 840/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -17.1149, Acceptance: 74.76%, Time: 0.04 s
+Iteration 850/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -18.7456, Acceptance: 74.82%, Time: 0.04 s
+Iteration 860/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -16.9301, Acceptance: 74.77%, Time: 0.04 s
+Iteration 870/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.4360, Acceptance: 74.60%, Time: 0.04 s
+Iteration 880/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -17.3188, Acceptance: 74.66%, Time: 0.04 s
+Iteration 890/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.5208, Acceptance: 74.72%, Time: 0.04 s
+Iteration 900/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -17.2140, Acceptance: 74.67%, Time: 0.04 s
+Iteration 910/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.9470, Acceptance: 74.51%, Time: 0.04 s
+Iteration 920/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.7276, Acceptance: 74.46%, Time: 0.04 s
+Iteration 930/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -18.5335, Acceptance: 74.52%, Time: 0.04 s
+Iteration 940/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -18.7941, Acceptance: 74.47%, Time: 0.04 s
+Iteration 950/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -19.9313, Acceptance: 74.53%, Time: 0.04 s
+Iteration 960/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -17.6825, Acceptance: 74.58%, Time: 0.04 s
+Iteration 970/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -17.5171, Acceptance: 74.64%, Time: 0.04 s
+Iteration 980/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -18.3785, Acceptance: 74.59%, Time: 0.04 s
+Iteration 990/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -17.6612, Acceptance: 74.75%, Time: 0.04 s
+Iteration 1000/1000: Ground Truth: -20.2209, Best: -20.1633, Current: -17.1959, Acceptance: 74.50%, Time: 0.04 s
+Matched for mp-862731: RMSD = 1.967, ΔE = 0.058 eV
+mp-862731 match: True
+Initial energy: -34.939151763916016
+  *** New best: -36.1461 eV
+Iteration 10/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -33.8115, Acceptance: 80.00%, Time: 0.04 s
+Iteration 20/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -33.5934, Acceptance: 85.00%, Time: 0.04 s
+Iteration 30/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.6867, Acceptance: 86.67%, Time: 0.04 s
+Iteration 40/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.6617, Acceptance: 87.50%, Time: 0.04 s
+Iteration 50/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.1647, Acceptance: 86.00%, Time: 0.04 s
+Iteration 60/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.0235, Acceptance: 83.33%, Time: 0.04 s
+Iteration 70/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -33.4430, Acceptance: 82.86%, Time: 0.04 s
+Iteration 80/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.0187, Acceptance: 82.50%, Time: 0.04 s
+Iteration 90/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.8942, Acceptance: 80.00%, Time: 0.04 s
+Iteration 100/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.9089, Acceptance: 79.00%, Time: 0.04 s
+Iteration 110/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.8367, Acceptance: 78.18%, Time: 0.04 s
+Iteration 120/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -33.7475, Acceptance: 77.50%, Time: 0.04 s
+Iteration 130/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.6905, Acceptance: 74.62%, Time: 0.04 s
+Iteration 140/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.3987, Acceptance: 75.71%, Time: 0.04 s
+Iteration 150/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.4566, Acceptance: 75.33%, Time: 0.04 s
+Iteration 160/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.4936, Acceptance: 75.62%, Time: 0.04 s
+Iteration 170/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.6112, Acceptance: 75.29%, Time: 0.04 s
+Iteration 180/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.2130, Acceptance: 76.67%, Time: 0.04 s
+Iteration 190/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.3101, Acceptance: 76.32%, Time: 0.04 s
+Iteration 200/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.6032, Acceptance: 76.00%, Time: 0.04 s
+Iteration 210/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.1100, Acceptance: 76.19%, Time: 0.04 s
+Iteration 220/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.7779, Acceptance: 77.27%, Time: 0.04 s
+Iteration 230/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.0778, Acceptance: 77.39%, Time: 0.04 s
+Iteration 240/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.0907, Acceptance: 77.92%, Time: 0.04 s
+Iteration 250/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.5639, Acceptance: 77.20%, Time: 0.04 s
+Iteration 260/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -33.9438, Acceptance: 76.92%, Time: 0.04 s
+Iteration 270/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -33.1616, Acceptance: 77.78%, Time: 0.04 s
+Iteration 280/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -33.7691, Acceptance: 77.86%, Time: 0.04 s
+Iteration 290/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -33.3671, Acceptance: 78.28%, Time: 0.04 s
+Iteration 300/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.2648, Acceptance: 78.33%, Time: 0.04 s
+Iteration 310/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.1690, Acceptance: 78.39%, Time: 0.04 s
+Iteration 320/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.0343, Acceptance: 78.44%, Time: 0.04 s
+Iteration 330/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -33.1194, Acceptance: 78.18%, Time: 0.04 s
+Iteration 340/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.8387, Acceptance: 78.24%, Time: 0.04 s
+Iteration 350/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.6675, Acceptance: 78.00%, Time: 0.04 s
+Iteration 360/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -33.8305, Acceptance: 77.78%, Time: 0.04 s
+Iteration 370/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.7550, Acceptance: 77.30%, Time: 0.04 s
+Iteration 380/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.5054, Acceptance: 77.37%, Time: 0.04 s
+Iteration 390/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.1668, Acceptance: 77.69%, Time: 0.04 s
+Iteration 400/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.0381, Acceptance: 77.50%, Time: 0.04 s
+Iteration 410/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -34.7281, Acceptance: 77.07%, Time: 0.04 s
+Iteration 420/1000: Ground Truth: -35.1445, Best: -36.1461, Current: -35.8165, Acceptance: 76.90%, Time: 0.04 s
+  *** New best: -36.1479 eV
+Iteration 430/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.7627, Acceptance: 77.21%, Time: 0.04 s
+Iteration 440/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.3813, Acceptance: 76.59%, Time: 0.04 s
+Iteration 450/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.2780, Acceptance: 76.44%, Time: 0.04 s
+Iteration 460/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.4173, Acceptance: 76.52%, Time: 0.04 s
+Iteration 470/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -31.6785, Acceptance: 76.81%, Time: 0.04 s
+Iteration 480/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.8837, Acceptance: 77.08%, Time: 0.04 s
+Iteration 490/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.7025, Acceptance: 76.53%, Time: 0.04 s
+Iteration 500/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.8995, Acceptance: 76.80%, Time: 0.04 s
+Iteration 510/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.2087, Acceptance: 76.47%, Time: 0.04 s
+Iteration 520/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.1821, Acceptance: 76.54%, Time: 0.04 s
+Iteration 530/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.1225, Acceptance: 76.42%, Time: 0.04 s
+Iteration 540/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.5300, Acceptance: 76.67%, Time: 0.04 s
+Iteration 550/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.7376, Acceptance: 76.55%, Time: 0.04 s
+Iteration 560/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.5757, Acceptance: 76.79%, Time: 0.04 s
+Iteration 570/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.4996, Acceptance: 76.67%, Time: 0.04 s
+Iteration 580/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.5936, Acceptance: 76.72%, Time: 0.04 s
+Iteration 590/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.2111, Acceptance: 76.78%, Time: 0.04 s
+Iteration 600/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.0930, Acceptance: 77.00%, Time: 0.04 s
+Iteration 610/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.5809, Acceptance: 77.05%, Time: 0.04 s
+Iteration 620/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.4397, Acceptance: 76.61%, Time: 0.04 s
+Iteration 630/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.5199, Acceptance: 76.83%, Time: 0.04 s
+Iteration 640/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.4780, Acceptance: 77.03%, Time: 0.04 s
+Iteration 650/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.8969, Acceptance: 76.92%, Time: 0.04 s
+Iteration 660/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.2935, Acceptance: 76.97%, Time: 0.04 s
+Iteration 670/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.4126, Acceptance: 76.72%, Time: 0.04 s
+Iteration 680/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.3625, Acceptance: 76.76%, Time: 0.04 s
+Iteration 690/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.0569, Acceptance: 76.81%, Time: 0.04 s
+Iteration 700/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.6723, Acceptance: 77.00%, Time: 0.04 s
+Iteration 710/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.0105, Acceptance: 77.04%, Time: 0.04 s
+Iteration 720/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.5442, Acceptance: 77.22%, Time: 0.04 s
+Iteration 730/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.1800, Acceptance: 77.40%, Time: 0.04 s
+Iteration 740/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.3642, Acceptance: 77.43%, Time: 0.04 s
+Iteration 750/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.6580, Acceptance: 77.47%, Time: 0.04 s
+Iteration 760/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.4244, Acceptance: 77.63%, Time: 0.04 s
+Iteration 770/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.0530, Acceptance: 77.66%, Time: 0.04 s
+Iteration 780/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.9497, Acceptance: 77.69%, Time: 0.04 s
+Iteration 790/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.0913, Acceptance: 77.59%, Time: 0.04 s
+Iteration 800/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.3417, Acceptance: 77.62%, Time: 0.04 s
+Iteration 810/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.6589, Acceptance: 77.65%, Time: 0.04 s
+Iteration 820/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.3773, Acceptance: 77.20%, Time: 0.04 s
+Iteration 830/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.1875, Acceptance: 77.23%, Time: 0.04 s
+Iteration 840/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.3984, Acceptance: 77.38%, Time: 0.04 s
+Iteration 850/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.8144, Acceptance: 77.65%, Time: 0.04 s
+Iteration 860/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -32.3182, Acceptance: 77.79%, Time: 0.04 s
+Iteration 870/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.9284, Acceptance: 77.70%, Time: 0.04 s
+Iteration 880/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.2602, Acceptance: 77.73%, Time: 0.04 s
+Iteration 890/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.0515, Acceptance: 77.75%, Time: 0.04 s
+Iteration 900/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.1418, Acceptance: 77.56%, Time: 0.04 s
+Iteration 910/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.9474, Acceptance: 77.69%, Time: 0.04 s
+Iteration 920/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.0927, Acceptance: 77.83%, Time: 0.04 s
+Iteration 930/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.5178, Acceptance: 77.85%, Time: 0.04 s
+Iteration 940/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.1860, Acceptance: 77.98%, Time: 0.04 s
+Iteration 950/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.0566, Acceptance: 78.11%, Time: 0.04 s
+Iteration 960/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -33.7470, Acceptance: 78.33%, Time: 0.04 s
+Iteration 970/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.3351, Acceptance: 78.35%, Time: 0.04 s
+Iteration 980/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.8895, Acceptance: 78.47%, Time: 0.04 s
+Iteration 990/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -34.1506, Acceptance: 78.48%, Time: 0.04 s
+Iteration 1000/1000: Ground Truth: -35.1445, Best: -36.1479, Current: -35.3249, Acceptance: 78.50%, Time: 0.04 s
+Lower energy for mp-864753: RMSD = 0.002, ΔE = 1.003 eV
+mp-864753 match: True
+
+Distance and Energy Differences:
+[(3.025441734875304, 0.008865356), (4.3908058510556, 10.89328), (2.8372202520627683, 0.04673004), (0.0034445469786832388, 0.0008506775), (2.3111112255219504, 1.5479431), (1.07110685388525, 0.0010986328), (0.0011938905571205116, 0.005908966), (3.512513321985586, 8.54097), (1.9666190670594847, 0.05762863), (0.001955858717012482, 1.0033722)]
+
+Matched 6/10 structures.
+Match ratio: 0.60
+---------------------------------------
+Begin Slurm Epilog: Feb-07-2026 16:53:38
+Job ID:        3800004
+User ID:       hjiang378
+Account:       gts-vfung3
+Job name:      rmc
+Resources:     cpu=12,gres/gpu:v100=1,mem=48G,node=1
+Rsrc Used:     cput=06:44:24,vmem=0,walltime=00:33:42,mem=2504524K,energy_used=0
+Partition:     gpu-v100
+QOS:           inferno
+Nodes:         atl1-1-02-009-36-0
+---------------------------------------

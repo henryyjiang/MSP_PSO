@@ -309,7 +309,7 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
         
-        iters = 5000  # RMC typically needs more iterations
+        iters = 1000  # RMC typically needs more iterations
         local_steps = 25  # Can set to 50 for periodic local optimization
         step_size = 0.3
         temperature = 1.0
