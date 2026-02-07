@@ -11,6 +11,7 @@ from mattersim.forcefield.potential import Potential, MatterSimCalculator
 from mace.calculators import mace_mp
 from ase.optimize import BFGS, FIRE
 import torch
+import torch_sim as ts
 from torch_sim.models.mace import MaceModel
 from torch_sim.models.mattersim import MatterSimModel
 from mattersim.forcefield.m3gnet import m3gnet
@@ -79,28 +80,18 @@ class PSO():
 
         #self.calculator = MDLCalculator(config=train_config)
 
-        original_cif = os.path.join("cifs", self.cif_name + ".cif")
-        self.ground_truth = Structure.from_file(original_cif)
-        self.target_pos = self.ground_truth.cart_coords
-        self.target_lattice = self.ground_truth.lattice.matrix
-
 
     def obj_func(self, params, i):
-        if self.cell_perturb:
-            curr_pos = params[9:].reshape(-1, 3)
-            curr_cell = params[:9].reshape(3, 3)
-            inv_cell = np.linalg.inv(curr_cell)
-            curr_frac_coords = np.dot(curr_pos, inv_cell)
-        else:
-            curr_pos = params.reshape(-1, 3)
-            inv_cell = np.linalg.inv(self.cell[i])
-            curr_frac_coords = np.dot(curr_pos, inv_cell)
+        atoms = dimensions_to_atoms(params, i, self.composition, self.cell, self.calculator, self.cell_perturb)
 
-        diff = curr_frac_coords - self.gt_frac_coords
-        diff = diff - np.round(diff)
+        atoms.calc = self.calculator
+        try:
+            loss = atoms.get_potential_energy()
+        except:
+            loss = float('inf')
 
-        diff_cart = np.dot(diff, self.ground_truth.lattice.matrix)
-        loss = np.sqrt(np.mean(np.sum(diff_cart ** 2, axis=1)))
+        if loss < self.best_loss:
+            self.best_loss = loss
 
         return loss
 
@@ -112,12 +103,6 @@ class PSO():
         self.avg_losses.append(np.mean(j))
 
         return np.array(j)
-
-    def reconstruction_loss_fn(self, pred_pos, pred_lattice, target_pos, target_lattice):
-        pos_loss = torch.nn.functional.mse_loss(pred_pos, target_pos)
-        lattice_loss = torch.nn.functional.mse_loss(pred_lattice, target_lattice)
-
-        return pos_loss + lattice_loss
 
     def run(self):
         costs = []
@@ -219,7 +204,6 @@ class PSO():
                 new_atoms = [dimensions_to_atoms(positions[i], i, self.composition, self.cell, self.calculator, self.cell_perturb) for i in range(len(positions))]
 
                 sanitized_atoms = []
-                final_atoms = []
                 for atoms in new_atoms:
                     try:
                         cellpar = cell_to_cellpar(atoms.cell)
@@ -242,34 +226,26 @@ class PSO():
                         sanitized_atoms.append(atoms)
                     except Exception as e:
                         sanitized_atoms.append(atoms)
-                for atoms in sanitized_atoms:
-                    try:
-                        frac_coords = torch.tensor(atoms.get_positions(),
-                                                   requires_grad=True, dtype=torch.float32)
-                        lattice = torch.tensor(atoms.get_cell()[:],
-                                               requires_grad=True, dtype=torch.float32)
-                        optimizer = torch.optim.Adam([frac_coords, lattice], lr=0.01)
-                        for step in range(self.local_steps):
-                            optimizer.zero_grad()
+                try:
+                    optimized_state = ts.optimize(
+                        system=sanitized_atoms,
+                        model=self.model,
+                        optimizer=ts.frechet_cell_fire,
+                        autobatcher=False,
+                        max_steps=self.local_steps)
+                    optimized_atoms = optimized_state.to_atoms()
 
-                            curr_pos = torch.matmul(frac_coords, lattice)
-                            loss = self.reconstruction_loss_fn(curr_pos, lattice, self.target_pos, self.target_lattice)
-                            loss.backward()
-                            optimizer.step()
-
-                            if loss.item() < 1e-5:
-                                break
-                        atoms.set_cell(lattice.detach().numpy(), scale_atoms=False)
-                        atoms.set_positions(torch.matmul(frac_coords, lattice).detach().numpy())
-
+                    final_atoms = []
+                    for i, atoms in enumerate(optimized_atoms):
                         atoms.calc = self.calculator
                         if validate_structure_distances(atoms):
                             final_atoms.append(atoms)
                         else:
                             separate_close_atoms2(atoms)
+                            # separate_close_atoms(atoms, self.lj_rmins)
                             final_atoms.append(atoms)
-                    except Exception as e:
-                        final_atoms = sanitized_atoms
+                except Exception as e:
+                    final_atoms = sanitized_atoms
 
                 if not self.cell_perturb:
                     self.cell = [opt.cell if hasattr(opt, "cell") else None for opt in final_atoms]
@@ -395,7 +371,7 @@ if __name__ == "__main__":
 
         options = {'c1': 1.2, 'c2': 1.2, 'w': 0.5}  # cognitive, social, inertia
         particles = 10  # number of particles in system
-        iters = 10
+        iters = 50
         local_steps = 25
 
         cell_perturb = True
