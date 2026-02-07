@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       Pm3Ge
+_chemical_formula_sum              "Pm3 Ge1"
+_cell_length_a       7.787976422427813
+_cell_length_b       10.668851432834478
+_cell_length_c       5.835214799697317
+_cell_angle_alpha    30.482230930830617
+_cell_angle_beta     30.16380824070497
+_cell_angle_gamma    32.70454134845114
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Pm  Pm1       1.0  0.8964807198115423  0.5975877835445127  0.568778120390327  1.0000
+  Pm  Pm2       1.0  0.3165958026123352  0.19849815766491563  0.1368248062884163  1.0000
+  Pm  Pm3       1.0  0.8900488982663646  0.0049563796762095436  0.3524691283260992  1.0000
+  Ge  Ge1       1.0  0.5701615778994853  0.5967600012392182  0.49344289809392805  1.0000
