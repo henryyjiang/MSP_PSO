@@ -126,7 +126,9 @@ class RMC():
                 autobatcher=False,
                 max_steps=self.local_steps
             )
-            optimized_atoms = optimized_state.to_atoms()
+            optimized_atoms_list = optimized_state.to_atoms()
+            # ts.optimize returns a list even for single atoms object
+            optimized_atoms = optimized_atoms_list[0] if isinstance(optimized_atoms_list, list) else optimized_atoms_list
             optimized_atoms.calc = self.calculator
             energy = optimized_atoms.get_potential_energy()
             return optimized_atoms, energy
@@ -308,7 +310,7 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
         
         iters = 5000  # RMC typically needs more iterations
-        local_steps = 0  # Can set to 50 for periodic local optimization
+        local_steps = 25  # Can set to 50 for periodic local optimization
         step_size = 0.3
         temperature = 1.0
         cell_perturb = True

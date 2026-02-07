@@ -109,7 +109,9 @@ class BasinHopping():
                 autobatcher=False,
                 max_steps=self.local_steps
             )
-            optimized_atoms = optimized_state.to_atoms()
+            optimized_atoms_list = optimized_state.to_atoms()
+            # ts.optimize returns a list even for single atoms object
+            optimized_atoms = optimized_atoms_list[0] if isinstance(optimized_atoms_list, list) else optimized_atoms_list
             optimized_atoms.calc = self.calculator
             energy = optimized_atoms.get_potential_energy()
             return optimized_atoms, energy
