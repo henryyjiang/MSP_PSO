@@ -65,6 +65,31 @@ class RMC():
             m3gnet_model.load_state_dict(state_dict=state_dict, strict=False)
             self.calculator = MatterSimCalculator(potential=Potential(m3gnet_model), device=device)
     
+    def sanitize_atoms(self, atoms):
+        """Apply sanitization to atoms structure (from PSO)"""
+        try:
+            cellpar = cell_to_cellpar(atoms.cell)
+            cellpar[3:] = np.clip(cellpar[3:], 30.0, 150.0)
+            cell = cellpar_to_cell(cellpar)
+
+            lengths = np.linalg.norm(cell, axis=1)
+            if np.any(lengths < 3.0) or np.any(lengths > 100.0):
+                lengths = np.clip(lengths, 3.0, 100.0)
+                for i in range(3):
+                    cell[i] = cell[i] / np.linalg.norm(cell[i]) * lengths[i]
+
+            atoms.set_cell(cell, scale_atoms=True)
+
+            separate_close_atoms2(atoms)
+
+            if not np.all(np.isfinite(atoms.get_forces())):
+                atoms.positions += 1e-3 * np.random.randn(*atoms.positions.shape)
+
+        except Exception as e:
+            pass
+        
+        return atoms
+    
     def perturb_atom(self, atoms, atom_idx):
         """Perturb a single atom's position"""
         new_atoms = atoms.copy()
@@ -89,8 +114,21 @@ class RMC():
             cellpar[param_idx] += np.random.randn() * self.step_size * 5  # larger steps for angles
             cellpar[param_idx] = np.clip(cellpar[param_idx], 30.0, 150.0)
         
-        new_cell = cellpar_to_cell(cellpar)
-        new_atoms.set_cell(new_cell, scale_atoms=False)
+        # Additional validation: ensure angles can form a valid cell
+        # For a valid cell, must satisfy triangle inequalities for angles
+        alpha, beta, gamma = cellpar[3], cellpar[4], cellpar[5]
+        
+        # Check if angles are valid (no single angle >= sum of other two)
+        if alpha + beta <= gamma or alpha + gamma <= beta or beta + gamma <= alpha:
+            # Invalid geometry, return original atoms
+            return atoms
+        
+        try:
+            new_cell = cellpar_to_cell(cellpar)
+            new_atoms.set_cell(new_cell, scale_atoms=False)
+        except (AssertionError, ValueError):
+            # If conversion fails, return original atoms unchanged
+            return atoms
         
         return new_atoms
     
@@ -104,7 +142,8 @@ class RMC():
         return np.random.rand() < probability
     
     def get_energy(self, atoms):
-        """Calculate potential energy"""
+        """Calculate potential energy with sanitization"""
+        atoms = self.sanitize_atoms(atoms)
         atoms.calc = self.calculator
         try:
             return atoms.get_potential_energy()
@@ -116,6 +155,8 @@ class RMC():
         if self.local_steps == 0:
             return atoms, self.get_energy(atoms)
         
+        # Sanitize before optimization
+        atoms = self.sanitize_atoms(atoms)
         atoms.calc = self.calculator
         
         try:
@@ -130,7 +171,14 @@ class RMC():
             # ts.optimize returns a list even for single atoms object
             optimized_atoms = optimized_atoms_list[0] if isinstance(optimized_atoms_list, list) else optimized_atoms_list
             optimized_atoms.calc = self.calculator
-            energy = optimized_atoms.get_potential_energy()
+            
+            # Validate and fix structure distances after optimization
+            if validate_structure_distances(optimized_atoms):
+                energy = optimized_atoms.get_potential_energy()
+            else:
+                separate_close_atoms2(optimized_atoms)
+                energy = optimized_atoms.get_potential_energy()
+            
             return optimized_atoms, energy
         except Exception as e:
             return atoms, self.get_energy(atoms)
@@ -214,7 +262,7 @@ class RMC():
         ax1.axhline(y=ground_truth_energy, color='r', linestyle='--', label='Ground Truth')
         ax1.set_xlabel('Iteration')
         ax1.set_ylabel('Energy (eV)')
-        ax1.set_title(f'RMC: {self.cif_name}')
+        ax1.set_title(f'RMC (with sanitization): {self.cif_name}')
         ax1.legend()
         
         # Running acceptance rate
@@ -227,7 +275,7 @@ class RMC():
         ax2.set_ylim([0, 1])
         
         plt.tight_layout()
-        plt.savefig(f'plots/rmc_{self.cif_name}.png')
+        plt.savefig(f'plots/rmc_sanitized_{self.cif_name}.png')
         plt.close()
         
         # Evaluate final structure
@@ -264,7 +312,7 @@ class RMC():
             else:
                 out_dir = "fails"
             
-            filename = os.path.join(out_dir, f"best_structure_{self.cif_name}.cif")
+            filename = os.path.join(out_dir, f"best_structure_{self.cif_name}_sanitized.cif")
             ase.io.write(filename, best_atoms)
             
             match = result_type == "match" or result_type == "lower_energy"
@@ -273,11 +321,11 @@ class RMC():
             print(f"{self.cif_name}: invalid structure, cannot match")
             match = False
             distance, energy_diff = float('inf'), float('inf')
-            filename = os.path.join("fails", f"best_structure_{self.cif_name}.cif")
+            filename = os.path.join("fails", f"best_structure_{self.cif_name}_sanitized.cif")
             ase.io.write(filename, best_atoms)
         
         # Save energy history
-        costs_filename = f"plots/{self.cif_name}_rmc_costs.txt"
+        costs_filename = f"plots/{self.cif_name}_rmc_sanitized_costs.txt"
         with open(costs_filename, "w") as f:
             f.write(f"Ground Truth: {ground_truth_energy}\n")
             f.write(f"Best Energy: {self.best_loss}\n")
@@ -309,8 +357,8 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
         
-        iters = 1000  # RMC typically needs more iterations
-        local_steps = 25  # Can set to 50 for periodic local optimization
+        iters = 5000  # RMC typically needs more iterations
+        local_steps = 50  # Can set to 50 for periodic local optimization
         step_size = 0.3
         temperature = 1.0
         cell_perturb = True
