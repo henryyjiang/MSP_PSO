@@ -370,8 +370,8 @@ if __name__ == "__main__":
         cell = extract_cell(cif)
 
         options = {'c1': 1.2, 'c2': 1.2, 'w': 0.5}  # cognitive, social, inertia
-        particles = 30  # number of particles in system
-        iters = 100
+        particles = 40  # number of particles in system
+        iters = 50
         local_steps = 25
 
         cell_perturb = True
