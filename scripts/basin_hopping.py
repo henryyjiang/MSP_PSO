@@ -314,7 +314,7 @@ if __name__ == "__main__":
         composition = extract_composition(cif)
         cell = extract_cell(cif)
         
-        iters = 100
+        iters = 250
         local_steps = 50
         step_size = 0.5
         temperature = 1.0
