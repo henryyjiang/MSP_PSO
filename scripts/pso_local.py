@@ -238,7 +238,7 @@ class PSO():
                     final_atoms = []
                     for i, atoms in enumerate(optimized_atoms):
                         atoms.calc = self.calculator
-                        if validate_structure_distances(atoms):
+                        if not np.all(np.isfinite(atoms.get_forces())):
                             final_atoms.append(atoms)
                         else:
                             separate_close_atoms2(atoms)

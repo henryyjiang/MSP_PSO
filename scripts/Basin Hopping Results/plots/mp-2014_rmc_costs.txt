@@ -1,3 +1,0 @@
-Ground Truth: -52.94993591308594
-Best Energy: -41.74427032470703
-Final Acceptance Rate: 74.14%
