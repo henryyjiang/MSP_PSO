@@ -1,0 +1,30 @@
+data_image0
+_chemical_formula_structural       Sc3AlC
+_chemical_formula_sum              "Sc3 Al1 C1"
+_cell_length_a       7.8239951648916515
+_cell_length_b       6.342468849146054
+_cell_length_c       4.495982633368779
+_cell_angle_alpha    45.17530791612065
+_cell_angle_beta     54.849236477298284
+_cell_angle_gamma    35.67576117807008
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Sc  Sc1       1.0  0.6981468980120429  0.5528680895260774  0.4093333082718793  1.0000
+  Sc  Sc2       1.0  0.19770876072142585  0.5562932074333489  0.9114273964863244  1.0000
+  Sc  Sc3       1.0  0.6970187287468335  0.05285430196155261  0.40784231510819424  1.0000
+  Al  Al1       1.0  0.19089389262727607  0.05865889596587337  0.9079568181328455  1.0000
+  C   C1        1.0  0.7012348939439157  0.049044227512212046  0.9112173664825374  1.0000
